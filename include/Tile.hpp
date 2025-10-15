@@ -20,6 +20,10 @@ public:
         return color; 
     }
 
+    void setColor(const std::string& newColor) {
+        color = newColor;
+    }
+
     void printInfo() const;
 
 private:

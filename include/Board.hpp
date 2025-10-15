@@ -9,6 +9,8 @@ class Board {
 public:
     Board(int radius);
 
+    std::unordered_map<CubeCoord, Tile, CubeCoordHash> tiles;
+
     Tile* getTile(const CubeCoord& coord);
     std::vector<CubeCoord> getNeighbors(const CubeCoord& coord) const;
 
@@ -17,6 +19,5 @@ public:
 
 private:
     int radius;
-    std::unordered_map<CubeCoord, Tile, CubeCoordHash> tiles;
     void generateBoard();
 };

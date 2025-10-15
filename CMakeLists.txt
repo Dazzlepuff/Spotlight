@@ -9,4 +9,8 @@ file(GLOB SOURCES src/*.cpp)
 
 add_executable(boardgame ${SOURCES})
 
+set_target_properties(boardgame PROPERTIES LINK_SEARCH_START_STATIC ON)
+set_target_properties(boardgame PROPERTIES LINK_SEARCH_END_STATIC ON)
+target_link_options(boardgame PRIVATE -static -static-libgcc -static-libstdc++)
+
 target_include_directories(boardgame PRIVATE ${CMAKE_SOURCE_DIR}/include)
