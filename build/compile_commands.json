@@ -1,0 +1,32 @@
+[
+{
+  "directory": "C:/Users/Chils/OneDrive/Documents/Dreamweaver/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/boardgame.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\boardgame.dir\\src\\Board.cpp.obj -c C:\\Users\\Chils\\OneDrive\\Documents\\Dreamweaver\\src\\Board.cpp",
+  "file": "C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/Board.cpp",
+  "output": "CMakeFiles/boardgame.dir/src/Board.cpp.obj"
+},
+{
+  "directory": "C:/Users/Chils/OneDrive/Documents/Dreamweaver/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/boardgame.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\boardgame.dir\\src\\Game.cpp.obj -c C:\\Users\\Chils\\OneDrive\\Documents\\Dreamweaver\\src\\Game.cpp",
+  "file": "C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/Game.cpp",
+  "output": "CMakeFiles/boardgame.dir/src/Game.cpp.obj"
+},
+{
+  "directory": "C:/Users/Chils/OneDrive/Documents/Dreamweaver/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/boardgame.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\boardgame.dir\\src\\Player.cpp.obj -c C:\\Users\\Chils\\OneDrive\\Documents\\Dreamweaver\\src\\Player.cpp",
+  "file": "C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/Player.cpp",
+  "output": "CMakeFiles/boardgame.dir/src/Player.cpp.obj"
+},
+{
+  "directory": "C:/Users/Chils/OneDrive/Documents/Dreamweaver/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/boardgame.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\boardgame.dir\\src\\Tile.cpp.obj -c C:\\Users\\Chils\\OneDrive\\Documents\\Dreamweaver\\src\\Tile.cpp",
+  "file": "C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/Tile.cpp",
+  "output": "CMakeFiles/boardgame.dir/src/Tile.cpp.obj"
+},
+{
+  "directory": "C:/Users/Chils/OneDrive/Documents/Dreamweaver/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/boardgame.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\boardgame.dir\\src\\main.cpp.obj -c C:\\Users\\Chils\\OneDrive\\Documents\\Dreamweaver\\src\\main.cpp",
+  "file": "C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/main.cpp",
+  "output": "CMakeFiles/boardgame.dir/src/main.cpp.obj"
+}
+]
