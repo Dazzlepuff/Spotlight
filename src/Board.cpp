@@ -57,6 +57,16 @@ void Board::assignTileOwner(const CubeCoord& coord, Company* company) {
     if (tile) tile->setOwner(company);
 }
 
+void Board::setTileColor(int x, int y, int z, const std::string& color) {
+    CubeCoord coord(x, y, z);
+    Tile* tile = getTile(coord);
+    if (tile) {
+        tile->setColor(color);  // you need a setColor method in Tile
+    } else {
+        std::cout << "Tile (" << x << "," << y << "," << z << ") does not exist.\n";
+    }
+}
+
 void Board::printBoard() const {
     std::cout << "\n=== Board View ===\n";
 

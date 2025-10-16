@@ -15,6 +15,7 @@ public:
     std::vector<CubeCoord> getNeighbors(const CubeCoord& coord) const;
 
     void assignTileOwner(const CubeCoord& coord, Company* company);
+    void setTileColor(int x, int y, int z, const std::string& color);
     void printBoard() const;
 
 private:

@@ -35,12 +35,15 @@ void CommandConsole::processCommand(const std::string& cmd) {
     std::string action;
     ss >> action;
 
-    // if (action == "color") {
-    //     int x, y;
-    //     std::string color;
-    //     ss >> x >> y >> color;
-    //     board.setTileColor(x, y, color); // You must implement this in Board
-    // }
+    if (action == "color") {
+        int x, y, z;
+        std::string color;
+        ss >> x >> y >> z >> color;
+
+        if (!ss.fail()) {
+            board.setTileColor(x, y, z, color);
+        }
+    }
 
     // TODO: add more commands here as needed
 }
