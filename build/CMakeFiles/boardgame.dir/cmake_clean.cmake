@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/boardgame.dir/src/Game.cpp.obj.d"
   "CMakeFiles/boardgame.dir/src/Player.cpp.obj"
   "CMakeFiles/boardgame.dir/src/Player.cpp.obj.d"
+  "CMakeFiles/boardgame.dir/src/Renderer.cpp.obj"
+  "CMakeFiles/boardgame.dir/src/Renderer.cpp.obj.d"
   "CMakeFiles/boardgame.dir/src/Tile.cpp.obj"
   "CMakeFiles/boardgame.dir/src/Tile.cpp.obj.d"
   "CMakeFiles/boardgame.dir/src/main.cpp.obj"

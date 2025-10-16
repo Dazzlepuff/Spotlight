@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/Board.cpp" "CMakeFiles/boardgame.dir/src/Board.cpp.obj" "gcc" "CMakeFiles/boardgame.dir/src/Board.cpp.obj.d"
   "C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/Game.cpp" "CMakeFiles/boardgame.dir/src/Game.cpp.obj" "gcc" "CMakeFiles/boardgame.dir/src/Game.cpp.obj.d"
   "C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/Player.cpp" "CMakeFiles/boardgame.dir/src/Player.cpp.obj" "gcc" "CMakeFiles/boardgame.dir/src/Player.cpp.obj.d"
+  "C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/Renderer.cpp" "CMakeFiles/boardgame.dir/src/Renderer.cpp.obj" "gcc" "CMakeFiles/boardgame.dir/src/Renderer.cpp.obj.d"
   "C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/Tile.cpp" "CMakeFiles/boardgame.dir/src/Tile.cpp.obj" "gcc" "CMakeFiles/boardgame.dir/src/Tile.cpp.obj.d"
   "C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/main.cpp" "CMakeFiles/boardgame.dir/src/main.cpp.obj" "gcc" "CMakeFiles/boardgame.dir/src/main.cpp.obj.d"
   )

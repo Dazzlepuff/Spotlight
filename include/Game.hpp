@@ -7,11 +7,12 @@
 
 class Game {
 private:
-    Board board;
     std::vector<Player> players;
     std::vector<Company> companies;
 
 public:
+    Board board;
+
     Game(int boardSize);
 
     void addPlayer(const std::string& name, Company* company);

@@ -1,5 +1,6 @@
 #include "Game.hpp"
 #include "Company.hpp"
+#include "Renderer.hpp"
 
 int main() {
 
@@ -14,6 +15,10 @@ int main() {
     game.addPlayer("Aaron", &companies[1]);
 
     game.setup();
+
+    Renderer renderer(game.board);
+    renderer.run();
+
     game.start();
 
     return 0;

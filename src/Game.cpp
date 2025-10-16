@@ -14,7 +14,7 @@ void Game::addPlayer(const std::string& name, Company* company) {
 void Game::setup() {
     std::cout << "Setting up game..." << std::endl;
 
-    std::vector<std::string> colors = {"Red", "Yellow", "Blue", "Green", "Black", "White", "Gray"};
+    std::vector<std::string> colors = {"Red", "Yellow", "Blue", "Green", "Purple", "White", "Gray"};
 
     std::random_device rd;
     std::mt19937 gen(rd());

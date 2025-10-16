@@ -116,11 +116,26 @@ CMakeFiles/boardgame.dir/src/Player.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/boardgame.dir/src/Player.cpp.s"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Chils\OneDrive\Documents\Dreamweaver\src\Player.cpp -o CMakeFiles\boardgame.dir\src\Player.cpp.s
 
+CMakeFiles/boardgame.dir/src/Renderer.cpp.obj: CMakeFiles/boardgame.dir/flags.make
+CMakeFiles/boardgame.dir/src/Renderer.cpp.obj: CMakeFiles/boardgame.dir/includes_CXX.rsp
+CMakeFiles/boardgame.dir/src/Renderer.cpp.obj: C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/Renderer.cpp
+CMakeFiles/boardgame.dir/src/Renderer.cpp.obj: CMakeFiles/boardgame.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Chils\OneDrive\Documents\Dreamweaver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/boardgame.dir/src/Renderer.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/boardgame.dir/src/Renderer.cpp.obj -MF CMakeFiles\boardgame.dir\src\Renderer.cpp.obj.d -o CMakeFiles\boardgame.dir\src\Renderer.cpp.obj -c C:\Users\Chils\OneDrive\Documents\Dreamweaver\src\Renderer.cpp
+
+CMakeFiles/boardgame.dir/src/Renderer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/boardgame.dir/src/Renderer.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Chils\OneDrive\Documents\Dreamweaver\src\Renderer.cpp > CMakeFiles\boardgame.dir\src\Renderer.cpp.i
+
+CMakeFiles/boardgame.dir/src/Renderer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/boardgame.dir/src/Renderer.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Chils\OneDrive\Documents\Dreamweaver\src\Renderer.cpp -o CMakeFiles\boardgame.dir\src\Renderer.cpp.s
+
 CMakeFiles/boardgame.dir/src/Tile.cpp.obj: CMakeFiles/boardgame.dir/flags.make
 CMakeFiles/boardgame.dir/src/Tile.cpp.obj: CMakeFiles/boardgame.dir/includes_CXX.rsp
 CMakeFiles/boardgame.dir/src/Tile.cpp.obj: C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/Tile.cpp
 CMakeFiles/boardgame.dir/src/Tile.cpp.obj: CMakeFiles/boardgame.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Chils\OneDrive\Documents\Dreamweaver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/boardgame.dir/src/Tile.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Chils\OneDrive\Documents\Dreamweaver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/boardgame.dir/src/Tile.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/boardgame.dir/src/Tile.cpp.obj -MF CMakeFiles\boardgame.dir\src\Tile.cpp.obj.d -o CMakeFiles\boardgame.dir\src\Tile.cpp.obj -c C:\Users\Chils\OneDrive\Documents\Dreamweaver\src\Tile.cpp
 
 CMakeFiles/boardgame.dir/src/Tile.cpp.i: cmake_force
@@ -135,7 +150,7 @@ CMakeFiles/boardgame.dir/src/main.cpp.obj: CMakeFiles/boardgame.dir/flags.make
 CMakeFiles/boardgame.dir/src/main.cpp.obj: CMakeFiles/boardgame.dir/includes_CXX.rsp
 CMakeFiles/boardgame.dir/src/main.cpp.obj: C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/main.cpp
 CMakeFiles/boardgame.dir/src/main.cpp.obj: CMakeFiles/boardgame.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Chils\OneDrive\Documents\Dreamweaver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/boardgame.dir/src/main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Chils\OneDrive\Documents\Dreamweaver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/boardgame.dir/src/main.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/boardgame.dir/src/main.cpp.obj -MF CMakeFiles\boardgame.dir\src\main.cpp.obj.d -o CMakeFiles\boardgame.dir\src\main.cpp.obj -c C:\Users\Chils\OneDrive\Documents\Dreamweaver\src\main.cpp
 
 CMakeFiles/boardgame.dir/src/main.cpp.i: cmake_force
@@ -151,6 +166,7 @@ boardgame_OBJECTS = \
 "CMakeFiles/boardgame.dir/src/Board.cpp.obj" \
 "CMakeFiles/boardgame.dir/src/Game.cpp.obj" \
 "CMakeFiles/boardgame.dir/src/Player.cpp.obj" \
+"CMakeFiles/boardgame.dir/src/Renderer.cpp.obj" \
 "CMakeFiles/boardgame.dir/src/Tile.cpp.obj" \
 "CMakeFiles/boardgame.dir/src/main.cpp.obj"
 
@@ -160,13 +176,18 @@ boardgame_EXTERNAL_OBJECTS =
 boardgame.exe: CMakeFiles/boardgame.dir/src/Board.cpp.obj
 boardgame.exe: CMakeFiles/boardgame.dir/src/Game.cpp.obj
 boardgame.exe: CMakeFiles/boardgame.dir/src/Player.cpp.obj
+boardgame.exe: CMakeFiles/boardgame.dir/src/Renderer.cpp.obj
 boardgame.exe: CMakeFiles/boardgame.dir/src/Tile.cpp.obj
 boardgame.exe: CMakeFiles/boardgame.dir/src/main.cpp.obj
 boardgame.exe: CMakeFiles/boardgame.dir/build.make
+boardgame.exe: _deps/sfml-build/lib/libsfml-graphics-s-d.a
+boardgame.exe: _deps/sfml-build/lib/libsfml-window-s-d.a
+boardgame.exe: _deps/sfml-build/lib/libsfml-system-s-d.a
+boardgame.exe: _deps/sfml-src/extlibs/libs-mingw-ucrt/x64/libfreetype.a
 boardgame.exe: CMakeFiles/boardgame.dir/linkLibs.rsp
 boardgame.exe: CMakeFiles/boardgame.dir/objects1.rsp
 boardgame.exe: CMakeFiles/boardgame.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\Chils\OneDrive\Documents\Dreamweaver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable boardgame.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\Chils\OneDrive\Documents\Dreamweaver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable boardgame.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\boardgame.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
