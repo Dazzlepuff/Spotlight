@@ -86,11 +86,26 @@ CMakeFiles/boardgame.dir/src/Board.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/boardgame.dir/src/Board.cpp.s"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Chils\OneDrive\Documents\Dreamweaver\src\Board.cpp -o CMakeFiles\boardgame.dir\src\Board.cpp.s
 
+CMakeFiles/boardgame.dir/src/CommandConsole.cpp.obj: CMakeFiles/boardgame.dir/flags.make
+CMakeFiles/boardgame.dir/src/CommandConsole.cpp.obj: CMakeFiles/boardgame.dir/includes_CXX.rsp
+CMakeFiles/boardgame.dir/src/CommandConsole.cpp.obj: C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/CommandConsole.cpp
+CMakeFiles/boardgame.dir/src/CommandConsole.cpp.obj: CMakeFiles/boardgame.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Chils\OneDrive\Documents\Dreamweaver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/boardgame.dir/src/CommandConsole.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/boardgame.dir/src/CommandConsole.cpp.obj -MF CMakeFiles\boardgame.dir\src\CommandConsole.cpp.obj.d -o CMakeFiles\boardgame.dir\src\CommandConsole.cpp.obj -c C:\Users\Chils\OneDrive\Documents\Dreamweaver\src\CommandConsole.cpp
+
+CMakeFiles/boardgame.dir/src/CommandConsole.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/boardgame.dir/src/CommandConsole.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Chils\OneDrive\Documents\Dreamweaver\src\CommandConsole.cpp > CMakeFiles\boardgame.dir\src\CommandConsole.cpp.i
+
+CMakeFiles/boardgame.dir/src/CommandConsole.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/boardgame.dir/src/CommandConsole.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Chils\OneDrive\Documents\Dreamweaver\src\CommandConsole.cpp -o CMakeFiles\boardgame.dir\src\CommandConsole.cpp.s
+
 CMakeFiles/boardgame.dir/src/Game.cpp.obj: CMakeFiles/boardgame.dir/flags.make
 CMakeFiles/boardgame.dir/src/Game.cpp.obj: CMakeFiles/boardgame.dir/includes_CXX.rsp
 CMakeFiles/boardgame.dir/src/Game.cpp.obj: C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/Game.cpp
 CMakeFiles/boardgame.dir/src/Game.cpp.obj: CMakeFiles/boardgame.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Chils\OneDrive\Documents\Dreamweaver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/boardgame.dir/src/Game.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Chils\OneDrive\Documents\Dreamweaver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/boardgame.dir/src/Game.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/boardgame.dir/src/Game.cpp.obj -MF CMakeFiles\boardgame.dir\src\Game.cpp.obj.d -o CMakeFiles\boardgame.dir\src\Game.cpp.obj -c C:\Users\Chils\OneDrive\Documents\Dreamweaver\src\Game.cpp
 
 CMakeFiles/boardgame.dir/src/Game.cpp.i: cmake_force
@@ -105,7 +120,7 @@ CMakeFiles/boardgame.dir/src/Player.cpp.obj: CMakeFiles/boardgame.dir/flags.make
 CMakeFiles/boardgame.dir/src/Player.cpp.obj: CMakeFiles/boardgame.dir/includes_CXX.rsp
 CMakeFiles/boardgame.dir/src/Player.cpp.obj: C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/Player.cpp
 CMakeFiles/boardgame.dir/src/Player.cpp.obj: CMakeFiles/boardgame.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Chils\OneDrive\Documents\Dreamweaver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/boardgame.dir/src/Player.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Chils\OneDrive\Documents\Dreamweaver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/boardgame.dir/src/Player.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/boardgame.dir/src/Player.cpp.obj -MF CMakeFiles\boardgame.dir\src\Player.cpp.obj.d -o CMakeFiles\boardgame.dir\src\Player.cpp.obj -c C:\Users\Chils\OneDrive\Documents\Dreamweaver\src\Player.cpp
 
 CMakeFiles/boardgame.dir/src/Player.cpp.i: cmake_force
@@ -120,7 +135,7 @@ CMakeFiles/boardgame.dir/src/Renderer.cpp.obj: CMakeFiles/boardgame.dir/flags.ma
 CMakeFiles/boardgame.dir/src/Renderer.cpp.obj: CMakeFiles/boardgame.dir/includes_CXX.rsp
 CMakeFiles/boardgame.dir/src/Renderer.cpp.obj: C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/Renderer.cpp
 CMakeFiles/boardgame.dir/src/Renderer.cpp.obj: CMakeFiles/boardgame.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Chils\OneDrive\Documents\Dreamweaver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/boardgame.dir/src/Renderer.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Chils\OneDrive\Documents\Dreamweaver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/boardgame.dir/src/Renderer.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/boardgame.dir/src/Renderer.cpp.obj -MF CMakeFiles\boardgame.dir\src\Renderer.cpp.obj.d -o CMakeFiles\boardgame.dir\src\Renderer.cpp.obj -c C:\Users\Chils\OneDrive\Documents\Dreamweaver\src\Renderer.cpp
 
 CMakeFiles/boardgame.dir/src/Renderer.cpp.i: cmake_force
@@ -135,7 +150,7 @@ CMakeFiles/boardgame.dir/src/Tile.cpp.obj: CMakeFiles/boardgame.dir/flags.make
 CMakeFiles/boardgame.dir/src/Tile.cpp.obj: CMakeFiles/boardgame.dir/includes_CXX.rsp
 CMakeFiles/boardgame.dir/src/Tile.cpp.obj: C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/Tile.cpp
 CMakeFiles/boardgame.dir/src/Tile.cpp.obj: CMakeFiles/boardgame.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Chils\OneDrive\Documents\Dreamweaver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/boardgame.dir/src/Tile.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Chils\OneDrive\Documents\Dreamweaver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/boardgame.dir/src/Tile.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/boardgame.dir/src/Tile.cpp.obj -MF CMakeFiles\boardgame.dir\src\Tile.cpp.obj.d -o CMakeFiles\boardgame.dir\src\Tile.cpp.obj -c C:\Users\Chils\OneDrive\Documents\Dreamweaver\src\Tile.cpp
 
 CMakeFiles/boardgame.dir/src/Tile.cpp.i: cmake_force
@@ -150,7 +165,7 @@ CMakeFiles/boardgame.dir/src/main.cpp.obj: CMakeFiles/boardgame.dir/flags.make
 CMakeFiles/boardgame.dir/src/main.cpp.obj: CMakeFiles/boardgame.dir/includes_CXX.rsp
 CMakeFiles/boardgame.dir/src/main.cpp.obj: C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/main.cpp
 CMakeFiles/boardgame.dir/src/main.cpp.obj: CMakeFiles/boardgame.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Chils\OneDrive\Documents\Dreamweaver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/boardgame.dir/src/main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Chils\OneDrive\Documents\Dreamweaver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/boardgame.dir/src/main.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/boardgame.dir/src/main.cpp.obj -MF CMakeFiles\boardgame.dir\src\main.cpp.obj.d -o CMakeFiles\boardgame.dir\src\main.cpp.obj -c C:\Users\Chils\OneDrive\Documents\Dreamweaver\src\main.cpp
 
 CMakeFiles/boardgame.dir/src/main.cpp.i: cmake_force
@@ -164,6 +179,7 @@ CMakeFiles/boardgame.dir/src/main.cpp.s: cmake_force
 # Object files for target boardgame
 boardgame_OBJECTS = \
 "CMakeFiles/boardgame.dir/src/Board.cpp.obj" \
+"CMakeFiles/boardgame.dir/src/CommandConsole.cpp.obj" \
 "CMakeFiles/boardgame.dir/src/Game.cpp.obj" \
 "CMakeFiles/boardgame.dir/src/Player.cpp.obj" \
 "CMakeFiles/boardgame.dir/src/Renderer.cpp.obj" \
@@ -174,6 +190,7 @@ boardgame_OBJECTS = \
 boardgame_EXTERNAL_OBJECTS =
 
 boardgame.exe: CMakeFiles/boardgame.dir/src/Board.cpp.obj
+boardgame.exe: CMakeFiles/boardgame.dir/src/CommandConsole.cpp.obj
 boardgame.exe: CMakeFiles/boardgame.dir/src/Game.cpp.obj
 boardgame.exe: CMakeFiles/boardgame.dir/src/Player.cpp.obj
 boardgame.exe: CMakeFiles/boardgame.dir/src/Renderer.cpp.obj
@@ -187,7 +204,7 @@ boardgame.exe: _deps/sfml-src/extlibs/libs-mingw-ucrt/x64/libfreetype.a
 boardgame.exe: CMakeFiles/boardgame.dir/linkLibs.rsp
 boardgame.exe: CMakeFiles/boardgame.dir/objects1.rsp
 boardgame.exe: CMakeFiles/boardgame.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\Chils\OneDrive\Documents\Dreamweaver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable boardgame.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\Chils\OneDrive\Documents\Dreamweaver\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable boardgame.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\boardgame.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/Board.cpp" "CMakeFiles/boardgame.dir/src/Board.cpp.obj" "gcc" "CMakeFiles/boardgame.dir/src/Board.cpp.obj.d"
+  "C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/CommandConsole.cpp" "CMakeFiles/boardgame.dir/src/CommandConsole.cpp.obj" "gcc" "CMakeFiles/boardgame.dir/src/CommandConsole.cpp.obj.d"
   "C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/Game.cpp" "CMakeFiles/boardgame.dir/src/Game.cpp.obj" "gcc" "CMakeFiles/boardgame.dir/src/Game.cpp.obj.d"
   "C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/Player.cpp" "CMakeFiles/boardgame.dir/src/Player.cpp.obj" "gcc" "CMakeFiles/boardgame.dir/src/Player.cpp.obj.d"
   "C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/Renderer.cpp" "CMakeFiles/boardgame.dir/src/Renderer.cpp.obj" "gcc" "CMakeFiles/boardgame.dir/src/Renderer.cpp.obj.d"

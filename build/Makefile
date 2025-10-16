@@ -295,6 +295,30 @@ src/Board.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\boardgame.dir\build.make CMakeFiles/boardgame.dir/src/Board.cpp.s
 .PHONY : src/Board.cpp.s
 
+src/CommandConsole.obj: src/CommandConsole.cpp.obj
+.PHONY : src/CommandConsole.obj
+
+# target to build an object file
+src/CommandConsole.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\boardgame.dir\build.make CMakeFiles/boardgame.dir/src/CommandConsole.cpp.obj
+.PHONY : src/CommandConsole.cpp.obj
+
+src/CommandConsole.i: src/CommandConsole.cpp.i
+.PHONY : src/CommandConsole.i
+
+# target to preprocess a source file
+src/CommandConsole.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\boardgame.dir\build.make CMakeFiles/boardgame.dir/src/CommandConsole.cpp.i
+.PHONY : src/CommandConsole.cpp.i
+
+src/CommandConsole.s: src/CommandConsole.cpp.s
+.PHONY : src/CommandConsole.s
+
+# target to generate assembly for a file
+src/CommandConsole.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\boardgame.dir\build.make CMakeFiles/boardgame.dir/src/CommandConsole.cpp.s
+.PHONY : src/CommandConsole.cpp.s
+
 src/Game.obj: src/Game.cpp.obj
 .PHONY : src/Game.obj
 
@@ -439,6 +463,9 @@ help:
 	@echo ... src/Board.obj
 	@echo ... src/Board.i
 	@echo ... src/Board.s
+	@echo ... src/CommandConsole.obj
+	@echo ... src/CommandConsole.i
+	@echo ... src/CommandConsole.s
 	@echo ... src/Game.obj
 	@echo ... src/Game.i
 	@echo ... src/Game.s

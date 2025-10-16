@@ -259,4 +259,9 @@ CMakeFiles/boardgame.dir/src/main.cpp.obj: \
  C:/Users/Chils/OneDrive/Documents/Dreamweaver/build/_deps/sfml-src/include/SFML/Graphics/Glsl.inl \
  C:/Users/Chils/OneDrive/Documents/Dreamweaver/build/_deps/sfml-src/include/SFML/Graphics/Sprite.hpp \
  C:/Users/Chils/OneDrive/Documents/Dreamweaver/build/_deps/sfml-src/include/SFML/Graphics/Text.hpp \
- C:/Users/Chils/OneDrive/Documents/Dreamweaver/build/_deps/sfml-src/include/SFML/Graphics/VertexBuffer.hpp
+ C:/Users/Chils/OneDrive/Documents/Dreamweaver/build/_deps/sfml-src/include/SFML/Graphics/VertexBuffer.hpp \
+ C:/Users/Chils/OneDrive/Documents/Dreamweaver/include/CommandConsole.hpp \
+ C:/msys64/ucrt64/include/c++/14.2.0/sstream \
+ C:/msys64/ucrt64/include/c++/14.2.0/istream \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/istream.tcc \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/sstream.tcc

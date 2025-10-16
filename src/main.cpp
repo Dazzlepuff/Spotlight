@@ -1,9 +1,10 @@
 #include "Game.hpp"
 #include "Company.hpp"
 #include "Renderer.hpp"
+#include <SFML/Graphics.hpp>
+#include <vector>
 
 int main() {
-
     std::vector<Company> companies = {
         Company("company1"),
         Company("company2")
@@ -16,7 +17,13 @@ int main() {
 
     game.setup();
 
-    Renderer renderer(game.board);
+    sf::Font font;
+    if (!font.loadFromFile("assets/consolas.ttf")) {
+        return -1;
+    }
+
+    Renderer renderer(game.board, font, 800, 600);
+
     renderer.run();
 
     game.start();

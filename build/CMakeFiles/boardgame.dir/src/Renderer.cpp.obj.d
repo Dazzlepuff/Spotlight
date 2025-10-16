@@ -255,6 +255,11 @@ CMakeFiles/boardgame.dir/src/Renderer.cpp.obj: \
  C:/msys64/ucrt64/include/c++/14.2.0/compare \
  C:/Users/Chils/OneDrive/Documents/Dreamweaver/include/Tile.hpp \
  C:/Users/Chils/OneDrive/Documents/Dreamweaver/include/Company.hpp \
+ C:/Users/Chils/OneDrive/Documents/Dreamweaver/include/CommandConsole.hpp \
+ C:/msys64/ucrt64/include/c++/14.2.0/sstream \
+ C:/msys64/ucrt64/include/c++/14.2.0/istream \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/istream.tcc \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/sstream.tcc \
  C:/msys64/ucrt64/include/c++/14.2.0/cmath \
  C:/msys64/ucrt64/include/math.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/specfun.h \

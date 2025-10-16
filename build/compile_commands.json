@@ -7,6 +7,12 @@
 },
 {
   "directory": "C:/Users/Chils/OneDrive/Documents/Dreamweaver/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DSFML_STATIC @CMakeFiles/boardgame.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\boardgame.dir\\src\\CommandConsole.cpp.obj -c C:\\Users\\Chils\\OneDrive\\Documents\\Dreamweaver\\src\\CommandConsole.cpp",
+  "file": "C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/CommandConsole.cpp",
+  "output": "CMakeFiles/boardgame.dir/src/CommandConsole.cpp.obj"
+},
+{
+  "directory": "C:/Users/Chils/OneDrive/Documents/Dreamweaver/build",
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DSFML_STATIC @CMakeFiles/boardgame.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\boardgame.dir\\src\\Game.cpp.obj -c C:\\Users\\Chils\\OneDrive\\Documents\\Dreamweaver\\src\\Game.cpp",
   "file": "C:/Users/Chils/OneDrive/Documents/Dreamweaver/src/Game.cpp",
   "output": "CMakeFiles/boardgame.dir/src/Game.cpp.obj"
