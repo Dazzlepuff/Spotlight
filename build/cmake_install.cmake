@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Chils/OneDrive/Documents/Dreamweaver
+# Install script for directory: C:/Users/Chils/Documents/CodingProjects/Spotlight
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,13 +39,23 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/Chils/OneDrive/Documents/Dreamweaver/build/_deps/sfml-build/cmake_install.cmake")
+  include("C:/Users/Chils/Documents/CodingProjects/Spotlight/build/_deps/sfml-build/cmake_install.cmake")
+endif()
+
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "C:/Users/Chils/Documents/CodingProjects/Spotlight/build/boardgame.exe")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/boardgame.exe" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/boardgame.exe")
+    if(CMAKE_INSTALL_DO_STRIP)
+      execute_process(COMMAND "C:/msys64/ucrt64/bin/strip.exe" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/boardgame.exe")
+    endif()
+  endif()
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "C:/Users/Chils/OneDrive/Documents/Dreamweaver/build/install_local_manifest.txt"
+  file(WRITE "C:/Users/Chils/Documents/CodingProjects/Spotlight/build/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -61,6 +71,6 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "C:/Users/Chils/OneDrive/Documents/Dreamweaver/build/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "C:/Users/Chils/Documents/CodingProjects/Spotlight/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

@@ -3,9 +3,9 @@
 # No other meaning or use of this file is supported.
 
 method=git
-command=C:/Program Files/CMake/bin/cmake.exe;-DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE;-P;C:/Users/Chils/OneDrive/Documents/Dreamweaver/build/_deps/sfml-subbuild/sfml-populate-prefix/tmp/sfml-populate-gitclone.cmake
-source_dir=C:/Users/Chils/OneDrive/Documents/Dreamweaver/build/_deps/sfml-src
-work_dir=C:/Users/Chils/OneDrive/Documents/Dreamweaver/build/_deps
+command=C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe;-DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE;-P;C:/Users/Chils/Documents/CodingProjects/Spotlight/build/_deps/sfml-subbuild/sfml-populate-prefix/tmp/sfml-populate-gitclone.cmake
+source_dir=C:/Users/Chils/Documents/CodingProjects/Spotlight/build/_deps/sfml-src
+work_dir=C:/Users/Chils/Documents/CodingProjects/Spotlight/build/_deps
 repository=https://github.com/SFML/SFML.git
 remote=origin
 init_submodules=TRUE
