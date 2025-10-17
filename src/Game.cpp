@@ -12,8 +12,6 @@ void Game::addPlayer(const std::string& name, Company* company) {
 }
 
 void Game::setup() {
-    std::cout << "Setting up game..." << std::endl;
-
     std::vector<std::string> colors = {"Red", "Yellow", "Blue", "Green", "Purple", "White", "Gray"};
 
     std::random_device rd;
@@ -30,13 +28,4 @@ void Game::setup() {
         board.assignTileOwner(tile1, players[0].company);
         board.assignTileOwner(tile2, players[1].company);
     }
-}
-
-void Game::start() {
-    std::cout << "Game starting..." << std::endl;
-    board.printBoard();
-
-    CubeCoord coord(0, 0, 0);
-    Tile* tile = board.getTile(coord);
-    if (tile) tile->printInfo();
 }

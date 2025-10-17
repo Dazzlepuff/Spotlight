@@ -9,9 +9,9 @@ void Renderer::run() {
     while (window.isOpen()) {
         handleEvents();
 
-        window.clear(sf::Color(30, 30, 30)); // dark background
+        window.clear(sf::Color(30, 30, 30));
         drawBoard();
-        console.draw(window);                // draw console on top
+        console.draw(window);
         window.display();
     }
 }
@@ -22,7 +22,7 @@ void Renderer::handleEvents() {
         if (event.type == sf::Event::Closed)
             window.close();
 
-        console.handleEvent(event);  // forward events to console
+        console.handleEvent(event);
     }
 }
 
