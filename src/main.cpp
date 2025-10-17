@@ -22,7 +22,7 @@ int main() {
         return -1;
     }
 
-    Renderer renderer(game.board, font, 800, 600);
+    Renderer renderer(game.board, font, 1600, 1200);
 
     renderer.run();
 

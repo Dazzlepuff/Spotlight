@@ -6,7 +6,7 @@
 
 class CommandConsole {
 public:
-    CommandConsole(Board& b, sf::Font& f, sf::Vector2f pos = {10.f, 550.f});
+    CommandConsole(Board& b, sf::Font& f, sf::Vector2f pos = {10.f, 1100.f});
 
     // Call this from the SFML event loop
     void handleEvent(const sf::Event& e);
