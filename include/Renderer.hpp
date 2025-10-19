@@ -12,6 +12,7 @@ public:
 private:
     Board& board;
     sf::RenderWindow window;
+    sf::Font& font;    
     CommandConsole console;  // <-- New console member
 
     void drawBoard();

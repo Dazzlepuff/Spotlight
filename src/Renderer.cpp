@@ -1,8 +1,8 @@
 #include "Renderer.hpp"
 #include <cmath>
 
-Renderer::Renderer(Board& b, sf::Font& font, int width, int height)
-    : board(b), window(sf::VideoMode(width, height), "Hex Board"), console(b, font)
+Renderer::Renderer(Board& b, sf::Font& f, int width, int height)
+    : board(b), font(f), window(sf::VideoMode(width, height), "Hex Board"), console(b, f)
 {}
 
 void Renderer::run() {
@@ -32,8 +32,8 @@ void Renderer::drawBoard() {
     const sf::Vector2f center(800, 600);
 
     for (const auto& [coord, tile] : board.tiles) {
-        float q = coord.x;
-        float r = coord.y;
+        float q = static_cast<float>(coord.x);
+        float r = static_cast<float>(coord.z);
 
         float x = hexRadius * 1.5f * q + center.x;
         float y = hexHeight * (r + q / 2.f) + center.y;
@@ -54,5 +54,19 @@ void Renderer::drawBoard() {
         else                   hex.setFillColor(sf::Color(0x4B, 0x4A, 0x54));
 
         window.draw(hex);
+
+        sf::Text text;
+        text.setFont(font);
+        text.setString("(" + std::to_string(coord.x) + ", " +
+                             std::to_string(coord.y) + ", " +
+                             std::to_string(coord.z) + ")");
+        text.setCharacterSize(14);
+        text.setFillColor(sf::Color::Black);
+
+        sf::FloatRect bounds = text.getLocalBounds();
+        text.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
+        text.setPosition(x, y - 6);
+
+        window.draw(text);
     }
 }
