@@ -27,7 +27,7 @@ void Renderer::handleEvents() {
 }
 
 void Renderer::drawBoard() {
-    const float hexRadius = 60.f;
+    const float hexRadius = 50.f;
     const float hexHeight = std::sqrt(3.f) * hexRadius;
     const sf::Vector2f center(800, 600);
 
