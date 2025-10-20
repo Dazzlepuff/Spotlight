@@ -5,7 +5,7 @@ class StartupMenu
 private:
     
 public:
-    StartupMenu();
+    StartupMenu() = default;
     int StartMenuLoop();
 
 };

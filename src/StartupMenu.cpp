@@ -1,111 +1,142 @@
 #include <iostream>
-#include <functional>
-#include <map>
+#include <fstream>
+#include <filesystem>
 #include <vector>
 #include <string>
-#include <limits>
+#include <SFML/Graphics.hpp>
 #include "StartupMenu.hpp"
+#include "Company.hpp"
 #include "Game.hpp"
 #include "Renderer.hpp"
-#include "Company.hpp"
-#include <SFML/Graphics.hpp>
 
-struct MenuOption {
-    std::string label;
-    std::function<void()> action;
+namespace fs = std::filesystem;
+
+struct GameConfig {
+    int playerCount = 2;
+    std::vector<std::string> playerNames;
+    std::vector<std::string> companyNames;
+    std::vector<std::string> companySymbols;
 };
 
-class Menu {
-public:
-    Menu(const std::string& title) : title(title) {}
+static const std::string CONFIG_PATH = "config/settings.txt";
 
-    void addOption(const std::string& label, std::function<void()> action) {
-        options.push_back({label, action});
+// --- Helper Functions ---
+void saveConfig(const GameConfig& cfg) {
+    fs::create_directories("config");
+    std::ofstream file(CONFIG_PATH);
+    if (!file.is_open()) return;
+
+    file << cfg.playerCount << '\n';
+
+    for (int i = 0; i < cfg.playerCount; ++i) {
+        file << cfg.playerNames[i] << '\n';
+        file << cfg.companyNames[i] << '\n';
+        file << cfg.companySymbols[i] << '\n';
+    }
+}
+
+GameConfig loadConfig() {
+    GameConfig cfg;
+    std::ifstream file(CONFIG_PATH);
+    if (!file.is_open()) return cfg;
+
+    file >> cfg.playerCount;
+    file.ignore(); // skip newline
+
+    cfg.playerNames.resize(cfg.playerCount);
+    cfg.companyNames.resize(cfg.playerCount);
+    cfg.companySymbols.resize(cfg.playerCount);
+
+    for (int i = 0; i < cfg.playerCount; ++i) {
+        std::getline(file, cfg.playerNames[i]);
+        std::getline(file, cfg.companyNames[i]);
+        std::getline(file, cfg.companySymbols[i]);
     }
 
-    void run() {
-        while (true) {
-            std::cout << "\n===== " << title << " =====\n";
-            for (size_t i = 0; i < options.size(); ++i)
-                std::cout << i + 1 << ". " << options[i].label << "\n";
-            std::cout << "Select an option: ";
+    return cfg;
+}
 
-            int choice;
-            std::cin >> choice;
+// --- Settings Menu ---
+void settingsMenu(GameConfig& cfg) {
+    std::cout << "\n=== SETTINGS ===\n";
 
-            if (std::cin.fail() || choice < 1 || choice > static_cast<int>(options.size())) {
-                std::cin.clear();
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                std::cout << "Invalid choice. Try again.\n";
-                continue;
-            }
+    std::cout << "Enter number of players (2–6): ";
+    std::cin >> cfg.playerCount;
+    if (cfg.playerCount < 2) cfg.playerCount = 2;
+    if (cfg.playerCount > 6) cfg.playerCount = 6;
 
-            options[choice - 1].action();
-        }
+    cfg.playerNames.resize(cfg.playerCount);
+    cfg.companyNames.resize(cfg.playerCount);
+    cfg.companySymbols.resize(cfg.playerCount);
+
+    std::cin.ignore(); // flush newline
+
+    for (int i = 0; i < cfg.playerCount; ++i) {
+        std::cout << "\nPlayer " << i + 1 << " name: ";
+        std::getline(std::cin, cfg.playerNames[i]);
+        std::cout << "Company name: ";
+        std::getline(std::cin, cfg.companyNames[i]);
+        std::cout << "Company symbol: ";
+        std::getline(std::cin, cfg.companySymbols[i]);
     }
 
-private:
-    std::string title;
-    std::vector<MenuOption> options;
-};
+    saveConfig(cfg);
+    std::cout << "\nSettings saved!\n";
+}
 
-StartupMenu::StartupMenu() {}
+// --- Radius Auto-Selector ---
+int getAutoRadius(int playerCount) {
+    if (playerCount == 2) return 3;
+    if (playerCount == 3) return 4;
+    if (playerCount <= 5) return 5;
+    return 6;
+}
 
+// --- Game Startup ---
 int StartupMenu::StartMenuLoop() {
-    bool running = true;
+    GameConfig cfg = loadConfig();
+    int choice = 0;
 
-    Menu mainMenu("SPOTLIGHT");
-    Menu optionsMenu("Options");
+    while (true) {
+        std::cout << "\n=== MAIN MENU ===\n";
+        std::cout << "1. Start Game\n";
+        std::cout << "2. Settings\n";
+        std::cout << "3. Exit\n";
+        std::cout << "Choose an option: ";
+        std::cin >> choice;
 
-    optionsMenu.addOption("Audio Settings", []() {
-        std::cout << "Audio Settings (placeholder)\n";
-    });
-    optionsMenu.addOption("Video Settings", []() {
-        std::cout << "Video Settings (placeholder)\n";
-    });
-    optionsMenu.addOption("Back", []() {
-        throw std::runtime_error("BACK");
-    });
+        if (choice == 1) break;
+        else if (choice == 2) settingsMenu(cfg);
+        else if (choice == 3) return 0;
+        else std::cout << "Invalid choice.\n";
+    }
 
-    mainMenu.addOption("Start Game", [&]() {
-        std::cout << "Starting Spotlight...\n";
+    int radius = getAutoRadius(cfg.playerCount);
+    std::cout << "\nStarting game with " << cfg.playerCount 
+              << " players (Board radius: " << radius << ")\n";
 
-        std::vector<Company> companies = {
-            Company("Aurora Industries", "@"),
-            Company("NovaWorks", "&")
-        };
+    // Create Companies
+    std::vector<Company> companies;
+    for (int i = 0; i < cfg.playerCount; ++i) {
+        companies.emplace_back(cfg.companyNames[i], cfg.companySymbols[i]);
+    }
 
-        Game game(6);
-        game.addPlayer("Owen", &companies[0]);
-        game.addPlayer("Aaron", &companies[1]);
-        game.setup();
+    // Setup Game
+    Game game(radius);
+    for (int i = 0; i < cfg.playerCount; ++i) {
+        game.addPlayer(cfg.playerNames[i], &companies[i]);
+    }
+    game.setup();
 
-        sf::Font font;
-        if (!font.loadFromFile("assets/consolas.ttf")) {
-            std::cerr << "Error loading font.\n";
-            return;
-        }
+    // Setup Renderer
+    sf::Font font;
+    if (!font.loadFromFile("assets/consolas.ttf")) {
+        std::cerr << "Error: Could not load font.\n";
+        return -1;
+    }
 
-        Renderer renderer(game.board, font, 1600, 1200);
-        renderer.run();
-    });
+    Renderer renderer(game.board, font, 1600, 1200);
+    renderer.run();
 
-    mainMenu.addOption("Options", [&]() {
-        try {
-            optionsMenu.run();
-        } catch (const std::runtime_error& e) {
-            if (std::string(e.what()) == "BACK") {
-            } else {
-                throw;
-            }
-        }
-    });
-
-    mainMenu.addOption("Exit", [&]() {
-        std::cout << "Goodbye!\n";
-        exit(0);
-    });
-
-    mainMenu.run();
     return 0;
 }
