@@ -3,6 +3,7 @@
 #include <string>
 #include <sstream>
 #include "Board.hpp"
+#include "Game.hpp"
 
 class CommandConsole {
 public:

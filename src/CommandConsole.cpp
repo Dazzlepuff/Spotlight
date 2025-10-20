@@ -1,5 +1,5 @@
 #include "CommandConsole.hpp"
-#include <cctype> // for isprint
+#include <cctype>
 
 CommandConsole::CommandConsole(Board& b, sf::Font& f, sf::Vector2f pos)
     : board(b), font(f), position(pos)
@@ -14,12 +14,12 @@ void CommandConsole::handleEvent(const sf::Event& e) {
     if (e.type == sf::Event::TextEntered) {
         char c = static_cast<char>(e.text.unicode);
 
-        if (c == '\r' || c == '\n') { // Enter key
+        if (c == '\r' || c == '\n') {
             processCommand(buffer);
             buffer.clear();
-        } else if (c == 8 && !buffer.empty()) { // Backspace
+        } else if (c == 8 && !buffer.empty()) {
             buffer.pop_back();
-        } else if (std::isprint(c)) { // Printable characters
+        } else if (std::isprint(c)) {
             buffer += c;
         }
     }
@@ -44,6 +44,6 @@ void CommandConsole::processCommand(const std::string& cmd) {
             board.setTileColor(x, y, z, color);
         }
     }
-
-    // TODO: add more commands here as needed
+    //Move this to game. Makes more sense for game to hold the Renderer, Command Console, Board, players company, etc...
+    //and it also should handle all the command execution.
 }

@@ -41,3 +41,7 @@ void Game::setup() {
         tile.setOwner(nullptr);
     }
 }
+
+const std::vector<Player>& Game::getPlayers() const {
+    return players;
+}

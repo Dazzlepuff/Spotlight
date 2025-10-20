@@ -18,4 +18,6 @@ public:
     void addPlayer(const std::string& name, Company* company);
     void setup();
     void start();
+
+    const std::vector<Player>& getPlayers() const;
 };
