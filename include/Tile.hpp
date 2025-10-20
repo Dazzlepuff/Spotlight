@@ -4,25 +4,13 @@
 
 class Tile {
 public:
-    Tile() : owner(nullptr), color("neutral") {
+    Tile();
 
-    }
+    void setOwner(Company* newOwner);
+    Company* getOwner() const;
 
-    void setOwner(Company* newOwner){
-        owner = newOwner;
-    }
-
-    Company* getOwner() const {
-        return owner; 
-    }
-    
-    const std::string& getColor() const {
-        return color; 
-    }
-
-    void setColor(const std::string& newColor) {
-        color = newColor;
-    }
+    const std::string& getColor() const;
+    void setColor(const std::string& newColor);
 
     void printInfo() const;
 

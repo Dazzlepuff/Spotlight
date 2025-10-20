@@ -55,18 +55,33 @@ void Renderer::drawBoard() {
 
         window.draw(hex);
 
-        sf::Text text;
-        text.setFont(font);
-        text.setString("(" + std::to_string(coord.x) + ", " +
-                             std::to_string(coord.y) + ", " +
-                             std::to_string(coord.z) + ")");
-        text.setCharacterSize(14);
-        text.setFillColor(sf::Color::Black);
+        Company* owner = tile.getOwner();
+        if (owner != nullptr) {
+            sf::Text symbolText;
+            symbolText.setFont(font);
+            symbolText.setString(owner->getSymbol());
+            symbolText.setCharacterSize(24);
+            symbolText.setFillColor(sf::Color::Black);
 
-        sf::FloatRect bounds = text.getLocalBounds();
-        text.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
-        text.setPosition(x, y - 6);
+            sf::FloatRect symBounds = symbolText.getLocalBounds();
+            symbolText.setOrigin(symBounds.width / 2.f, symBounds.height / 2.f);
+            symbolText.setPosition(x, y - 12);
 
-        window.draw(text);
+            window.draw(symbolText);
+        }
+
+        sf::Text coordText;
+        coordText.setFont(font);
+        coordText.setString("(" + std::to_string(coord.x) + ", " +
+                                 std::to_string(coord.y) + ", " +
+                                 std::to_string(coord.z) + ")");
+        coordText.setCharacterSize(12);
+        coordText.setFillColor(sf::Color(50, 50, 50));
+
+        sf::FloatRect bounds = coordText.getLocalBounds();
+        coordText.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
+        coordText.setPosition(x, y + 16);
+
+        window.draw(coordText);
     }
 }

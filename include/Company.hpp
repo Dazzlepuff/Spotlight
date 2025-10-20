@@ -1,11 +1,19 @@
 #pragma once
 #include <string>
 
-struct Company {
-    std::string name;
-    std::string logo;
+class Company {
+public:
+    Company(const std::string& name, const std::string& symbol);
 
-    Company(const std::string& n, const std::string& l) : name(n), logo(l){
-        
-    }
+    // Getters
+    const std::string& getName() const;
+    const std::string& getSymbol() const;
+
+    // Setters (optional)
+    void setName(const std::string& newName);
+    void setSymbol(const std::string& newSymbol);
+
+private:
+    std::string name;
+    std::string symbol; // the company symbol
 };

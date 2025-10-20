@@ -1,19 +1,19 @@
 6
-Owen
-Owens Company
-!
-Evan
-Evans Company
-@
-Anna
-Annas Company
-#
-Dad
-Dads Comapny
+Lena
+Orion Dynamics
 $
-Mom
-Moms Company %
+Kai
+Solaris Group
+#
+Mira
+Eclipse Labs
 %
-Bridget
-Bridgets Comapny
-^
+Dax
+Zenith Freight
+&
+Nova
+Crimson Forge
+*
+Riven
+AstraCore Industries
+@
