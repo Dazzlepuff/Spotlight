@@ -3,9 +3,30 @@
 #include <iostream>
 #include <random>
 #include <vector>
+#include <string>
 
-Game::Game(int boardSize) : board(boardSize){
+#include "Renderer.hpp"
+#include "CommandConsole.hpp"
 
+Game::Game(int boardSize)
+    : board(boardSize),
+      window(sf::VideoMode(1600, 1200), "Hex Board"),
+      font()
+{
+    if (!font.loadFromFile("assets/consolas.ttf")) {
+        std::cerr << "Failed to load font!\n";
+    }
+
+    // Place console near bottom-left of the window (for example)
+    sf::Vector2f consolePosition(20.f, 900.f);
+
+    console = new CommandConsole(board, font, consolePosition);
+    renderer = new Renderer(board, font);
+}
+
+Game::~Game(){
+    delete renderer;
+    delete console;
 }
 
 void Game::addPlayer(const std::string& name, Company* company) {
@@ -44,4 +65,42 @@ void Game::setup() {
 
 const std::vector<Player>& Game::getPlayers() const {
     return players;
+}
+
+void Game::mainLoop() {
+    while (window.isOpen()) {
+        renderer->handleEvents(window, *console);
+
+        while (console->hasCommand()) {
+            std::string cmd = console->nextCommand();
+            executeCommand(cmd);
+        }
+
+        renderer->render(window, *console);
+    }
+}
+
+
+void Game::executeCommand(const std::string& cmd) {
+    std::istringstream ss(cmd);
+    std::string action;
+    ss >> action;
+
+    if (action == "color") {
+        int x, y, z;
+        std::string color;
+        ss >> x >> y >> z >> color;
+
+        if (!ss.fail()) {
+            board.setTileColor(x, y, z, color);
+            std::cout << "Set tile (" << x << "," << y << "," << z << ") to " << color << "\n";
+        }
+    }
+    else if (action == "list_players") {
+        for (const auto& p : players)
+            std::cout << p.name << " (" << p.company->getName() << ")\n";
+    }
+    else {
+        std::cout << "Unknown command: " << action << "\n";
+    }
 }

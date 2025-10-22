@@ -1,20 +1,20 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Board.hpp"
-#include "CommandConsole.hpp"
+#include "Tile.hpp"
+
+class CommandConsole;
 
 class Renderer {
 public:
-    Renderer(Board& board, sf::Font& font, int windowWidth = 800, int windowHeight = 600);
+    Renderer(Board& board, sf::Font& font);
 
-    void run();  // Main render loop
+    void handleEvents(sf::RenderWindow& window, CommandConsole& console);
+    void render(sf::RenderWindow& window, CommandConsole& console);
 
 private:
-    Board& board;
-    sf::RenderWindow window;
-    sf::Font& font;    
-    CommandConsole console;  // <-- New console member
+    void drawBoard(sf::RenderWindow& window);
 
-    void drawBoard();
-    void handleEvents();
+    Board& board;
+    sf::Font& font;
 };

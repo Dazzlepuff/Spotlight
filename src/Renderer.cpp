@@ -1,32 +1,30 @@
 #include "Renderer.hpp"
+#include "CommandConsole.hpp"
 #include <cmath>
 
-Renderer::Renderer(Board& b, sf::Font& f, int width, int height)
-    : board(b), font(f), window(sf::VideoMode(width, height), "Hex Board"), console(b, f)
+Renderer::Renderer(Board& b, sf::Font& f)
+    : board(b), font(f)
 {}
 
-void Renderer::run() {
-    while (window.isOpen()) {
-        handleEvents();
 
-        window.clear(sf::Color(30, 30, 30));
-        drawBoard();
-        console.draw(window);
-        window.display();
-    }
-}
-
-void Renderer::handleEvents() {
+void Renderer::handleEvents(sf::RenderWindow& window, CommandConsole& console) {
     sf::Event event;
     while (window.pollEvent(event)) {
         if (event.type == sf::Event::Closed)
             window.close();
-
         console.handleEvent(event);
     }
 }
 
-void Renderer::drawBoard() {
+void Renderer::render(sf::RenderWindow& window, CommandConsole& console) {
+    window.clear(sf::Color(30, 30, 30));
+    drawBoard(window);
+    console.draw(window);
+    window.display();
+}
+
+
+void Renderer::drawBoard(sf::RenderWindow& window) {
     const float hexRadius = 50.f;
     const float hexHeight = std::sqrt(3.f) * hexRadius;
     const sf::Vector2f center(800, 600);

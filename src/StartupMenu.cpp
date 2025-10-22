@@ -135,8 +135,7 @@ int StartupMenu::StartMenuLoop() {
         return -1;
     }
 
-    Renderer renderer(game.board, font, 1600, 1200);
-    renderer.run();
+    game.mainLoop();
 
     return 0;
 }

@@ -1,23 +1,32 @@
 #pragma once
 #include <vector>
 #include <string>
+#include <SFML/Graphics.hpp>
 #include "Player.hpp"
 #include "Board.hpp"
 #include "Company.hpp"
 
+// Forward declarations
+class Renderer;
+class CommandConsole;
+
 class Game {
-private:
-    std::vector<Player> players;
-    std::vector<Company> companies;
-
 public:
-    Board board;
-
     Game(int boardSize);
-
+    ~Game();
     void addPlayer(const std::string& name, Company* company);
     void setup();
-    void start();
+    void mainLoop();
 
     const std::vector<Player>& getPlayers() const;
+
+private:
+    void executeCommand(const std::string& cmd);
+
+    Board board;
+    std::vector<Player> players;
+    sf::Font font;
+    sf::RenderWindow window;
+    Renderer* renderer;       // Use pointers to break circular deps
+    CommandConsole* console;  // Same here
 };
