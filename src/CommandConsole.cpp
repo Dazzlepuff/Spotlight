@@ -16,14 +16,14 @@ void CommandConsole::draw(sf::RenderWindow& window) {
 
 void CommandConsole::handleEvent(const sf::Event& e) {
     if (e.type == sf::Event::TextEntered) {
-        if (e.text.unicode == '\b') { // backspace
+        if (e.text.unicode == '\b') {
             if (!buffer.empty()) buffer.pop_back();
-        } else if (e.text.unicode == '\r') { // enter
+        } else if (e.text.unicode == '\r') {
             if (!buffer.empty()) {
                 pendingCommands.push(buffer);
                 buffer.clear();
             }
-        } else if (e.text.unicode >= 32 && e.text.unicode < 127) { // visible chars
+        } else if (e.text.unicode >= 32 && e.text.unicode < 127) {
             buffer += static_cast<char>(e.text.unicode);
         }
 
