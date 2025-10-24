@@ -13,11 +13,12 @@ CommandConsole::CommandConsole(Board& b, sf::Font& f, sf::Vector2f pos)
 void CommandConsole::draw(sf::RenderWindow& window) {
     float y = position.y;
 
-    for (const auto& line : outputLines) {
+    for (auto it = outputLines.rbegin(); it != outputLines.rend(); ++it) {
+        const auto& line = *it;
+        y -= 25.f;
         text.setString(line);
         text.setPosition(position.x, y);
         window.draw(text);
-        y -= 25.f;
     }
 
     text.setString(">" + buffer);

@@ -17,8 +17,7 @@ Game::Game(int boardSize)
         std::cerr << "Failed to load font!\n";
     }
 
-    // Place console near bottom-left of the window (for example)
-    sf::Vector2f consolePosition(20.f, 900.f);
+    sf::Vector2f consolePosition(20.f, 1160.f);
 
     console = new CommandConsole(board, font, consolePosition);
     renderer = new Renderer(board, font);

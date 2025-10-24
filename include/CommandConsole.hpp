@@ -7,7 +7,7 @@
 
 class CommandConsole {
 public:
-    CommandConsole(Board& b, sf::Font& f, sf::Vector2f pos = {20.f, 900.f});
+    CommandConsole(Board& b, sf::Font& f, sf::Vector2f pos = {20.f, 1200.f});
 
     void draw(sf::RenderWindow& window);
 
