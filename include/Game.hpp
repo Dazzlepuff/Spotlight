@@ -27,6 +27,6 @@ private:
     std::vector<Player> players;
     sf::Font font;
     sf::RenderWindow window;
-    Renderer* renderer;       // Use pointers to break circular deps
-    CommandConsole* console;  // Same here
+    Renderer* renderer;
+    CommandConsole* console;
 };

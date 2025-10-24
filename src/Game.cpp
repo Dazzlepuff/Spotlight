@@ -80,7 +80,6 @@ void Game::mainLoop() {
     }
 }
 
-
 void Game::executeCommand(const std::string& cmd) {
     std::istringstream ss(cmd);
     std::string action;
@@ -93,14 +92,27 @@ void Game::executeCommand(const std::string& cmd) {
 
         if (!ss.fail()) {
             board.setTileColor(x, y, z, color);
-            std::cout << "Set tile (" << x << "," << y << "," << z << ") to " << color << "\n";
+            console->print("Set tile (" + std::to_string(x) + "," + std::to_string(y) + "," + std::to_string(z) + ") to " + color);
+        } else {
+            console->print("Usage: color <x> <y> <z> <color>");
         }
     }
     else if (action == "list_players") {
-        for (const auto& p : players)
-            std::cout << p.name << " (" << p.company->getName() << ")\n";
+        if (players.empty()) {
+            console->print("No players available.");
+        } else {
+            console->print("Players:");
+            for (const auto& p : players)
+                console->print(" - " + p.name + " (" + p.company->getName() + ")");
+        }
+    }
+    else if (action == "help") {
+        console->print("Available commands:");
+        console->print("  color <x> <y> <z> <color>");
+        console->print("  list_players");
+        console->print("  help");
     }
     else {
-        std::cout << "Unknown command: " << action << "\n";
+        console->print("Unknown command: " + action);
     }
 }

@@ -11,8 +11,20 @@ CommandConsole::CommandConsole(Board& b, sf::Font& f, sf::Vector2f pos)
 }
 
 void CommandConsole::draw(sf::RenderWindow& window) {
+    float y = position.y;
+
+    for (const auto& line : outputLines) {
+        text.setString(line);
+        text.setPosition(position.x, y);
+        window.draw(text);
+        y -= 25.f;
+    }
+
+    text.setString(">" + buffer);
+    text.setPosition(position.x, position.y);
     window.draw(text);
 }
+
 
 void CommandConsole::handleEvent(const sf::Event& e) {
     if (e.type == sf::Event::TextEntered) {
@@ -29,6 +41,12 @@ void CommandConsole::handleEvent(const sf::Event& e) {
 
         text.setString("> " + buffer);
     }
+}
+
+void CommandConsole::print(const std::string& line) {
+    outputLines.push_back(line);
+    if (outputLines.size() > maxLines)
+        outputLines.erase(outputLines.begin());
 }
 
 std::string CommandConsole::nextCommand() {
