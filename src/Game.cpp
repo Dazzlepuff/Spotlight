@@ -98,18 +98,27 @@ void Game::executeCommand(const std::string& cmd) {
             console->print("Usage: set_color <x> <y> <z> <color>");
         }
     }
+
     else if (action == "set_owner") {
         int x, y, z;
         int companyIndex;
         ss >> x >> y >> z >> companyIndex;
 
-        if (!ss.fail()) {
-            board.assignTileOwner(x, y, z, &companies[companyIndex]);
-            console->print("Set tile (" + std::to_string(x) + "," + std::to_string(y) + "," + std::to_string(z) + ") to " + companies[companyIndex].getName() + ": " + companies[companyIndex].getSymbol());
-        } else {
-            console->print("Usage: set_owner <x> <y> <z> <owner_index>");
+        if (ss.fail()) {
+            console->print("Usage: set_owner <x> <y> <z> <company_index>");
+            return;
         }
+        if (companyIndex < 0 || companyIndex >= companies.size()) {
+            console->print("Error: Company index " + std::to_string(companyIndex) + " is out of range. Max valid index: " + std::to_string(companies.size() - 1));
+            return;
+        }
+
+        board.assignTileOwner(x, y, z, &companies[companyIndex]);
+        console->print(
+            "Set tile (" + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + ") to " + companies[companyIndex].getName() + ": " + companies[companyIndex].getSymbol()
+        );
     }
+
     else if (action == "list_players") {
         if (players.empty()) {
             console->print("No players available.");
@@ -122,6 +131,7 @@ void Game::executeCommand(const std::string& cmd) {
     else if (action == "help") {
         console->print("Available commands:");
         console->print("  set_color <x> <y> <z> <color>");
+        console->print("  set_owner <x> <y> <z> <company_index>");
         console->print("  list_players");
         console->print("  help");
     }
