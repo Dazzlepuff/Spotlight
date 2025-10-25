@@ -6,13 +6,12 @@
 #include "Board.hpp"
 #include "Company.hpp"
 
-// Forward declarations
 class Renderer;
 class CommandConsole;
 
 class Game {
 public:
-    Game(int boardSize);
+    Game(int boardSize, std::vector<Company> companyList);
     ~Game();
     void addPlayer(const std::string& name, Company* company);
     void setup();
@@ -25,6 +24,7 @@ private:
 
     Board board;
     std::vector<Player> players;
+    std::vector<Company> companies;
     sf::Font font;
     sf::RenderWindow window;
     Renderer* renderer;

@@ -8,7 +8,7 @@
 #include "Renderer.hpp"
 #include "CommandConsole.hpp"
 
-Game::Game(int boardSize)
+Game::Game(int boardSize, std::vector<Company> companyList)
     : board(boardSize),
       window(sf::VideoMode(1600, 1200), "Hex Board"),
       font()
@@ -21,6 +21,8 @@ Game::Game(int boardSize)
 
     console = new CommandConsole(board, font, consolePosition);
     renderer = new Renderer(board, font);
+
+    companies = companyList;
 }
 
 Game::~Game(){
@@ -84,7 +86,7 @@ void Game::executeCommand(const std::string& cmd) {
     std::string action;
     ss >> action;
 
-    if (action == "color") {
+    if (action == "set_color") {
         int x, y, z;
         std::string color;
         ss >> x >> y >> z >> color;
@@ -93,7 +95,19 @@ void Game::executeCommand(const std::string& cmd) {
             board.setTileColor(x, y, z, color);
             console->print("Set tile (" + std::to_string(x) + "," + std::to_string(y) + "," + std::to_string(z) + ") to " + color);
         } else {
-            console->print("Usage: color <x> <y> <z> <color>");
+            console->print("Usage: set_color <x> <y> <z> <color>");
+        }
+    }
+    else if (action == "set_owner") {
+        int x, y, z;
+        int companyIndex;
+        ss >> x >> y >> z >> companyIndex;
+
+        if (!ss.fail()) {
+            board.assignTileOwner(x, y, z, &companies[companyIndex]);
+            console->print("Set tile (" + std::to_string(x) + "," + std::to_string(y) + "," + std::to_string(z) + ") to " + companies[companyIndex].getName() + ": " + companies[companyIndex].getSymbol());
+        } else {
+            console->print("Usage: set_owner <x> <y> <z> <owner_index>");
         }
     }
     else if (action == "list_players") {
@@ -102,12 +116,12 @@ void Game::executeCommand(const std::string& cmd) {
         } else {
             console->print("Players:");
             for (const auto& p : players)
-                console->print(" - " + p.name + " (" + p.company->getName() + ")");
+                console->print(" - " + p.name + " (" + p.company->getName() + ": " + p.company->getSymbol() + ")");
         }
     }
     else if (action == "help") {
         console->print("Available commands:");
-        console->print("  color <x> <y> <z> <color>");
+        console->print("  set_color <x> <y> <z> <color>");
         console->print("  list_players");
         console->print("  help");
     }

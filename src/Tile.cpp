@@ -3,12 +3,12 @@
 
 Tile::Tile() : owner(nullptr), color("neutral") {}
 
-void Tile::setOwner(Company* newOwner) {
-    owner = newOwner;
-}
-
 Company* Tile::getOwner() const {
     return owner;
+}
+
+void Tile::setOwner(Company* newOwner) {
+    owner = newOwner;
 }
 
 const std::string& Tile::getColor() const {

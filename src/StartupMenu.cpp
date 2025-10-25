@@ -122,7 +122,7 @@ int StartupMenu::StartMenuLoop() {
     }
 
     // Setup Game
-    Game game(radius);
+    Game game(radius, companies);
     for (int i = 0; i < cfg.playerCount; ++i) {
         game.addPlayer(cfg.playerNames[i], &companies[i]);
     }
