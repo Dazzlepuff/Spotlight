@@ -1,4 +1,5 @@
 #include "Board.hpp"
+#include "Colors.hpp"
 #include <iostream>
 #include <iomanip>
 #include <cmath>
@@ -61,11 +62,16 @@ void Board::assignTileOwner(int x, int y, int z, Company* company) {
 void Board::setTileColor(int x, int y, int z, const std::string& color) {
     CubeCoord coord(x, y, z);
     Tile* tile = getTile(coord);
-    if (tile) {
-        tile->setColor(color);  // you need a setColor method in Tile
-    } else {
-        std::cout << "Tile (" << x << "," << y << "," << z << ") does not exist.\n";
+
+
+    if (!tile) {
+        std::cerr << "Tile (" << x << "," << y << "," << z << ") does not exist.\n";
+        return;
+    } 
+    if (!Colors::isValid(color)) {
+        std::cerr << "Color \"" << color << "\" is not a valid color.\n";
     }
+    tile->setColor(color);
 }
 
 void Board::printBoard() const {

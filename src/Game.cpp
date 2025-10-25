@@ -7,6 +7,7 @@
 
 #include "Renderer.hpp"
 #include "CommandConsole.hpp"
+#include "Colors.hpp"
 
 Game::Game(int boardSize, std::vector<Company> companyList)
     : board(boardSize),
@@ -35,11 +36,9 @@ void Game::addPlayer(const std::string& name, Company* company) {
 }
 
 void Game::setup() {
-    std::vector<std::string> colors = {"Red", "Yellow", "Blue", "Green", "Purple", "White"};
-    
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<> colorDist(0, colors.size() - 1);
+    std::uniform_int_distribution<> colorDist(0, Colors::all.size() - 1);
     std::uniform_int_distribution<> ownerDist(0, static_cast<int>(players.size()) - 1);
 
     std::vector<CubeCoord> tileCoords;
@@ -53,7 +52,7 @@ void Game::setup() {
     size_t half = tileCoords.size() / 2;
     for (size_t i = 0; i < half; ++i) {
         auto& tile = board.tiles[tileCoords[i]];
-        tile.setColor(colors[colorDist(gen)]);
+        tile.setColor(Colors::all[colorDist(gen)]);
         tile.setOwner(players[ownerDist(gen)].company);
     }
 
@@ -91,12 +90,20 @@ void Game::executeCommand(const std::string& cmd) {
         std::string color;
         ss >> x >> y >> z >> color;
 
-        if (!ss.fail()) {
-            board.setTileColor(x, y, z, color);
-            console->print("Set tile (" + std::to_string(x) + "," + std::to_string(y) + "," + std::to_string(z) + ") to " + color);
-        } else {
+        if (ss.fail()) {
             console->print("Usage: set_color <x> <y> <z> <color>");
+            return;
+        } 
+        if (!Colors::isValid(color)) {
+            console->print(color + " is not a valid color. Valid colors: ");
+            for (const auto& c : Colors::all){
+                console -> print("   " + c);
+            }
+            return;
         }
+
+        board.setTileColor(x, y, z, color);
+        console->print("Set tile (" + std::to_string(x) + "," + std::to_string(y) + "," + std::to_string(z) + ") to " + color);
     }
 
     else if (action == "set_owner") {
