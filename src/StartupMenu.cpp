@@ -8,6 +8,7 @@
 #include "Company.hpp"
 #include "Game.hpp"
 #include "Renderer.hpp"
+#include "PathUtils.hpp"
 
 namespace fs = std::filesystem;
 
@@ -18,13 +19,16 @@ struct GameConfig {
     std::vector<std::string> companySymbols;
 };
 
-static const std::string CONFIG_PATH = "config/settings.txt";
-
-// --- Helper Functions ---
 void saveConfig(const GameConfig& cfg) {
-    fs::create_directories("config");
-    std::ofstream file(CONFIG_PATH);
-    if (!file.is_open()) return;
+    auto configDir = PathUtils::getConfigPath();
+    auto configFile = PathUtils::getConfigPath("settings.txt");
+
+    fs::create_directories(configDir);
+    std::ofstream file(configFile);
+    if (!file.is_open()) {
+        std::cerr << "Error: Could not write to " << configFile << "\n";
+        return;
+    }
 
     file << cfg.playerCount << '\n';
 
@@ -33,15 +37,22 @@ void saveConfig(const GameConfig& cfg) {
         file << cfg.companyNames[i] << '\n';
         file << cfg.companySymbols[i] << '\n';
     }
+
+    std::cout << "Saved config to: " << configFile << "\n";
 }
 
 GameConfig loadConfig() {
     GameConfig cfg;
-    std::ifstream file(CONFIG_PATH);
-    if (!file.is_open()) return cfg;
+    auto configFile = PathUtils::getConfigPath("settings.txt");
+
+    std::ifstream file(configFile);
+    if (!file.is_open()) {
+        std::cerr << "No config found at " << configFile << ". Using defaults.\n";
+        return cfg;
+    }
 
     file >> cfg.playerCount;
-    file.ignore(); // skip newline
+    file.ignore();
 
     cfg.playerNames.resize(cfg.playerCount);
     cfg.companyNames.resize(cfg.playerCount);
@@ -56,7 +67,6 @@ GameConfig loadConfig() {
     return cfg;
 }
 
-// --- Settings Menu ---
 void settingsMenu(GameConfig& cfg) {
     std::cout << "\n=== SETTINGS ===\n";
 
@@ -69,7 +79,7 @@ void settingsMenu(GameConfig& cfg) {
     cfg.companyNames.resize(cfg.playerCount);
     cfg.companySymbols.resize(cfg.playerCount);
 
-    std::cin.ignore(); // flush newline
+    std::cin.ignore();
 
     for (int i = 0; i < cfg.playerCount; ++i) {
         std::cout << "\nPlayer " << i + 1 << " name: ";
@@ -84,7 +94,6 @@ void settingsMenu(GameConfig& cfg) {
     std::cout << "\nSettings saved!\n";
 }
 
-// --- Radius Auto-Selector ---
 int getAutoRadius(int playerCount) {
     if (playerCount == 2) return 3;
     if (playerCount == 3) return 4;
@@ -92,7 +101,6 @@ int getAutoRadius(int playerCount) {
     return 6;
 }
 
-// --- Game Startup ---
 int StartupMenu::StartMenuLoop() {
     GameConfig cfg = loadConfig();
     int choice = 0;
@@ -115,26 +123,16 @@ int StartupMenu::StartMenuLoop() {
     std::cout << "\nStarting game with " << cfg.playerCount 
               << " players (Board radius: " << radius << ")\n";
 
-    // Create Companies
     std::vector<Company> companies;
     for (int i = 0; i < cfg.playerCount; ++i) {
         companies.emplace_back(cfg.companyNames[i], cfg.companySymbols[i]);
     }
 
-    // Setup Game
     Game game(radius, companies);
     for (int i = 0; i < cfg.playerCount; ++i) {
         game.addPlayer(cfg.playerNames[i], &companies[i]);
     }
     game.setup();
-
-    // Setup Renderer
-    sf::Font font;
-    if (!font.loadFromFile("assets/consolas.ttf")) {
-        std::cerr << "Error: Could not load font.\n";
-        return -1;
-    }
-
     game.mainLoop();
 
     return 0;

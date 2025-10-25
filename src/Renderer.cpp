@@ -1,6 +1,9 @@
 #include "Renderer.hpp"
 #include "CommandConsole.hpp"
+#include "Colors.hpp"
 #include <cmath>
+
+#include <iostream>
 
 Renderer::Renderer(Board& b, sf::Font& f)
     : board(b), font(f)
@@ -41,20 +44,13 @@ void Renderer::drawBoard(sf::RenderWindow& window) {
         hex.setPosition(x, y);
         hex.setRotation(30);
 
-        std::string c = tile.getColor();
-        if (c == "Red")        hex.setFillColor(sf::Color(0xD9, 0x7B, 0x66));
-        else if (c == "Blue")  hex.setFillColor(sf::Color(0x6C, 0x8E, 0xBF));
-        else if (c == "Green") hex.setFillColor(sf::Color(0x7C, 0xA9, 0x82));
-        else if (c == "Yellow")hex.setFillColor(sf::Color(0xE3, 0xC5, 0x67));
-        else if (c == "Purple")hex.setFillColor(sf::Color(0xA8, 0x8E, 0xC6));
-        else if (c == "Gray")  hex.setFillColor(sf::Color(0xB0, 0xA8, 0xB9));
-        else if (c == "White") hex.setFillColor(sf::Color(0xF2, 0xE9, 0xE4));
-        else                   hex.setFillColor(sf::Color(0x4B, 0x4A, 0x54));
+        const std::string& colorName = tile.getColor();
+        hex.setFillColor(Colors::getSfmlColor(colorName));
 
         window.draw(hex);
-
         Company* owner = tile.getOwner();
         if (owner != nullptr) {
+
             sf::Text symbolText;
             symbolText.setFont(font);
             symbolText.setString(owner->getSymbol());
@@ -76,7 +72,7 @@ void Renderer::drawBoard(sf::RenderWindow& window) {
         coordText.setCharacterSize(12);
         coordText.setFillColor(sf::Color(50, 50, 50));
 
-        sf::FloatRect bounds = coordText.getLocalBounds();
+        sf::FloatRect bounds = coordText.getLocalBounds(); //HERE <<<<<<<<<<<<<<<<
         coordText.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
         coordText.setPosition(x, y + 16);
 
