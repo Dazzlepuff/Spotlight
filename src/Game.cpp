@@ -27,7 +27,6 @@ Game::Game(int boardSize, std::vector<Company> companyList)
     companies = companyList;
 }
 
-
 Game::~Game(){
     delete renderer;
     delete console;
@@ -123,9 +122,7 @@ void Game::executeCommand(const std::string& cmd) {
         }
 
         board.assignTileOwner(x, y, z, &companies[companyIndex]);
-        console->print(
-            "Set tile (" + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + ") to " + companies[companyIndex].getName() + ": " + companies[companyIndex].getSymbol()
-        );
+        console->print("Set tile (" + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + ") to " + companies[companyIndex].getName() + ": " + companies[companyIndex].getSymbol());
     }
 
     else if (action == "list_players") {
@@ -137,11 +134,85 @@ void Game::executeCommand(const std::string& cmd) {
                 console->print(" - " + p.name + " (" + p.company->getName() + ": " + p.company->getSymbol() + ")");
         }
     }
+
+    else if (action == "show_resources") {
+        int playerIndex;
+        ss >> playerIndex;
+
+        if (ss.fail()) {
+            console->print("Usage: show_resources <player_index>");
+            return;
+        }
+        if (playerIndex < 0 || playerIndex >= players.size()) {
+            console->print("Error: Player index " + std::to_string(playerIndex) + 
+                        " is out of range. Max valid index: " + std::to_string(players.size() - 1));
+            return;
+        }
+
+        Player& player = players[playerIndex];
+        console->print("Resources for player " + player.name + ":");
+
+        for (const auto& [resource, amount] : player.resources) {
+            console->print("  " + resource + ": " + std::to_string(amount));
+        }
+    }
+
+    else if (action == "give_resource") {
+        int playerIndex;
+        std::string resourceName;
+        int amount;
+        ss >> playerIndex >> resourceName >> amount;
+
+        if (ss.fail()) {
+            console->print("Usage: give_resource <player_index> <resource_name> <amount>");
+            return;
+        }
+        if (playerIndex < 0 || playerIndex >= players.size()) {
+            console->print("Error: Player index " + std::to_string(playerIndex) + 
+                        " is out of range. Max valid index: " + std::to_string(players.size() - 1));
+            return;
+        }
+
+        Player& player = players[playerIndex];
+        player.resources[resourceName] += amount;
+        console->print("Gave " + std::to_string(amount) + " " + resourceName + " to " + player.name + ".");
+    }
+
+    else if (action == "spend_resource") {
+        int playerIndex;
+        std::string resourceName;
+        int amount;
+        ss >> playerIndex >> resourceName >> amount;
+
+        if (ss.fail()) {
+            console->print("Usage: spend_resource <player_index> <resource_name> <amount>");
+            return;
+        }
+        if (playerIndex < 0 || playerIndex >= players.size()) {
+            console->print("Error: Player index " + std::to_string(playerIndex) + 
+                        " is out of range. Max valid index: " + std::to_string(players.size() - 1));
+            return;
+        }
+
+        Player& player = players[playerIndex];
+        auto it = player.resources.find(resourceName);
+        if (it == player.resources.end() || it->second < amount) {
+            console->print("Error: " + player.name + " does not have enough " + resourceName + ".");
+            return;
+        }
+
+        it->second -= amount;
+        console->print(player.name + " spent " + std::to_string(amount) + " " + resourceName + ".");
+    }
+
     else if (action == "help") {
         console->print("Available commands:");
         console->print("  set_color <x> <y> <z> <color>");
         console->print("  set_owner <x> <y> <z> <company_index>");
         console->print("  list_players");
+        console->print("  show_resources <player_index>");
+        console->print("  give_resource <player_index> <resource_name> <amount>");
+        console->print("  spend_resource <player_index> <resource_name> <amount>");
         console->print("  help");
     }
     else {
