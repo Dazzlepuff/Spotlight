@@ -19,6 +19,9 @@ public:
 
     const std::vector<Player>& getPlayers() const;
 
+    void giveResourceToPlayer(int playerIndex, const std::string& resource, int amount, bool logToConsole = true);
+    bool spendResourceFromPlayer(int playerIndex, const std::string& resource, int amount, bool logToConsole = true);
+
 private:
     void executeCommand(const std::string& cmd);
 

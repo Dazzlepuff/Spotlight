@@ -81,6 +81,35 @@ void Game::mainLoop() {
     }
 }
 
+void Game::giveResourceToPlayer(int playerIndex, const std::string& resource, int amount, bool logToConsole) {
+    if (playerIndex < 0 || playerIndex >= players.size()) {
+        if (logToConsole) console->print("Error: Invalid player index.");
+        return;
+    }
+    Player& player = players[playerIndex];
+    player.resources[resource] += amount;
+    if (logToConsole) console->print("Gave " + std::to_string(amount) + " " + resource + " to " + player.name + ".");
+}
+
+bool Game::spendResourceFromPlayer(int playerIndex, const std::string& resource, int amount, bool logToConsole) {
+    if (playerIndex < 0 || playerIndex >= players.size()) {
+        if (logToConsole) console->print("Error: Invalid player index.");
+        return false;
+    }
+
+    Player& player = players[playerIndex];
+    auto it = player.resources.find(resource);
+    if (it == player.resources.end() || it->second < amount) {
+        if (logToConsole) console->print("Error: Not enough " + resource + " for " + player.name + ".");
+        return false;
+    }
+
+    it->second -= amount;
+    if (logToConsole) console->print(player.name + " spent " + std::to_string(amount) + " " + resource + ".");
+    return true;
+}
+
+
 void Game::executeCommand(const std::string& cmd) {
     std::istringstream ss(cmd);
     std::string action;
@@ -159,50 +188,26 @@ void Game::executeCommand(const std::string& cmd) {
 
     else if (action == "give_resource") {
         int playerIndex;
-        std::string resourceName;
+        std::string resource;
         int amount;
-        ss >> playerIndex >> resourceName >> amount;
-
+        ss >> playerIndex >> resource >> amount;
         if (ss.fail()) {
-            console->print("Usage: give_resource <player_index> <resource_name> <amount>");
+            console->print("Usage: give_resource <player_index> <resource> <amount>");
             return;
         }
-        if (playerIndex < 0 || playerIndex >= players.size()) {
-            console->print("Error: Player index " + std::to_string(playerIndex) + 
-                        " is out of range. Max valid index: " + std::to_string(players.size() - 1));
-            return;
-        }
-
-        Player& player = players[playerIndex];
-        player.resources[resourceName] += amount;
-        console->print("Gave " + std::to_string(amount) + " " + resourceName + " to " + player.name + ".");
+        giveResourceToPlayer(playerIndex, resource, amount);
     }
 
     else if (action == "spend_resource") {
         int playerIndex;
-        std::string resourceName;
+        std::string resource;
         int amount;
-        ss >> playerIndex >> resourceName >> amount;
-
+        ss >> playerIndex >> resource >> amount;
         if (ss.fail()) {
-            console->print("Usage: spend_resource <player_index> <resource_name> <amount>");
+            console->print("Usage: spend_resource <player_index> <resource> <amount>");
             return;
         }
-        if (playerIndex < 0 || playerIndex >= players.size()) {
-            console->print("Error: Player index " + std::to_string(playerIndex) + 
-                        " is out of range. Max valid index: " + std::to_string(players.size() - 1));
-            return;
-        }
-
-        Player& player = players[playerIndex];
-        auto it = player.resources.find(resourceName);
-        if (it == player.resources.end() || it->second < amount) {
-            console->print("Error: " + player.name + " does not have enough " + resourceName + ".");
-            return;
-        }
-
-        it->second -= amount;
-        console->print(player.name + " spent " + std::to_string(amount) + " " + resourceName + ".");
+        spendResourceFromPlayer(playerIndex, resource, amount);
     }
 
     else if (action == "help") {
