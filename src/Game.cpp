@@ -81,6 +81,14 @@ void Game::mainLoop() {
     }
 }
 
+int Game::getCurrentActivePlayerIndex(){
+    return currentActivePlayerIndex;
+}
+
+int Game::getCurrentDay(){
+    return currentDay;
+}
+
 void Game::giveResourceToPlayer(int playerIndex, const std::string& resource, int amount, bool logToConsole) {
     if (playerIndex < 0 || playerIndex >= players.size()) {
         if (logToConsole) console->print("Error: Invalid player index.");
