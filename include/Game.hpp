@@ -21,6 +21,11 @@ public:
 
     void giveResourceToPlayer(int playerIndex, const std::string& resource, int amount, bool logToConsole = true);
     bool spendResourceFromPlayer(int playerIndex, const std::string& resource, int amount, bool logToConsole = true);
+    void buildStage(int x, int y, int z, const std::string& color, int playerIndex = NULL);
+    void endTurn(bool logToConsole = true);
+
+    int getCurrentDay();
+    int getCurrentActivePlayerIndex();
 
 private:
     void executeCommand(const std::string& cmd);
@@ -28,6 +33,10 @@ private:
     Board board;
     std::vector<Player> players;
     std::vector<Company> companies;
+
+    int currentDay;
+    int currentActivePlayerIndex;
+
     sf::Font font;
     sf::RenderWindow window;
     Renderer* renderer;

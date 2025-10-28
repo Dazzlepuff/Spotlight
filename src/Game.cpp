@@ -117,6 +117,22 @@ bool Game::spendResourceFromPlayer(int playerIndex, const std::string& resource,
     return true;
 }
 
+void Game::buildStage(int x, int y, int z, const std::string& color, int playerIndex){
+    if(playerIndex = NULL){
+        playerIndex = getCurrentActivePlayerIndex();
+    }
+    
+}
+
+void Game::endTurn(bool logToConsole){
+    currentActivePlayerIndex++;
+    if (currentActivePlayerIndex > players.size() - 1)
+    {
+        currentActivePlayerIndex = 0;
+        currentDay++;
+        if (logToConsole) console->print("Last player finished turn. Starting day: " + currentDay);
+    }
+}
 
 void Game::executeCommand(const std::string& cmd) {
     std::istringstream ss(cmd);
