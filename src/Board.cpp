@@ -42,7 +42,7 @@ std::vector<CubeCoord> Board::getNeighbors(const CubeCoord& coord) const {
     return result;
 }
 
-void Board::assignTileOwner(int x, int y, int z, Company* company) {
+void Board::setTileOwner(int x, int y, int z, Company* company) {
     CubeCoord coord(x, y, z);
     Tile* tile = getTile(coord);
     if (tile) tile->setOwner(company);

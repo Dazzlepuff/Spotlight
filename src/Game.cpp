@@ -121,6 +121,11 @@ void Game::buildStage(int x, int y, int z, const std::string& color, int playerI
     if(playerIndex = NULL){
         playerIndex = getCurrentActivePlayerIndex();
     }
+    Player activePlayer = players[playerIndex];
+
+    board.setTileOwner(x, y, z, activePlayer.company);
+    board.setTileColor(x, y, z, color);
+
     
 }
 
@@ -174,8 +179,36 @@ void Game::executeCommand(const std::string& cmd) {
             return;
         }
 
-        board.assignTileOwner(x, y, z, &companies[companyIndex]);
+        board.setTileOwner(x, y, z, &companies[companyIndex]);
         console->print("Set tile (" + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + ") to " + companies[companyIndex].getName() + ": " + companies[companyIndex].getSymbol());
+    }
+
+    else if (action == "build") {
+        int x, y, z;
+        std::string color;
+        int playerIndex;
+
+        ss >> x >> y >> z >> color >> playerIndex;
+        
+        if (ss.fail()){
+            console->print("Usage: build <x> <y> <z> <color> <player_index>");
+            return;
+        }
+        if (playerIndex < 0 || playerIndex >= players.size()) {
+            console->print("Error: Player index " + std::to_string(playerIndex) + 
+                        " is out of range. Max valid index: " + std::to_string(players.size() - 1));
+            return;
+        }
+        if (!Colors::isValid(color)) {
+            console->print(color + " is not a valid color. Valid colors: ");
+            for (const auto& c : Colors::all){
+                console -> print("   " + c);
+            }
+            return;
+        }
+
+        buildStage(x, y, z, color, playerIndex);
+        console->print(players[playerIndex].name + " (" + players[playerIndex].company->getName() + ") " "built a " + color + "stage at " + std::to_string(x) + std::to_string(y) + std::to_string(z));
     }
 
     else if (action == "list_players") {
