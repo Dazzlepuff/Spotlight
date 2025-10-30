@@ -13,6 +13,7 @@ class Game {
 public:
     Game(int boardSize, std::vector<Company> companyList);
     ~Game();
+    
     void addPlayer(const std::string& name, Company* company);
     void setup();
     void mainLoop();
