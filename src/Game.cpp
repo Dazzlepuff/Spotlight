@@ -68,6 +68,8 @@ const std::vector<Player>& Game::getPlayers() const {
     return players;
 }
 
+
+//TODO: Figure out how to get player loop here 
 void Game::mainLoop() {
     while (window.isOpen()) {
         renderer->handleEvents(window, *console);
