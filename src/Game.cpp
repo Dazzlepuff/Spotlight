@@ -27,7 +27,7 @@ Game::Game(int boardSize, std::vector<Company> companyList)
     companies = companyList;
 
     Deck mainDeck;
-    mainDeck.loadFromJsonFile("assets/cards.json");
+    mainDeck.loadFromJsonFile("cards.json");
 
     if (!mainDeck.drawPile.empty()) {
         players[0].addHeldCard(mainDeck.drawPile[0]);
