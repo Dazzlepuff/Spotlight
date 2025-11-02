@@ -5,7 +5,6 @@
 #include <vector>
 #include <string>
 
-#include "Deck.hpp"
 #include "Renderer.hpp"
 #include "CommandConsole.hpp"
 #include "Colors.hpp"
@@ -100,10 +99,22 @@ int Game::getCurrentDay(){
 void Game::startNewDay() {
     for (auto& player : players) {
         for (auto& card : player.playedCards) {
-            if (card.trigger == "start_of_day") {
-                card.applyEffectToPlayer(player);
-            }
+            card.executeTrigger("onStartOfDay", player);
         }
+    }
+}
+
+void Game::drawCardForPlayer(Deck& deck, Player& player, int amount) {
+    for (int i = 0; i < amount; ++i) {
+        if (deck.isEmpty()) {
+            console->print("The deck is empty! No more cards to draw.");
+            return;
+        }
+
+        Card drawn = deck.drawCard();
+        player.addHeldCard(drawn);
+
+        console->print(player.name + " drew a card: " + drawn.name);
     }
 }
 
@@ -154,6 +165,7 @@ void Game::endTurn(bool logToConsole){
         currentActivePlayerIndex = 0;
         currentDay++;
         if (logToConsole) console->print("Last player finished turn. Starting day: " + currentDay);
+        startNewDay();
     }
 }
 

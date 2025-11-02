@@ -5,6 +5,7 @@
 #include "Player.hpp"
 #include "Board.hpp"
 #include "Company.hpp"
+#include "Deck.hpp"
 
 class Renderer;
 class CommandConsole;
@@ -22,6 +23,7 @@ public:
 
     void startNewDay();
 
+    void drawCardForPlayer(Deck& deck, Player& player, int amount);
     void giveResourceToPlayer(int playerIndex, const std::string& resource, int amount, bool logToConsole = true);
     bool spendResourceFromPlayer(int playerIndex, const std::string& resource, int amount, bool logToConsole = true);
     void buildStage(int x, int y, int z, const std::string& color, int playerIndex = NULL);
