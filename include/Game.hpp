@@ -20,6 +20,8 @@ public:
 
     const std::vector<Player>& getPlayers() const;
 
+    void startNewDay();
+
     void giveResourceToPlayer(int playerIndex, const std::string& resource, int amount, bool logToConsole = true);
     bool spendResourceFromPlayer(int playerIndex, const std::string& resource, int amount, bool logToConsole = true);
     void buildStage(int x, int y, int z, const std::string& color, int playerIndex = NULL);

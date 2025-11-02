@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Daily Funding",
+        "description": "Gain 1 funds at the start of each day.",
+        "type": "Passive",
+        "trigger": "start_of_day",
+        "effect": {
+            "resource": "funds",
+            "amount": 1
+        }
+    }
+]

@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 
+#include "Deck.hpp"
 #include "Renderer.hpp"
 #include "CommandConsole.hpp"
 #include "Colors.hpp"
@@ -25,6 +26,13 @@ Game::Game(int boardSize, std::vector<Company> companyList)
     renderer = new Renderer(board, font);
 
     companies = companyList;
+
+    Deck mainDeck;
+    mainDeck.loadFromJsonFile("assets/cards.json");
+
+    if (!mainDeck.drawPile.empty()) {
+        players[0].addHeldCard(mainDeck.drawPile[0]);
+    }
 }
 
 Game::~Game(){
@@ -64,12 +72,6 @@ void Game::setup() {
     }
 }
 
-const std::vector<Player>& Game::getPlayers() const {
-    return players;
-}
-
-
-//TODO: Figure out how to get player loop here 
 void Game::mainLoop() {
     while (window.isOpen()) {
         renderer->handleEvents(window, *console);
@@ -83,12 +85,26 @@ void Game::mainLoop() {
     }
 }
 
+const std::vector<Player>& Game::getPlayers() const {
+    return players;
+}
+
 int Game::getCurrentActivePlayerIndex(){
     return currentActivePlayerIndex;
 }
 
 int Game::getCurrentDay(){
     return currentDay;
+}
+
+void Game::startNewDay() {
+    for (auto& player : players) {
+        for (auto& card : player.playedCards) {
+            if (card.trigger == "start_of_day") {
+                card.applyEffectToPlayer(player);
+            }
+        }
+    }
 }
 
 void Game::giveResourceToPlayer(int playerIndex, const std::string& resource, int amount, bool logToConsole) {
