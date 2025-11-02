@@ -13,7 +13,9 @@ public:
     int score = 0;
 
     std::unordered_map<std::string, int> resources;
-    std::vector<Card> cards;
+
+    std::vector<Card> heldCards;   
+    std::vector<Card> playedCards;
 
     Player(const std::string& n, Company* c);
 
@@ -21,8 +23,10 @@ public:
     bool spendResource(const std::string& type, int amount);
     int getResource(const std::string& type) const;
 
-    void addCard(const Card& card);
-    bool removeCard(const std::string& cardName);
+    void addHeldCard(const Card& card);
+    bool playCard(const std::string& cardName);
+    bool removePlayedCard(const std::string& cardName);
+    bool removeHeldCard(const std::string& cardName);
 
     void addScore(int amount);
     void resetScore();

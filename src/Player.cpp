@@ -27,15 +27,38 @@ int Player::getResource(const std::string& type) const {
     return (it != resources.end()) ? it->second : 0;
 }
 
-void Player::addCard(const Card& card) {
-    cards.push_back(card);
+void Player::addHeldCard(const Card& card) {
+    heldCards.push_back(card);
 }
 
-bool Player::removeCard(const std::string& cardName) {
-    auto it = std::remove_if(cards.begin(), cards.end(),
+bool Player::playCard(const std::string& cardName) {
+    auto it = std::find_if(heldCards.begin(), heldCards.end(),
+                           [&](const Card& c) { return c.name == cardName; });
+
+    if (it == heldCards.end()) {
+        return false;
+    }
+
+    playedCards.push_back(*it);
+    heldCards.erase(it);
+    return true;
+}
+
+bool Player::removeHeldCard(const std::string& cardName) {
+    auto it = std::remove_if(heldCards.begin(), heldCards.end(),
                              [&](const Card& c) { return c.name == cardName; });
-    if (it != cards.end()) {
-        cards.erase(it, cards.end());
+    if (it != heldCards.end()) {
+        heldCards.erase(it, heldCards.end());
+        return true;
+    }
+    return false;
+}
+
+bool Player::removePlayedCard(const std::string& cardName) {
+    auto it = std::remove_if(playedCards.begin(), playedCards.end(),
+                             [&](const Card& c) { return c.name == cardName; });
+    if (it != playedCards.end()) {
+        playedCards.erase(it, playedCards.end());
         return true;
     }
     return false;
@@ -58,7 +81,11 @@ void Player::printStatus() const {
     for (const auto& [key, val] : resources)
         std::cout << "  - " << key << ": " << val << "\n";
 
-    std::cout << "Cards:\n";
-    for (const auto& card : cards)
+    std::cout << "Held Cards:\n";
+    for (const auto& card : heldCards)
+        std::cout << "  - " << card.name << "\n";
+
+    std::cout << "Played Cards:\n";
+    for (const auto& card : playedCards)
         std::cout << "  - " << card.name << "\n";
 }
