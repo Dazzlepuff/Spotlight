@@ -2,12 +2,23 @@
   {
     "name": "Daily Funding",
     "description": "Gain 1 funds at the start of each day.",
+    "copies": 20,
     "triggers": {
       "onPlay": [
         { "action": "addResource", "type": "funds", "amount": 1 }
       ],
       "onStartOfDay": [
         { "action": "addResource", "type": "funds", "amount": 1 }
+      ]
+    }
+  },
+  {
+    "name": "One-Time Boost",
+    "description": "Gain 3 funds immediately.",
+    "copies": 3,
+    "triggers": {
+      "onPlay": [
+        { "action": "addResource", "type": "funds", "amount": 3 }
       ]
     }
   }

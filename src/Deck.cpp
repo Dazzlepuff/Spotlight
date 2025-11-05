@@ -27,37 +27,50 @@ void Deck::loadFromJsonFile(const std::string& filename) {
         return;
     }
 
-    drawPile.clear();
+    cards.clear();
     for (const auto& cardData : data) {
-        drawPile.emplace_back(cardData);
-    }
+        int copies = 1;
+        if (cardData.contains("copies") && cardData["copies"].is_number_integer()) {
+            copies = cardData["copies"];
+        }
 
-    std::cout << "Loaded " << drawPile.size() << " cards from " << path << "\n";
-}
-
-Card Deck::drawCard() {
-    if (drawPile.empty()) {
-        // Reshuffle discard pile into draw pile
-        if (!discardPile.empty()) {
-            std::cout << "Reshuffling discard pile...\n";
-            drawPile = discardPile;
-            discardPile.clear();
-            std::shuffle(drawPile.begin(), drawPile.end(), std::mt19937{std::random_device{}()});
-        } else {
-            std::cerr << "Error: No cards left in deck!\n";
-            return Card(); // return an empty/default card
+        for (int i = 0; i < copies; ++i) {
+            cards.emplace_back(cardData);
         }
     }
 
-    Card card = drawPile.back();
-    drawPile.pop_back();
+    std::cout << "Loaded " << cards.size() << " cards from " << path << "\n";
+}
+
+void Deck::addCard(const Card& card){
+    cards.push_back(card);
+}
+
+Card Deck::drawCard() {
+    if (cards.empty()) {
+        std::cerr << "Error: Attempted to draw a card from an empty deck ('" << name << "').\n";
+        return Card();
+    }
+
+    Card card = cards.back();
+    cards.pop_back();
     return card;
 }
 
-void Deck::discardCard(const Card& card) {
-    discardPile.push_back(card);
+void Deck::moveCardTo(const Card& card, Deck& deck) {
+    deck.addCard(card);
 }
 
-bool Deck::isEmpty() const {
-    return drawPile.empty() && discardPile.empty();
+void Deck::shuffle() {
+    std::random_device rd;
+    std::mt19937 g(rd());
+    std::shuffle(cards.begin(), cards.end(), g);
+}
+
+size_t Deck::size() const {
+    return cards.size();
+}
+
+bool Deck::empty() const {
+    return cards.empty();
 }

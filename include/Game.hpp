@@ -26,7 +26,7 @@ public:
     void drawCardForPlayer(Deck& deck, Player& player, int amount);
     void giveResourceToPlayer(int playerIndex, const std::string& resource, int amount, bool logToConsole = true);
     bool spendResourceFromPlayer(int playerIndex, const std::string& resource, int amount, bool logToConsole = true);
-    void buildStage(int x, int y, int z, const std::string& color, int playerIndex = NULL);
+    void buildStage(int x, int y, int z, const std::string& color, int playerIndex = -1);
     void endTurn(bool logToConsole = true);
 
     int getCurrentDay();
@@ -39,7 +39,9 @@ private:
     std::vector<Player> players;
     std::vector<Company> companies;
 
-    Deck mainDeck;
+    std::vector<Deck> decks;
+    Deck* getDeckByName(const std::string& deckName);
+
 
     int currentDay;
     int currentActivePlayerIndex;

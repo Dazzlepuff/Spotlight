@@ -25,9 +25,6 @@ Game::Game(int boardSize, std::vector<Company> companyList)
     renderer = new Renderer(board, font);
 
     companies = companyList;
-
-    mainDeck.loadFromJsonFile("cards.json");
-
 }
 
 Game::~Game(){
@@ -66,8 +63,19 @@ void Game::setup() {
         tile.setOwner(nullptr);
     }
 
-    if (!mainDeck.drawPile.empty()) {
-        players[0].addHeldCard(mainDeck.drawCard());
+    Deck drawDeck("drawDeck");
+    drawDeck.loadFromJsonFile("cards.json");
+    drawDeck.shuffle();
+
+    Deck discardDeck("discardDeck");
+
+    decks.push_back(std::move(drawDeck));
+    decks.push_back(std::move(discardDeck));
+
+
+
+    if (!getDeckByName("drawDeck")->empty()) {
+        players[0].addHeldCard(getDeckByName("drawDeck")->drawCard());
     }
 }
 
@@ -82,6 +90,15 @@ void Game::mainLoop() {
 
         renderer->render(window, *console);
     }
+}
+
+Deck* Game::getDeckByName(const std::string& deckName) {
+    for (auto& deck : decks) {
+        if (deck.name == deckName)
+            return &deck;
+    }
+    std::cerr << "Error: Deck '" << deckName << "' not found.\n";
+    return nullptr;
 }
 
 const std::vector<Player>& Game::getPlayers() const {
@@ -106,7 +123,7 @@ void Game::startNewDay() {
 
 void Game::drawCardForPlayer(Deck& deck, Player& player, int amount) {
     for (int i = 0; i < amount; ++i) {
-        if (deck.isEmpty()) {
+        if (deck.empty()) {
             console->print("The deck is empty! No more cards to draw.");
             return;
         }
@@ -147,7 +164,7 @@ bool Game::spendResourceFromPlayer(int playerIndex, const std::string& resource,
 }
 
 void Game::buildStage(int x, int y, int z, const std::string& color, int playerIndex){
-    if(playerIndex = NULL){
+    if(playerIndex = -1){
         playerIndex = getCurrentActivePlayerIndex();
     }
     Player activePlayer = players[playerIndex];
@@ -297,6 +314,20 @@ void Game::executeCommand(const std::string& cmd) {
                 console->print("  - " + card.name);
             }
         }
+    }
+
+    else if (action == "get_card_count") {
+        std::string deckName;
+        ss >> deckName;
+
+        if (ss.fail()) {
+            console->print("Usage: get_card_count <deck_name>");
+            return;
+        }
+
+        int cardCount = getDeckByName(deckName)->size();
+
+        console->print(deckName + " has " + std::to_string(cardCount) + " card" + (cardCount == 1 ? "" : "s"));
     }
 
     else if (action == "give_resource") {
