@@ -26,12 +26,8 @@ Game::Game(int boardSize, std::vector<Company> companyList)
 
     companies = companyList;
 
-    Deck mainDeck;
     mainDeck.loadFromJsonFile("cards.json");
 
-    if (!mainDeck.drawPile.empty()) {
-        players[0].addHeldCard(mainDeck.drawPile[0]);
-    }
 }
 
 Game::~Game(){
@@ -68,6 +64,10 @@ void Game::setup() {
         auto& tile = board.tiles[tileCoords[i]];
         tile.setColor("Neutral");
         tile.setOwner(nullptr);
+    }
+
+    if (!mainDeck.drawPile.empty()) {
+        players[0].addHeldCard(mainDeck.drawPile[0]);
     }
 }
 

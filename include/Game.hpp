@@ -39,6 +39,8 @@ private:
     std::vector<Player> players;
     std::vector<Company> companies;
 
+    Deck mainDeck;
+
     int currentDay;
     int currentActivePlayerIndex;
 
