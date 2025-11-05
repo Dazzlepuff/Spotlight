@@ -67,7 +67,7 @@ void Game::setup() {
     }
 
     if (!mainDeck.drawPile.empty()) {
-        players[0].addHeldCard(mainDeck.drawPile[0]);
+        players[0].addHeldCard(mainDeck.drawCard());
     }
 }
 
@@ -270,6 +270,32 @@ void Game::executeCommand(const std::string& cmd) {
 
         for (const auto& [resource, amount] : player.resources) {
             console->print("  " + resource + ": " + std::to_string(amount));
+        }
+    }
+
+    else if (action == "show_cards") {
+        int playerIndex;
+        ss >> playerIndex;
+
+        if (ss.fail()) {
+            console->print("Usage: show_cards <player_index>");
+            return;
+        }
+        if (playerIndex < 0 || playerIndex >= players.size()) {
+            console->print("Error: Player index " + std::to_string(playerIndex) +
+                        " is out of range. Max valid index: " + std::to_string(players.size() - 1));
+            return;
+        }
+
+        Player& player = players[playerIndex];
+        console->print("Cards held by " + player.name + ":");
+
+        if (player.heldCards.empty()) {
+            console->print("  (no cards)");
+        } else {
+            for (const auto& card : player.heldCards) {
+                console->print("  - " + card.name);
+            }
         }
     }
 
