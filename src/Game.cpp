@@ -191,7 +191,18 @@ void Game::executeCommand(const std::string& cmd) {
     std::string action;
     ss >> action;
 
-    if (action == "set_color") {
+    if (action == "next") {
+        if (console->awaitingNextPage) {
+            console->showNextPage();
+        } else {
+            console->print("No more pages to show.");
+        }
+        return;
+    }
+    else if (action == "clear") {
+        console->clear();
+    }
+    else if (action == "set_color") {
         int x, y, z;
         std::string color;
         ss >> x >> y >> z >> color;
@@ -211,7 +222,6 @@ void Game::executeCommand(const std::string& cmd) {
         board.setTileColor(x, y, z, color);
         console->print("Set tile (" + std::to_string(x) + "," + std::to_string(y) + "," + std::to_string(z) + ") to " + color);
     }
-
     else if (action == "set_owner") {
         int x, y, z;
         int companyIndex;
@@ -229,7 +239,6 @@ void Game::executeCommand(const std::string& cmd) {
         board.setTileOwner(x, y, z, &companies[companyIndex]);
         console->print("Set tile (" + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + ") to " + companies[companyIndex].getName() + ": " + companies[companyIndex].getSymbol());
     }
-
     else if (action == "build") {
         int x, y, z;
         std::string color;
@@ -257,7 +266,6 @@ void Game::executeCommand(const std::string& cmd) {
         buildStage(x, y, z, color, playerIndex);
         console->print(players[playerIndex].name + " (" + players[playerIndex].company->getName() + ") " "built a " + color + "stage at " + std::to_string(x) + std::to_string(y) + std::to_string(z));
     }
-
     else if (action == "list_players") {
         if (players.empty()) {
             console->print("No players available.");
@@ -267,7 +275,6 @@ void Game::executeCommand(const std::string& cmd) {
                 console->print(" - " + p.name + " (" + p.company->getName() + ": " + p.company->getSymbol() + ")");
         }
     }
-
     else if (action == "show_resources") {
         int playerIndex;
         ss >> playerIndex;
@@ -289,7 +296,6 @@ void Game::executeCommand(const std::string& cmd) {
             console->print("  " + resource + ": " + std::to_string(amount));
         }
     }
-
     else if (action == "show_cards") {
         int playerIndex;
         ss >> playerIndex;
@@ -315,7 +321,6 @@ void Game::executeCommand(const std::string& cmd) {
             }
         }
     }
-
     else if (action == "get_card_count") {
         std::string deckName;
         ss >> deckName;
@@ -329,7 +334,32 @@ void Game::executeCommand(const std::string& cmd) {
 
         console->print(deckName + " has " + std::to_string(cardCount) + " card" + (cardCount == 1 ? "" : "s"));
     }
+    else if (action == "draw_card") {
+        int playerIndex;
+        std::string deckName;
+        int amount;
 
+        ss >> playerIndex >> deckName >> amount;
+
+        if (ss.fail()) {
+            console->print("Usage: draw_card <player_index> <deck_name> <amount>");
+            return;
+        }
+
+        if (playerIndex < 0 || playerIndex >= players.size()) {
+            console->print("Error: Player index " + std::to_string(playerIndex) +
+                           " is out of range. Max valid index: " + std::to_string(players.size() - 1));
+            return;
+        }
+
+        Deck* deck = getDeckByName(deckName);
+        if (!deck) {
+            console->print("Error: Deck '" + deckName + "' not found.");
+            return;
+        }
+
+        drawCardForPlayer(*deck, players[playerIndex], amount);
+    }
     else if (action == "give_resource") {
         int playerIndex;
         std::string resource;
@@ -341,7 +371,6 @@ void Game::executeCommand(const std::string& cmd) {
         }
         giveResourceToPlayer(playerIndex, resource, amount);
     }
-
     else if (action == "spend_resource") {
         int playerIndex;
         std::string resource;
@@ -353,16 +382,25 @@ void Game::executeCommand(const std::string& cmd) {
         }
         spendResourceFromPlayer(playerIndex, resource, amount);
     }
-
     else if (action == "help") {
-        console->print("Available commands:");
-        console->print("  set_color <x> <y> <z> <color>");
-        console->print("  set_owner <x> <y> <z> <company_index>");
-        console->print("  list_players");
-        console->print("  show_resources <player_index>");
-        console->print("  give_resource <player_index> <resource_name> <amount>");
-        console->print("  spend_resource <player_index> <resource_name> <amount>");
-        console->print("  help");
+        std::vector<std::string> lines = {
+            "Available commands:",
+            "  set_color <x> <y> <z> <color>  - Sets the color of a tile.",
+            "  set_owner <x> <y> <z> <company_index>  - Assigns tile ownership.",
+            "  build <x> <y> <z> <color> <player_index>  - Builds a stage.",
+            "  list_players  - Lists all players.",
+            "  show_resources <player_index>  - Shows player resources.",
+            "  give_resource <player_index> <resource> <amount>  - Gives resources.",
+            "  spend_resource <player_index> <resource> <amount>  - Spends resources.",
+            "  show_cards <player_index>  - Lists player cards.",
+            "  get_card_count <deck_name>  - Shows cards left in a deck.",
+            "  draw_card <player_index> <deck_name> <amount>  - Draws cards for a player.",
+            "  end_turn  - Ends the current player's turn.",
+            "  next  - Shows the next page of text (for long outputs).",
+            "  help  - Displays this help message."
+        };
+
+        console->printPaged(lines);
     }
     else {
         console->print("Unknown command: " + action);
