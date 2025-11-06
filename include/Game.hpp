@@ -28,7 +28,7 @@ public:
     void drawCardForPlayer(Deck& deck, Player& player, int amount);
     void giveResourceToPlayer(int playerIndex, const std::string& resource, int amount, bool logToConsole = true);
     bool spendResourceFromPlayer(int playerIndex, const std::string& resource, int amount, bool logToConsole = true);
-    void buildStage(int x, int y, int z, const std::string& color, int playerIndex = -1);
+    void buildStage(int playerIndex, int x, int y, int z, const std::string& color);
     void endTurn(bool logToConsole = true);
     
     bool playCardForPlayer(int playerIndex, const std::string& cardName, bool logToConsole = true);

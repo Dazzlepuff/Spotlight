@@ -170,14 +170,66 @@ bool Game::spendResourceFromPlayer(int playerIndex, const std::string& resource,
     return true;
 }
 
-void Game::buildStage(int x, int y, int z, const std::string& color, int playerIndex) {
-    if (playerIndex == -1)
-        playerIndex = getCurrentActivePlayerIndex();
+void Game::buildStage(int playerIndex, int x, int y, int z, const std::string& color) {
     
     Player& activePlayer = players[playerIndex];
 
     board.setTileOwner(x, y, z, activePlayer.company);
     board.setTileColor(x, y, z, color);
+}
+
+bool Game::playCardForPlayer(int playerIndex, const std::string& cardName, bool logToConsole) {
+    if (!validateAndSetPlayerIndex(playerIndex, logToConsole))
+        return false;
+
+    Player& player = players[playerIndex];
+    if (player.playCard(cardName)) {
+        auto it = std::find_if(player.playedCards.begin(), player.playedCards.end(),
+                               [&](const Card& c) { return c.name == cardName; });
+        if (it != player.playedCards.end()) {
+            it->executeTrigger("onPlay", player);
+        }
+        
+        if (logToConsole)
+            console->print(player.name + " played card: " + cardName);
+        return true;
+    } else {
+        if (logToConsole)
+            console->print("Error: " + player.name + " does not have card '" + cardName + "' in hand.");
+        return false;
+    }
+}
+
+bool Game::removePlayedCardForPlayer(int playerIndex, const std::string& cardName, bool logToConsole) {
+    if (!validateAndSetPlayerIndex(playerIndex, logToConsole))
+        return false;
+
+    Player& player = players[playerIndex];
+    if (player.removePlayedCard(cardName)) {
+        if (logToConsole)
+            console->print("Removed played card '" + cardName + "' from " + player.name);
+        return true;
+    } else {
+        if (logToConsole)
+            console->print("Error: " + player.name + " does not have card '" + cardName + "' in play.");
+        return false;
+    }
+}
+
+bool Game::removeHeldCardForPlayer(int playerIndex, const std::string& cardName, bool logToConsole) {
+    if (!validateAndSetPlayerIndex(playerIndex, logToConsole))
+        return false;
+
+    Player& player = players[playerIndex];
+    if (player.removeHeldCard(cardName)) {
+        if (logToConsole)
+            console->print("Removed card '" + cardName + "' from " + player.name + "'s hand.");
+        return true;
+    } else {
+        if (logToConsole)
+            console->print("Error: " + player.name + " does not have card '" + cardName + "' in hand.");
+        return false;
+    }
 }
 
 void Game::endTurn(bool logToConsole) {
@@ -392,7 +444,7 @@ void Game::handleBuild(std::istringstream& ss) {
         return;
     }
 
-    buildStage(x, y, z, color, playerIndex);
+    buildStage(playerIndex, x, y, z, color);
     console->print(players[playerIndex].name + " (" + players[playerIndex].company->getName() + 
                   ") built a " + color + " stage at " +
                   std::to_string(x) + std::to_string(y) + std::to_string(z));
@@ -566,60 +618,6 @@ void Game::handleRemoveHeldCard(std::istringstream& ss) {
     }
     
     removeHeldCardForPlayer(playerIndex, cardName);
-}
-
-bool Game::playCardForPlayer(int playerIndex, const std::string& cardName, bool logToConsole) {
-    if (!validateAndSetPlayerIndex(playerIndex, logToConsole))
-        return false;
-
-    Player& player = players[playerIndex];
-    if (player.playCard(cardName)) {
-        auto it = std::find_if(player.playedCards.begin(), player.playedCards.end(),
-                               [&](const Card& c) { return c.name == cardName; });
-        if (it != player.playedCards.end()) {
-            it->executeTrigger("onPlay", player);
-        }
-        
-        if (logToConsole)
-            console->print(player.name + " played card: " + cardName);
-        return true;
-    } else {
-        if (logToConsole)
-            console->print("Error: " + player.name + " does not have card '" + cardName + "' in hand.");
-        return false;
-    }
-}
-
-bool Game::removePlayedCardForPlayer(int playerIndex, const std::string& cardName, bool logToConsole) {
-    if (!validateAndSetPlayerIndex(playerIndex, logToConsole))
-        return false;
-
-    Player& player = players[playerIndex];
-    if (player.removePlayedCard(cardName)) {
-        if (logToConsole)
-            console->print("Removed played card '" + cardName + "' from " + player.name);
-        return true;
-    } else {
-        if (logToConsole)
-            console->print("Error: " + player.name + " does not have card '" + cardName + "' in play.");
-        return false;
-    }
-}
-
-bool Game::removeHeldCardForPlayer(int playerIndex, const std::string& cardName, bool logToConsole) {
-    if (!validateAndSetPlayerIndex(playerIndex, logToConsole))
-        return false;
-
-    Player& player = players[playerIndex];
-    if (player.removeHeldCard(cardName)) {
-        if (logToConsole)
-            console->print("Removed card '" + cardName + "' from " + player.name + "'s hand.");
-        return true;
-    } else {
-        if (logToConsole)
-            console->print("Error: " + player.name + " does not have card '" + cardName + "' in hand.");
-        return false;
-    }
 }
 
 void Game::handleHelp() {
