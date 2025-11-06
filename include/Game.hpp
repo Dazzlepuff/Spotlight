@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
 #include <string>
+#include <functional>
+#include <unordered_map>
 #include <SFML/Graphics.hpp>
 #include "Player.hpp"
 #include "Board.hpp"
@@ -26,17 +28,37 @@ public:
     void drawCardForPlayer(Deck& deck, Player& player, int amount);
     void giveResourceToPlayer(int playerIndex, const std::string& resource, int amount, bool logToConsole = true);
     bool spendResourceFromPlayer(int playerIndex, const std::string& resource, int amount, bool logToConsole = true);
+    void buildStage(int x, int y, int z, const std::string& color, int playerIndex = -1);
+    void endTurn(bool logToConsole = true);
+    
     bool playCardForPlayer(int playerIndex, const std::string& cardName, bool logToConsole = true);
     bool removePlayedCardForPlayer(int playerIndex, const std::string& cardName, bool logToConsole = true);
     bool removeHeldCardForPlayer(int playerIndex, const std::string& cardName, bool logToConsole = true);
-    void buildStage(int x, int y, int z, const std::string& color, int playerIndex = -1);
-    void endTurn(bool logToConsole = true);
 
     int getCurrentDay();
     int getCurrentActivePlayerIndex();
 
 private:
     void executeCommand(const std::string& cmd);
+    void initializeCommandHandlers();
+    bool validateAndSetPlayerIndex(int& playerIndex, bool logToConsole = true);
+    bool parseCardNameWithOptionalPlayerIndex(std::istringstream& ss, std::string& cardName, int& playerIndex);
+    
+    // Command handlers
+    void handleSetColor(std::istringstream& ss);
+    void handleSetOwner(std::istringstream& ss);
+    void handleBuild(std::istringstream& ss);
+    void handleListPlayers();
+    void handleShowResources(std::istringstream& ss);
+    void handleShowCards(std::istringstream& ss);
+    void handleGetCardCount(std::istringstream& ss);
+    void handleDrawCard(std::istringstream& ss);
+    void handleGiveResource(std::istringstream& ss);
+    void handleSpendResource(std::istringstream& ss);
+    void handlePlayCard(std::istringstream& ss);
+    void handleRemovePlayedCard(std::istringstream& ss);
+    void handleRemoveHeldCard(std::istringstream& ss);
+    void handleHelp();
 
     Board board;
     std::vector<Player> players;
@@ -45,12 +67,13 @@ private:
     std::vector<Deck> decks;
     Deck* getDeckByName(const std::string& deckName);
 
-
-    int currentDay;
-    int currentActivePlayerIndex;
+    int currentDay = 0;
+    int currentActivePlayerIndex = 0;
 
     sf::Font font;
     sf::RenderWindow window;
     Renderer* renderer;
     CommandConsole* console;
+    
+    std::unordered_map<std::string, std::function<void(std::istringstream&)>> commandHandlers;
 };
