@@ -1,9 +1,11 @@
 #include "Colors.hpp"
 
+// Full list of recognized color names.
 const std::vector<std::string> Colors::all = {
     "Red", "Yellow", "Blue", "Green", "Purple", "White", "Gray", "Neutral"
 };
 
+// Console-friendly ANSI color codes for quick visualization.
 const std::map<std::string, std::string> Colors::colorCodes = {
     {"Red",     "\033[41m  \033[0m"},
     {"Yellow",  "\033[43m  \033[0m"},
@@ -15,6 +17,7 @@ const std::map<std::string, std::string> Colors::colorCodes = {
     {"Neutral", "\033[0m..."}
 };
 
+// SFML color equivalents for in-game rendering.
 const std::map<std::string, sf::Color> Colors::sfmlColors = {
     {"Red",     sf::Color(0xD9, 0x7B, 0x66)},
     {"Yellow",  sf::Color(0xE3, 0xC5, 0x67)},
@@ -26,10 +29,12 @@ const std::map<std::string, sf::Color> Colors::sfmlColors = {
     {"Neutral", sf::Color(0x4B, 0x4A, 0x54)}
 };
 
+// Returns true if the color string exists in Colors::all.
 bool Colors::isValid(const std::string& color) {
     return std::find(all.begin(), all.end(), color) != all.end();
 }
 
+// Returns the matching SFML color, or Neutral as a fallback.
 const sf::Color& Colors::getSfmlColor(const std::string& color) {
     auto it = sfmlColors.find(color);
     if (it != sfmlColors.end())

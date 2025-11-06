@@ -12,13 +12,24 @@
 
 namespace fs = std::filesystem;
 
+/**
+ * @struct GameConfig
+ * @brief Holds persistent player and company setup information.
+ */
 struct GameConfig {
-    int playerCount = 2;
-    std::vector<std::string> playerNames;
-    std::vector<std::string> companyNames;
-    std::vector<std::string> companySymbols;
+    int playerCount = 2;                               /**< Number of players in the game (2–6). */
+    std::vector<std::string> playerNames;               /**< Names of all players. */
+    std::vector<std::string> companyNames;              /**< Names of companies linked to players. */
+    std::vector<std::string> companySymbols;            /**< Company symbols or abbreviations. */
 };
 
+/**
+ * @brief Saves the current game configuration to disk.
+ * 
+ * Creates the configuration directory if missing and writes settings to "settings.txt".
+ * 
+ * @param cfg The configuration to save.
+ */
 void saveConfig(const GameConfig& cfg) {
     auto configDir = PathUtils::getConfigPath();
     auto configFile = PathUtils::getConfigPath("settings.txt");
@@ -31,7 +42,6 @@ void saveConfig(const GameConfig& cfg) {
     }
 
     file << cfg.playerCount << '\n';
-
     for (int i = 0; i < cfg.playerCount; ++i) {
         file << cfg.playerNames[i] << '\n';
         file << cfg.companyNames[i] << '\n';
@@ -41,6 +51,13 @@ void saveConfig(const GameConfig& cfg) {
     std::cout << "Saved config to: " << configFile << "\n";
 }
 
+/**
+ * @brief Loads the game configuration from disk.
+ * 
+ * If no configuration file exists, defaults are used.
+ * 
+ * @return Loaded configuration object.
+ */
 GameConfig loadConfig() {
     GameConfig cfg;
     auto configFile = PathUtils::getConfigPath("settings.txt");
@@ -67,6 +84,14 @@ GameConfig loadConfig() {
     return cfg;
 }
 
+/**
+ * @brief Opens the settings menu allowing players to edit configuration.
+ * 
+ * Prompts user input for player count, names, company names, and symbols.
+ * Automatically saves the configuration to disk.
+ * 
+ * @param cfg Reference to configuration to modify.
+ */
 void settingsMenu(GameConfig& cfg) {
     std::cout << "\n=== SETTINGS ===\n";
 
@@ -94,6 +119,12 @@ void settingsMenu(GameConfig& cfg) {
     std::cout << "\nSettings saved!\n";
 }
 
+/**
+ * @brief Determines the appropriate board radius based on player count.
+ * 
+ * @param playerCount Number of players in the game.
+ * @return The recommended radius value.
+ */
 int getAutoRadius(int playerCount) {
     if (playerCount == 2) return 3;
     if (playerCount == 3) return 4;
@@ -101,6 +132,14 @@ int getAutoRadius(int playerCount) {
     return 6;
 }
 
+/**
+ * @brief Runs the startup menu loop for the game.
+ * 
+ * Displays options to start the game, open settings, or exit.
+ * Loads saved configuration, sets up game data, and starts the main game loop.
+ * 
+ * @return 0 when exiting the program.
+ */
 int StartupMenu::StartMenuLoop() {
     GameConfig cfg = loadConfig();
     int choice = 0;

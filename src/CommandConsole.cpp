@@ -2,6 +2,7 @@
 #include <cctype>
 #include <algorithm>
 
+// Initialize text rendering and reference data.
 CommandConsole::CommandConsole(Board& b, sf::Font& f, sf::Vector2f pos)
     : board(b), font(f), position(pos)
 {
@@ -11,12 +12,13 @@ CommandConsole::CommandConsole(Board& b, sf::Font& f, sf::Vector2f pos)
     text.setPosition(position);
 }
 
+// Draw console history and input prompt.
 void CommandConsole::draw(sf::RenderWindow& window) {
     float y = position.y;
 
     for (auto it = outputLines.rbegin(); it != outputLines.rend(); ++it) {
         const auto& line = *it;
-        y -= 25.f;
+        y -= 25.f;  // line spacing
         text.setString(line);
         text.setPosition(position.x, y);
         window.draw(text);
@@ -27,6 +29,7 @@ void CommandConsole::draw(sf::RenderWindow& window) {
     window.draw(text);
 }
 
+// Process key events for input, history navigation, and command submission.
 void CommandConsole::handleEvent(const sf::Event& e) {
     if (e.type == sf::Event::KeyPressed) {
         // ↑ arrow → previous command
@@ -64,7 +67,7 @@ void CommandConsole::handleEvent(const sf::Event& e) {
                 buffer.clear();
             }
         } 
-        else if (e.text.unicode >= 32 && e.text.unicode < 127) { // Regular character
+        else if (e.text.unicode >= 32 && e.text.unicode < 127) { // Printable ASCII
             buffer += static_cast<char>(e.text.unicode);
         }
 
@@ -72,12 +75,14 @@ void CommandConsole::handleEvent(const sf::Event& e) {
     }
 }
 
+// Append a single line of text to output, removing oldest when full.
 void CommandConsole::print(const std::string& line) {
     outputLines.push_back(line);
     if (outputLines.size() > maxLines)
         outputLines.erase(outputLines.begin());
 }
 
+// Begin a new paged output sequence.
 void CommandConsole::printPaged(const std::vector<std::string>& lines) {
     pagedBuffer = lines;
     pageIndex = 0;
@@ -85,6 +90,7 @@ void CommandConsole::printPaged(const std::vector<std::string>& lines) {
     showNextPage();
 }
 
+// Display the next set of lines in a paginated output sequence.
 void CommandConsole::showNextPage() {
     if (pagedBuffer.empty()) {
         print("Nothing to show.");
@@ -106,12 +112,14 @@ void CommandConsole::showNextPage() {
     }
 }
 
+// Fetch and remove the next pending command.
 std::string CommandConsole::nextCommand() {
     std::string cmd = pendingCommands.front();
     pendingCommands.pop();
     return cmd;
 }
 
+// Clear all visible console output.
 void CommandConsole::clear() {
     outputLines.clear();
 }

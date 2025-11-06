@@ -11,7 +11,7 @@
 #include "Colors.hpp"
 #include "PathUtils.hpp"
 
-// Exclude neutral color from random selection
+// Offset of 1 excludes the "Neutral" color (index 0) from random selection during setup
 constexpr size_t NEUTRAL_COLOR_OFFSET = 1;
 
 Game::Game(int boardSize, std::vector<Company> companyList)
@@ -25,7 +25,7 @@ Game::Game(int boardSize, std::vector<Company> companyList)
         std::cerr << "Error: Could not load font at " << fontPath << "\n";
     }
 
-    sf::Vector2f consolePosition(20.f, 1160.f);
+    sf::Vector2f consolePosition(20.f, 1160.f); // Bottom-left corner for console UI
 
     console = new CommandConsole(board, font, consolePosition);
     renderer = new Renderer(board, font);
@@ -47,10 +47,11 @@ void Game::addPlayer(const std::string& name, Company* company) {
 void Game::setup() {
     std::random_device rd;
     std::mt19937 gen(rd());
-    // -1 to exclude neutral color from random selection
+    // Exclude neutral color (index 0) by subtracting offset from distribution range
     std::uniform_int_distribution<> colorDist(0, Colors::all.size() - NEUTRAL_COLOR_OFFSET - 1);
     std::uniform_int_distribution<> ownerDist(0, static_cast<int>(players.size()) - 1);
 
+    // Collect all tile coordinates for random shuffling
     std::vector<CubeCoord> tileCoords;
     tileCoords.reserve(board.tiles.size());
     for (const auto& [coord, _] : board.tiles) {
@@ -59,6 +60,7 @@ void Game::setup() {
 
     std::shuffle(tileCoords.begin(), tileCoords.end(), gen);
 
+    // Assign random colors and owners to first half of tiles
     size_t half = tileCoords.size() / 2;
     for (size_t i = 0; i < half; ++i) {
         auto& tile = board.tiles[tileCoords[i]];
@@ -66,12 +68,14 @@ void Game::setup() {
         tile.setOwner(players[ownerDist(gen)].company);
     }
 
+    // Set remaining tiles to neutral (unowned)
     for (size_t i = half; i < tileCoords.size(); ++i) {
         auto& tile = board.tiles[tileCoords[i]];
         tile.setColor("Neutral");
         tile.setOwner(nullptr);
     }
 
+    // Initialize card decks from JSON configuration
     Deck drawDeck("drawDeck");
     drawDeck.loadFromJsonFile("cards.json");
     drawDeck.shuffle();
@@ -81,6 +85,7 @@ void Game::setup() {
     decks.push_back(std::move(drawDeck));
     decks.push_back(std::move(discardDeck));
 
+    // Deal starting card to first player
     if (!getDeckByName("drawDeck")->empty()) {
         players[0].addHeldCard(getDeckByName("drawDeck")->drawCard());
     }
@@ -90,6 +95,7 @@ void Game::mainLoop() {
     while (window.isOpen()) {
         renderer->handleEvents(window, *console);
 
+        // Process all queued commands from console input
         while (console->hasCommand()) {
             std::string cmd = console->nextCommand();
             executeCommand(cmd);
@@ -121,6 +127,7 @@ int Game::getCurrentDay() {
 }
 
 void Game::startNewDay() {
+    // Trigger all persistent card effects at day start
     for (auto& player : players) {
         for (auto& card : player.playedCards) {
             card.executeTrigger("onStartOfDay", player);
@@ -134,6 +141,7 @@ void Game::drawCardForPlayer(Deck& deck, Player& player, int amount) {
         return;
     }
 
+    // Draw up to 'amount' cards, stopping if deck exhausted
     for (int i = 0; i < amount && !deck.empty(); ++i) {
         Card drawn = deck.drawCard();
         player.addHeldCard(drawn);
@@ -146,7 +154,7 @@ void Game::giveResourceToPlayer(int playerIndex, const std::string& resource, in
         return;
 
     Player& player = players[playerIndex];
-    player.resources[resource] += amount;
+    player.resources[resource] += amount; // Auto-creates resource key if new
 
     if (logToConsole)
         console->print("Gave " + std::to_string(amount) + " " + resource + " to " + player.name + ".");
@@ -158,6 +166,8 @@ bool Game::spendResourceFromPlayer(int playerIndex, const std::string& resource,
 
     Player& player = players[playerIndex];
     auto it = player.resources.find(resource);
+    
+    // Validate sufficient resources before deducting
     if (it == player.resources.end() || it->second < amount) {
         if (logToConsole)
             console->print("Error: Not enough " + resource + " for " + player.name + ".");
@@ -171,7 +181,6 @@ bool Game::spendResourceFromPlayer(int playerIndex, const std::string& resource,
 }
 
 void Game::buildStage(int playerIndex, int x, int y, int z, const std::string& color) {
-    
     Player& activePlayer = players[playerIndex];
 
     board.setTileOwner(x, y, z, activePlayer.company);
@@ -184,6 +193,7 @@ bool Game::playCardForPlayer(int playerIndex, const std::string& cardName, bool 
 
     Player& player = players[playerIndex];
     if (player.playCard(cardName)) {
+        // Locate the newly played card and execute its immediate effect
         auto it = std::find_if(player.playedCards.begin(), player.playedCards.end(),
                                [&](const Card& c) { return c.name == cardName; });
         if (it != player.playedCards.end()) {
@@ -235,7 +245,8 @@ bool Game::removeHeldCardForPlayer(int playerIndex, const std::string& cardName,
 void Game::endTurn(bool logToConsole) {
     console->print(players[currentActivePlayerIndex].name + " ended their turn.");
     currentActivePlayerIndex++;
-    console->print(players[currentActivePlayerIndex].name + " starts their turn.");
+    
+    // Wrap around to first player after last player finishes turn
     if (currentActivePlayerIndex > players.size() - 1) {
         currentActivePlayerIndex = 0;
         currentDay++;
@@ -243,12 +254,16 @@ void Game::endTurn(bool logToConsole) {
             console->print("Last player finished turn. Starting day: " + std::to_string(currentDay));
         startNewDay();
     }
+    
+    console->print(players[currentActivePlayerIndex].name + " starts their turn.");
 }
 
 bool Game::validateAndSetPlayerIndex(int& playerIndex, bool logToConsole) {
+    // Convention: -1 represents the current active player
     if (playerIndex == -1)
         playerIndex = getCurrentActivePlayerIndex();
     
+    // Bounds checking for player roster
     if (playerIndex < 0 || playerIndex >= players.size()) {
         if (logToConsole)
             console->print("Error: Player index " + std::to_string(playerIndex) +
@@ -262,6 +277,7 @@ bool Game::parseCardNameWithOptionalPlayerIndex(std::istringstream& ss, std::str
     cardName.clear();
     playerIndex = -1;
     
+    // Tokenize entire remaining input
     std::vector<std::string> tokens;
     std::string token;
     while (ss >> token) {
@@ -272,7 +288,8 @@ bool Game::parseCardNameWithOptionalPlayerIndex(std::istringstream& ss, std::str
         return false;
     }
     
-    // Check if the last token is a number (player index)
+    // Check if last token is numeric (player index)
+    // This creates ambiguity for card names ending in numbers
     bool hasPlayerIndex = false;
     if (!tokens.empty()) {
         try {
@@ -280,11 +297,11 @@ bool Game::parseCardNameWithOptionalPlayerIndex(std::istringstream& ss, std::str
             hasPlayerIndex = true;
             tokens.pop_back();
         } catch (...) {
-            // Last token is not a number, it's part of the card name
+            // Last token is not a number, treat as part of card name
         }
     }
     
-    // Join remaining tokens as card name
+    // Reconstruct card name from remaining tokens (handles multi-word names)
     for (size_t i = 0; i < tokens.size(); ++i) {
         if (i > 0) cardName += " ";
         cardName += tokens[i];
@@ -302,6 +319,7 @@ bool Game::parseCardNameWithOptionalPlayerIndex(std::istringstream& ss, std::str
 }
 
 void Game::initializeCommandHandlers() {
+    // Register command: "next" - Display next page of paginated console output
     commandHandlers["next"] = [this](std::istringstream&) {
         if (console->awaitingNextPage) {
             console->showNextPage();
@@ -310,66 +328,82 @@ void Game::initializeCommandHandlers() {
         }
     };
 
+    // Register command: "clear" - Clear console output
     commandHandlers["clear"] = [this](std::istringstream&) {
         console->clear();
     };
 
+    // Register command: "end_turn" - Advance turn to next player
     commandHandlers["end_turn"] = [this](std::istringstream&) {
         endTurn(true);
     };
 
+    // Register command: "set_color" - Directly change tile color
     commandHandlers["set_color"] = [this](std::istringstream& ss) {
         handleSetColor(ss);
     };
 
+    // Register command: "set_owner" - Directly assign tile ownership
     commandHandlers["set_owner"] = [this](std::istringstream& ss) {
         handleSetOwner(ss);
     };
 
+    // Register command: "build" - Player constructs a stage on a tile
     commandHandlers["build"] = [this](std::istringstream& ss) {
         handleBuild(ss);
     };
 
+    // Register command: "list_players" - Display all player names and companies
     commandHandlers["list_players"] = [this](std::istringstream&) {
         handleListPlayers();
     };
 
+    // Register command: "show_resources" - Display player's resource inventory
     commandHandlers["show_resources"] = [this](std::istringstream& ss) {
         handleShowResources(ss);
     };
 
+    // Register command: "show_cards" - Display player's hand
     commandHandlers["show_cards"] = [this](std::istringstream& ss) {
         handleShowCards(ss);
     };
 
+    // Register command: "get_card_count" - Query remaining cards in a deck
     commandHandlers["get_card_count"] = [this](std::istringstream& ss) {
         handleGetCardCount(ss);
     };
 
+    // Register command: "draw_card" - Draw cards from deck to player hand
     commandHandlers["draw_card"] = [this](std::istringstream& ss) {
         handleDrawCard(ss);
     };
 
+    // Register command: "give_resource" - Grant resources to player
     commandHandlers["give_resource"] = [this](std::istringstream& ss) {
         handleGiveResource(ss);
     };
 
+    // Register command: "spend_resource" - Deduct resources from player
     commandHandlers["spend_resource"] = [this](std::istringstream& ss) {
         handleSpendResource(ss);
     };
 
+    // Register command: "play_card" - Play card from hand
     commandHandlers["play_card"] = [this](std::istringstream& ss) {
         handlePlayCard(ss);
     };
 
+    // Register command: "remove_played_card" - Discard active card
     commandHandlers["remove_played_card"] = [this](std::istringstream& ss) {
         handleRemovePlayedCard(ss);
     };
 
+    // Register command: "remove_held_card" - Discard card from hand
     commandHandlers["remove_held_card"] = [this](std::istringstream& ss) {
         handleRemoveHeldCard(ss);
     };
 
+    // Register command: "help" - Display command reference
     commandHandlers["help"] = [this](std::istringstream&) {
         handleHelp();
     };
@@ -430,6 +464,7 @@ void Game::handleBuild(std::istringstream& ss) {
         return;
     }
 
+    // Optional player index parameter
     if (!(ss >> playerIndex)) {
         playerIndex = -1;
     }
@@ -464,7 +499,7 @@ void Game::handleShowResources(std::istringstream& ss) {
     int playerIndex = -1;
     
     if (!(ss >> playerIndex)) {
-        playerIndex = -1;
+        playerIndex = -1; // Default to current active player
     }
 
     if (!validateAndSetPlayerIndex(playerIndex))
@@ -480,7 +515,7 @@ void Game::handleShowCards(std::istringstream& ss) {
     int playerIndex = -1;
 
     if (!(ss >> playerIndex)) {
-        playerIndex = -1;
+        playerIndex = -1; // Default to current active player
     }
 
     if (!validateAndSetPlayerIndex(playerIndex))
@@ -496,7 +531,7 @@ void Game::handleShowCards(std::istringstream& ss) {
         for (const auto& card : player.heldCards)
             lines.push_back("  - " + card.name);
 
-    console->printPaged(lines);
+    console->printPaged(lines); // Use pagination for long card lists
 }
 
 void Game::handleGetCardCount(std::istringstream& ss) {
@@ -531,7 +566,7 @@ void Game::handleDrawCard(std::istringstream& ss) {
     }
 
     if (!(ss >> playerIndex)) {
-        playerIndex = -1;
+        playerIndex = -1; // Default to current active player
     }
 
     if (!validateAndSetPlayerIndex(playerIndex))
@@ -559,7 +594,7 @@ void Game::handleGiveResource(std::istringstream& ss) {
     }
 
     if (!(ss >> playerIndex)) {
-        playerIndex = -1;
+        playerIndex = -1; // Default to current active player
     }
 
     giveResourceToPlayer(playerIndex, resource, amount);
@@ -578,7 +613,7 @@ void Game::handleSpendResource(std::istringstream& ss) {
     }
 
     if (!(ss >> playerIndex)) {
-        playerIndex = -1;
+        playerIndex = -1; // Default to current active player
     }
 
     spendResourceFromPlayer(playerIndex, resource, amount);
@@ -642,7 +677,7 @@ void Game::handleHelp() {
         "  help  - Displays this help message."
     };
 
-    console->printPaged(lines);
+    console->printPaged(lines); // Use pagination for help text
 }
 
 void Game::executeCommand(const std::string& cmd) {
@@ -650,9 +685,10 @@ void Game::executeCommand(const std::string& cmd) {
     std::string action;
     ss >> action;
 
+    // Lookup and execute command handler via function map
     auto it = commandHandlers.find(action);
     if (it != commandHandlers.end()) {
-        it->second(ss);
+        it->second(ss); // Invoke lambda with remaining arguments
     } else {
         console->print("Unknown command: " + action);
     }

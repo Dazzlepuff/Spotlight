@@ -72,7 +72,7 @@ void Renderer::drawBoard(sf::RenderWindow& window) {
         coordText.setCharacterSize(12);
         coordText.setFillColor(sf::Color(50, 50, 50));
 
-        sf::FloatRect bounds = coordText.getLocalBounds(); //HERE <<<<<<<<<<<<<<<<
+        sf::FloatRect bounds = coordText.getLocalBounds();
         coordText.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
         coordText.setPosition(x, y + 16);
 

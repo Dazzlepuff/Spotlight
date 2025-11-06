@@ -1,6 +1,7 @@
 #include "Tile.hpp"
 #include <iostream>
 
+// Default constructor: no owner, neutral color.
 Tile::Tile() : owner(nullptr), color("neutral") {}
 
 Company* Tile::getOwner() const {
@@ -19,6 +20,7 @@ void Tile::setColor(const std::string& newColor) {
     color = newColor;
 }
 
+// Simple console output for debugging and visualization.
 void Tile::printInfo() const {
     if (owner)
         std::cout << "Tile owned by " << owner->getName()
