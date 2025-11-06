@@ -136,16 +136,26 @@ void Game::drawCardForPlayer(Deck& deck, Player& player, int amount) {
 }
 
 void Game::giveResourceToPlayer(int playerIndex, const std::string& resource, int amount, bool logToConsole) {
+    if (playerIndex == -1)
+        playerIndex = getCurrentActivePlayerIndex();
+
     if (playerIndex < 0 || playerIndex >= players.size()) {
         if (logToConsole) console->print("Error: Invalid player index.");
         return;
     }
+
     Player& player = players[playerIndex];
     player.resources[resource] += amount;
-    if (logToConsole) console->print("Gave " + std::to_string(amount) + " " + resource + " to " + player.name + ".");
+
+    if (logToConsole)
+        console->print("Gave " + std::to_string(amount) + " " + resource + " to " + player.name + ".");
 }
 
+
 bool Game::spendResourceFromPlayer(int playerIndex, const std::string& resource, int amount, bool logToConsole) {
+    if (playerIndex == -1)
+        playerIndex = getCurrentActivePlayerIndex();
+
     if (playerIndex < 0 || playerIndex >= players.size()) {
         if (logToConsole) console->print("Error: Invalid player index.");
         return false;
@@ -159,12 +169,14 @@ bool Game::spendResourceFromPlayer(int playerIndex, const std::string& resource,
     }
 
     it->second -= amount;
-    if (logToConsole) console->print(player.name + " spent " + std::to_string(amount) + " " + resource + ".");
+    if (logToConsole)
+        console->print(player.name + " spent " + std::to_string(amount) + " " + resource + ".");
     return true;
 }
 
+
 void Game::buildStage(int x, int y, int z, const std::string& color, int playerIndex){
-    if(playerIndex = -1){
+    if(playerIndex == -1){
         playerIndex = getCurrentActivePlayerIndex();
     }
     Player activePlayer = players[playerIndex];
@@ -181,7 +193,7 @@ void Game::endTurn(bool logToConsole){
     {
         currentActivePlayerIndex = 0;
         currentDay++;
-        if (logToConsole) console->print("Last player finished turn. Starting day: " + currentDay);
+        if (logToConsole) console->print("Last player finished turn. Starting day: " + std::to_string(currentDay));
         startNewDay();
     }
 }
@@ -201,6 +213,9 @@ void Game::executeCommand(const std::string& cmd) {
     }
     else if (action == "clear") {
         console->clear();
+    }
+    else if (action == "end_turn") {
+        endTurn(true);
     }
     else if (action == "set_color") {
         int x, y, z;
@@ -242,29 +257,43 @@ void Game::executeCommand(const std::string& cmd) {
     else if (action == "build") {
         int x, y, z;
         std::string color;
-        int playerIndex;
+        int playerIndex = -1;
 
-        ss >> x >> y >> z >> color >> playerIndex;
+        ss >> x >> y >> z >> color;
         
-        if (ss.fail()){
-            console->print("Usage: build <x> <y> <z> <color> <player_index>");
+        // Try to read player index if present
+        if (ss >> playerIndex) {
+            // Successfully read player index
+        } else {
+            // No player index provided, clear error state and use default
+            ss.clear();
+            playerIndex = -1;
+        }
+
+        if (x == 0 && y == 0 && z == 0 && color.empty()) {
+            console->print("Usage: build <x> <y> <z> <color> [player_index]");
             return;
         }
+
+        if (playerIndex == -1)
+            playerIndex = getCurrentActivePlayerIndex();
+
         if (playerIndex < 0 || playerIndex >= players.size()) {
-            console->print("Error: Player index " + std::to_string(playerIndex) + 
+            console->print("Error: Player index " + std::to_string(playerIndex) +
                         " is out of range. Max valid index: " + std::to_string(players.size() - 1));
             return;
         }
+
         if (!Colors::isValid(color)) {
-            console->print(color + " is not a valid color. Valid colors: ");
-            for (const auto& c : Colors::all){
-                console -> print("   " + c);
-            }
+            console->print(color + " is not a valid color. Valid colors:");
+            for (const auto& c : Colors::all)
+                console->print("   " + c);
             return;
         }
 
         buildStage(x, y, z, color, playerIndex);
-        console->print(players[playerIndex].name + " (" + players[playerIndex].company->getName() + ") " "built a " + color + "stage at " + std::to_string(x) + std::to_string(y) + std::to_string(z));
+        console->print(players[playerIndex].name + " (" + players[playerIndex].company->getName() + ") built a " + color + " stage at " +
+                    std::to_string(x) + std::to_string(y) + std::to_string(z));
     }
     else if (action == "list_players") {
         if (players.empty()) {
@@ -276,34 +305,20 @@ void Game::executeCommand(const std::string& cmd) {
         }
     }
     else if (action == "show_resources") {
-        int playerIndex;
-        ss >> playerIndex;
-
-        if (ss.fail()) {
-            console->print("Usage: show_resources <player_index>");
-            return;
-        }
-        if (playerIndex < 0 || playerIndex >= players.size()) {
-            console->print("Error: Player index " + std::to_string(playerIndex) + 
-                        " is out of range. Max valid index: " + std::to_string(players.size() - 1));
-            return;
+        int playerIndex = -1;
+        
+        // Try to read player index if present
+        if (ss >> playerIndex) {
+            // Successfully read player index
+        } else {
+            // No player index provided, clear error state and use default
+            ss.clear();
+            playerIndex = -1;
         }
 
-        Player& player = players[playerIndex];
-        console->print("Resources for player " + player.name + ":");
+        if (playerIndex == -1)
+            playerIndex = getCurrentActivePlayerIndex();
 
-        for (const auto& [resource, amount] : player.resources) {
-            console->print("  " + resource + ": " + std::to_string(amount));
-        }
-    }
-    else if (action == "show_cards") {
-        int playerIndex;
-        ss >> playerIndex;
-
-        if (ss.fail()) {
-            console->print("Usage: show_cards <player_index>");
-            return;
-        }
         if (playerIndex < 0 || playerIndex >= players.size()) {
             console->print("Error: Player index " + std::to_string(playerIndex) +
                         " is out of range. Max valid index: " + std::to_string(players.size() - 1));
@@ -311,15 +326,42 @@ void Game::executeCommand(const std::string& cmd) {
         }
 
         Player& player = players[playerIndex];
-        console->print("Cards held by " + player.name + ":");
+        console->print("Resources for player " + player.name + ":");
+        for (const auto& [resource, amount] : player.resources)
+            console->print("  " + resource + ": " + std::to_string(amount));
+    }
+    else if (action == "show_cards") {
+        int playerIndex = -1;
 
-        if (player.heldCards.empty()) {
-            console->print("  (no cards)");
+        // Try to read player index if present
+        if (ss >> playerIndex) {
+            // Successfully read player index
         } else {
-            for (const auto& card : player.heldCards) {
-                console->print("  - " + card.name);
-            }
+            // No player index provided, clear error state and use default
+            ss.clear();
+            playerIndex = -1;
         }
+
+        if (playerIndex == -1)
+            playerIndex = getCurrentActivePlayerIndex();
+
+        if (playerIndex < 0 || playerIndex >= players.size()) {
+            console->print("Error: Player index " + std::to_string(playerIndex) +
+                        " is out of range. Max valid index: " + std::to_string(players.size() - 1));
+            return;
+        }
+
+        Player& player = players[playerIndex];
+        std::vector<std::string> lines;
+
+        lines.push_back("Cards held by " + player.name + ":");
+        if (player.heldCards.empty())
+            lines.push_back("  (no cards)");
+        else
+            for (const auto& card : player.heldCards)
+                lines.push_back("  - " + card.name);
+
+        console->printPaged(lines);
     }
     else if (action == "get_card_count") {
         std::string deckName;
@@ -335,20 +377,32 @@ void Game::executeCommand(const std::string& cmd) {
         console->print(deckName + " has " + std::to_string(cardCount) + " card" + (cardCount == 1 ? "" : "s"));
     }
     else if (action == "draw_card") {
-        int playerIndex;
         std::string deckName;
         int amount;
+        int playerIndex = -1;
 
-        ss >> playerIndex >> deckName >> amount;
+        ss >> deckName >> amount;
+        
+        // Try to read player index if present
+        if (ss >> playerIndex) {
+            // Successfully read player index
+        } else {
+            // No player index provided, clear error state and use default
+            ss.clear();
+            playerIndex = -1;
+        }
 
-        if (ss.fail()) {
-            console->print("Usage: draw_card <player_index> <deck_name> <amount>");
+        if (ss.fail() || deckName.empty()) {
+            console->print("Usage: draw_card <deck_name> <amount> [player_index]");
             return;
         }
 
+        if (playerIndex == -1)
+            playerIndex = getCurrentActivePlayerIndex();
+
         if (playerIndex < 0 || playerIndex >= players.size()) {
             console->print("Error: Player index " + std::to_string(playerIndex) +
-                           " is out of range. Max valid index: " + std::to_string(players.size() - 1));
+                        " is out of range. Max valid index: " + std::to_string(players.size() - 1));
             return;
         }
 
@@ -361,25 +415,55 @@ void Game::executeCommand(const std::string& cmd) {
         drawCardForPlayer(*deck, players[playerIndex], amount);
     }
     else if (action == "give_resource") {
-        int playerIndex;
         std::string resource;
         int amount;
-        ss >> playerIndex >> resource >> amount;
-        if (ss.fail()) {
-            console->print("Usage: give_resource <player_index> <resource> <amount>");
+        int playerIndex = -1;
+
+        ss >> resource >> amount;
+        
+        // Try to read player index if present
+        if (ss >> playerIndex) {
+            // Successfully read player index
+        } else {
+            // No player index provided, clear error state and use default
+            ss.clear();
+            playerIndex = -1;
+        }
+
+        if (ss.fail() || resource.empty()) {
+            console->print("Usage: give_resource <resource> <amount> [player_index]");
             return;
         }
+
+        if (playerIndex == -1)
+            playerIndex = getCurrentActivePlayerIndex();
+
         giveResourceToPlayer(playerIndex, resource, amount);
     }
     else if (action == "spend_resource") {
-        int playerIndex;
         std::string resource;
         int amount;
-        ss >> playerIndex >> resource >> amount;
-        if (ss.fail()) {
-            console->print("Usage: spend_resource <player_index> <resource> <amount>");
+        int playerIndex = -1;
+
+        ss >> resource >> amount;
+        
+        // Try to read player index if present
+        if (ss >> playerIndex) {
+            // Successfully read player index
+        } else {
+            // No player index provided, clear error state and use default
+            ss.clear();
+            playerIndex = -1;
+        }
+
+        if (ss.fail() || resource.empty()) {
+            console->print("Usage: spend_resource <resource> <amount> [player_index]");
             return;
         }
+
+        if (playerIndex == -1)
+            playerIndex = getCurrentActivePlayerIndex();
+
         spendResourceFromPlayer(playerIndex, resource, amount);
     }
     else if (action == "help") {
@@ -387,14 +471,14 @@ void Game::executeCommand(const std::string& cmd) {
             "Available commands:",
             "  set_color <x> <y> <z> <color>  - Sets the color of a tile.",
             "  set_owner <x> <y> <z> <company_index>  - Assigns tile ownership.",
-            "  build <x> <y> <z> <color> <player_index>  - Builds a stage.",
+            "  build <x> <y> <z> <color> [player_index]  - Builds a stage.",
             "  list_players  - Lists all players.",
-            "  show_resources <player_index>  - Shows player resources.",
-            "  give_resource <player_index> <resource> <amount>  - Gives resources.",
-            "  spend_resource <player_index> <resource> <amount>  - Spends resources.",
-            "  show_cards <player_index>  - Lists player cards.",
+            "  show_resources [player_index]  - Shows player resources.",
+            "  give_resource <resource> <amount> [player_index]  - Gives resources.",
+            "  spend_resource <resource> <amount> [player_index]  - Spends resources.",
+            "  show_cards [player_index]  - Lists player cards.",
             "  get_card_count <deck_name>  - Shows cards left in a deck.",
-            "  draw_card <player_index> <deck_name> <amount>  - Draws cards for a player.",
+            "  draw_card <deck_name> <amount> [player_index]  - Draws cards for a player.",
             "  end_turn  - Ends the current player's turn.",
             "  next  - Shows the next page of text (for long outputs).",
             "  help  - Displays this help message."
