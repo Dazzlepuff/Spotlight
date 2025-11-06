@@ -188,6 +188,7 @@ void Game::buildStage(int x, int y, int z, const std::string& color, int playerI
 }
 
 void Game::endTurn(bool logToConsole){
+    console->print(players[currentActivePlayerIndex].name + " ended their turn.");
     currentActivePlayerIndex++;
     if (currentActivePlayerIndex > players.size() - 1)
     {
@@ -195,6 +196,76 @@ void Game::endTurn(bool logToConsole){
         currentDay++;
         if (logToConsole) console->print("Last player finished turn. Starting day: " + std::to_string(currentDay));
         startNewDay();
+    }
+    console->print(players[currentActivePlayerIndex].name + ", it is now your turn.");
+}
+
+bool Game::playCardForPlayer(int playerIndex, const std::string& cardName, bool logToConsole) {
+    if (playerIndex == -1)
+        playerIndex = getCurrentActivePlayerIndex();
+
+    if (playerIndex < 0 || playerIndex >= players.size()) {
+        if (logToConsole) console->print("Error: Invalid player index.");
+        return false;
+    }
+
+    Player& player = players[playerIndex];
+    if (player.playCard(cardName)) {
+        auto it = std::find_if(player.playedCards.begin(), player.playedCards.end(),
+                               [&](const Card& c) { return c.name == cardName; });
+        if (it != player.playedCards.end()) {
+            it->executeTrigger("onPlay", player);
+        }
+        
+        if (logToConsole)
+            console->print(player.name + " played card: " + cardName);
+        return true;
+    } else {
+        if (logToConsole)
+            console->print("Error: " + player.name + " does not have card '" + cardName + "' in hand.");
+        return false;
+    }
+}
+
+bool Game::removePlayedCardForPlayer(int playerIndex, const std::string& cardName, bool logToConsole) {
+    if (playerIndex == -1)
+        playerIndex = getCurrentActivePlayerIndex();
+
+    if (playerIndex < 0 || playerIndex >= players.size()) {
+        if (logToConsole) console->print("Error: Invalid player index.");
+        return false;
+    }
+
+    Player& player = players[playerIndex];
+    if (player.removePlayedCard(cardName)) {
+        if (logToConsole)
+            console->print("Removed played card '" + cardName + "' from " + player.name);
+        return true;
+    } else {
+        if (logToConsole)
+            console->print("Error: " + player.name + " does not have card '" + cardName + "' in play.");
+        return false;
+    }
+}
+
+bool Game::removeHeldCardForPlayer(int playerIndex, const std::string& cardName, bool logToConsole) {
+    if (playerIndex == -1)
+        playerIndex = getCurrentActivePlayerIndex();
+
+    if (playerIndex < 0 || playerIndex >= players.size()) {
+        if (logToConsole) console->print("Error: Invalid player index.");
+        return false;
+    }
+
+    Player& player = players[playerIndex];
+    if (player.removeHeldCard(cardName)) {
+        if (logToConsole)
+            console->print("Removed card '" + cardName + "' from " + player.name + "'s hand.");
+        return true;
+    } else {
+        if (logToConsole)
+            console->print("Error: " + player.name + " does not have card '" + cardName + "' in hand.");
+        return false;
     }
 }
 
@@ -466,6 +537,117 @@ void Game::executeCommand(const std::string& cmd) {
 
         spendResourceFromPlayer(playerIndex, resource, amount);
     }
+    else if (action == "play_card") {
+        std::string cardName;
+        int playerIndex = -1;
+
+        // Read the rest of the line for card name (might contain spaces)
+        std::string temp;
+        if (ss >> temp) {
+            cardName = temp;
+            // Check if there's another token
+            if (ss >> temp) {
+                // If it's a number, it's the player index
+                try {
+                    playerIndex = std::stoi(temp);
+                } catch (...) {
+                    // Not a number, it's part of the card name
+                    cardName += " " + temp;
+                    // Continue reading for more words and potential player index at end
+                    while (ss >> temp) {
+                        try {
+                            int testIndex = std::stoi(temp);
+                            // If we successfully converted to int, assume it's player index
+                            playerIndex = testIndex;
+                            break;
+                        } catch (...) {
+                            cardName += " " + temp;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (cardName.empty()) {
+            console->print("Usage: play_card <card_name> [player_index]");
+            return;
+        }
+
+        if (playerIndex == -1)
+            playerIndex = getCurrentActivePlayerIndex();
+
+        playCardForPlayer(playerIndex, cardName);
+    }
+    else if (action == "remove_played_card") {
+        std::string cardName;
+        int playerIndex = -1;
+
+        std::string temp;
+        if (ss >> temp) {
+            cardName = temp;
+            if (ss >> temp) {
+                try {
+                    playerIndex = std::stoi(temp);
+                } catch (...) {
+                    cardName += " " + temp;
+                    while (ss >> temp) {
+                        try {
+                            int testIndex = std::stoi(temp);
+                            playerIndex = testIndex;
+                            break;
+                        } catch (...) {
+                            cardName += " " + temp;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (cardName.empty()) {
+            console->print("Usage: remove_played_card <card_name> [player_index]");
+            return;
+        }
+
+        if (playerIndex == -1)
+            playerIndex = getCurrentActivePlayerIndex();
+
+        removePlayedCardForPlayer(playerIndex, cardName);
+    }
+    else if (action == "remove_held_card") {
+        std::string cardName;
+        int playerIndex = -1;
+
+        std::string temp;
+        if (ss >> temp) {
+            cardName = temp;
+            if (ss >> temp) {
+                try {
+                    playerIndex = std::stoi(temp);
+                } catch (...) {
+                    cardName += " " + temp;
+                    while (ss >> temp) {
+                        try {
+                            int testIndex = std::stoi(temp);
+                            playerIndex = testIndex;
+                            break;
+                        } catch (...) {
+                            cardName += " " + temp;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (cardName.empty()) {
+            console->print("Usage: remove_held_card <card_name> [player_index]");
+            return;
+        }
+
+        if (playerIndex == -1)
+            playerIndex = getCurrentActivePlayerIndex();
+
+        removeHeldCardForPlayer(playerIndex, cardName);
+    }
     else if (action == "help") {
         std::vector<std::string> lines = {
             "Available commands:",
@@ -477,10 +659,14 @@ void Game::executeCommand(const std::string& cmd) {
             "  give_resource <resource> <amount> [player_index]  - Gives resources.",
             "  spend_resource <resource> <amount> [player_index]  - Spends resources.",
             "  show_cards [player_index]  - Lists player cards.",
+            "  play_card <card_name> [player_index]  - Plays a card from hand.",
+            "  remove_played_card <card_name> [player_index]  - Removes a played card.",
+            "  remove_held_card <card_name> [player_index]  - Removes a card from hand.",
             "  get_card_count <deck_name>  - Shows cards left in a deck.",
             "  draw_card <deck_name> <amount> [player_index]  - Draws cards for a player.",
             "  end_turn  - Ends the current player's turn.",
             "  next  - Shows the next page of text (for long outputs).",
+            "  clear  - Clears the console output.",
             "  help  - Displays this help message."
         };
 
