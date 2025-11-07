@@ -31,9 +31,11 @@ bool \mbox{\hyperlink{class_deck_a2cdc7f30f31f041ae5f29b18858bf1c1}{empty}} () c
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-std\+::string \mbox{\hyperlink{class_deck_adcbbf95d2798585fe37f6f0ccfe78820}{name}}
+\Hypertarget{class_deck_adcbbf95d2798585fe37f6f0ccfe78820}\label{class_deck_adcbbf95d2798585fe37f6f0ccfe78820} 
+std\+::string {\bfseries name}
 \begin{DoxyCompactList}\small\item\em The deck’s name, used for identification or debugging. \end{DoxyCompactList}\item 
-std\+::vector$<$ \mbox{\hyperlink{class_card}{Card}} $>$ \mbox{\hyperlink{class_deck_af88eab927c6559098be0a0effa5dab11}{cards}}
+\Hypertarget{class_deck_af88eab927c6559098be0a0effa5dab11}\label{class_deck_af88eab927c6559098be0a0effa5dab11} 
+std\+::vector$<$ \mbox{\hyperlink{class_card}{Card}} $>$ {\bfseries cards}
 \begin{DoxyCompactList}\small\item\em The internal storage of cards contained within the deck. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -61,6 +63,8 @@ Constructs a deck with an optional name.
 \begin{DoxyPostcond}{Postcondition}
 \doxylink{class_deck}{Deck} is initialized with an empty card list. 
 \end{DoxyPostcond}
+Here is the caller graph for this function\+:
+% FIG 0
 
 
 \doxysubsection{Member Function Documentation}
@@ -84,6 +88,8 @@ Adds a card directly to the deck vector.
 \begin{DoxyPostcond}{Postcondition}
 The card is appended to the end of the internal vector. 
 \end{DoxyPostcond}
+Here is the caller graph for this function\+:
+% FIG 1
 \Hypertarget{class_deck_a7e3cb5a726dec9953c564ab7d780563d}\index{Deck@{Deck}!drawCard@{drawCard}}
 \index{drawCard@{drawCard}!Deck@{Deck}}
 \doxysubsubsection{\texorpdfstring{drawCard()}{drawCard()}}
@@ -108,7 +114,9 @@ The drawn \doxylink{class_card}{Card} object.
 \begin{DoxyWarning}{Warning}
 Returns a default-\/constructed \doxylink{class_card}{Card} if the deck is empty. Reshuffling functionality not implemented.
 \end{DoxyWarning}
-Returns the last element of the vector to simulate drawing from the top. Logs an error if called on an empty deck and returns a default card. \Hypertarget{class_deck_a2cdc7f30f31f041ae5f29b18858bf1c1}\index{Deck@{Deck}!empty@{empty}}
+Returns the last element of the vector to simulate drawing from the top. Logs an error if called on an empty deck and returns a default card. Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{class_deck_a2cdc7f30f31f041ae5f29b18858bf1c1}\index{Deck@{Deck}!empty@{empty}}
 \index{empty@{empty}!Deck@{Deck}}
 \doxysubsubsection{\texorpdfstring{empty()}{empty()}}
 {\footnotesize\ttfamily \label{class_deck_a2cdc7f30f31f041ae5f29b18858bf1c1} 
@@ -126,6 +134,8 @@ True if the deck has no cards, false otherwise.
 \begin{DoxyPostcond}{Postcondition}
 Does not modify the deck. 
 \end{DoxyPostcond}
+Here is the caller graph for this function\+:
+% FIG 3
 \Hypertarget{class_deck_a1b55c37de9323e26d5acac3ccc42c896}\index{Deck@{Deck}!loadFromJsonFile@{loadFromJsonFile}}
 \index{loadFromJsonFile@{loadFromJsonFile}!Deck@{Deck}}
 \doxysubsubsection{\texorpdfstring{loadFromJsonFile()}{loadFromJsonFile()}}
@@ -163,6 +173,10 @@ Logs errors to stderr if the file cannot be found or opened.
 Uses \doxylink{namespace_path_utils_a92ce6938ce41b16444134a2083549c16}{Path\+Utils\+::get\+Asset\+Path()} to resolve the full path of the file. Cards are loaded from JSON, supporting an optional "{}copies"{} field for duplication. Any parsing or I/O errors are printed to stderr. \begin{DoxyNote}{Note}
 Default copies = 1 unless explicitly defined in JSON.
 \end{DoxyNote}
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
 \Hypertarget{class_deck_a70756b735a28aa8cf6e8c73ec1f2264d}\index{Deck@{Deck}!moveCardTo@{moveCardTo}}
 \index{moveCardTo@{moveCardTo}!Deck@{Deck}}
 \doxysubsubsection{\texorpdfstring{moveCardTo()}{moveCardTo()}}
@@ -186,7 +200,9 @@ The specified card is added to the destination deck.
 \begin{DoxyNote}{Note}
 This operation does not remove the card from the source deck.
 \end{DoxyNote}
-Only appends the card to the destination deck — it does not remove it locally. This enables flexible gameplay behavior (e.\+g., cloning, discarding). \Hypertarget{class_deck_ae5a1e52ab00ae5924f2bc6b730dba3eb}\index{Deck@{Deck}!shuffle@{shuffle}}
+Only appends the card to the destination deck — it does not remove it locally. This enables flexible gameplay behavior (e.\+g., cloning, discarding). Here is the call graph for this function\+:
+% FIG 6
+\Hypertarget{class_deck_ae5a1e52ab00ae5924f2bc6b730dba3eb}\index{Deck@{Deck}!shuffle@{shuffle}}
 \index{shuffle@{shuffle}!Deck@{Deck}}
 \doxysubsubsection{\texorpdfstring{shuffle()}{shuffle()}}
 {\footnotesize\ttfamily \label{class_deck_ae5a1e52ab00ae5924f2bc6b730dba3eb} 
@@ -201,7 +217,9 @@ Uses a Mersenne Twister pseudo-\/random generator seeded from std\+::random\+\_\
 \begin{DoxyPostcond}{Postcondition}
 All cards remain present, but in randomized order.
 \end{DoxyPostcond}
-Uses std\+::shuffle with Mersenne Twister (mt19937) seeded from random\+\_\+device. Ensures fair shuffling each time it’s called. \Hypertarget{class_deck_a67089846dfe439fa2807e6f3ac93061c}\index{Deck@{Deck}!size@{size}}
+Uses std\+::shuffle with Mersenne Twister (mt19937) seeded from random\+\_\+device. Ensures fair shuffling each time it’s called. Here is the caller graph for this function\+:
+% FIG 7
+\Hypertarget{class_deck_a67089846dfe439fa2807e6f3ac93061c}\index{Deck@{Deck}!size@{size}}
 \index{size@{size}!Deck@{Deck}}
 \doxysubsubsection{\texorpdfstring{size()}{size()}}
 {\footnotesize\ttfamily \label{class_deck_a67089846dfe439fa2807e6f3ac93061c} 
@@ -221,30 +239,7 @@ Does not modify the deck.
 \end{DoxyPostcond}
 
 
-\doxysubsection{Member Data Documentation}
-\Hypertarget{class_deck_af88eab927c6559098be0a0effa5dab11}\index{Deck@{Deck}!cards@{cards}}
-\index{cards@{cards}!Deck@{Deck}}
-\doxysubsubsection{\texorpdfstring{cards}{cards}}
-{\footnotesize\ttfamily \label{class_deck_af88eab927c6559098be0a0effa5dab11} 
-std\+::vector$<$\mbox{\hyperlink{class_card}{Card}}$>$ Deck\+::cards}
-
-
-
-The internal storage of cards contained within the deck. 
-
-\Hypertarget{class_deck_adcbbf95d2798585fe37f6f0ccfe78820}\index{Deck@{Deck}!name@{name}}
-\index{name@{name}!Deck@{Deck}}
-\doxysubsubsection{\texorpdfstring{name}{name}}
-{\footnotesize\ttfamily \label{class_deck_adcbbf95d2798585fe37f6f0ccfe78820} 
-std\+::string Deck\+::name}
-
-
-
-The deck’s name, used for identification or debugging. 
-
-
-
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 include/\mbox{\hyperlink{_deck_8hpp}{Deck.\+hpp}}\item 
-src/\mbox{\hyperlink{_deck_8cpp}{Deck.\+cpp}}\end{DoxyCompactItemize}
+src/Deck.\+cpp\end{DoxyCompactItemize}

@@ -32,9 +32,8 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Spotlight<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">Spotlight
    </div>
-   <div id="projectbrief">A digital boardgame prototype written in C++</div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -118,8 +117,9 @@ $(function(){initNavTree('class_card.html',''); initResizable(true); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad3e990e28a4961b998eb5995f1191881" id="r_ad3e990e28a4961b998eb5995f1191881"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3e990e28a4961b998eb5995f1191881">Card</a> ()=default</td></tr>
-<tr class="memdesc:ad3e990e28a4961b998eb5995f1191881"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor. Initializes an empty card.  <br /></td></tr>
+<tr class="memitem:ad3e990e28a4961b998eb5995f1191881" id="r_ad3e990e28a4961b998eb5995f1191881"><td class="memItemLeft" align="right" valign="top"><a id="ad3e990e28a4961b998eb5995f1191881" name="ad3e990e28a4961b998eb5995f1191881"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Card</b> ()=default</td></tr>
+<tr class="memdesc:ad3e990e28a4961b998eb5995f1191881"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor. Initializes an empty card. <br /></td></tr>
 <tr class="separator:ad3e990e28a4961b998eb5995f1191881"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b4d30be8322facc6f0567ba00c2e1bf" id="r_a5b4d30be8322facc6f0567ba00c2e1bf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b4d30be8322facc6f0567ba00c2e1bf">Card</a> (const nlohmann::json &amp;data)</td></tr>
 <tr class="memdesc:a5b4d30be8322facc6f0567ba00c2e1bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a card from parsed JSON data.  <br /></td></tr>
@@ -142,35 +142,8 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>Represents a playable card with triggers and associated actions. </p>
 <p>Each card contains a name, description, and a set of triggers that define when certain actions occur (e.g., "onPlay", "onStartOfDay"). Actions are stored as JSON objects that can be executed dynamically. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ad3e990e28a4961b998eb5995f1191881" name="ad3e990e28a4961b998eb5995f1191881"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad3e990e28a4961b998eb5995f1191881">&#9670;&#160;</a></span>Card() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Card::Card </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel default">default</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Default constructor. Initializes an empty card. </p>
-
-</div>
-</div>
 <a id="a5b4d30be8322facc6f0567ba00c2e1bf" name="a5b4d30be8322facc6f0567ba00c2e1bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5b4d30be8322facc6f0567ba00c2e1bf">&#9670;&#160;</a></span>Card() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b4d30be8322facc6f0567ba00c2e1bf">&#9670;&#160;</a></span>Card()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -222,6 +195,11 @@ Public Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 0 --></div>
+</div>
 
 </div>
 </div>
@@ -279,7 +257,7 @@ Public Attributes</h2></td></tr>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="_card_8hpp_source.html">Card.hpp</a></li>
-<li>src/<a class="el" href="_card_8cpp.html">Card.cpp</a></li>
+<li>src/<b>Card.cpp</b></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -9,6 +9,10 @@ Represents a player, managing their resources, cards, score, and associated comp
 
 {\ttfamily \#include $<$Player.\+hpp$>$}
 
+
+
+Collaboration diagram for Player\+:
+% FIG 0
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -30,24 +34,32 @@ bool \mbox{\hyperlink{class_player_a8d7d0abc148ef80459ce1980880a25fb}{remove\+He
 \begin{DoxyCompactList}\small\item\em Removes a held card by name. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_player_a52ba5fa34091ca4cb1774b0458584e2e}{add\+Score}} (int amount)
 \begin{DoxyCompactList}\small\item\em Increases the player’s score by a specified amount. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_player_a7dfdc0be35fa9ae42104a6bfe47634b8}{reset\+Score}} ()
+\Hypertarget{class_player_a7dfdc0be35fa9ae42104a6bfe47634b8}\label{class_player_a7dfdc0be35fa9ae42104a6bfe47634b8} 
+void {\bfseries reset\+Score} ()
 \begin{DoxyCompactList}\small\item\em Resets the player’s score to zero. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_player_a069fc1ddd9025161e87d4f94591b9df2}{print\+Status}} () const
+\Hypertarget{class_player_a069fc1ddd9025161e87d4f94591b9df2}\label{class_player_a069fc1ddd9025161e87d4f94591b9df2} 
+void {\bfseries print\+Status} () const
 \begin{DoxyCompactList}\small\item\em Prints a formatted summary of the player’s current status to the console. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-std\+::string \mbox{\hyperlink{class_player_af9c920fabaafdeb7961a645315b521ff}{name}}
+\Hypertarget{class_player_af9c920fabaafdeb7961a645315b521ff}\label{class_player_af9c920fabaafdeb7961a645315b521ff} 
+std\+::string {\bfseries name}
 \begin{DoxyCompactList}\small\item\em The player’s display name. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_company}{Company}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_player_aad2ee588e593e5704ed1b1fbae70a228}{company}}
+\Hypertarget{class_player_aad2ee588e593e5704ed1b1fbae70a228}\label{class_player_aad2ee588e593e5704ed1b1fbae70a228} 
+\mbox{\hyperlink{class_company}{Company}} \texorpdfstring{$\ast$}{*} {\bfseries company}
 \begin{DoxyCompactList}\small\item\em Pointer to the company this player is associated with. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{class_player_ace6abae8d66534ad0a1fd6458f786a6e}{score}} = 0
+\Hypertarget{class_player_ace6abae8d66534ad0a1fd6458f786a6e}\label{class_player_ace6abae8d66534ad0a1fd6458f786a6e} 
+int {\bfseries score} = 0
 \begin{DoxyCompactList}\small\item\em Current score value. \end{DoxyCompactList}\item 
-std\+::unordered\+\_\+map$<$ std\+::string, int $>$ \mbox{\hyperlink{class_player_a6534e95b7e7fd610b27e20be87ad5813}{resources}}
+\Hypertarget{class_player_a6534e95b7e7fd610b27e20be87ad5813}\label{class_player_a6534e95b7e7fd610b27e20be87ad5813} 
+std\+::unordered\+\_\+map$<$ std\+::string, int $>$ {\bfseries resources}
 \begin{DoxyCompactList}\small\item\em Map of resource type to quantity (e.\+g., "{}funds"{}, "{}gear"{}). \end{DoxyCompactList}\item 
-std\+::vector$<$ \mbox{\hyperlink{class_card}{Card}} $>$ \mbox{\hyperlink{class_player_a1c17d4fe4bbc869c6b214552e64fff90}{held\+Cards}}
+\Hypertarget{class_player_a1c17d4fe4bbc869c6b214552e64fff90}\label{class_player_a1c17d4fe4bbc869c6b214552e64fff90} 
+std\+::vector$<$ \mbox{\hyperlink{class_card}{Card}} $>$ {\bfseries held\+Cards}
 \begin{DoxyCompactList}\small\item\em Cards currently held in hand. \end{DoxyCompactList}\item 
-std\+::vector$<$ \mbox{\hyperlink{class_card}{Card}} $>$ \mbox{\hyperlink{class_player_a40305fbcd5f45e77fd5b2e7e0890936c}{played\+Cards}}
+\Hypertarget{class_player_a40305fbcd5f45e77fd5b2e7e0890936c}\label{class_player_a40305fbcd5f45e77fd5b2e7e0890936c} 
+std\+::vector$<$ \mbox{\hyperlink{class_card}{Card}} $>$ {\bfseries played\+Cards}
 \begin{DoxyCompactList}\small\item\em Cards that have been played. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -90,6 +102,8 @@ Adds a card to the player’s hand.
 {\em card} & The card to add. \\
 \hline
 \end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 1
 \Hypertarget{class_player_ac3072a24c6fd293e43c8bdec5792465f}\index{Player@{Player}!addResource@{addResource}}
 \index{addResource@{addResource}!Player@{Player}}
 \doxysubsubsection{\texorpdfstring{addResource()}{addResource()}}
@@ -107,6 +121,8 @@ Adds a specified amount of a resource type.
 {\em amount} & The quantity to add. \\
 \hline
 \end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 2
 \Hypertarget{class_player_a52ba5fa34091ca4cb1774b0458584e2e}\index{Player@{Player}!addScore@{addScore}}
 \index{addScore@{addScore}!Player@{Player}}
 \doxysubsubsection{\texorpdfstring{addScore()}{addScore()}}
@@ -158,16 +174,8 @@ Moves a card from hand to played cards.
 \begin{DoxyReturn}{Returns}
 True if the card was found and played; false otherwise. 
 \end{DoxyReturn}
-\Hypertarget{class_player_a069fc1ddd9025161e87d4f94591b9df2}\index{Player@{Player}!printStatus@{printStatus}}
-\index{printStatus@{printStatus}!Player@{Player}}
-\doxysubsubsection{\texorpdfstring{printStatus()}{printStatus()}}
-{\footnotesize\ttfamily \label{class_player_a069fc1ddd9025161e87d4f94591b9df2} 
-void Player\+::print\+Status (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
-
-
-
-Prints a formatted summary of the player’s current status to the console. 
-
+Here is the caller graph for this function\+:
+% FIG 3
 \Hypertarget{class_player_a8d7d0abc148ef80459ce1980880a25fb}\index{Player@{Player}!removeHeldCard@{removeHeldCard}}
 \index{removeHeldCard@{removeHeldCard}!Player@{Player}}
 \doxysubsubsection{\texorpdfstring{removeHeldCard()}{removeHeldCard()}}
@@ -186,6 +194,8 @@ Removes a held card by name.
 \begin{DoxyReturn}{Returns}
 True if a card was removed; false otherwise. 
 \end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 4
 \Hypertarget{class_player_aafc9632b2e1097a09a6f5a5074323340}\index{Player@{Player}!removePlayedCard@{removePlayedCard}}
 \index{removePlayedCard@{removePlayedCard}!Player@{Player}}
 \doxysubsubsection{\texorpdfstring{removePlayedCard()}{removePlayedCard()}}
@@ -204,16 +214,8 @@ Removes a played card by name.
 \begin{DoxyReturn}{Returns}
 True if a card was removed; false otherwise. 
 \end{DoxyReturn}
-\Hypertarget{class_player_a7dfdc0be35fa9ae42104a6bfe47634b8}\index{Player@{Player}!resetScore@{resetScore}}
-\index{resetScore@{resetScore}!Player@{Player}}
-\doxysubsubsection{\texorpdfstring{resetScore()}{resetScore()}}
-{\footnotesize\ttfamily \label{class_player_a7dfdc0be35fa9ae42104a6bfe47634b8} 
-void Player\+::reset\+Score (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
-
-
-
-Resets the player’s score to zero. 
-
+Here is the caller graph for this function\+:
+% FIG 5
 \Hypertarget{class_player_a44275d3e2b8cb1fa961d8bddbdb286c4}\index{Player@{Player}!spendResource@{spendResource}}
 \index{spendResource@{spendResource}!Player@{Player}}
 \doxysubsubsection{\texorpdfstring{spendResource()}{spendResource()}}
@@ -236,70 +238,7 @@ True if the player had enough resources; false otherwise.
 \end{DoxyReturn}
 
 
-\doxysubsection{Member Data Documentation}
-\Hypertarget{class_player_aad2ee588e593e5704ed1b1fbae70a228}\index{Player@{Player}!company@{company}}
-\index{company@{company}!Player@{Player}}
-\doxysubsubsection{\texorpdfstring{company}{company}}
-{\footnotesize\ttfamily \label{class_player_aad2ee588e593e5704ed1b1fbae70a228} 
-\mbox{\hyperlink{class_company}{Company}}\texorpdfstring{$\ast$}{*} Player\+::company}
-
-
-
-Pointer to the company this player is associated with. 
-
-\Hypertarget{class_player_a1c17d4fe4bbc869c6b214552e64fff90}\index{Player@{Player}!heldCards@{heldCards}}
-\index{heldCards@{heldCards}!Player@{Player}}
-\doxysubsubsection{\texorpdfstring{heldCards}{heldCards}}
-{\footnotesize\ttfamily \label{class_player_a1c17d4fe4bbc869c6b214552e64fff90} 
-std\+::vector$<$\mbox{\hyperlink{class_card}{Card}}$>$ Player\+::held\+Cards}
-
-
-
-Cards currently held in hand. 
-
-\Hypertarget{class_player_af9c920fabaafdeb7961a645315b521ff}\index{Player@{Player}!name@{name}}
-\index{name@{name}!Player@{Player}}
-\doxysubsubsection{\texorpdfstring{name}{name}}
-{\footnotesize\ttfamily \label{class_player_af9c920fabaafdeb7961a645315b521ff} 
-std\+::string Player\+::name}
-
-
-
-The player’s display name. 
-
-\Hypertarget{class_player_a40305fbcd5f45e77fd5b2e7e0890936c}\index{Player@{Player}!playedCards@{playedCards}}
-\index{playedCards@{playedCards}!Player@{Player}}
-\doxysubsubsection{\texorpdfstring{playedCards}{playedCards}}
-{\footnotesize\ttfamily \label{class_player_a40305fbcd5f45e77fd5b2e7e0890936c} 
-std\+::vector$<$\mbox{\hyperlink{class_card}{Card}}$>$ Player\+::played\+Cards}
-
-
-
-Cards that have been played. 
-
-\Hypertarget{class_player_a6534e95b7e7fd610b27e20be87ad5813}\index{Player@{Player}!resources@{resources}}
-\index{resources@{resources}!Player@{Player}}
-\doxysubsubsection{\texorpdfstring{resources}{resources}}
-{\footnotesize\ttfamily \label{class_player_a6534e95b7e7fd610b27e20be87ad5813} 
-std\+::unordered\+\_\+map$<$std\+::string, int$>$ Player\+::resources}
-
-
-
-Map of resource type to quantity (e.\+g., "{}funds"{}, "{}gear"{}). 
-
-\Hypertarget{class_player_ace6abae8d66534ad0a1fd6458f786a6e}\index{Player@{Player}!score@{score}}
-\index{score@{score}!Player@{Player}}
-\doxysubsubsection{\texorpdfstring{score}{score}}
-{\footnotesize\ttfamily \label{class_player_ace6abae8d66534ad0a1fd6458f786a6e} 
-int Player\+::score = 0}
-
-
-
-Current score value. 
-
-
-
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 include/\mbox{\hyperlink{_player_8hpp}{Player.\+hpp}}\item 
-src/\mbox{\hyperlink{_player_8cpp}{Player.\+cpp}}\end{DoxyCompactItemize}
+src/Player.\+cpp\end{DoxyCompactItemize}

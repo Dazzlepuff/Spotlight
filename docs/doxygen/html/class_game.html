@@ -32,9 +32,8 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Spotlight<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">Spotlight
    </div>
-   <div id="projectbrief">A digital boardgame prototype written in C++</div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -206,7 +205,7 @@ Public Member Functions</h2></td></tr>
 <p>Constructs a new <a class="el" href="class_game.html" title="Central game controller managing all gameplay mechanics and state.">Game</a> instance with specified board and company configuration. </p>
 <p>Initializes the game environment including:</p><ul>
 <li>Hexagonal board of given size</li>
-<li>SFML rendering window (1600x1200)</li>
+<li>SFML rendering window (800*600)</li>
 <li>Font loading from assets</li>
 <li><a class="el" href="class_renderer.html" title="Handles all visual rendering and window event management for the game.">Renderer</a> and command console subsystems</li>
 <li><a class="el" href="class_company.html" title="Represents a company, corporation, or in-game faction.">Company</a> roster for player assignment</li>
@@ -227,6 +226,11 @@ companyList should not be empty for meaningful gameplay </dd></dl>
 Window created but not yet displayed</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Exits with error message if font file "consolas.ttf" cannot be loaded </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#ae856b48c83f3a610ada1d5ca814a96c8" title="Registers a new player with their associated company.">addPlayer()</a>, <a class="el" href="#ae4618ba40eabbbe65e35f1bb239aa29b" title="Initializes the game board and deals starting cards.">setup()</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 0 --></div>
+</div>
 
 </div>
 </div>
@@ -285,6 +289,11 @@ Must be called before <a class="el" href="#ae4618ba40eabbbe65e35f1bb239aa29b" ti
 <dl class="section post"><dt>Postcondition</dt><dd><a class="el" href="class_player.html" title="Represents a player, managing their resources, cards, score, and associated company.">Player</a> added to internal roster with zero-initialized resources</dd></dl>
 <dl class="section note"><dt>Note</dt><dd><a class="el" href="class_player.html" title="Represents a player, managing their resources, cards, score, and associated company.">Player</a> index is implicitly assigned based on insertion order </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#ae4618ba40eabbbe65e35f1bb239aa29b" title="Initializes the game board and deals starting cards.">setup()</a>, <a class="el" href="#a6bd3d524eed5c48f666cbddb0a3d06f2" title="Retrieves the index of the player whose turn is currently active.">getCurrentActivePlayerIndex()</a> </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 1 --></div>
+</div>
 
 </div>
 </div>
@@ -389,6 +398,11 @@ player must be a valid <a class="el" href="class_player.html" title="Represents 
 Console messages logged for each drawn card</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>If deck empties mid-draw, stops and logs a message </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="class_deck.html#a7e3cb5a726dec9953c564ab7d780563d" title="Draws the topmost card from the deck.">Deck::drawCard()</a>, <a class="el" href="class_player.html#a12998901cf0e52df97ac1cce5316535f" title="Adds a card to the player’s hand.">Player::addHeldCard()</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 2 --></div>
+</div>
 
 </div>
 </div>
@@ -421,6 +435,11 @@ If day boundary crossed, currentDay incremented and <a class="el" href="#a30df4d
 <dd>
 Console messages logged if logToConsole is true</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#a30df4d75d9021636f589d3a9e4e10445" title="Executes start-of-day triggers for all played cards across all players.">startNewDay()</a>, <a class="el" href="#a6bd3d524eed5c48f666cbddb0a3d06f2" title="Retrieves the index of the player whose turn is currently active.">getCurrentActivePlayerIndex()</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 3 --></div>
+</div>
 
 </div>
 </div>
@@ -562,6 +581,11 @@ Console message logged if logToConsole is true</dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>Window closed and game terminated</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Blocks execution until game exit </dd></dl>
 <dl class="section see"><dt>See also</dt><dd>executeCommand(), <a class="el" href="class_renderer.html#a00bd1dc3164bdeb3b9f642b796d5a286" title="Processes SFML window events and forwards input to the console.">Renderer::handleEvents()</a>, <a class="el" href="class_renderer.html#a3991290a8ec9aa0af4b6c63bdab5fa06" title="Draws all visible elements, including the board and console.">Renderer::render()</a> </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 4 --></div>
+</div>
 
 </div>
 </div>
@@ -607,6 +631,11 @@ Console message logged if logToConsole is true</dd></dl>
 <dd>
 Console message logged if logToConsole is true</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#a1f86867011cd502ab9539a9a585ea922" title="Removes a card from a player&#39;s active play area (discards it).">removePlayedCardForPlayer()</a>, <a class="el" href="class_player.html#a6b12e76f1ea60db5396f80e545bd417c" title="Moves a card from hand to played cards.">Player::playCard()</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 5 --></div>
+</div>
 
 </div>
 </div>
@@ -650,6 +679,11 @@ Console message logged if logToConsole is true</dd></dl>
 <dd>
 Console message logged if logToConsole is true</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#a7b945172aa366aa4e037b922e0761a5f" title="Plays a card from a player&#39;s hand into their active play area.">playCardForPlayer()</a>, <a class="el" href="class_player.html#a8d7d0abc148ef80459ce1980880a25fb" title="Removes a held card by name.">Player::removeHeldCard()</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 6 --></div>
+</div>
 
 </div>
 </div>
@@ -693,6 +727,11 @@ Console message logged if logToConsole is true</dd></dl>
 <dd>
 Console message logged if logToConsole is true</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#a7b945172aa366aa4e037b922e0761a5f" title="Plays a card from a player&#39;s hand into their active play area.">playCardForPlayer()</a>, <a class="el" href="class_player.html#aafc9632b2e1097a09a6f5a5074323340" title="Removes a played card by name.">Player::removePlayedCard()</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 7 --></div>
+</div>
 
 </div>
 </div>
@@ -713,7 +752,7 @@ Console message logged if logToConsole is true</dd></dl>
 
 <p>Initializes the game board and deals starting cards. </p>
 <p>Performs initial game setup:</p><ul>
-<li>Randomly assigns colors and owners to half the board tiles</li>
+<li>Randomly assigns colors and owners to half the board tiles (temporary)</li>
 <li>Sets remaining tiles to neutral (unowned)</li>
 <li>Loads card deck from "cards.json"</li>
 <li>Shuffles the draw deck</li>
@@ -730,6 +769,16 @@ Draw and discard decks created </dd>
 First player has one card in hand</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Neutral color (index 0 in <a class="el" href="class_colors.html#ae4bfc6e129eb8f20ea8197c5088f1d5b" title="List of all valid color names.">Colors::all</a>) is excluded from random selection </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#ae856b48c83f3a610ada1d5ca814a96c8" title="Registers a new player with their associated company.">addPlayer()</a>, <a class="el" href="#ae89e277761b7dc5bc7a23fd1b4c6f17d" title="Enters the main game loop, processing events and rendering until window closes.">mainLoop()</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 8 --></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 9 --></div>
+</div>
 
 </div>
 </div>
@@ -803,12 +852,17 @@ Console message logged if logToConsole is true</dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>All cards' onStartOfDay effects executed </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Called automatically when all players end their turn (day transition) </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#a1fe7922da710d9c72331c9dad3686cb3" title="Advances to the next player&#39;s turn, or starts a new day if all players finished.">endTurn()</a>, <a class="el" href="class_card.html#a14b29d41ea079de4fd5f79f76417e235" title="Executes all actions tied to a given trigger.">Card::executeTrigger()</a> </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 10 --></div>
+</div>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="_game_8hpp_source.html">Game.hpp</a></li>
-<li>src/<a class="el" href="_game_8cpp.html">Game.cpp</a></li>
+<li>src/<b>Game.cpp</b></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

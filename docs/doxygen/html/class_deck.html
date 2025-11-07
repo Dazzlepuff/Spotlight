@@ -32,9 +32,8 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Spotlight<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">Spotlight
    </div>
-   <div id="projectbrief">A digital boardgame prototype written in C++</div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -145,11 +144,13 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:adcbbf95d2798585fe37f6f0ccfe78820" id="r_adcbbf95d2798585fe37f6f0ccfe78820"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adcbbf95d2798585fe37f6f0ccfe78820">name</a></td></tr>
-<tr class="memdesc:adcbbf95d2798585fe37f6f0ccfe78820"><td class="mdescLeft">&#160;</td><td class="mdescRight">The deck’s name, used for identification or debugging.  <br /></td></tr>
+<tr class="memitem:adcbbf95d2798585fe37f6f0ccfe78820" id="r_adcbbf95d2798585fe37f6f0ccfe78820"><td class="memItemLeft" align="right" valign="top"><a id="adcbbf95d2798585fe37f6f0ccfe78820" name="adcbbf95d2798585fe37f6f0ccfe78820"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
+<tr class="memdesc:adcbbf95d2798585fe37f6f0ccfe78820"><td class="mdescLeft">&#160;</td><td class="mdescRight">The deck’s name, used for identification or debugging. <br /></td></tr>
 <tr class="separator:adcbbf95d2798585fe37f6f0ccfe78820"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af88eab927c6559098be0a0effa5dab11" id="r_af88eab927c6559098be0a0effa5dab11"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_card.html">Card</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af88eab927c6559098be0a0effa5dab11">cards</a></td></tr>
-<tr class="memdesc:af88eab927c6559098be0a0effa5dab11"><td class="mdescLeft">&#160;</td><td class="mdescRight">The internal storage of cards contained within the deck.  <br /></td></tr>
+<tr class="memitem:af88eab927c6559098be0a0effa5dab11" id="r_af88eab927c6559098be0a0effa5dab11"><td class="memItemLeft" align="right" valign="top"><a id="af88eab927c6559098be0a0effa5dab11" name="af88eab927c6559098be0a0effa5dab11"></a>
+std::vector&lt; <a class="el" href="class_card.html">Card</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>cards</b></td></tr>
+<tr class="memdesc:af88eab927c6559098be0a0effa5dab11"><td class="mdescLeft">&#160;</td><td class="mdescRight">The internal storage of cards contained within the deck. <br /></td></tr>
 <tr class="separator:af88eab927c6559098be0a0effa5dab11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -187,6 +188,11 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section post"><dt>Postcondition</dt><dd><a class="el" href="class_deck.html" title="Represents a collection of cards and provides utility operations for card management.">Deck</a> is initialized with an empty card list. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 0 --></div>
+</div>
 
 </div>
 </div>
@@ -215,6 +221,11 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section post"><dt>Postcondition</dt><dd>The card is appended to the end of the internal vector. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 1 --></div>
+</div>
 
 </div>
 </div>
@@ -240,6 +251,11 @@ Public Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The drawn <a class="el" href="class_card.html" title="Represents a playable card with triggers and associated actions.">Card</a> object. </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Returns a default-constructed <a class="el" href="class_card.html" title="Represents a playable card with triggers and associated actions.">Card</a> if the deck is empty. Reshuffling functionality not implemented.</dd></dl>
 <p>Returns the last element of the vector to simulate drawing from the top. Logs an error if called on an empty deck and returns a default card. </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 2 --></div>
+</div>
 
 </div>
 </div>
@@ -262,6 +278,11 @@ Public Attributes</h2></td></tr>
 <p>Returns true if there are no cards remaining in the deck.</p>
 <dl class="section return"><dt>Returns</dt><dd>True if the deck has no cards, false otherwise. </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>Does not modify the deck. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 3 --></div>
+</div>
 
 </div>
 </div>
@@ -300,6 +321,16 @@ Public Attributes</h2></td></tr>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="class_card.html#a5b4d30be8322facc6f0567ba00c2e1bf" title="Constructs a card from parsed JSON data.">Card::Card(const nlohmann::json&amp;)</a></dd></dl>
 <p>Uses <a class="el" href="namespace_path_utils.html#a92ce6938ce41b16444134a2083549c16" title="Constructs a path within the &quot;assets&quot; directory.">PathUtils::getAssetPath()</a> to resolve the full path of the file. Cards are loaded from JSON, supporting an optional "copies" field for duplication. Any parsing or I/O errors are printed to stderr. </p>
 <dl class="section note"><dt>Note</dt><dd>Default copies = 1 unless explicitly defined in JSON.</dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 4 --></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 5 --></div>
+</div>
 
 </div>
 </div>
@@ -333,6 +364,11 @@ Public Attributes</h2></td></tr>
 <dl class="section post"><dt>Postcondition</dt><dd>The specified card is added to the destination deck. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>This operation does not remove the card from the source deck.</dd></dl>
 <p>Only appends the card to the destination deck — it does not remove it locally. This enables flexible gameplay behavior (e.g., cloning, discarding). </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 6 --></div>
+</div>
 
 </div>
 </div>
@@ -355,6 +391,11 @@ Public Attributes</h2></td></tr>
 <p>Uses a Mersenne Twister pseudo-random generator seeded from std::random_device. Suitable for gameplay randomness but not cryptographically secure.</p>
 <dl class="section post"><dt>Postcondition</dt><dd>All cards remain present, but in randomized order.</dd></dl>
 <p>Uses std::shuffle with Mersenne Twister (mt19937) seeded from random_device. Ensures fair shuffling each time it’s called. </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 7 --></div>
+</div>
 
 </div>
 </div>
@@ -380,42 +421,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="af88eab927c6559098be0a0effa5dab11" name="af88eab927c6559098be0a0effa5dab11"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af88eab927c6559098be0a0effa5dab11">&#9670;&#160;</a></span>cards</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="class_card.html">Card</a>&gt; Deck::cards</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The internal storage of cards contained within the deck. </p>
-
-</div>
-</div>
-<a id="adcbbf95d2798585fe37f6f0ccfe78820" name="adcbbf95d2798585fe37f6f0ccfe78820"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adcbbf95d2798585fe37f6f0ccfe78820">&#9670;&#160;</a></span>name</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string Deck::name</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The deck’s name, used for identification or debugging. </p>
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="_deck_8hpp_source.html">Deck.hpp</a></li>
-<li>src/<a class="el" href="_deck_8cpp.html">Deck.cpp</a></li>
+<li>src/<b>Deck.cpp</b></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

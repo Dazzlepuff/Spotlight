@@ -3,122 +3,122 @@
 \mbox{\hyperlink{_game_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ }
-\DoxyCodeLine{00013\ }
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <string>}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <functional>}}
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_player_8hpp}{Player.hpp}}"{}}}
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_board_8hpp}{Board.hpp}}"{}}}
-\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_company_8hpp}{Company.hpp}}"{}}}
-\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_deck_8hpp}{Deck.hpp}}"{}}}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_renderer}{Renderer}};}
-\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_command_console}{CommandConsole}};}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00048\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_a27378bcfa405db9ad108f3a65e4f8e14}{Game}}\ \{}
-\DoxyCodeLine{00049\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{class_game_a27378bcfa405db9ad108f3a65e4f8e14}{Game}}(\textcolor{keywordtype}{int}\ boardSize,\ std::vector<Company>\ companyList);}
-\DoxyCodeLine{00073\ \ \ \ \ }
-\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{class_game_ae3d112ca6e0e55150d2fdbc704474530}{\string~Game}}();}
-\DoxyCodeLine{00080\ \ \ \ \ }
-\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_ae856b48c83f3a610ada1d5ca814a96c8}{addPlayer}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \mbox{\hyperlink{class_company}{Company}}*\ company);}
-\DoxyCodeLine{00099\ \ \ \ \ }
-\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_ae4618ba40eabbbe65e35f1bb239aa29b}{setup}}();}
-\DoxyCodeLine{00122\ \ \ \ \ }
-\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_ae89e277761b7dc5bc7a23fd1b4c6f17d}{mainLoop}}();}
-\DoxyCodeLine{00140\ }
-\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Player>\&\ \mbox{\hyperlink{class_game_a77f92a75210b020bcab767ad348db480}{getPlayers}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00148\ }
-\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a30df4d75d9021636f589d3a9e4e10445}{startNewDay}}();}
-\DoxyCodeLine{00161\ }
-\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a4b5f6df217318555fd2031cd9feb5379}{drawCardForPlayer}}(\mbox{\hyperlink{class_deck}{Deck}}\&\ deck,\ \mbox{\hyperlink{class_player}{Player}}\&\ player,\ \textcolor{keywordtype}{int}\ amount);}
-\DoxyCodeLine{00181\ \ \ \ \ }
-\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_aa2d651424d33f292bbe056c57018a988}{giveResourceToPlayer}}(\textcolor{keywordtype}{int}\ playerIndex,\ \textcolor{keyword}{const}\ std::string\&\ resource,\ \textcolor{keywordtype}{int}\ amount,\ \textcolor{keywordtype}{bool}\ logToConsole\ =\ \textcolor{keyword}{true});}
-\DoxyCodeLine{00201\ \ \ \ \ }
-\DoxyCodeLine{00222\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_game_a3ce4bc3f82be28226d71dc38393b343e}{spendResourceFromPlayer}}(\textcolor{keywordtype}{int}\ playerIndex,\ \textcolor{keyword}{const}\ std::string\&\ resource,\ \textcolor{keywordtype}{int}\ amount,\ \textcolor{keywordtype}{bool}\ logToConsole\ =\ \textcolor{keyword}{true});}
-\DoxyCodeLine{00223\ \ \ \ \ }
-\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_af7b8e98af7f4dcc0d6cee4cb099b9732}{buildStage}}(\textcolor{keywordtype}{int}\ playerIndex,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ z,\ \textcolor{keyword}{const}\ std::string\&\ color);}
-\DoxyCodeLine{00246\ \ \ \ \ }
-\DoxyCodeLine{00261\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a1fe7922da710d9c72331c9dad3686cb3}{endTurn}}(\textcolor{keywordtype}{bool}\ logToConsole\ =\ \textcolor{keyword}{true});}
-\DoxyCodeLine{00262\ \ \ \ \ }
-\DoxyCodeLine{00282\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_game_a7b945172aa366aa4e037b922e0761a5f}{playCardForPlayer}}(\textcolor{keywordtype}{int}\ playerIndex,\ \textcolor{keyword}{const}\ std::string\&\ cardName,\ \textcolor{keywordtype}{bool}\ logToConsole\ =\ \textcolor{keyword}{true});}
-\DoxyCodeLine{00283\ \ \ \ \ }
-\DoxyCodeLine{00301\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_game_a1f86867011cd502ab9539a9a585ea922}{removePlayedCardForPlayer}}(\textcolor{keywordtype}{int}\ playerIndex,\ \textcolor{keyword}{const}\ std::string\&\ cardName,\ \textcolor{keywordtype}{bool}\ logToConsole\ =\ \textcolor{keyword}{true});}
-\DoxyCodeLine{00302\ \ \ \ \ }
-\DoxyCodeLine{00320\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_game_a6bbf91c3dd5d56b692a3a212e4296871}{removeHeldCardForPlayer}}(\textcolor{keywordtype}{int}\ playerIndex,\ \textcolor{keyword}{const}\ std::string\&\ cardName,\ \textcolor{keywordtype}{bool}\ logToConsole\ =\ \textcolor{keyword}{true});}
-\DoxyCodeLine{00321\ }
-\DoxyCodeLine{00327\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_game_a77ec772ed3642bdcb8ec6f4ce8e23ff3}{getCurrentDay}}();}
-\DoxyCodeLine{00328\ \ \ \ \ }
-\DoxyCodeLine{00334\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_game_a6bd3d524eed5c48f666cbddb0a3d06f2}{getCurrentActivePlayerIndex}}();}
-\DoxyCodeLine{00335\ }
-\DoxyCodeLine{00336\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00350\ \ \ \ \ \textcolor{keywordtype}{void}\ executeCommand(\textcolor{keyword}{const}\ std::string\&\ cmd);}
-\DoxyCodeLine{00351\ \ \ \ \ }
-\DoxyCodeLine{00361\ \ \ \ \ \textcolor{keywordtype}{void}\ initializeCommandHandlers();}
-\DoxyCodeLine{00362\ \ \ \ \ }
-\DoxyCodeLine{00379\ \ \ \ \ \textcolor{keywordtype}{bool}\ validateAndSetPlayerIndex(\textcolor{keywordtype}{int}\&\ playerIndex,\ \textcolor{keywordtype}{bool}\ logToConsole\ =\ \textcolor{keyword}{true});}
-\DoxyCodeLine{00380\ \ \ \ \ }
-\DoxyCodeLine{00398\ \ \ \ \ \textcolor{keywordtype}{bool}\ parseCardNameWithOptionalPlayerIndex(std::istringstream\&\ ss,\ std::string\&\ cardName,\ \textcolor{keywordtype}{int}\&\ playerIndex);}
-\DoxyCodeLine{00399\ \ \ \ \ }
-\DoxyCodeLine{00400\ \ \ \ \ \textcolor{comment}{//\ ========================================}}
-\DoxyCodeLine{00401\ \ \ \ \ \textcolor{comment}{//\ Command\ Handler\ Functions}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_player_8hpp}{Player.hpp}}"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_board_8hpp}{Board.hpp}}"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_company_8hpp}{Company.hpp}}"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_deck_8hpp}{Deck.hpp}}"{}}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_renderer}{Renderer}};}
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_command_console}{CommandConsole}};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_a27378bcfa405db9ad108f3a65e4f8e14}{Game}}\ \{}
+\DoxyCodeLine{00051\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{class_game_a27378bcfa405db9ad108f3a65e4f8e14}{Game}}(\textcolor{keywordtype}{int}\ boardSize,\ std::vector<Company>\ companyList);}
+\DoxyCodeLine{00075\ \ \ \ \ }
+\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{class_game_ae3d112ca6e0e55150d2fdbc704474530}{\string~Game}}();}
+\DoxyCodeLine{00082\ \ \ \ \ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_ae856b48c83f3a610ada1d5ca814a96c8}{addPlayer}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \mbox{\hyperlink{class_company}{Company}}*\ company);}
+\DoxyCodeLine{00101\ \ \ \ \ }
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_ae4618ba40eabbbe65e35f1bb239aa29b}{setup}}();}
+\DoxyCodeLine{00124\ \ \ \ \ }
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_ae89e277761b7dc5bc7a23fd1b4c6f17d}{mainLoop}}();}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Player>\&\ \mbox{\hyperlink{class_game_a77f92a75210b020bcab767ad348db480}{getPlayers}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a30df4d75d9021636f589d3a9e4e10445}{startNewDay}}();}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a4b5f6df217318555fd2031cd9feb5379}{drawCardForPlayer}}(\mbox{\hyperlink{class_deck}{Deck}}\&\ deck,\ \mbox{\hyperlink{class_player}{Player}}\&\ player,\ \textcolor{keywordtype}{int}\ amount);}
+\DoxyCodeLine{00183\ \ \ \ \ }
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_aa2d651424d33f292bbe056c57018a988}{giveResourceToPlayer}}(\textcolor{keywordtype}{int}\ playerIndex,\ \textcolor{keyword}{const}\ std::string\&\ resource,\ \textcolor{keywordtype}{int}\ amount,\ \textcolor{keywordtype}{bool}\ logToConsole\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00203\ \ \ \ \ }
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_game_a3ce4bc3f82be28226d71dc38393b343e}{spendResourceFromPlayer}}(\textcolor{keywordtype}{int}\ playerIndex,\ \textcolor{keyword}{const}\ std::string\&\ resource,\ \textcolor{keywordtype}{int}\ amount,\ \textcolor{keywordtype}{bool}\ logToConsole\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00225\ \ \ \ \ }
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_af7b8e98af7f4dcc0d6cee4cb099b9732}{buildStage}}(\textcolor{keywordtype}{int}\ playerIndex,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ z,\ \textcolor{keyword}{const}\ std::string\&\ color);}
+\DoxyCodeLine{00248\ \ \ \ \ }
+\DoxyCodeLine{00263\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a1fe7922da710d9c72331c9dad3686cb3}{endTurn}}(\textcolor{keywordtype}{bool}\ logToConsole\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00264\ \ \ \ \ }
+\DoxyCodeLine{00284\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_game_a7b945172aa366aa4e037b922e0761a5f}{playCardForPlayer}}(\textcolor{keywordtype}{int}\ playerIndex,\ \textcolor{keyword}{const}\ std::string\&\ cardName,\ \textcolor{keywordtype}{bool}\ logToConsole\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00285\ \ \ \ \ }
+\DoxyCodeLine{00303\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_game_a1f86867011cd502ab9539a9a585ea922}{removePlayedCardForPlayer}}(\textcolor{keywordtype}{int}\ playerIndex,\ \textcolor{keyword}{const}\ std::string\&\ cardName,\ \textcolor{keywordtype}{bool}\ logToConsole\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00304\ \ \ \ \ }
+\DoxyCodeLine{00322\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_game_a6bbf91c3dd5d56b692a3a212e4296871}{removeHeldCardForPlayer}}(\textcolor{keywordtype}{int}\ playerIndex,\ \textcolor{keyword}{const}\ std::string\&\ cardName,\ \textcolor{keywordtype}{bool}\ logToConsole\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00323\ }
+\DoxyCodeLine{00329\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_game_a77ec772ed3642bdcb8ec6f4ce8e23ff3}{getCurrentDay}}();}
+\DoxyCodeLine{00330\ \ \ \ \ }
+\DoxyCodeLine{00336\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_game_a6bd3d524eed5c48f666cbddb0a3d06f2}{getCurrentActivePlayerIndex}}();}
+\DoxyCodeLine{00337\ }
+\DoxyCodeLine{00338\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00352\ \ \ \ \ \textcolor{keywordtype}{void}\ executeCommand(\textcolor{keyword}{const}\ std::string\&\ cmd);}
+\DoxyCodeLine{00353\ \ \ \ \ }
+\DoxyCodeLine{00363\ \ \ \ \ \textcolor{keywordtype}{void}\ initializeCommandHandlers();}
+\DoxyCodeLine{00364\ \ \ \ \ }
+\DoxyCodeLine{00381\ \ \ \ \ \textcolor{keywordtype}{bool}\ validateAndSetPlayerIndex(\textcolor{keywordtype}{int}\&\ playerIndex,\ \textcolor{keywordtype}{bool}\ logToConsole\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00382\ \ \ \ \ }
+\DoxyCodeLine{00400\ \ \ \ \ \textcolor{keywordtype}{bool}\ parseCardNameWithOptionalPlayerIndex(std::istringstream\&\ ss,\ std::string\&\ cardName,\ \textcolor{keywordtype}{int}\&\ playerIndex);}
+\DoxyCodeLine{00401\ \ \ \ \ }
 \DoxyCodeLine{00402\ \ \ \ \ \textcolor{comment}{//\ ========================================}}
-\DoxyCodeLine{00403\ \ \ \ \ \textcolor{comment}{//\ These\ private\ methods\ implement\ the\ logic\ for\ each\ console\ command.}}
-\DoxyCodeLine{00404\ \ \ \ \ \textcolor{comment}{//\ They\ parse\ arguments\ from\ the\ input\ stream,\ validate\ inputs,\ and\ execute}}
-\DoxyCodeLine{00405\ \ \ \ \ \textcolor{comment}{//\ the\ corresponding\ game\ action.\ Most\ log\ results\ to\ the\ console.}}
-\DoxyCodeLine{00406\ \ \ \ \ \textcolor{comment}{//\ ========================================}}
-\DoxyCodeLine{00407\ \ \ \ \ }
-\DoxyCodeLine{00414\ \ \ \ \ \textcolor{keywordtype}{void}\ handleSetColor(std::istringstream\&\ ss);}
-\DoxyCodeLine{00415\ \ \ \ \ }
-\DoxyCodeLine{00422\ \ \ \ \ \textcolor{keywordtype}{void}\ handleSetOwner(std::istringstream\&\ ss);}
-\DoxyCodeLine{00423\ \ \ \ \ }
-\DoxyCodeLine{00430\ \ \ \ \ \textcolor{keywordtype}{void}\ handleBuild(std::istringstream\&\ ss);}
-\DoxyCodeLine{00431\ \ \ \ \ }
-\DoxyCodeLine{00436\ \ \ \ \ \textcolor{keywordtype}{void}\ handleListPlayers();}
-\DoxyCodeLine{00437\ \ \ \ \ }
-\DoxyCodeLine{00443\ \ \ \ \ \textcolor{keywordtype}{void}\ handleShowResources(std::istringstream\&\ ss);}
-\DoxyCodeLine{00444\ \ \ \ \ }
-\DoxyCodeLine{00450\ \ \ \ \ \textcolor{keywordtype}{void}\ handleShowCards(std::istringstream\&\ ss);}
-\DoxyCodeLine{00451\ \ \ \ \ }
-\DoxyCodeLine{00457\ \ \ \ \ \textcolor{keywordtype}{void}\ handleGetCardCount(std::istringstream\&\ ss);}
-\DoxyCodeLine{00458\ \ \ \ \ }
-\DoxyCodeLine{00465\ \ \ \ \ \textcolor{keywordtype}{void}\ handleDrawCard(std::istringstream\&\ ss);}
-\DoxyCodeLine{00466\ \ \ \ \ }
-\DoxyCodeLine{00473\ \ \ \ \ \textcolor{keywordtype}{void}\ handleGiveResource(std::istringstream\&\ ss);}
-\DoxyCodeLine{00474\ \ \ \ \ }
-\DoxyCodeLine{00481\ \ \ \ \ \textcolor{keywordtype}{void}\ handleSpendResource(std::istringstream\&\ ss);}
-\DoxyCodeLine{00482\ \ \ \ \ }
-\DoxyCodeLine{00489\ \ \ \ \ \textcolor{keywordtype}{void}\ handlePlayCard(std::istringstream\&\ ss);}
-\DoxyCodeLine{00490\ \ \ \ \ }
-\DoxyCodeLine{00497\ \ \ \ \ \textcolor{keywordtype}{void}\ handleRemovePlayedCard(std::istringstream\&\ ss);}
-\DoxyCodeLine{00498\ \ \ \ \ }
-\DoxyCodeLine{00505\ \ \ \ \ \textcolor{keywordtype}{void}\ handleRemoveHeldCard(std::istringstream\&\ ss);}
-\DoxyCodeLine{00506\ \ \ \ \ }
-\DoxyCodeLine{00511\ \ \ \ \ \textcolor{keywordtype}{void}\ handleHelp();}
-\DoxyCodeLine{00512\ }
-\DoxyCodeLine{00513\ \ \ \ \ \textcolor{comment}{//\ ========================================}}
-\DoxyCodeLine{00514\ \ \ \ \ \textcolor{comment}{//\ Member\ Variables}}
+\DoxyCodeLine{00403\ \ \ \ \ \textcolor{comment}{//\ Command\ Handler\ Functions}}
+\DoxyCodeLine{00404\ \ \ \ \ \textcolor{comment}{//\ ========================================}}
+\DoxyCodeLine{00405\ \ \ \ \ \textcolor{comment}{//\ These\ private\ methods\ implement\ the\ logic\ for\ each\ console\ command.}}
+\DoxyCodeLine{00406\ \ \ \ \ \textcolor{comment}{//\ They\ parse\ arguments\ from\ the\ input\ stream,\ validate\ inputs,\ and\ execute}}
+\DoxyCodeLine{00407\ \ \ \ \ \textcolor{comment}{//\ the\ corresponding\ game\ action.\ Most\ log\ results\ to\ the\ console.}}
+\DoxyCodeLine{00408\ \ \ \ \ \textcolor{comment}{//\ ========================================}}
+\DoxyCodeLine{00409\ \ \ \ \ }
+\DoxyCodeLine{00416\ \ \ \ \ \textcolor{keywordtype}{void}\ handleSetColor(std::istringstream\&\ ss);}
+\DoxyCodeLine{00417\ \ \ \ \ }
+\DoxyCodeLine{00424\ \ \ \ \ \textcolor{keywordtype}{void}\ handleSetOwner(std::istringstream\&\ ss);}
+\DoxyCodeLine{00425\ \ \ \ \ }
+\DoxyCodeLine{00432\ \ \ \ \ \textcolor{keywordtype}{void}\ handleBuild(std::istringstream\&\ ss);}
+\DoxyCodeLine{00433\ \ \ \ \ }
+\DoxyCodeLine{00438\ \ \ \ \ \textcolor{keywordtype}{void}\ handleListPlayers();}
+\DoxyCodeLine{00439\ \ \ \ \ }
+\DoxyCodeLine{00445\ \ \ \ \ \textcolor{keywordtype}{void}\ handleShowResources(std::istringstream\&\ ss);}
+\DoxyCodeLine{00446\ \ \ \ \ }
+\DoxyCodeLine{00452\ \ \ \ \ \textcolor{keywordtype}{void}\ handleShowCards(std::istringstream\&\ ss);}
+\DoxyCodeLine{00453\ \ \ \ \ }
+\DoxyCodeLine{00459\ \ \ \ \ \textcolor{keywordtype}{void}\ handleGetCardCount(std::istringstream\&\ ss);}
+\DoxyCodeLine{00460\ \ \ \ \ }
+\DoxyCodeLine{00467\ \ \ \ \ \textcolor{keywordtype}{void}\ handleDrawCard(std::istringstream\&\ ss);}
+\DoxyCodeLine{00468\ \ \ \ \ }
+\DoxyCodeLine{00475\ \ \ \ \ \textcolor{keywordtype}{void}\ handleGiveResource(std::istringstream\&\ ss);}
+\DoxyCodeLine{00476\ \ \ \ \ }
+\DoxyCodeLine{00483\ \ \ \ \ \textcolor{keywordtype}{void}\ handleSpendResource(std::istringstream\&\ ss);}
+\DoxyCodeLine{00484\ \ \ \ \ }
+\DoxyCodeLine{00491\ \ \ \ \ \textcolor{keywordtype}{void}\ handlePlayCard(std::istringstream\&\ ss);}
+\DoxyCodeLine{00492\ \ \ \ \ }
+\DoxyCodeLine{00499\ \ \ \ \ \textcolor{keywordtype}{void}\ handleRemovePlayedCard(std::istringstream\&\ ss);}
+\DoxyCodeLine{00500\ \ \ \ \ }
+\DoxyCodeLine{00507\ \ \ \ \ \textcolor{keywordtype}{void}\ handleRemoveHeldCard(std::istringstream\&\ ss);}
+\DoxyCodeLine{00508\ \ \ \ \ }
+\DoxyCodeLine{00513\ \ \ \ \ \textcolor{keywordtype}{void}\ handleHelp();}
+\DoxyCodeLine{00514\ }
 \DoxyCodeLine{00515\ \ \ \ \ \textcolor{comment}{//\ ========================================}}
-\DoxyCodeLine{00516\ \ \ \ \ }
-\DoxyCodeLine{00517\ \ \ \ \ \mbox{\hyperlink{class_board}{Board}}\ board;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00518\ \ \ \ \ std::vector<Player>\ players;\ \ \ \ \ \ }
-\DoxyCodeLine{00519\ \ \ \ \ std::vector<Company>\ companies;\ \ \ }
-\DoxyCodeLine{00520\ \ \ \ \ std::vector<Deck>\ decks;\ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00521\ \ \ \ \ }
-\DoxyCodeLine{00522\ \ \ \ \ \textcolor{keywordtype}{int}\ currentDay\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00523\ \ \ \ \ \textcolor{keywordtype}{int}\ currentActivePlayerIndex\ =\ 0;\ }
-\DoxyCodeLine{00524\ \ \ \ \ }
-\DoxyCodeLine{00525\ \ \ \ \ sf::Font\ font;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00526\ \ \ \ \ sf::RenderWindow\ window;\ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00527\ \ \ \ \ \mbox{\hyperlink{class_renderer}{Renderer}}*\ renderer;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00528\ \ \ \ \ \mbox{\hyperlink{class_command_console}{CommandConsole}}*\ console;\ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00529\ \ \ \ \ }
-\DoxyCodeLine{00535\ \ \ \ \ std::unordered\_map<std::string,\ std::function<void(std::istringstream\&)>>\ commandHandlers;}
-\DoxyCodeLine{00536\ \ \ \ \ }
-\DoxyCodeLine{00543\ \ \ \ \ \mbox{\hyperlink{class_deck}{Deck}}*\ getDeckByName(\textcolor{keyword}{const}\ std::string\&\ deckName);}
-\DoxyCodeLine{00544\ \};}
+\DoxyCodeLine{00516\ \ \ \ \ \textcolor{comment}{//\ Member\ Variables}}
+\DoxyCodeLine{00517\ \ \ \ \ \textcolor{comment}{//\ ========================================}}
+\DoxyCodeLine{00518\ \ \ \ \ }
+\DoxyCodeLine{00519\ \ \ \ \ \mbox{\hyperlink{class_board}{Board}}\ board;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00520\ \ \ \ \ std::vector<Player>\ players;\ \ \ \ \ \ }
+\DoxyCodeLine{00521\ \ \ \ \ std::vector<Company>\ companies;\ \ \ }
+\DoxyCodeLine{00522\ \ \ \ \ std::vector<Deck>\ decks;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00523\ \ \ \ \ }
+\DoxyCodeLine{00524\ \ \ \ \ \textcolor{keywordtype}{int}\ currentDay\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00525\ \ \ \ \ \textcolor{keywordtype}{int}\ currentActivePlayerIndex\ =\ 0;\ }
+\DoxyCodeLine{00526\ \ \ \ \ }
+\DoxyCodeLine{00527\ \ \ \ \ sf::Font\ font;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00528\ \ \ \ \ sf::RenderWindow\ window;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00529\ \ \ \ \ \mbox{\hyperlink{class_renderer}{Renderer}}*\ renderer;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00530\ \ \ \ \ \mbox{\hyperlink{class_command_console}{CommandConsole}}*\ console;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00531\ \ \ \ \ }
+\DoxyCodeLine{00537\ \ \ \ \ std::unordered\_map<std::string,\ std::function<void(std::istringstream\&)>>\ commandHandlers;}
+\DoxyCodeLine{00538\ \ \ \ \ }
+\DoxyCodeLine{00545\ \ \ \ \ \mbox{\hyperlink{class_deck}{Deck}}*\ getDeckByName(\textcolor{keyword}{const}\ std::string\&\ deckName);}
+\DoxyCodeLine{00546\ \};}
 
 \end{DoxyCode}

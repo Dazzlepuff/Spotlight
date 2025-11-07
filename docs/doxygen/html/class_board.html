@@ -32,9 +32,8 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Spotlight<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">Spotlight
    </div>
-   <div id="projectbrief">A digital boardgame prototype written in C++</div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -232,6 +231,11 @@ Public Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to the <a class="el" href="class_tile.html" title="Represents a single board tile that can be owned by a company and display a color.">Tile</a> if it exists, or nullptr if out of bounds. </dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd>The coordinate must satisfy <picture><source srcset="form_0_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$x + y + z = 0$" src="form_0.png"/></picture> for valid hex geometry. </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>Does not modify board state. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 0 --></div>
+</div>
 
 </div>
 </div>
@@ -299,6 +303,11 @@ Public Attributes</h2></td></tr>
 <dl class="section warning"><dt>Warning</dt><dd>Prints an error if the tile does not exist or color is invalid. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="class_colors.html#abd7dcd987ab14613a74a3de594878635" title="Checks whether a color name is valid.">Colors::isValid()</a></dd></dl>
 <p>Validates the target coordinate and color before assignment. Logs errors if either is invalid but continues execution safely. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 1 --></div>
+</div>
 
 </div>
 </div>
@@ -345,6 +354,11 @@ Public Attributes</h2></td></tr>
 <dl class="section post"><dt>Postcondition</dt><dd>The tile’s ownership is updated. </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Does nothing if the coordinate is invalid.</dd></dl>
 <p>Updates the ownership of a specific tile if it exists. Useful for territory claiming or resource control systems. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 2 --></div>
+</div>
 
 </div>
 </div>
@@ -368,7 +382,7 @@ Public Attributes</h2></td></tr>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="_board_8hpp_source.html">Board.hpp</a></li>
-<li>src/<a class="el" href="_board_8cpp.html">Board.cpp</a></li>
+<li>src/<b>Board.cpp</b></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

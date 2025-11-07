@@ -32,9 +32,8 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Spotlight<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">Spotlight
    </div>
-   <div id="projectbrief">A digital boardgame prototype written in C++</div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -117,8 +116,9 @@ $(function(){initNavTree('class_tile.html',''); initResizable(true); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aeeb5593bb6b75aae2edfcccbc84ab378" id="r_aeeb5593bb6b75aae2edfcccbc84ab378"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeeb5593bb6b75aae2edfcccbc84ab378">Tile</a> ()</td></tr>
-<tr class="memdesc:aeeb5593bb6b75aae2edfcccbc84ab378"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a neutral, unowned tile.  <br /></td></tr>
+<tr class="memitem:aeeb5593bb6b75aae2edfcccbc84ab378" id="r_aeeb5593bb6b75aae2edfcccbc84ab378"><td class="memItemLeft" align="right" valign="top"><a id="aeeb5593bb6b75aae2edfcccbc84ab378" name="aeeb5593bb6b75aae2edfcccbc84ab378"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Tile</b> ()</td></tr>
+<tr class="memdesc:aeeb5593bb6b75aae2edfcccbc84ab378"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a neutral, unowned tile. <br /></td></tr>
 <tr class="separator:aeeb5593bb6b75aae2edfcccbc84ab378"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35b2a9cd2770651599a46fa6e36c5765" id="r_a35b2a9cd2770651599a46fa6e36c5765"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35b2a9cd2770651599a46fa6e36c5765">setOwner</a> (<a class="el" href="class_company.html">Company</a> *newOwner)</td></tr>
 <tr class="memdesc:a35b2a9cd2770651599a46fa6e36c5765"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the owner of this tile.  <br /></td></tr>
@@ -132,34 +132,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a92130b87058655f46ccaef98f1eb45ac" id="r_a92130b87058655f46ccaef98f1eb45ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92130b87058655f46ccaef98f1eb45ac">setColor</a> (const std::string &amp;newColor)</td></tr>
 <tr class="memdesc:a92130b87058655f46ccaef98f1eb45ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the tile's color.  <br /></td></tr>
 <tr class="separator:a92130b87058655f46ccaef98f1eb45ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16b0ff076cc95ca338c8bcfc6fd59844" id="r_a16b0ff076cc95ca338c8bcfc6fd59844"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16b0ff076cc95ca338c8bcfc6fd59844">printInfo</a> () const</td></tr>
-<tr class="memdesc:a16b0ff076cc95ca338c8bcfc6fd59844"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints a formatted line describing ownership and color to the console.  <br /></td></tr>
+<tr class="memitem:a16b0ff076cc95ca338c8bcfc6fd59844" id="r_a16b0ff076cc95ca338c8bcfc6fd59844"><td class="memItemLeft" align="right" valign="top"><a id="a16b0ff076cc95ca338c8bcfc6fd59844" name="a16b0ff076cc95ca338c8bcfc6fd59844"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>printInfo</b> () const</td></tr>
+<tr class="memdesc:a16b0ff076cc95ca338c8bcfc6fd59844"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints a formatted line describing ownership and color to the console. <br /></td></tr>
 <tr class="separator:a16b0ff076cc95ca338c8bcfc6fd59844"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a single board tile that can be owned by a company and display a color. </p>
 <p>Each tile may have an owner (a pointer to a <a class="el" href="class_company.html" title="Represents a company, corporation, or in-game faction.">Company</a>) and an associated color. Tiles start unowned and "neutral" in color by default. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aeeb5593bb6b75aae2edfcccbc84ab378" name="aeeb5593bb6b75aae2edfcccbc84ab378"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeeb5593bb6b75aae2edfcccbc84ab378">&#9670;&#160;</a></span>Tile()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Tile::Tile </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Constructs a neutral, unowned tile. </p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a9ff251bdc934841adeee196fda8ecb67" name="a9ff251bdc934841adeee196fda8ecb67"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9ff251bdc934841adeee196fda8ecb67">&#9670;&#160;</a></span>getColor()</h2>
 
@@ -200,25 +181,6 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a16b0ff076cc95ca338c8bcfc6fd59844" name="a16b0ff076cc95ca338c8bcfc6fd59844"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a16b0ff076cc95ca338c8bcfc6fd59844">&#9670;&#160;</a></span>printInfo()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Tile::printInfo </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Prints a formatted line describing ownership and color to the console. </p>
-
-</div>
-</div>
 <a id="a92130b87058655f46ccaef98f1eb45ac" name="a92130b87058655f46ccaef98f1eb45ac"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a92130b87058655f46ccaef98f1eb45ac">&#9670;&#160;</a></span>setColor()</h2>
 
@@ -241,6 +203,11 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 0 --></div>
+</div>
 
 </div>
 </div>
@@ -266,12 +233,17 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 1 --></div>
+</div>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="_tile_8hpp_source.html">Tile.hpp</a></li>
-<li>src/<a class="el" href="_tile_8cpp.html">Tile.cpp</a></li>
+<li>src/<b>Tile.cpp</b></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

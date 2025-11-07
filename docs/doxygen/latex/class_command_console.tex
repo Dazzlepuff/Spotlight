@@ -22,11 +22,13 @@ void \mbox{\hyperlink{class_command_console_a65aab751a464e44df1f03eebbecdcf5f}{p
 \begin{DoxyCompactList}\small\item\em Prints a single line of text to the console output. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_command_console_a870aa4bfdcf53e57811fc5c55e7a9703}{print\+Paged}} (const std\+::vector$<$ std\+::string $>$ \&lines)
 \begin{DoxyCompactList}\small\item\em Displays multiple lines of text using a paginated system. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_command_console_a6166ec409e087772f865f06d16fc63bd}{show\+Next\+Page}} ()
+\Hypertarget{class_command_console_a6166ec409e087772f865f06d16fc63bd}\label{class_command_console_a6166ec409e087772f865f06d16fc63bd} 
+void {\bfseries show\+Next\+Page} ()
 \begin{DoxyCompactList}\small\item\em Advances to and displays the next page of paginated text, if available. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{class_command_console_a44b7dbcafb5513c1e40638782ffa0e5d}{next\+Command}} ()
 \begin{DoxyCompactList}\small\item\em Retrieves the next user-\/entered command. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_command_console_a38843111f15b0a71d9b58b842c094c84}{clear}} ()
+\Hypertarget{class_command_console_a38843111f15b0a71d9b58b842c094c84}\label{class_command_console_a38843111f15b0a71d9b58b842c094c84} 
+void {\bfseries clear} ()
 \begin{DoxyCompactList}\small\item\em Clears all console output lines. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_command_console_ad7c3dd8db0abeecbf14beb12b6511d67}{has\+Command}} () const
 \begin{DoxyCompactList}\small\item\em Returns whether there are commands pending to process. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -65,16 +67,6 @@ Constructs a command console linked to a board.
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{class_command_console_a38843111f15b0a71d9b58b842c094c84}\index{CommandConsole@{CommandConsole}!clear@{clear}}
-\index{clear@{clear}!CommandConsole@{CommandConsole}}
-\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
-{\footnotesize\ttfamily \label{class_command_console_a38843111f15b0a71d9b58b842c094c84} 
-void Command\+Console\+::clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
-
-
-
-Clears all console output lines. 
-
 \Hypertarget{class_command_console_a944dd52635194dff99315253204c80d1}\index{CommandConsole@{CommandConsole}!draw@{draw}}
 \index{draw@{draw}!CommandConsole@{CommandConsole}}
 \doxysubsubsection{\texorpdfstring{draw()}{draw()}}
@@ -90,6 +82,8 @@ Renders the console contents to the window.
 {\em window} & Reference to the SFML render window. \\
 \hline
 \end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 0
 \Hypertarget{class_command_console_a4c50fc3e66fe839e79e41b05fe4dd5c2}\index{CommandConsole@{CommandConsole}!handleEvent@{handleEvent}}
 \index{handleEvent@{handleEvent}!CommandConsole@{CommandConsole}}
 \doxysubsubsection{\texorpdfstring{handleEvent()}{handleEvent()}}
@@ -105,6 +99,8 @@ Handles keyboard input events to build commands and navigate history.
 {\em e} & The SFML event to process. \\
 \hline
 \end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 1
 \Hypertarget{class_command_console_ad7c3dd8db0abeecbf14beb12b6511d67}\index{CommandConsole@{CommandConsole}!hasCommand@{hasCommand}}
 \index{hasCommand@{hasCommand}!CommandConsole@{CommandConsole}}
 \doxysubsubsection{\texorpdfstring{hasCommand()}{hasCommand()}}
@@ -146,6 +142,8 @@ Prints a single line of text to the console output.
 {\em line} & Text line to display. \\
 \hline
 \end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 2
 \Hypertarget{class_command_console_a870aa4bfdcf53e57811fc5c55e7a9703}\index{CommandConsole@{CommandConsole}!printPaged@{printPaged}}
 \index{printPaged@{printPaged}!CommandConsole@{CommandConsole}}
 \doxysubsubsection{\texorpdfstring{printPaged()}{printPaged()}}
@@ -161,16 +159,8 @@ Displays multiple lines of text using a paginated system.
 {\em lines} & A vector of lines to show, split into multiple pages if necessary. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{class_command_console_a6166ec409e087772f865f06d16fc63bd}\index{CommandConsole@{CommandConsole}!showNextPage@{showNextPage}}
-\index{showNextPage@{showNextPage}!CommandConsole@{CommandConsole}}
-\doxysubsubsection{\texorpdfstring{showNextPage()}{showNextPage()}}
-{\footnotesize\ttfamily \label{class_command_console_a6166ec409e087772f865f06d16fc63bd} 
-void Command\+Console\+::show\+Next\+Page (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
-
-
-
-Advances to and displays the next page of paginated text, if available. 
-
+Here is the call graph for this function\+:
+% FIG 3
 
 
 \doxysubsection{Member Data Documentation}
@@ -185,4 +175,4 @@ True if more paginated output remains.
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 include/\mbox{\hyperlink{_command_console_8hpp}{Command\+Console.\+hpp}}\item 
-src/\mbox{\hyperlink{_command_console_8cpp}{Command\+Console.\+cpp}}\end{DoxyCompactItemize}
+src/Command\+Console.\+cpp\end{DoxyCompactItemize}

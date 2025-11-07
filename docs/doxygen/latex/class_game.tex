@@ -86,7 +86,7 @@ Constructs a new \doxylink{class_game}{Game} instance with specified board and c
 Initializes the game environment including\+:
 \begin{DoxyItemize}
 \item Hexagonal board of given size
-\item SFML rendering window (1600x1200)
+\item SFML rendering window (800\texorpdfstring{$\ast$}{*}600)
 \item Font loading from assets
 \item \doxylink{class_renderer}{Renderer} and command console subsystems
 \item \doxylink{class_company}{Company} roster for player assignment
@@ -116,6 +116,8 @@ Exits with error message if font file "{}consolas.\+ttf"{} cannot be loaded
 \begin{DoxySeeAlso}{See also}
 \doxylink{class_game_ae856b48c83f3a610ada1d5ca814a96c8}{add\+Player()}, \doxylink{class_game_ae4618ba40eabbbe65e35f1bb239aa29b}{setup()} 
 \end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 0
 \Hypertarget{class_game_ae3d112ca6e0e55150d2fdbc704474530}\index{Game@{Game}!````~Game@{\texorpdfstring{$\sim$}{\string~}Game}}
 \index{````~Game@{\texorpdfstring{$\sim$}{\string~}Game}!Game@{Game}}
 \doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Game()}{\string~Game()}}
@@ -165,6 +167,8 @@ Must be called before \doxylink{class_game_ae4618ba40eabbbe65e35f1bb239aa29b}{se
 \begin{DoxySeeAlso}{See also}
 \doxylink{class_game_ae4618ba40eabbbe65e35f1bb239aa29b}{setup()}, \doxylink{class_game_a6bd3d524eed5c48f666cbddb0a3d06f2}{get\+Current\+Active\+Player\+Index()} 
 \end{DoxySeeAlso}
+Here is the caller graph for this function\+:
+% FIG 1
 \Hypertarget{class_game_af7b8e98af7f4dcc0d6cee4cb099b9732}\index{Game@{Game}!buildStage@{buildStage}}
 \index{buildStage@{buildStage}!Game@{Game}}
 \doxysubsubsection{\texorpdfstring{buildStage()}{buildStage()}}
@@ -245,6 +249,8 @@ If deck empties mid-\/draw, stops and logs a message
 \begin{DoxySeeAlso}{See also}
 \doxylink{class_deck_a7e3cb5a726dec9953c564ab7d780563d}{Deck\+::draw\+Card()}, \doxylink{class_player_a12998901cf0e52df97ac1cce5316535f}{Player\+::add\+Held\+Card()} 
 \end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 2
 \Hypertarget{class_game_a1fe7922da710d9c72331c9dad3686cb3}\index{Game@{Game}!endTurn@{endTurn}}
 \index{endTurn@{endTurn}!Game@{Game}}
 \doxysubsubsection{\texorpdfstring{endTurn()}{endTurn()}}
@@ -272,6 +278,8 @@ Console messages logged if log\+To\+Console is true
 \begin{DoxySeeAlso}{See also}
 \doxylink{class_game_a30df4d75d9021636f589d3a9e4e10445}{start\+New\+Day()}, \doxylink{class_game_a6bd3d524eed5c48f666cbddb0a3d06f2}{get\+Current\+Active\+Player\+Index()} 
 \end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 3
 \Hypertarget{class_game_a6bd3d524eed5c48f666cbddb0a3d06f2}\index{Game@{Game}!getCurrentActivePlayerIndex@{getCurrentActivePlayerIndex}}
 \index{getCurrentActivePlayerIndex@{getCurrentActivePlayerIndex}!Game@{Game}}
 \doxysubsubsection{\texorpdfstring{getCurrentActivePlayerIndex()}{getCurrentActivePlayerIndex()}}
@@ -388,6 +396,8 @@ Blocks execution until game exit
 \begin{DoxySeeAlso}{See also}
 execute\+Command(), \doxylink{class_renderer_a00bd1dc3164bdeb3b9f642b796d5a286}{Renderer\+::handle\+Events()}, \doxylink{class_renderer_a3991290a8ec9aa0af4b6c63bdab5fa06}{Renderer\+::render()} 
 \end{DoxySeeAlso}
+Here is the caller graph for this function\+:
+% FIG 4
 \Hypertarget{class_game_a7b945172aa366aa4e037b922e0761a5f}\index{Game@{Game}!playCardForPlayer@{playCardForPlayer}}
 \index{playCardForPlayer@{playCardForPlayer}!Game@{Game}}
 \doxysubsubsection{\texorpdfstring{playCardForPlayer()}{playCardForPlayer()}}
@@ -425,6 +435,8 @@ Console message logged if log\+To\+Console is true
 \begin{DoxySeeAlso}{See also}
 \doxylink{class_game_a1f86867011cd502ab9539a9a585ea922}{remove\+Played\+Card\+For\+Player()}, \doxylink{class_player_a6b12e76f1ea60db5396f80e545bd417c}{Player\+::play\+Card()} 
 \end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 5
 \Hypertarget{class_game_a6bbf91c3dd5d56b692a3a212e4296871}\index{Game@{Game}!removeHeldCardForPlayer@{removeHeldCardForPlayer}}
 \index{removeHeldCardForPlayer@{removeHeldCardForPlayer}!Game@{Game}}
 \doxysubsubsection{\texorpdfstring{removeHeldCardForPlayer()}{removeHeldCardForPlayer()}}
@@ -460,6 +472,8 @@ Console message logged if log\+To\+Console is true
 \begin{DoxySeeAlso}{See also}
 \doxylink{class_game_a7b945172aa366aa4e037b922e0761a5f}{play\+Card\+For\+Player()}, \doxylink{class_player_a8d7d0abc148ef80459ce1980880a25fb}{Player\+::remove\+Held\+Card()} 
 \end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 6
 \Hypertarget{class_game_a1f86867011cd502ab9539a9a585ea922}\index{Game@{Game}!removePlayedCardForPlayer@{removePlayedCardForPlayer}}
 \index{removePlayedCardForPlayer@{removePlayedCardForPlayer}!Game@{Game}}
 \doxysubsubsection{\texorpdfstring{removePlayedCardForPlayer()}{removePlayedCardForPlayer()}}
@@ -495,6 +509,8 @@ Console message logged if log\+To\+Console is true
 \begin{DoxySeeAlso}{See also}
 \doxylink{class_game_a7b945172aa366aa4e037b922e0761a5f}{play\+Card\+For\+Player()}, \doxylink{class_player_aafc9632b2e1097a09a6f5a5074323340}{Player\+::remove\+Played\+Card()} 
 \end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 7
 \Hypertarget{class_game_ae4618ba40eabbbe65e35f1bb239aa29b}\index{Game@{Game}!setup@{setup}}
 \index{setup@{setup}!Game@{Game}}
 \doxysubsubsection{\texorpdfstring{setup()}{setup()}}
@@ -507,7 +523,7 @@ Initializes the game board and deals starting cards.
 
 Performs initial game setup\+:
 \begin{DoxyItemize}
-\item Randomly assigns colors and owners to half the board tiles
+\item Randomly assigns colors and owners to half the board tiles (temporary)
 \item Sets remaining tiles to neutral (unowned)
 \item Loads card deck from "{}cards.\+json"{}
 \item Shuffles the draw deck
@@ -534,6 +550,10 @@ Neutral color (index 0 in \doxylink{class_colors_ae4bfc6e129eb8f20ea8197c5088f1d
 \begin{DoxySeeAlso}{See also}
 \doxylink{class_game_ae856b48c83f3a610ada1d5ca814a96c8}{add\+Player()}, \doxylink{class_game_ae89e277761b7dc5bc7a23fd1b4c6f17d}{main\+Loop()} 
 \end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
 \Hypertarget{class_game_a3ce4bc3f82be28226d71dc38393b343e}\index{Game@{Game}!spendResourceFromPlayer@{spendResourceFromPlayer}}
 \index{spendResourceFromPlayer@{spendResourceFromPlayer}!Game@{Game}}
 \doxysubsubsection{\texorpdfstring{spendResourceFromPlayer()}{spendResourceFromPlayer()}}
@@ -595,9 +615,11 @@ Called automatically when all players end their turn (day transition)
 \begin{DoxySeeAlso}{See also}
 \doxylink{class_game_a1fe7922da710d9c72331c9dad3686cb3}{end\+Turn()}, \doxylink{class_card_a14b29d41ea079de4fd5f79f76417e235}{Card\+::execute\+Trigger()} 
 \end{DoxySeeAlso}
+Here is the caller graph for this function\+:
+% FIG 10
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 include/\mbox{\hyperlink{_game_8hpp}{Game.\+hpp}}\item 
-src/\mbox{\hyperlink{_game_8cpp}{Game.\+cpp}}\end{DoxyCompactItemize}
+src/Game.\+cpp\end{DoxyCompactItemize}

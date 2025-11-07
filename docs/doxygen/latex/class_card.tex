@@ -12,7 +12,8 @@ Represents a playable card with triggers and associated actions.
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_card_ad3e990e28a4961b998eb5995f1191881}{Card}} ()=default
+\Hypertarget{class_card_ad3e990e28a4961b998eb5995f1191881}\label{class_card_ad3e990e28a4961b998eb5995f1191881} 
+{\bfseries Card} ()=default
 \begin{DoxyCompactList}\small\item\em Default constructor. Initializes an empty card. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_card_a5b4d30be8322facc6f0567ba00c2e1bf}{Card}} (const nlohmann\+::json \&data)
 \begin{DoxyCompactList}\small\item\em Constructs a card from parsed JSON data. \end{DoxyCompactList}\item 
@@ -35,19 +36,9 @@ Represents a playable card with triggers and associated actions.
 Each card contains a name, description, and a set of triggers that define when certain actions occur (e.\+g., "{}on\+Play"{}, "{}on\+Start\+Of\+Day"{}). Actions are stored as JSON objects that can be executed dynamically. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{class_card_ad3e990e28a4961b998eb5995f1191881}\index{Card@{Card}!Card@{Card}}
-\index{Card@{Card}!Card@{Card}}
-\doxysubsubsection{\texorpdfstring{Card()}{Card()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \label{class_card_ad3e990e28a4961b998eb5995f1191881} 
-Card\+::\+Card (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
-
-
-
-Default constructor. Initializes an empty card. 
-
 \Hypertarget{class_card_a5b4d30be8322facc6f0567ba00c2e1bf}\index{Card@{Card}!Card@{Card}}
 \index{Card@{Card}!Card@{Card}}
-\doxysubsubsection{\texorpdfstring{Card()}{Card()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\doxysubsubsection{\texorpdfstring{Card()}{Card()}}
 {\footnotesize\ttfamily \label{class_card_a5b4d30be8322facc6f0567ba00c2e1bf} 
 Card\+::\+Card (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{data}{}\end{DoxyParamCaption})}
 
@@ -80,6 +71,8 @@ Executes all actions tied to a given trigger.
 {\em player} & The player affected by this card’s actions. \\
 \hline
 \end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 0
 
 
 \doxysubsection{Member Data Documentation}
@@ -119,4 +112,4 @@ Example format\+:
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 include/\mbox{\hyperlink{_card_8hpp}{Card.\+hpp}}\item 
-src/\mbox{\hyperlink{_card_8cpp}{Card.\+cpp}}\end{DoxyCompactItemize}
+src/Card.\+cpp\end{DoxyCompactItemize}

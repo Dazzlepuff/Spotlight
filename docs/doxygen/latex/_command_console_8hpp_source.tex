@@ -2,55 +2,57 @@
 \hypertarget{_command_console_8hpp_source}{}\label{_command_console_8hpp_source}\index{include/CommandConsole.hpp@{include/CommandConsole.hpp}}
 \mbox{\hyperlink{_command_console_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <queue>}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_board_8hpp}{Board.hpp}}"{}}}
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_command_console_acc6ad7eb1630a14d6ef1c475354cfe66}{CommandConsole}}\ \{}
-\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_command_console_acc6ad7eb1630a14d6ef1c475354cfe66}{CommandConsole}}(\mbox{\hyperlink{class_board}{Board}}\&\ b,\ sf::Font\&\ f,\ sf::Vector2f\ pos);}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_command_console_a944dd52635194dff99315253204c80d1}{draw}}(sf::RenderWindow\&\ window);}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_command_console_a4c50fc3e66fe839e79e41b05fe4dd5c2}{handleEvent}}(\textcolor{keyword}{const}\ sf::Event\&\ e);}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_command_console_a65aab751a464e44df1f03eebbecdcf5f}{print}}(\textcolor{keyword}{const}\ std::string\&\ line);}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_board_8hpp}{Board.hpp}}"{}}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_command_console_acc6ad7eb1630a14d6ef1c475354cfe66}{CommandConsole}}\ \{}
+\DoxyCodeLine{00034\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_command_console_acc6ad7eb1630a14d6ef1c475354cfe66}{CommandConsole}}(\mbox{\hyperlink{class_board}{Board}}\&\ b,\ sf::Font\&\ f,\ sf::Vector2f\ pos);}
 \DoxyCodeLine{00042\ }
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_command_console_a870aa4bfdcf53e57811fc5c55e7a9703}{printPaged}}(\textcolor{keyword}{const}\ std::vector<std::string>\&\ lines);}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_command_console_a944dd52635194dff99315253204c80d1}{draw}}(sf::RenderWindow\&\ window);}
 \DoxyCodeLine{00048\ }
-\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_command_console_a6166ec409e087772f865f06d16fc63bd}{showNextPage}}();}
-\DoxyCodeLine{00053\ }
-\DoxyCodeLine{00058\ \ \ \ \ std::string\ \mbox{\hyperlink{class_command_console_a44b7dbcafb5513c1e40638782ffa0e5d}{nextCommand}}();}
-\DoxyCodeLine{00059\ }
-\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_command_console_a38843111f15b0a71d9b58b842c094c84}{clear}}();}
-\DoxyCodeLine{00064\ }
-\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_command_console_ad7c3dd8db0abeecbf14beb12b6511d67}{hasCommand}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ !pendingCommands.empty();\ \}}
-\DoxyCodeLine{00070\ }
-\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_command_console_aa3f71677a8da527f8147a965226cef64}{awaitingNextPage}}\ =\ \textcolor{keyword}{false};\ \ }
-\DoxyCodeLine{00072\ }
-\DoxyCodeLine{00073\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{class_board}{Board}}\&\ board;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00075\ \ \ \ \ sf::Font\&\ font;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00076\ \ \ \ \ sf::Text\ text;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00077\ \ \ \ \ sf::Vector2f\ position;\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00078\ }
-\DoxyCodeLine{00079\ \ \ \ \ std::string\ buffer;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00080\ \ \ \ \ std::vector<std::string>\ outputLines;\ }
-\DoxyCodeLine{00081\ \ \ \ \ std::queue<std::string>\ pendingCommands;\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_command_console_a4c50fc3e66fe839e79e41b05fe4dd5c2}{handleEvent}}(\textcolor{keyword}{const}\ sf::Event\&\ e);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_command_console_a65aab751a464e44df1f03eebbecdcf5f}{print}}(\textcolor{keyword}{const}\ std::string\&\ line);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_command_console_a870aa4bfdcf53e57811fc5c55e7a9703}{printPaged}}(\textcolor{keyword}{const}\ std::vector<std::string>\&\ lines);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_command_console_a6166ec409e087772f865f06d16fc63bd}{showNextPage}}();}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00076\ \ \ \ \ std::string\ \mbox{\hyperlink{class_command_console_a44b7dbcafb5513c1e40638782ffa0e5d}{nextCommand}}();}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_command_console_a38843111f15b0a71d9b58b842c094c84}{clear}}();}
 \DoxyCodeLine{00082\ }
-\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{//\ Paging}}
-\DoxyCodeLine{00084\ \ \ \ \ std::vector<std::string>\ pagedBuffer;\ }
-\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ pageIndex\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00086\ }
-\DoxyCodeLine{00087\ \ \ \ \ \textcolor{comment}{//\ History}}
-\DoxyCodeLine{00088\ \ \ \ \ std::vector<std::string>\ commandHistory;\ }
-\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{int}\ historyIndex\ =\ -\/1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_command_console_ad7c3dd8db0abeecbf14beb12b6511d67}{hasCommand}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ !pendingCommands.empty();\ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_command_console_aa3f71677a8da527f8147a965226cef64}{awaitingNextPage}}\ =\ \textcolor{keyword}{false};\ \ }
 \DoxyCodeLine{00090\ }
-\DoxyCodeLine{00091\ \ \ \ \ \textcolor{comment}{//\ Config}}
-\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ maxLines\ =\ 10;\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00093\ \};}
+\DoxyCodeLine{00091\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{class_board}{Board}}\&\ board;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00093\ \ \ \ \ sf::Font\&\ font;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00094\ \ \ \ \ sf::Text\ text;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00095\ \ \ \ \ sf::Vector2f\ position;\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ std::string\ buffer;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00098\ \ \ \ \ std::vector<std::string>\ outputLines;\ }
+\DoxyCodeLine{00099\ \ \ \ \ std::queue<std::string>\ pendingCommands;\ }
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{comment}{//\ Paging}}
+\DoxyCodeLine{00102\ \ \ \ \ std::vector<std::string>\ pagedBuffer;\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ pageIndex\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{comment}{//\ History}}
+\DoxyCodeLine{00106\ \ \ \ \ std::vector<std::string>\ commandHistory;\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{int}\ historyIndex\ =\ -\/1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{comment}{//\ Config}}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ maxLines\ =\ 10;\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00111\ \};}
 
 \end{DoxyCode}

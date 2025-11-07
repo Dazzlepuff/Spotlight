@@ -115,6 +115,8 @@ The coordinate must satisfy $x + y + z = 0$ for valid hex geometry.
 \begin{DoxyPostcond}{Postcondition}
 Does not modify board state. 
 \end{DoxyPostcond}
+Here is the caller graph for this function\+:
+% FIG 0
 \Hypertarget{class_board_a3f5b48d92226217de5d488f3d5fb234a}\index{Board@{Board}!printBoard@{printBoard}}
 \index{printBoard@{printBoard}!Board@{Board}}
 \doxysubsubsection{\texorpdfstring{printBoard()}{printBoard()}}
@@ -161,7 +163,9 @@ Prints an error if the tile does not exist or color is invalid.
 \begin{DoxySeeAlso}{See also}
 \doxylink{class_colors_abd7dcd987ab14613a74a3de594878635}{Colors\+::is\+Valid()}
 \end{DoxySeeAlso}
-Validates the target coordinate and color before assignment. Logs errors if either is invalid but continues execution safely. \Hypertarget{class_board_a025b63c63ceeb4e632e428667922f2a4}\index{Board@{Board}!setTileOwner@{setTileOwner}}
+Validates the target coordinate and color before assignment. Logs errors if either is invalid but continues execution safely. Here is the call graph for this function\+:
+% FIG 1
+\Hypertarget{class_board_a025b63c63ceeb4e632e428667922f2a4}\index{Board@{Board}!setTileOwner@{setTileOwner}}
 \index{setTileOwner@{setTileOwner}!Board@{Board}}
 \doxysubsubsection{\texorpdfstring{setTileOwner()}{setTileOwner()}}
 {\footnotesize\ttfamily \label{class_board_a025b63c63ceeb4e632e428667922f2a4} 
@@ -191,7 +195,9 @@ The tile’s ownership is updated.
 \begin{DoxyWarning}{Warning}
 Does nothing if the coordinate is invalid.
 \end{DoxyWarning}
-Updates the ownership of a specific tile if it exists. Useful for territory claiming or resource control systems. 
+Updates the ownership of a specific tile if it exists. Useful for territory claiming or resource control systems. Here is the call graph for this function\+:
+% FIG 2
+
 
 \doxysubsection{Member Data Documentation}
 \Hypertarget{class_board_a3271052d9867b3c56d5c52f8fd9e350b}\index{Board@{Board}!tiles@{tiles}}
@@ -212,4 +218,4 @@ The unordered\+\_\+map allows efficient random access and modification of tiles.
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 include/\mbox{\hyperlink{_board_8hpp}{Board.\+hpp}}\item 
-src/\mbox{\hyperlink{_board_8cpp}{Board.\+cpp}}\end{DoxyCompactItemize}
+src/Board.\+cpp\end{DoxyCompactItemize}

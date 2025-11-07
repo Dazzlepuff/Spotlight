@@ -1,12 +1,38 @@
 \doxysection{include/\+Command\+Console.hpp File Reference}
 \hypertarget{_command_console_8hpp}{}\label{_command_console_8hpp}\index{include/CommandConsole.hpp@{include/CommandConsole.hpp}}
+
+
+Declares the \doxylink{class_command_console}{Command\+Console} class which allows for user IO.  
+
+
 {\ttfamily \#include $<$SFML/\+Graphics.\+hpp$>$}\newline
 {\ttfamily \#include $<$queue$>$}\newline
 {\ttfamily \#include $<$vector$>$}\newline
 {\ttfamily \#include $<$string$>$}\newline
 {\ttfamily \#include "{}Board.\+hpp"{}}\newline
+Include dependency graph for Command\+Console.\+hpp\+:
+% FIG 0
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{class_command_console}{Command\+Console}}
 \begin{DoxyCompactList}\small\item\em In-\/game text console handling user command input, output history, and paging. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Declares the \doxylink{class_command_console}{Command\+Console} class which allows for user IO. 
+
+A key factor in the functionality of the program at whole is allowing the user to interact and receive output. This is done through the command console which only handles IO and passes all commands to the \doxylink{class_game}{Game} class to process.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_board}{Board}, \doxylink{class_renderer}{Renderer}, \doxylink{class_game}{Game}
+\end{DoxySeeAlso}
+\begin{DoxyDate}{Date}
+2025-\/11-\/06 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{Author}
+Owen Chilson 
+\end{DoxyAuthor}

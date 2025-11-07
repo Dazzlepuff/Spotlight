@@ -32,9 +32,8 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Spotlight<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">Spotlight
    </div>
-   <div id="projectbrief">A digital boardgame prototype written in C++</div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -108,11 +107,19 @@ $(function(){initNavTree('_command_console_8hpp.html',''); initResizable(true); 
   <div class="headertitle"><div class="title">CommandConsole.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Declares the <a class="el" href="class_command_console.html" title="In-game text console handling user command input, output history, and paging.">CommandConsole</a> class which allows for user IO.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;SFML/Graphics.hpp&gt;</code><br />
 <code>#include &lt;queue&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &quot;<a class="el" href="_board_8hpp_source.html">Board.hpp</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for CommandConsole.hpp:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 0 --></div>
+</div>
 </div>
 <p><a href="_command_console_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -122,7 +129,14 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">In-game text console handling user command input, output history, and paging.  <a href="class_command_console.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Declares the <a class="el" href="class_command_console.html" title="In-game text console handling user command input, output history, and paging.">CommandConsole</a> class which allows for user IO. </p>
+<p>A key factor in the functionality of the program at whole is allowing the user to interact and receive output. This is done through the command console which only handles IO and passes all commands to the <a class="el" href="class_game.html" title="Central game controller managing all gameplay mechanics and state.">Game</a> class to process.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_board.html" title="Represents a hexagonal game board composed of cube-coordinate tiles.">Board</a>, <a class="el" href="class_renderer.html" title="Handles all visual rendering and window event management for the game.">Renderer</a>, <a class="el" href="class_game.html" title="Central game controller managing all gameplay mechanics and state.">Game</a></dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025-11-06 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Owen Chilson </dd></dl>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
