@@ -52,9 +52,15 @@ cmake --build .
 
 ### Running the Application
 
-From the build directory:
+Run the executable from the `bin/` directory:
 ```bash
-./boardgame
+./bin/Spotlight.exe
+```
+
+Or navigate to the bin folder and run directly:
+```bash
+cd bin
+./Spotlight.exe
 ```
 
 ---
@@ -117,13 +123,10 @@ Player 1 built a structure on tile (0, 0, 0).
 Complete setup, gameplay flow, and system design documentation:
 - **Location:** `docs/UserManual.pdf`
 
-### Doxygen HTML Index
+### API Reference
 Comprehensive class and function documentation generated via Doxygen:
-- **Location:** `docs/Doxygen/html/index.html`
-
-### Doxygen Reference Manual (PDF)
-Comprehensive static version of the class and function documentation generated via Doxygen:
-- **Location:** `docs/Doxygen/html/refman.pdf`
+- **HTML Documentation:** `docs/Doxygen/html/index.html`
+- **PDF Reference Manual:** `docs/Doxygen/refman.pdf`
 
 ---
 
@@ -131,20 +134,23 @@ Comprehensive static version of the class and function documentation generated v
 
 ```
 Spotlight/
-├── assets/             # Referenced assets
-├── bin/                # 
-├── src/                # Source files
-├── include/            # Header files
-├── build/              # Build directory (pre-configured)
+├── src/                # Source code (.cpp, .hpp)
+├── include/            # Header files (if separated)
+├── assets/             # Game assets (textures, sounds, data files)
+├── bin/                # Compiled executables and required DLLs
+│   ├── Spotlight.exe
+│   ├── *.dll
+│   └── (optional asset subfolders)
+├── build/              # CMake build directory (ignored by Git)
 ├── config/             # Configuration files
 │   └── settings.txt
 ├── docs/               # Documentation
 │   ├── UserManual.pdf
 │   └── Doxygen/
-│       ├── html/
-│       └── latex/
+│       ├── html/       # Auto-generated HTML documentation
+│       └── refman.pdf  # Comprehensive PDF reference manual
 ├── CMakeLists.txt      # Build configuration
-├── .gitignore          # Ignores build/ files
+├── .gitignore
 └── README.md
 ```
 
