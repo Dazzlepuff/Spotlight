@@ -3,6 +3,7 @@
 #include <filesystem>
 #include <vector>
 #include <string>
+#include <limits>
 #include <SFML/Graphics.hpp>
 #include "StartupMenu.hpp"
 #include "Company.hpp"
@@ -17,7 +18,7 @@ namespace fs = std::filesystem;
  * @brief Holds persistent player and company setup information.
  */
 struct GameConfig {
-    int playerCount = 2;                               /**< Number of players in the game (2–6). */
+    int playerCount = 2;                               /**< Number of players in the game (2-6). */
     std::vector<std::string> playerNames;               /**< Names of all players. */
     std::vector<std::string> companyNames;              /**< Names of companies linked to players. */
     std::vector<std::string> companySymbols;            /**< Company symbols or abbreviations. */
@@ -95,8 +96,17 @@ GameConfig loadConfig() {
 void settingsMenu(GameConfig& cfg) {
     std::cout << "\n=== SETTINGS ===\n";
 
-    std::cout << "Enter number of players (2–6): ";
+    std::cout << "Enter number of players (2-6): ";
     std::cin >> cfg.playerCount;
+    
+    // Handle invalid input
+    if (std::cin.fail()) {
+        std::cin.clear(); // Clear error flags
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
+        std::cout << "Invalid input. Please enter a number.\n";
+        return;
+    }
+    
     if (cfg.playerCount < 2) cfg.playerCount = 2;
     if (cfg.playerCount > 6) cfg.playerCount = 6;
 
@@ -151,6 +161,14 @@ int StartupMenu::StartMenuLoop() {
         std::cout << "3. Exit\n";
         std::cout << "Choose an option: ";
         std::cin >> choice;
+
+        // Handle invalid input
+        if (std::cin.fail()) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Invalid choice.\n";
+            continue;
+        }
 
         if (choice == 1) break;
         else if (choice == 2) settingsMenu(cfg);

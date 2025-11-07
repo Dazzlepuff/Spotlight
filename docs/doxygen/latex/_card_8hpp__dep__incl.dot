@@ -1,0 +1,15 @@
+digraph "include/Card.hpp"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  Node1 [id="Node000001",label="include/Card.hpp",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Declares the Card class which represents a singular card and its properties like name and description..."];
+  Node1 -> Node2 [id="edge5_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="include/Deck.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_deck_8hpp.html",tooltip="Declares the Deck class used for managing collections of Card objects."];
+  Node2 -> Node3 [id="edge6_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="include/Game.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_game_8hpp.html",tooltip="Core game engine managing turn-based hex board gameplay with card and resource mechanics."];
+  Node1 -> Node4 [id="edge7_Node000001_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="include/Player.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_player_8hpp.html",tooltip="Defines the Player class, representing a participant with resources, cards, and a company affiliation..."];
+  Node4 -> Node3 [id="edge8_Node000004_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+}

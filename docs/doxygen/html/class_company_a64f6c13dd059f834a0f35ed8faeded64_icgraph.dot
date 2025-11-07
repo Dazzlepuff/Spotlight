@@ -1,0 +1,11 @@
+digraph "Company::getName"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="Company::getName",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Retrieves the company’s full name."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="Tile::printInfo",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_tile.html#a16b0ff076cc95ca338c8bcfc6fd59844",tooltip="Prints a formatted line describing ownership and color to the console."];
+}

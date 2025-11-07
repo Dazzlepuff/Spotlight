@@ -1,4 +1,4 @@
-.TH "Card" 3 "Version 1.0" "Spotlight" \" -*- nroff -*-
+.TH "Card" 3 "Spotlight" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -46,10 +46,6 @@ Represents a playable card with triggers and associated actions\&.
 Each card contains a name, description, and a set of triggers that define when certain actions occur (e\&.g\&., "onPlay", "onStartOfDay")\&. Actions are stored as JSON objects that can be executed dynamically\&. 
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "Card::Card ()\fR [default]\fP"
-
-.PP
-Default constructor\&. Initializes an empty card\&. 
 .SS "Card::Card (const nlohmann::json & data)"
 
 .PP

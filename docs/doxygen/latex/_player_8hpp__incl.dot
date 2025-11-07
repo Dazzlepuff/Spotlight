@@ -1,0 +1,24 @@
+digraph "include/Player.hpp"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  Node1 [id="Node000001",label="include/Player.hpp",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Defines the Player class, representing a participant with resources, cards, and a company affiliation..."];
+  Node1 -> Node2 [id="edge11_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="string",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node1 -> Node3 [id="edge12_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="vector",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node1 -> Node4 [id="edge13_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="unordered_map",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node1 -> Node5 [id="edge14_Node000001_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="Company.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_company_8hpp.html",tooltip="Declares the Company class representing a business entity or player faction."];
+  Node5 -> Node2 [id="edge15_Node000005_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node6 [id="edge16_Node000001_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="Card.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$_card_8hpp.html",tooltip="Declares the Card class which represents a singular card and its properties like name and description..."];
+  Node6 -> Node2 [id="edge17_Node000006_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node6 -> Node3 [id="edge18_Node000006_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node6 -> Node4 [id="edge19_Node000006_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node6 -> Node7 [id="edge20_Node000006_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="nlohmann/json.hpp",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+}

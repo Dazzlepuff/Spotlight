@@ -1,4 +1,4 @@
-.TH "Tile" 3 "Version 1.0" "Spotlight" \" -*- nroff -*-
+.TH "Tile" 3 "Spotlight" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -42,12 +42,6 @@ Tile \- Represents a single board tile that can be owned by a company and displa
 Represents a single board tile that can be owned by a company and display a color\&. 
 
 Each tile may have an owner (a pointer to a \fBCompany\fP) and an associated color\&. Tiles start unowned and "neutral" in color by default\&. 
-.SH "Constructor & Destructor Documentation"
-.PP 
-.SS "Tile::Tile ()"
-
-.PP
-Constructs a neutral, unowned tile\&. 
 .SH "Member Function Documentation"
 .PP 
 .SS "const std::string & Tile::getColor () const"
@@ -72,10 +66,6 @@ Pointer to the owning company, or nullptr if unowned\&.
 .RE
 .PP
 
-.SS "void Tile::printInfo () const"
-
-.PP
-Prints a formatted line describing ownership and color to the console\&. 
 .SS "void Tile::setColor (const std::string & newColor)"
 
 .PP

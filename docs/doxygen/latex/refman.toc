@@ -1,0 +1,190 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}Namespace Index}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Namespace List}{1}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Class Index}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Class List}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}File Index}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}File List}{5}{section.3.1}%
+\contentsline {chapter}{\numberline {4}Namespace Documentation}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Path\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Utils Namespace Reference}{7}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Detailed Description}{7}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Function Documentation}{7}{subsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.2.1}getAssetPath()}{7}{subsubsection.4.1.2.1}%
+\contentsline {subsubsection}{\numberline {4.1.2.2}getConfigPath()}{8}{subsubsection.4.1.2.2}%
+\contentsline {subsubsection}{\numberline {4.1.2.3}getExecutableDir()}{8}{subsubsection.4.1.2.3}%
+\contentsline {chapter}{\numberline {5}Class Documentation}{9}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Board Class Reference}{9}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Detailed Description}{9}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Constructor \& Destructor Documentation}{10}{subsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.2.1}Board()}{10}{subsubsection.5.1.2.1}%
+\contentsline {subsection}{\numberline {5.1.3}Member Function Documentation}{10}{subsection.5.1.3}%
+\contentsline {subsubsection}{\numberline {5.1.3.1}getNeighbors()}{10}{subsubsection.5.1.3.1}%
+\contentsline {subsubsection}{\numberline {5.1.3.2}getTile()}{10}{subsubsection.5.1.3.2}%
+\contentsline {subsubsection}{\numberline {5.1.3.3}printBoard()}{11}{subsubsection.5.1.3.3}%
+\contentsline {subsubsection}{\numberline {5.1.3.4}setTileColor()}{11}{subsubsection.5.1.3.4}%
+\contentsline {subsubsection}{\numberline {5.1.3.5}setTileOwner()}{12}{subsubsection.5.1.3.5}%
+\contentsline {subsection}{\numberline {5.1.4}Member Data Documentation}{13}{subsection.5.1.4}%
+\contentsline {subsubsection}{\numberline {5.1.4.1}tiles}{13}{subsubsection.5.1.4.1}%
+\contentsline {section}{\numberline {5.2}Card Class Reference}{13}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Detailed Description}{13}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Constructor \& Destructor Documentation}{13}{subsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.2.1}Card()}{13}{subsubsection.5.2.2.1}%
+\contentsline {subsection}{\numberline {5.2.3}Member Function Documentation}{14}{subsection.5.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.3.1}executeTrigger()}{14}{subsubsection.5.2.3.1}%
+\contentsline {subsection}{\numberline {5.2.4}Member Data Documentation}{14}{subsection.5.2.4}%
+\contentsline {subsubsection}{\numberline {5.2.4.1}description}{14}{subsubsection.5.2.4.1}%
+\contentsline {subsubsection}{\numberline {5.2.4.2}name}{14}{subsubsection.5.2.4.2}%
+\contentsline {subsubsection}{\numberline {5.2.4.3}triggers}{14}{subsubsection.5.2.4.3}%
+\contentsline {section}{\numberline {5.3}Colors Class Reference}{15}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Detailed Description}{15}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Member Function Documentation}{15}{subsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.2.1}getSfmlColor()}{15}{subsubsection.5.3.2.1}%
+\contentsline {subsubsection}{\numberline {5.3.2.2}isValid()}{15}{subsubsection.5.3.2.2}%
+\contentsline {subsection}{\numberline {5.3.3}Member Data Documentation}{16}{subsection.5.3.3}%
+\contentsline {subsubsection}{\numberline {5.3.3.1}all}{16}{subsubsection.5.3.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.3.2}colorCodes}{16}{subsubsection.5.3.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.3.3}sfmlColors}{16}{subsubsection.5.3.3.3}%
+\contentsline {section}{\numberline {5.4}Command\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Console Class Reference}{17}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Detailed Description}{17}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Constructor \& Destructor Documentation}{17}{subsection.5.4.2}%
+\contentsline {subsubsection}{\numberline {5.4.2.1}CommandConsole()}{17}{subsubsection.5.4.2.1}%
+\contentsline {subsection}{\numberline {5.4.3}Member Function Documentation}{18}{subsection.5.4.3}%
+\contentsline {subsubsection}{\numberline {5.4.3.1}draw()}{18}{subsubsection.5.4.3.1}%
+\contentsline {subsubsection}{\numberline {5.4.3.2}handleEvent()}{18}{subsubsection.5.4.3.2}%
+\contentsline {subsubsection}{\numberline {5.4.3.3}hasCommand()}{18}{subsubsection.5.4.3.3}%
+\contentsline {subsubsection}{\numberline {5.4.3.4}nextCommand()}{19}{subsubsection.5.4.3.4}%
+\contentsline {subsubsection}{\numberline {5.4.3.5}print()}{19}{subsubsection.5.4.3.5}%
+\contentsline {subsubsection}{\numberline {5.4.3.6}printPaged()}{19}{subsubsection.5.4.3.6}%
+\contentsline {subsection}{\numberline {5.4.4}Member Data Documentation}{19}{subsection.5.4.4}%
+\contentsline {subsubsection}{\numberline {5.4.4.1}awaitingNextPage}{19}{subsubsection.5.4.4.1}%
+\contentsline {section}{\numberline {5.5}Company Class Reference}{20}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Detailed Description}{20}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Constructor \& Destructor Documentation}{20}{subsection.5.5.2}%
+\contentsline {subsubsection}{\numberline {5.5.2.1}Company()}{20}{subsubsection.5.5.2.1}%
+\contentsline {subsection}{\numberline {5.5.3}Member Function Documentation}{21}{subsection.5.5.3}%
+\contentsline {subsubsection}{\numberline {5.5.3.1}getName()}{21}{subsubsection.5.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.5.3.2}getSymbol()}{21}{subsubsection.5.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.5.3.3}setName()}{21}{subsubsection.5.5.3.3}%
+\contentsline {subsubsection}{\numberline {5.5.3.4}setSymbol()}{21}{subsubsection.5.5.3.4}%
+\contentsline {section}{\numberline {5.6}Cube\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Coord Struct Reference}{22}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}Detailed Description}{22}{subsection.5.6.1}%
+\contentsline {subsection}{\numberline {5.6.2}Constructor \& Destructor Documentation}{23}{subsection.5.6.2}%
+\contentsline {subsubsection}{\numberline {5.6.2.1}CubeCoord()}{23}{subsubsection.5.6.2.1}%
+\contentsline {subsection}{\numberline {5.6.3}Member Function Documentation}{23}{subsection.5.6.3}%
+\contentsline {subsubsection}{\numberline {5.6.3.1}operator+()}{23}{subsubsection.5.6.3.1}%
+\contentsline {subsubsection}{\numberline {5.6.3.2}operator==()}{23}{subsubsection.5.6.3.2}%
+\contentsline {section}{\numberline {5.7}Cube\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Coord\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Hash Struct Reference}{24}{section.5.7}%
+\contentsline {subsection}{\numberline {5.7.1}Detailed Description}{24}{subsection.5.7.1}%
+\contentsline {subsection}{\numberline {5.7.2}Member Function Documentation}{24}{subsection.5.7.2}%
+\contentsline {subsubsection}{\numberline {5.7.2.1}operator()()}{24}{subsubsection.5.7.2.1}%
+\contentsline {section}{\numberline {5.8}Deck Class Reference}{25}{section.5.8}%
+\contentsline {subsection}{\numberline {5.8.1}Detailed Description}{26}{subsection.5.8.1}%
+\contentsline {subsection}{\numberline {5.8.2}Constructor \& Destructor Documentation}{26}{subsection.5.8.2}%
+\contentsline {subsubsection}{\numberline {5.8.2.1}Deck()}{26}{subsubsection.5.8.2.1}%
+\contentsline {subsection}{\numberline {5.8.3}Member Function Documentation}{26}{subsection.5.8.3}%
+\contentsline {subsubsection}{\numberline {5.8.3.1}addCard()}{26}{subsubsection.5.8.3.1}%
+\contentsline {subsubsection}{\numberline {5.8.3.2}drawCard()}{27}{subsubsection.5.8.3.2}%
+\contentsline {subsubsection}{\numberline {5.8.3.3}empty()}{27}{subsubsection.5.8.3.3}%
+\contentsline {subsubsection}{\numberline {5.8.3.4}loadFromJsonFile()}{27}{subsubsection.5.8.3.4}%
+\contentsline {subsubsection}{\numberline {5.8.3.5}moveCardTo()}{28}{subsubsection.5.8.3.5}%
+\contentsline {subsubsection}{\numberline {5.8.3.6}shuffle()}{29}{subsubsection.5.8.3.6}%
+\contentsline {subsubsection}{\numberline {5.8.3.7}size()}{29}{subsubsection.5.8.3.7}%
+\contentsline {section}{\numberline {5.9}Game Class Reference}{29}{section.5.9}%
+\contentsline {subsection}{\numberline {5.9.1}Detailed Description}{30}{subsection.5.9.1}%
+\contentsline {subsection}{\numberline {5.9.2}Constructor \& Destructor Documentation}{31}{subsection.5.9.2}%
+\contentsline {subsubsection}{\numberline {5.9.2.1}Game()}{31}{subsubsection.5.9.2.1}%
+\contentsline {subsubsection}{\numberline {5.9.2.2}$\sim $Game()}{32}{subsubsection.5.9.2.2}%
+\contentsline {subsection}{\numberline {5.9.3}Member Function Documentation}{32}{subsection.5.9.3}%
+\contentsline {subsubsection}{\numberline {5.9.3.1}addPlayer()}{32}{subsubsection.5.9.3.1}%
+\contentsline {subsubsection}{\numberline {5.9.3.2}buildStage()}{32}{subsubsection.5.9.3.2}%
+\contentsline {subsubsection}{\numberline {5.9.3.3}drawCardForPlayer()}{33}{subsubsection.5.9.3.3}%
+\contentsline {subsubsection}{\numberline {5.9.3.4}endTurn()}{34}{subsubsection.5.9.3.4}%
+\contentsline {subsubsection}{\numberline {5.9.3.5}getCurrentActivePlayerIndex()}{34}{subsubsection.5.9.3.5}%
+\contentsline {subsubsection}{\numberline {5.9.3.6}getCurrentDay()}{35}{subsubsection.5.9.3.6}%
+\contentsline {subsubsection}{\numberline {5.9.3.7}getPlayers()}{35}{subsubsection.5.9.3.7}%
+\contentsline {subsubsection}{\numberline {5.9.3.8}giveResourceToPlayer()}{35}{subsubsection.5.9.3.8}%
+\contentsline {subsubsection}{\numberline {5.9.3.9}mainLoop()}{36}{subsubsection.5.9.3.9}%
+\contentsline {subsubsection}{\numberline {5.9.3.10}playCardForPlayer()}{36}{subsubsection.5.9.3.10}%
+\contentsline {subsubsection}{\numberline {5.9.3.11}removeHeldCardForPlayer()}{37}{subsubsection.5.9.3.11}%
+\contentsline {subsubsection}{\numberline {5.9.3.12}removePlayedCardForPlayer()}{38}{subsubsection.5.9.3.12}%
+\contentsline {subsubsection}{\numberline {5.9.3.13}setup()}{38}{subsubsection.5.9.3.13}%
+\contentsline {subsubsection}{\numberline {5.9.3.14}spendResourceFromPlayer()}{39}{subsubsection.5.9.3.14}%
+\contentsline {subsubsection}{\numberline {5.9.3.15}startNewDay()}{40}{subsubsection.5.9.3.15}%
+\contentsline {section}{\numberline {5.10}Game\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Config Struct Reference}{40}{section.5.10}%
+\contentsline {subsection}{\numberline {5.10.1}Detailed Description}{40}{subsection.5.10.1}%
+\contentsline {subsection}{\numberline {5.10.2}Member Data Documentation}{40}{subsection.5.10.2}%
+\contentsline {subsubsection}{\numberline {5.10.2.1}companyNames}{40}{subsubsection.5.10.2.1}%
+\contentsline {subsubsection}{\numberline {5.10.2.2}companySymbols}{41}{subsubsection.5.10.2.2}%
+\contentsline {subsubsection}{\numberline {5.10.2.3}playerCount}{41}{subsubsection.5.10.2.3}%
+\contentsline {subsubsection}{\numberline {5.10.2.4}playerNames}{41}{subsubsection.5.10.2.4}%
+\contentsline {section}{\numberline {5.11}Player Class Reference}{41}{section.5.11}%
+\contentsline {subsection}{\numberline {5.11.1}Detailed Description}{42}{subsection.5.11.1}%
+\contentsline {subsection}{\numberline {5.11.2}Constructor \& Destructor Documentation}{42}{subsection.5.11.2}%
+\contentsline {subsubsection}{\numberline {5.11.2.1}Player()}{42}{subsubsection.5.11.2.1}%
+\contentsline {subsection}{\numberline {5.11.3}Member Function Documentation}{42}{subsection.5.11.3}%
+\contentsline {subsubsection}{\numberline {5.11.3.1}addHeldCard()}{42}{subsubsection.5.11.3.1}%
+\contentsline {subsubsection}{\numberline {5.11.3.2}addResource()}{42}{subsubsection.5.11.3.2}%
+\contentsline {subsubsection}{\numberline {5.11.3.3}addScore()}{43}{subsubsection.5.11.3.3}%
+\contentsline {subsubsection}{\numberline {5.11.3.4}getResource()}{43}{subsubsection.5.11.3.4}%
+\contentsline {subsubsection}{\numberline {5.11.3.5}playCard()}{43}{subsubsection.5.11.3.5}%
+\contentsline {subsubsection}{\numberline {5.11.3.6}removeHeldCard()}{43}{subsubsection.5.11.3.6}%
+\contentsline {subsubsection}{\numberline {5.11.3.7}removePlayedCard()}{44}{subsubsection.5.11.3.7}%
+\contentsline {subsubsection}{\numberline {5.11.3.8}spendResource()}{44}{subsubsection.5.11.3.8}%
+\contentsline {section}{\numberline {5.12}Renderer Class Reference}{45}{section.5.12}%
+\contentsline {subsection}{\numberline {5.12.1}Detailed Description}{45}{subsection.5.12.1}%
+\contentsline {subsection}{\numberline {5.12.2}Constructor \& Destructor Documentation}{45}{subsection.5.12.2}%
+\contentsline {subsubsection}{\numberline {5.12.2.1}Renderer()}{45}{subsubsection.5.12.2.1}%
+\contentsline {subsection}{\numberline {5.12.3}Member Function Documentation}{45}{subsection.5.12.3}%
+\contentsline {subsubsection}{\numberline {5.12.3.1}handleEvents()}{45}{subsubsection.5.12.3.1}%
+\contentsline {subsubsection}{\numberline {5.12.3.2}render()}{46}{subsubsection.5.12.3.2}%
+\contentsline {section}{\numberline {5.13}Startup\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Menu Class Reference}{46}{section.5.13}%
+\contentsline {subsection}{\numberline {5.13.1}Detailed Description}{46}{subsection.5.13.1}%
+\contentsline {subsection}{\numberline {5.13.2}Member Function Documentation}{47}{subsection.5.13.2}%
+\contentsline {subsubsection}{\numberline {5.13.2.1}StartMenuLoop()}{47}{subsubsection.5.13.2.1}%
+\contentsline {section}{\numberline {5.14}Tile Class Reference}{47}{section.5.14}%
+\contentsline {subsection}{\numberline {5.14.1}Detailed Description}{48}{subsection.5.14.1}%
+\contentsline {subsection}{\numberline {5.14.2}Member Function Documentation}{48}{subsection.5.14.2}%
+\contentsline {subsubsection}{\numberline {5.14.2.1}getColor()}{48}{subsubsection.5.14.2.1}%
+\contentsline {subsubsection}{\numberline {5.14.2.2}getOwner()}{48}{subsubsection.5.14.2.2}%
+\contentsline {subsubsection}{\numberline {5.14.2.3}setColor()}{48}{subsubsection.5.14.2.3}%
+\contentsline {subsubsection}{\numberline {5.14.2.4}setOwner()}{48}{subsubsection.5.14.2.4}%
+\contentsline {chapter}{\numberline {6}File Documentation}{51}{chapter.6}%
+\contentsline {section}{\numberline {6.1}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Board.hpp File Reference}{51}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Detailed Description}{51}{subsection.6.1.1}%
+\contentsline {section}{\numberline {6.2}Board.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{52}{section.6.2}%
+\contentsline {section}{\numberline {6.3}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Card.hpp File Reference}{52}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Detailed Description}{52}{subsection.6.3.1}%
+\contentsline {section}{\numberline {6.4}Card.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{53}{section.6.4}%
+\contentsline {section}{\numberline {6.5}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Colors.hpp File Reference}{53}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}Detailed Description}{53}{subsection.6.5.1}%
+\contentsline {section}{\numberline {6.6}Colors.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{54}{section.6.6}%
+\contentsline {section}{\numberline {6.7}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Command\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Console.hpp File Reference}{54}{section.6.7}%
+\contentsline {subsection}{\numberline {6.7.1}Detailed Description}{54}{subsection.6.7.1}%
+\contentsline {section}{\numberline {6.8}Command\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Console.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{55}{section.6.8}%
+\contentsline {section}{\numberline {6.9}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Company.hpp File Reference}{55}{section.6.9}%
+\contentsline {subsection}{\numberline {6.9.1}Detailed Description}{56}{subsection.6.9.1}%
+\contentsline {section}{\numberline {6.10}Company.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{56}{section.6.10}%
+\contentsline {section}{\numberline {6.11}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Cube\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Coord.hpp File Reference}{56}{section.6.11}%
+\contentsline {subsection}{\numberline {6.11.1}Detailed Description}{57}{subsection.6.11.1}%
+\contentsline {section}{\numberline {6.12}Cube\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Coord.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{57}{section.6.12}%
+\contentsline {section}{\numberline {6.13}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Deck.hpp File Reference}{57}{section.6.13}%
+\contentsline {subsection}{\numberline {6.13.1}Detailed Description}{58}{subsection.6.13.1}%
+\contentsline {section}{\numberline {6.14}Deck.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{58}{section.6.14}%
+\contentsline {section}{\numberline {6.15}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Game.hpp File Reference}{59}{section.6.15}%
+\contentsline {subsection}{\numberline {6.15.1}Detailed Description}{59}{subsection.6.15.1}%
+\contentsline {section}{\numberline {6.16}Game.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{60}{section.6.16}%
+\contentsline {section}{\numberline {6.17}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Path\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Utils.hpp File Reference}{61}{section.6.17}%
+\contentsline {subsection}{\numberline {6.17.1}Detailed Description}{62}{subsection.6.17.1}%
+\contentsline {section}{\numberline {6.18}Path\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Utils.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{62}{section.6.18}%
+\contentsline {section}{\numberline {6.19}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Player.hpp File Reference}{62}{section.6.19}%
+\contentsline {subsection}{\numberline {6.19.1}Detailed Description}{63}{subsection.6.19.1}%
+\contentsline {section}{\numberline {6.20}Player.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{63}{section.6.20}%
+\contentsline {section}{\numberline {6.21}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Renderer.hpp File Reference}{64}{section.6.21}%
+\contentsline {subsection}{\numberline {6.21.1}Detailed Description}{64}{subsection.6.21.1}%
+\contentsline {section}{\numberline {6.22}Renderer.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{64}{section.6.22}%
+\contentsline {section}{\numberline {6.23}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Startup\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Menu.hpp File Reference}{65}{section.6.23}%
+\contentsline {subsection}{\numberline {6.23.1}Detailed Description}{65}{subsection.6.23.1}%
+\contentsline {section}{\numberline {6.24}Startup\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Menu.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{65}{section.6.24}%
+\contentsline {section}{\numberline {6.25}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tile.hpp File Reference}{65}{section.6.25}%
+\contentsline {subsection}{\numberline {6.25.1}Detailed Description}{66}{subsection.6.25.1}%
+\contentsline {section}{\numberline {6.26}Tile.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{66}{section.6.26}%

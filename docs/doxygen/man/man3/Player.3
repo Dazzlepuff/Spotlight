@@ -1,4 +1,4 @@
-.TH "Player" 3 "Version 1.0" "Spotlight" \" -*- nroff -*-
+.TH "Player" 3 "Spotlight" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -172,10 +172,6 @@ True if the card was found and played; false otherwise\&.
 .RE
 .PP
 
-.SS "void Player::printStatus () const"
-
-.PP
-Prints a formatted summary of the player’s current status to the console\&. 
 .SS "bool Player::removeHeldCard (const std::string & cardName)"
 
 .PP
@@ -208,10 +204,6 @@ True if a card was removed; false otherwise\&.
 .RE
 .PP
 
-.SS "void Player::resetScore ()"
-
-.PP
-Resets the player’s score to zero\&. 
 .SS "bool Player::spendResource (const std::string & type, int amount)"
 
 .PP
@@ -230,32 +222,6 @@ True if the player had enough resources; false otherwise\&.
 .RE
 .PP
 
-.SH "Member Data Documentation"
-.PP 
-.SS "\fBCompany\fP* Player::company"
-
-.PP
-Pointer to the company this player is associated with\&. 
-.SS "std::vector<\fBCard\fP> Player::heldCards"
-
-.PP
-Cards currently held in hand\&. 
-.SS "std::string Player::name"
-
-.PP
-The player’s display name\&. 
-.SS "std::vector<\fBCard\fP> Player::playedCards"
-
-.PP
-Cards that have been played\&. 
-.SS "std::unordered_map<std::string, int> Player::resources"
-
-.PP
-Map of resource type to quantity (e\&.g\&., "funds", "gear")\&. 
-.SS "int Player::score = 0"
-
-.PP
-Current score value\&. 
 
 .SH "Author"
 .PP 
