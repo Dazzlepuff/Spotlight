@@ -1,0 +1,142 @@
+\doxysection{Company Class Reference}
+\hypertarget{class_company}{}\label{class_company}\index{Company@{Company}}
+
+
+Represents a company, corporation, or in-\/game faction.  
+
+
+
+
+{\ttfamily \#include $<$Company.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_company_a9661f26d28f10e9f192506dfc1c5498b}{Company}} (const std\+::string \&name, const std\+::string \&symbol)
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{class_company}{Company} with the specified name and symbol. \end{DoxyCompactList}\item 
+const std\+::string \& \mbox{\hyperlink{class_company_a64f6c13dd059f834a0f35ed8faeded64}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the company’s full name. \end{DoxyCompactList}\item 
+const std\+::string \& \mbox{\hyperlink{class_company_af33a40fa81c761a3474f407ea9ae9f76}{get\+Symbol}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the company’s identifying symbol. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_company_a117cb012568dd7196f46b1a617424f67}{set\+Name}} (const std\+::string \&new\+Name)
+\begin{DoxyCompactList}\small\item\em Updates the company’s name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_company_a88aaa8d1e8a0683b726cdef76f3cafee}{set\+Symbol}} (const std\+::string \&new\+Symbol)
+\begin{DoxyCompactList}\small\item\em Updates the company’s identifying symbol. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a company, corporation, or in-\/game faction. 
+
+The \doxylink{class_company}{Company} class stores immutable identifiers that describe an entity’s identity and branding in the simulation or game world. Its instances can be linked to tiles, assets, or scores via references or pointers. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_company_a9661f26d28f10e9f192506dfc1c5498b}\index{Company@{Company}!Company@{Company}}
+\index{Company@{Company}!Company@{Company}}
+\doxysubsubsection{\texorpdfstring{Company()}{Company()}}
+{\footnotesize\ttfamily \label{class_company_a9661f26d28f10e9f192506dfc1c5498b} 
+Company\+::\+Company (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{, }\item[{const std\+::string \&}]{symbol}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a new \doxylink{class_company}{Company} with the specified name and symbol. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em name} & The full display name of the company. \\
+\hline
+\mbox{\texttt{ in}}  & {\em symbol} & A short identifying symbol or abbreviation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+Both name and symbol should be non-\/empty strings. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Initializes the company with the provided identifiers.
+\end{DoxyPostcond}
+Constructs the \doxylink{class_company}{Company} with a designated name and symbol. Typically called during setup or game initialization. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_company_a64f6c13dd059f834a0f35ed8faeded64}\index{Company@{Company}!getName@{getName}}
+\index{getName@{getName}!Company@{Company}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{class_company_a64f6c13dd059f834a0f35ed8faeded64} 
+const std\+::string \& Company\+::get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the company’s full name. 
+
+Returns a constant reference to the company’s name.
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the company’s name. 
+\end{DoxyReturn}
+\begin{DoxyPostcond}{Postcondition}
+Does not modify the object. 
+\end{DoxyPostcond}
+\Hypertarget{class_company_af33a40fa81c761a3474f407ea9ae9f76}\index{Company@{Company}!getSymbol@{getSymbol}}
+\index{getSymbol@{getSymbol}!Company@{Company}}
+\doxysubsubsection{\texorpdfstring{getSymbol()}{getSymbol()}}
+{\footnotesize\ttfamily \label{class_company_af33a40fa81c761a3474f407ea9ae9f76} 
+const std\+::string \& Company\+::get\+Symbol (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the company’s identifying symbol. 
+
+Returns a constant reference to the company’s identifying symbol.
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the company’s symbol string. 
+\end{DoxyReturn}
+\begin{DoxyPostcond}{Postcondition}
+Does not modify the object. 
+\end{DoxyPostcond}
+\Hypertarget{class_company_a117cb012568dd7196f46b1a617424f67}\index{Company@{Company}!setName@{setName}}
+\index{setName@{setName}!Company@{Company}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily \label{class_company_a117cb012568dd7196f46b1a617424f67} 
+void Company\+::set\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{new\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Updates the company’s name. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Name} & The new name to assign. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The internal name string is replaced with new\+Name. 
+\end{DoxyPostcond}
+\begin{DoxyWarning}{Warning}
+Should be used cautiously if company instances are referenced elsewhere.
+\end{DoxyWarning}
+Allows dynamic renaming of a company, useful in sandbox or modifiable environments. \Hypertarget{class_company_a88aaa8d1e8a0683b726cdef76f3cafee}\index{Company@{Company}!setSymbol@{setSymbol}}
+\index{setSymbol@{setSymbol}!Company@{Company}}
+\doxysubsubsection{\texorpdfstring{setSymbol()}{setSymbol()}}
+{\footnotesize\ttfamily \label{class_company_a88aaa8d1e8a0683b726cdef76f3cafee} 
+void Company\+::set\+Symbol (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{new\+Symbol}{}\end{DoxyParamCaption})}
+
+
+
+Updates the company’s identifying symbol. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Symbol} & The new symbol to assign. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The internal symbol string is replaced with new\+Symbol. 
+\end{DoxyPostcond}
+\begin{DoxyWarning}{Warning}
+Use carefully if the symbol is used as a unique key elsewhere.
+\end{DoxyWarning}
+Updates the company symbol. Intended for cosmetic or branding adjustments. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_company_8hpp}{Company.\+hpp}}\item 
+src/\mbox{\hyperlink{_company_8cpp}{Company.\+cpp}}\end{DoxyCompactItemize}

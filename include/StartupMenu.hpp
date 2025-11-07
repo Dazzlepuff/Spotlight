@@ -2,8 +2,14 @@
  * @file StartupMenu.hpp
  * @brief Declares the StartupMenu class for initializing and managing the game's main menu.
  *
+ * @details
  * Handles menu display, player and company setup, configuration persistence,
  * and launching the main game loop.
+ * 
+ * @date 2025-11-06
+ * @version 1.0
+ * @author
+ * Owen Chilson
  */
 
 #pragma once

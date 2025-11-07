@@ -1,0 +1,215 @@
+\doxysection{Board Class Reference}
+\hypertarget{class_board}{}\label{class_board}\index{Board@{Board}}
+
+
+Represents a hexagonal game board composed of cube-\/coordinate tiles.  
+
+
+
+
+{\ttfamily \#include $<$Board.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_board_a86303801dac53dbad6ef8133191b8a7a}{Board}} (int radius)
+\begin{DoxyCompactList}\small\item\em Constructs a new hexagonal board with the given radius. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_tile}{Tile}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_board_a3eeb1f3891c764e78246012f93bad865}{get\+Tile}} (const \mbox{\hyperlink{struct_cube_coord}{Cube\+Coord}} \&coord)
+\begin{DoxyCompactList}\small\item\em Retrieves a pointer to the tile at the specified cube coordinate. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_cube_coord}{Cube\+Coord}} $>$ \mbox{\hyperlink{class_board_a209cfa7412cb9514f753f6f513364cda}{get\+Neighbors}} (const \mbox{\hyperlink{struct_cube_coord}{Cube\+Coord}} \&coord) const
+\begin{DoxyCompactList}\small\item\em Returns all valid neighboring coordinates of the specified tile. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_board_a025b63c63ceeb4e632e428667922f2a4}{set\+Tile\+Owner}} (int x, int y, int z, \mbox{\hyperlink{class_company}{Company}} \texorpdfstring{$\ast$}{*}company)
+\begin{DoxyCompactList}\small\item\em Assigns a company as the owner of a tile at the given coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_board_af4cd342cc5bb89f35a33049830910ff7}{set\+Tile\+Color}} (int x, int y, int z, const std\+::string \&color)
+\begin{DoxyCompactList}\small\item\em Assigns a color to the tile at the specified coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_board_a3f5b48d92226217de5d488f3d5fb234a}{print\+Board}} () const
+\begin{DoxyCompactList}\small\item\em Prints a visual or textual representation of the board. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{struct_cube_coord}{Cube\+Coord}}, \mbox{\hyperlink{class_tile}{Tile}}, \mbox{\hyperlink{struct_cube_coord_hash}{Cube\+Coord\+Hash}} $>$ \mbox{\hyperlink{class_board_a3271052d9867b3c56d5c52f8fd9e350b}{tiles}}
+\begin{DoxyCompactList}\small\item\em Map of cube coordinates to their corresponding \doxylink{class_tile}{Tile} instances. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a hexagonal game board composed of cube-\/coordinate tiles. 
+
+The \doxylink{class_board}{Board} is implemented as an unordered map keyed by \doxylink{struct_cube_coord}{Cube\+Coord}, enabling constant-\/time lookup of tiles. Each tile may store its owner (\doxylink{class_company}{Company}) and visual color data. The board supports neighbor detection and manipulation of tile attributes.
+
+The design is suitable for strategy or simulation games utilizing hex grids. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_board_a86303801dac53dbad6ef8133191b8a7a}\index{Board@{Board}!Board@{Board}}
+\index{Board@{Board}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{Board()}{Board()}}
+{\footnotesize\ttfamily \label{class_board_a86303801dac53dbad6ef8133191b8a7a} 
+Board\+::\+Board (\begin{DoxyParamCaption}\item[{int}]{radius}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a new hexagonal board with the given radius. 
+
+Initializes a new \doxylink{class_board}{Board} and immediately generates its tiles.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em radius} & The radius of the hex grid (number of tiles from center to edge). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+radius \texorpdfstring{$>$}{>} 0 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Initializes a complete set of valid cube coordinates within the given radius. 
+\end{DoxyPostcond}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_board_a209cfa7412cb9514f753f6f513364cda}\index{Board@{Board}!getNeighbors@{getNeighbors}}
+\index{getNeighbors@{getNeighbors}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{getNeighbors()}{getNeighbors()}}
+{\footnotesize\ttfamily \label{class_board_a209cfa7412cb9514f753f6f513364cda} 
+std\+::vector$<$ \mbox{\hyperlink{struct_cube_coord}{Cube\+Coord}} $>$ Board\+::get\+Neighbors (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_cube_coord}{Cube\+Coord}} \&}]{coord}{}\end{DoxyParamCaption}) const}
+
+
+
+Returns all valid neighboring coordinates of the specified tile. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em coord} & The cube coordinate for which to find adjacent tiles. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of \doxylink{struct_cube_coord}{Cube\+Coord} objects representing neighboring tiles. 
+\end{DoxyReturn}
+\begin{DoxyPostcond}{Postcondition}
+The returned vector contains only coordinates that exist within the board radius. 
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{See also}
+\doxylink{struct_cube_coord}{Cube\+Coord}
+\end{DoxySeeAlso}
+Iterates through the six cube-\/coordinate directions to find all existing adjacent tiles. Excludes invalid or out-\/of-\/bounds tiles. \Hypertarget{class_board_a3eeb1f3891c764e78246012f93bad865}\index{Board@{Board}!getTile@{getTile}}
+\index{getTile@{getTile}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{getTile()}{getTile()}}
+{\footnotesize\ttfamily \label{class_board_a3eeb1f3891c764e78246012f93bad865} 
+\mbox{\hyperlink{class_tile}{Tile}} \texorpdfstring{$\ast$}{*} Board\+::get\+Tile (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_cube_coord}{Cube\+Coord}} \&}]{coord}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves a pointer to the tile at the specified cube coordinate. 
+
+Returns a pointer to the \doxylink{class_tile}{Tile} at the given cube coordinate, or nullptr if missing.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em coord} & The cube coordinate to locate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the \doxylink{class_tile}{Tile} if it exists, or nullptr if out of bounds. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+The coordinate must satisfy $x + y + z = 0$ for valid hex geometry. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Does not modify board state. 
+\end{DoxyPostcond}
+\Hypertarget{class_board_a3f5b48d92226217de5d488f3d5fb234a}\index{Board@{Board}!printBoard@{printBoard}}
+\index{printBoard@{printBoard}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{printBoard()}{printBoard()}}
+{\footnotesize\ttfamily \label{class_board_a3f5b48d92226217de5d488f3d5fb234a} 
+void Board\+::print\+Board (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Prints a visual or textual representation of the board. 
+
+Implementation-\/defined visualization; typically for debugging or display. May include coordinates, colors, or ownership data. \begin{DoxyPostcond}{Postcondition}
+Does not modify the board state. 
+\end{DoxyPostcond}
+\Hypertarget{class_board_af4cd342cc5bb89f35a33049830910ff7}\index{Board@{Board}!setTileColor@{setTileColor}}
+\index{setTileColor@{setTileColor}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{setTileColor()}{setTileColor()}}
+{\footnotesize\ttfamily \label{class_board_af4cd342cc5bb89f35a33049830910ff7} 
+void Board\+::set\+Tile\+Color (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{int}]{z}{, }\item[{const std\+::string \&}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Assigns a color to the tile at the specified coordinates. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & Cube X-\/coordinate. \\
+\hline
+\mbox{\texttt{ in}}  & {\em y} & Cube Y-\/coordinate. \\
+\hline
+\mbox{\texttt{ in}}  & {\em z} & Cube Z-\/coordinate. \\
+\hline
+\mbox{\texttt{ in}}  & {\em color} & String representation of the desired color. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+The tile at (x, y, z) must exist and the color string must be valid. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+The tile’s color is updated. 
+\end{DoxyPostcond}
+\begin{DoxyWarning}{Warning}
+Prints an error if the tile does not exist or color is invalid. 
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_colors_abd7dcd987ab14613a74a3de594878635}{Colors\+::is\+Valid()}
+\end{DoxySeeAlso}
+Validates the target coordinate and color before assignment. Logs errors if either is invalid but continues execution safely. \Hypertarget{class_board_a025b63c63ceeb4e632e428667922f2a4}\index{Board@{Board}!setTileOwner@{setTileOwner}}
+\index{setTileOwner@{setTileOwner}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{setTileOwner()}{setTileOwner()}}
+{\footnotesize\ttfamily \label{class_board_a025b63c63ceeb4e632e428667922f2a4} 
+void Board\+::set\+Tile\+Owner (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{int}]{z}{, }\item[{\mbox{\hyperlink{class_company}{Company}} \texorpdfstring{$\ast$}{*}}]{company}{}\end{DoxyParamCaption})}
+
+
+
+Assigns a company as the owner of a tile at the given coordinates. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & Cube X-\/coordinate. \\
+\hline
+\mbox{\texttt{ in}}  & {\em y} & Cube Y-\/coordinate. \\
+\hline
+\mbox{\texttt{ in}}  & {\em z} & Cube Z-\/coordinate. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em company} & Pointer to the \doxylink{class_company}{Company} to assign as owner. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+The specified coordinate must exist on the board. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+The tile’s ownership is updated. 
+\end{DoxyPostcond}
+\begin{DoxyWarning}{Warning}
+Does nothing if the coordinate is invalid.
+\end{DoxyWarning}
+Updates the ownership of a specific tile if it exists. Useful for territory claiming or resource control systems. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_board_a3271052d9867b3c56d5c52f8fd9e350b}\index{Board@{Board}!tiles@{tiles}}
+\index{tiles@{tiles}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{tiles}{tiles}}
+{\footnotesize\ttfamily \label{class_board_a3271052d9867b3c56d5c52f8fd9e350b} 
+std\+::unordered\+\_\+map$<$\mbox{\hyperlink{struct_cube_coord}{Cube\+Coord}}, \mbox{\hyperlink{class_tile}{Tile}}, \mbox{\hyperlink{struct_cube_coord_hash}{Cube\+Coord\+Hash}}$>$ Board\+::tiles}
+
+
+
+Map of cube coordinates to their corresponding \doxylink{class_tile}{Tile} instances. 
+
+The unordered\+\_\+map allows efficient random access and modification of tiles. \begin{DoxySeeAlso}{See also}
+\doxylink{struct_cube_coord}{Cube\+Coord}, \doxylink{class_tile}{Tile} 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_board_8hpp}{Board.\+hpp}}\item 
+src/\mbox{\hyperlink{_board_8cpp}{Board.\+cpp}}\end{DoxyCompactItemize}

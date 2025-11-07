@@ -1,0 +1,35 @@
+\doxysection{include/\+Board.hpp File Reference}
+\hypertarget{_board_8hpp}{}\label{_board_8hpp}\index{include/Board.hpp@{include/Board.hpp}}
+
+
+Declares the \doxylink{class_board}{Board} class which represents a hexagonal grid of tiles.  
+
+
+{\ttfamily \#include "{}Cube\+Coord.\+hpp"{}}\newline
+{\ttfamily \#include "{}Tile.\+hpp"{}}\newline
+{\ttfamily \#include "{}Company.\+hpp"{}}\newline
+{\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_board}{Board}}
+\begin{DoxyCompactList}\small\item\em Represents a hexagonal game board composed of cube-\/coordinate tiles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Declares the \doxylink{class_board}{Board} class which represents a hexagonal grid of tiles. 
+
+The \doxylink{class_board}{Board} class manages a collection of \doxylink{class_tile}{Tile} objects arranged using cube coordinates. It provides functions for tile retrieval, neighbor lookup, ownership and color assignment, and overall grid initialization.
+
+The cube coordinate system ensures consistent hex-\/grid relationships via the constraint\+: $x + y + z = 0$.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{struct_cube_coord}{Cube\+Coord}, \doxylink{class_tile}{Tile}, \doxylink{class_company}{Company}
+\end{DoxySeeAlso}
+\begin{DoxyDate}{Date}
+2025-\/11-\/06 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0 @autho Owen Chilson 
+\end{DoxyVersion}

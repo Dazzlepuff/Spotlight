@@ -1,0 +1,67 @@
+\doxysection{Startup\+Menu Class Reference}
+\hypertarget{class_startup_menu}{}\label{class_startup_menu}\index{StartupMenu@{StartupMenu}}
+
+
+Manages the initial menu and configuration phase before the main game starts.  
+
+
+
+
+{\ttfamily \#include $<$Startup\+Menu.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_startup_menu_a3d2c4a67688b79c5d238bfb819f7104d}{Startup\+Menu}} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_startup_menu_acb0786f428f26db36ea37c89f9458c46}{Start\+Menu\+Loop}} ()
+\begin{DoxyCompactList}\small\item\em Starts the main menu loop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages the initial menu and configuration phase before the main game starts. 
+
+Provides user interaction for choosing game settings, loading or saving configuration, and starting the gameplay session. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_startup_menu_a3d2c4a67688b79c5d238bfb819f7104d}\index{StartupMenu@{StartupMenu}!StartupMenu@{StartupMenu}}
+\index{StartupMenu@{StartupMenu}!StartupMenu@{StartupMenu}}
+\doxysubsubsection{\texorpdfstring{StartupMenu()}{StartupMenu()}}
+{\footnotesize\ttfamily \label{class_startup_menu_a3d2c4a67688b79c5d238bfb819f7104d} 
+Startup\+Menu\+::\+Startup\+Menu (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default constructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_startup_menu_acb0786f428f26db36ea37c89f9458c46}\index{StartupMenu@{StartupMenu}!StartMenuLoop@{StartMenuLoop}}
+\index{StartMenuLoop@{StartMenuLoop}!StartupMenu@{StartupMenu}}
+\doxysubsubsection{\texorpdfstring{StartMenuLoop()}{StartMenuLoop()}}
+{\footnotesize\ttfamily \label{class_startup_menu_acb0786f428f26db36ea37c89f9458c46} 
+int Startup\+Menu\+::\+Start\+Menu\+Loop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Starts the main menu loop. 
+
+Runs the startup menu loop for the game.
+
+Displays menu options for starting the game, changing settings, or exiting the application. Handles configuration loading/saving and launches the game once setup is complete.
+
+\begin{DoxyReturn}{Returns}
+0 on successful completion or user exit.
+\end{DoxyReturn}
+Displays options to start the game, open settings, or exit. Loads saved configuration, sets up game data, and starts the main game loop.
+
+\begin{DoxyReturn}{Returns}
+0 when exiting the program. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_startup_menu_8hpp}{Startup\+Menu.\+hpp}}\item 
+src/\mbox{\hyperlink{_startup_menu_8cpp}{Startup\+Menu.\+cpp}}\end{DoxyCompactItemize}

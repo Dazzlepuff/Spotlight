@@ -16,7 +16,7 @@ constexpr size_t NEUTRAL_COLOR_OFFSET = 1;
 
 Game::Game(int boardSize, std::vector<Company> companyList)
     : board(boardSize),
-      window(sf::VideoMode(1600, 1200), "Hex Board"),
+      window(sf::VideoMode(800, 600), "Hex Board"),
       currentDay(0),
       currentActivePlayerIndex(0)
 {

@@ -1,0 +1,119 @@
+\doxysection{Tile Class Reference}
+\hypertarget{class_tile}{}\label{class_tile}\index{Tile@{Tile}}
+
+
+Represents a single board tile that can be owned by a company and display a color.  
+
+
+
+
+{\ttfamily \#include $<$Tile.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_tile_aeeb5593bb6b75aae2edfcccbc84ab378}{Tile}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a neutral, unowned tile. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tile_a35b2a9cd2770651599a46fa6e36c5765}{set\+Owner}} (\mbox{\hyperlink{class_company}{Company}} \texorpdfstring{$\ast$}{*}new\+Owner)
+\begin{DoxyCompactList}\small\item\em Sets the owner of this tile. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_company}{Company}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_tile_a305ad89829d6bd659e730b8f00d210d0}{get\+Owner}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the company that owns this tile. \end{DoxyCompactList}\item 
+const std\+::string \& \mbox{\hyperlink{class_tile_a9ff251bdc934841adeee196fda8ecb67}{get\+Color}} () const
+\begin{DoxyCompactList}\small\item\em Gets the tile\textquotesingle{}s current color. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tile_a92130b87058655f46ccaef98f1eb45ac}{set\+Color}} (const std\+::string \&new\+Color)
+\begin{DoxyCompactList}\small\item\em Sets the tile\textquotesingle{}s color. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tile_a16b0ff076cc95ca338c8bcfc6fd59844}{print\+Info}} () const
+\begin{DoxyCompactList}\small\item\em Prints a formatted line describing ownership and color to the console. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a single board tile that can be owned by a company and display a color. 
+
+Each tile may have an owner (a pointer to a \doxylink{class_company}{Company}) and an associated color. Tiles start unowned and "{}neutral"{} in color by default. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_tile_aeeb5593bb6b75aae2edfcccbc84ab378}\index{Tile@{Tile}!Tile@{Tile}}
+\index{Tile@{Tile}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{Tile()}{Tile()}}
+{\footnotesize\ttfamily \label{class_tile_aeeb5593bb6b75aae2edfcccbc84ab378} 
+Tile\+::\+Tile (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a neutral, unowned tile. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_tile_a9ff251bdc934841adeee196fda8ecb67}\index{Tile@{Tile}!getColor@{getColor}}
+\index{getColor@{getColor}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily \label{class_tile_a9ff251bdc934841adeee196fda8ecb67} 
+const std\+::string \& Tile\+::get\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Gets the tile\textquotesingle{}s current color. 
+
+\begin{DoxyReturn}{Returns}
+Reference to the color string. 
+\end{DoxyReturn}
+\Hypertarget{class_tile_a305ad89829d6bd659e730b8f00d210d0}\index{Tile@{Tile}!getOwner@{getOwner}}
+\index{getOwner@{getOwner}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{getOwner()}{getOwner()}}
+{\footnotesize\ttfamily \label{class_tile_a305ad89829d6bd659e730b8f00d210d0} 
+\mbox{\hyperlink{class_company}{Company}} \texorpdfstring{$\ast$}{*} Tile\+::get\+Owner (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the company that owns this tile. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the owning company, or nullptr if unowned. 
+\end{DoxyReturn}
+\Hypertarget{class_tile_a16b0ff076cc95ca338c8bcfc6fd59844}\index{Tile@{Tile}!printInfo@{printInfo}}
+\index{printInfo@{printInfo}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{printInfo()}{printInfo()}}
+{\footnotesize\ttfamily \label{class_tile_a16b0ff076cc95ca338c8bcfc6fd59844} 
+void Tile\+::print\+Info (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Prints a formatted line describing ownership and color to the console. 
+
+\Hypertarget{class_tile_a92130b87058655f46ccaef98f1eb45ac}\index{Tile@{Tile}!setColor@{setColor}}
+\index{setColor@{setColor}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{setColor()}{setColor()}}
+{\footnotesize\ttfamily \label{class_tile_a92130b87058655f46ccaef98f1eb45ac} 
+void Tile\+::set\+Color (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{new\+Color}{}\end{DoxyParamCaption})}
+
+
+
+Sets the tile\textquotesingle{}s color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Color} & New color name (string identifier). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_tile_a35b2a9cd2770651599a46fa6e36c5765}\index{Tile@{Tile}!setOwner@{setOwner}}
+\index{setOwner@{setOwner}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{setOwner()}{setOwner()}}
+{\footnotesize\ttfamily \label{class_tile_a35b2a9cd2770651599a46fa6e36c5765} 
+void Tile\+::set\+Owner (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_company}{Company}} \texorpdfstring{$\ast$}{*}}]{new\+Owner}{}\end{DoxyParamCaption})}
+
+
+
+Sets the owner of this tile. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Owner} & Pointer to the company that now owns the tile. Can be nullptr for unowned. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_tile_8hpp}{Tile.\+hpp}}\item 
+src/\mbox{\hyperlink{_tile_8cpp}{Tile.\+cpp}}\end{DoxyCompactItemize}

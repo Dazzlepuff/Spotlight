@@ -1,0 +1,188 @@
+\doxysection{Command\+Console Class Reference}
+\hypertarget{class_command_console}{}\label{class_command_console}\index{CommandConsole@{CommandConsole}}
+
+
+In-\/game text console handling user command input, output history, and paging.  
+
+
+
+
+{\ttfamily \#include $<$Command\+Console.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_command_console_acc6ad7eb1630a14d6ef1c475354cfe66}{Command\+Console}} (\mbox{\hyperlink{class_board}{Board}} \&b, sf\+::\+Font \&f, sf\+::\+Vector2f pos)
+\begin{DoxyCompactList}\small\item\em Constructs a command console linked to a board. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_command_console_a944dd52635194dff99315253204c80d1}{draw}} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Renders the console contents to the window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_command_console_a4c50fc3e66fe839e79e41b05fe4dd5c2}{handle\+Event}} (const sf\+::\+Event \&e)
+\begin{DoxyCompactList}\small\item\em Handles keyboard input events to build commands and navigate history. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_command_console_a65aab751a464e44df1f03eebbecdcf5f}{print}} (const std\+::string \&line)
+\begin{DoxyCompactList}\small\item\em Prints a single line of text to the console output. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_command_console_a870aa4bfdcf53e57811fc5c55e7a9703}{print\+Paged}} (const std\+::vector$<$ std\+::string $>$ \&lines)
+\begin{DoxyCompactList}\small\item\em Displays multiple lines of text using a paginated system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_command_console_a6166ec409e087772f865f06d16fc63bd}{show\+Next\+Page}} ()
+\begin{DoxyCompactList}\small\item\em Advances to and displays the next page of paginated text, if available. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_command_console_a44b7dbcafb5513c1e40638782ffa0e5d}{next\+Command}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the next user-\/entered command. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_command_console_a38843111f15b0a71d9b58b842c094c84}{clear}} ()
+\begin{DoxyCompactList}\small\item\em Clears all console output lines. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_command_console_ad7c3dd8db0abeecbf14beb12b6511d67}{has\+Command}} () const
+\begin{DoxyCompactList}\small\item\em Returns whether there are commands pending to process. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_command_console_aa3f71677a8da527f8147a965226cef64}{awaiting\+Next\+Page}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+In-\/game text console handling user command input, output history, and paging. 
+
+The \doxylink{class_command_console}{Command\+Console} manages user input through keyboard events, maintains command history, supports paginated output, and displays text using SFML rendering. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_command_console_acc6ad7eb1630a14d6ef1c475354cfe66}\index{CommandConsole@{CommandConsole}!CommandConsole@{CommandConsole}}
+\index{CommandConsole@{CommandConsole}!CommandConsole@{CommandConsole}}
+\doxysubsubsection{\texorpdfstring{CommandConsole()}{CommandConsole()}}
+{\footnotesize\ttfamily \label{class_command_console_acc6ad7eb1630a14d6ef1c475354cfe66} 
+Command\+Console\+::\+Command\+Console (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_board}{Board}} \&}]{b}{, }\item[{sf\+::\+Font \&}]{f}{, }\item[{sf\+::\+Vector2f}]{pos}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a command console linked to a board. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Reference to the \doxylink{class_board}{Board} this console can interact with. \\
+\hline
+{\em f} & Reference to the SFML font used for text rendering. \\
+\hline
+{\em pos} & Screen position where the console text begins. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_command_console_a38843111f15b0a71d9b58b842c094c84}\index{CommandConsole@{CommandConsole}!clear@{clear}}
+\index{clear@{clear}!CommandConsole@{CommandConsole}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily \label{class_command_console_a38843111f15b0a71d9b58b842c094c84} 
+void Command\+Console\+::clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Clears all console output lines. 
+
+\Hypertarget{class_command_console_a944dd52635194dff99315253204c80d1}\index{CommandConsole@{CommandConsole}!draw@{draw}}
+\index{draw@{draw}!CommandConsole@{CommandConsole}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily \label{class_command_console_a944dd52635194dff99315253204c80d1} 
+void Command\+Console\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window}{}\end{DoxyParamCaption})}
+
+
+
+Renders the console contents to the window. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Reference to the SFML render window. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_command_console_a4c50fc3e66fe839e79e41b05fe4dd5c2}\index{CommandConsole@{CommandConsole}!handleEvent@{handleEvent}}
+\index{handleEvent@{handleEvent}!CommandConsole@{CommandConsole}}
+\doxysubsubsection{\texorpdfstring{handleEvent()}{handleEvent()}}
+{\footnotesize\ttfamily \label{class_command_console_a4c50fc3e66fe839e79e41b05fe4dd5c2} 
+void Command\+Console\+::handle\+Event (\begin{DoxyParamCaption}\item[{const sf\+::\+Event \&}]{e}{}\end{DoxyParamCaption})}
+
+
+
+Handles keyboard input events to build commands and navigate history. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & The SFML event to process. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_command_console_ad7c3dd8db0abeecbf14beb12b6511d67}\index{CommandConsole@{CommandConsole}!hasCommand@{hasCommand}}
+\index{hasCommand@{hasCommand}!CommandConsole@{CommandConsole}}
+\doxysubsubsection{\texorpdfstring{hasCommand()}{hasCommand()}}
+{\footnotesize\ttfamily \label{class_command_console_ad7c3dd8db0abeecbf14beb12b6511d67} 
+bool Command\+Console\+::has\+Command (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns whether there are commands pending to process. 
+
+\begin{DoxyReturn}{Returns}
+True if one or more commands are waiting in the queue. 
+\end{DoxyReturn}
+\Hypertarget{class_command_console_a44b7dbcafb5513c1e40638782ffa0e5d}\index{CommandConsole@{CommandConsole}!nextCommand@{nextCommand}}
+\index{nextCommand@{nextCommand}!CommandConsole@{CommandConsole}}
+\doxysubsubsection{\texorpdfstring{nextCommand()}{nextCommand()}}
+{\footnotesize\ttfamily \label{class_command_console_a44b7dbcafb5513c1e40638782ffa0e5d} 
+std\+::string Command\+Console\+::next\+Command (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves the next user-\/entered command. 
+
+\begin{DoxyReturn}{Returns}
+The command string at the front of the pending command queue. 
+\end{DoxyReturn}
+\Hypertarget{class_command_console_a65aab751a464e44df1f03eebbecdcf5f}\index{CommandConsole@{CommandConsole}!print@{print}}
+\index{print@{print}!CommandConsole@{CommandConsole}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily \label{class_command_console_a65aab751a464e44df1f03eebbecdcf5f} 
+void Command\+Console\+::print (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{line}{}\end{DoxyParamCaption})}
+
+
+
+Prints a single line of text to the console output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & Text line to display. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_command_console_a870aa4bfdcf53e57811fc5c55e7a9703}\index{CommandConsole@{CommandConsole}!printPaged@{printPaged}}
+\index{printPaged@{printPaged}!CommandConsole@{CommandConsole}}
+\doxysubsubsection{\texorpdfstring{printPaged()}{printPaged()}}
+{\footnotesize\ttfamily \label{class_command_console_a870aa4bfdcf53e57811fc5c55e7a9703} 
+void Command\+Console\+::print\+Paged (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{lines}{}\end{DoxyParamCaption})}
+
+
+
+Displays multiple lines of text using a paginated system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lines} & A vector of lines to show, split into multiple pages if necessary. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_command_console_a6166ec409e087772f865f06d16fc63bd}\index{CommandConsole@{CommandConsole}!showNextPage@{showNextPage}}
+\index{showNextPage@{showNextPage}!CommandConsole@{CommandConsole}}
+\doxysubsubsection{\texorpdfstring{showNextPage()}{showNextPage()}}
+{\footnotesize\ttfamily \label{class_command_console_a6166ec409e087772f865f06d16fc63bd} 
+void Command\+Console\+::show\+Next\+Page (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Advances to and displays the next page of paginated text, if available. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_command_console_aa3f71677a8da527f8147a965226cef64}\index{CommandConsole@{CommandConsole}!awaitingNextPage@{awaitingNextPage}}
+\index{awaitingNextPage@{awaitingNextPage}!CommandConsole@{CommandConsole}}
+\doxysubsubsection{\texorpdfstring{awaitingNextPage}{awaitingNextPage}}
+{\footnotesize\ttfamily \label{class_command_console_aa3f71677a8da527f8147a965226cef64} 
+bool Command\+Console\+::awaiting\+Next\+Page = false}
+
+True if more paginated output remains. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_command_console_8hpp}{Command\+Console.\+hpp}}\item 
+src/\mbox{\hyperlink{_command_console_8cpp}{Command\+Console.\+cpp}}\end{DoxyCompactItemize}

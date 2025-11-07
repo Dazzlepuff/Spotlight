@@ -1,0 +1,51 @@
+\doxysection{Player.\+hpp}
+\hypertarget{_player_8hpp_source}{}\label{_player_8hpp_source}\index{include/Player.hpp@{include/Player.hpp}}
+\mbox{\hyperlink{_player_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_company_8hpp}{Company.hpp}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_card_8hpp}{Card.hpp}}"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_player_afc4fbed11407ccdaa82ac59f373993f1}{Player}}\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ std::string\ \mbox{\hyperlink{class_player_af9c920fabaafdeb7961a645315b521ff}{name}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_company}{Company}}*\ \mbox{\hyperlink{class_player_aad2ee588e593e5704ed1b1fbae70a228}{company}};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_player_ace6abae8d66534ad0a1fd6458f786a6e}{score}}\ =\ 0;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00031\ \ \ \ \ std::unordered\_map<std::string,\ int>\ \mbox{\hyperlink{class_player_a6534e95b7e7fd610b27e20be87ad5813}{resources}};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00034\ \ \ \ \ std::vector<Card>\ \mbox{\hyperlink{class_player_a1c17d4fe4bbc869c6b214552e64fff90}{heldCards}};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00037\ \ \ \ \ std::vector<Card>\ \mbox{\hyperlink{class_player_a40305fbcd5f45e77fd5b2e7e0890936c}{playedCards}};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{class_player_afc4fbed11407ccdaa82ac59f373993f1}{Player}}(\textcolor{keyword}{const}\ std::string\&\ n,\ \mbox{\hyperlink{class_company}{Company}}*\ c);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_player_ac3072a24c6fd293e43c8bdec5792465f}{addResource}}(\textcolor{keyword}{const}\ std::string\&\ type,\ \textcolor{keywordtype}{int}\ amount);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_player_a44275d3e2b8cb1fa961d8bddbdb286c4}{spendResource}}(\textcolor{keyword}{const}\ std::string\&\ type,\ \textcolor{keywordtype}{int}\ amount);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_player_a10d25653dda098886b5a744717d8775a}{getResource}}(\textcolor{keyword}{const}\ std::string\&\ type)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_player_a12998901cf0e52df97ac1cce5316535f}{addHeldCard}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_card}{Card}}\&\ card);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_player_a6b12e76f1ea60db5396f80e545bd417c}{playCard}}(\textcolor{keyword}{const}\ std::string\&\ cardName);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_player_aafc9632b2e1097a09a6f5a5074323340}{removePlayedCard}}(\textcolor{keyword}{const}\ std::string\&\ cardName);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_player_a8d7d0abc148ef80459ce1980880a25fb}{removeHeldCard}}(\textcolor{keyword}{const}\ std::string\&\ cardName);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_player_a52ba5fa34091ca4cb1774b0458584e2e}{addScore}}(\textcolor{keywordtype}{int}\ amount);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_player_a7dfdc0be35fa9ae42104a6bfe47634b8}{resetScore}}();}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_player_a069fc1ddd9025161e87d4f94591b9df2}{printStatus}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00106\ \};}
+
+\end{DoxyCode}

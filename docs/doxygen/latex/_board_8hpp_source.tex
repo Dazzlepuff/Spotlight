@@ -1,0 +1,36 @@
+\doxysection{Board.\+hpp}
+\hypertarget{_board_8hpp_source}{}\label{_board_8hpp_source}\index{include/Board.hpp@{include/Board.hpp}}
+\mbox{\hyperlink{_board_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_cube_coord_8hpp}{CubeCoord.hpp}}"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_tile_8hpp}{Tile.hpp}}"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_company_8hpp}{Company.hpp}}"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_board_a86303801dac53dbad6ef8133191b8a7a}{Board}}\ \{}
+\DoxyCodeLine{00041\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_board_a86303801dac53dbad6ef8133191b8a7a}{Board}}(\textcolor{keywordtype}{int}\ radius);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00058\ \ \ \ \ std::unordered\_map<CubeCoord,\ Tile,\ CubeCoordHash>\ \mbox{\hyperlink{class_board_a3271052d9867b3c56d5c52f8fd9e350b}{tiles}};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{class_tile}{Tile}}*\ \mbox{\hyperlink{class_board_a3eeb1f3891c764e78246012f93bad865}{getTile}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_cube_coord}{CubeCoord}}\&\ coord);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00078\ \ \ \ \ std::vector<CubeCoord>\ \mbox{\hyperlink{class_board_a209cfa7412cb9514f753f6f513364cda}{getNeighbors}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_cube_coord}{CubeCoord}}\&\ coord)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_board_a025b63c63ceeb4e632e428667922f2a4}{setTileOwner}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ z,\ \mbox{\hyperlink{class_company}{Company}}*\ company);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_board_af4cd342cc5bb89f35a33049830910ff7}{setTileColor}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ z,\ \textcolor{keyword}{const}\ std::string\&\ color);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_board_a3f5b48d92226217de5d488f3d5fb234a}{printBoard}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{int}\ radius;}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordtype}{void}\ generateBoard();}
+\DoxyCodeLine{00131\ \};}
+
+\end{DoxyCode}

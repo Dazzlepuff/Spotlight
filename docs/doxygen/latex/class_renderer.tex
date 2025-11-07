@@ -1,0 +1,88 @@
+\doxysection{Renderer Class Reference}
+\hypertarget{class_renderer}{}\label{class_renderer}\index{Renderer@{Renderer}}
+
+
+Handles all visual rendering and window event management for the game.  
+
+
+
+
+{\ttfamily \#include $<$Renderer.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_renderer_a452008d6eea596b2de9b1821ece56b68}{Renderer}} (\mbox{\hyperlink{class_board}{Board}} \&board, sf\+::\+Font \&font)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_renderer}{Renderer} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_renderer_a00bd1dc3164bdeb3b9f642b796d5a286}{handle\+Events}} (sf\+::\+Render\+Window \&window, \mbox{\hyperlink{class_command_console}{Command\+Console}} \&console)
+\begin{DoxyCompactList}\small\item\em Processes SFML window events and forwards input to the console. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_renderer_a3991290a8ec9aa0af4b6c63bdab5fa06}{render}} (sf\+::\+Render\+Window \&window, \mbox{\hyperlink{class_command_console}{Command\+Console}} \&console)
+\begin{DoxyCompactList}\small\item\em Draws all visible elements, including the board and console. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles all visual rendering and window event management for the game. 
+
+The \doxylink{class_renderer}{Renderer} is responsible for drawing tiles, board layout, and console output to the SFML window. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_renderer_a452008d6eea596b2de9b1821ece56b68}\index{Renderer@{Renderer}!Renderer@{Renderer}}
+\index{Renderer@{Renderer}!Renderer@{Renderer}}
+\doxysubsubsection{\texorpdfstring{Renderer()}{Renderer()}}
+{\footnotesize\ttfamily \label{class_renderer_a452008d6eea596b2de9b1821ece56b68} 
+Renderer\+::\+Renderer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_board}{Board}} \&}]{board}{, }\item[{sf\+::\+Font \&}]{font}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_renderer}{Renderer} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em board} & Reference to the \doxylink{class_board}{Board} instance to render. \\
+\hline
+{\em font} & Reference to the font used for tile text and console output. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_renderer_a00bd1dc3164bdeb3b9f642b796d5a286}\index{Renderer@{Renderer}!handleEvents@{handleEvents}}
+\index{handleEvents@{handleEvents}!Renderer@{Renderer}}
+\doxysubsubsection{\texorpdfstring{handleEvents()}{handleEvents()}}
+{\footnotesize\ttfamily \label{class_renderer_a00bd1dc3164bdeb3b9f642b796d5a286} 
+void Renderer\+::handle\+Events (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window}{, }\item[{\mbox{\hyperlink{class_command_console}{Command\+Console}} \&}]{console}{}\end{DoxyParamCaption})}
+
+
+
+Processes SFML window events and forwards input to the console. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The render window to poll for events. \\
+\hline
+{\em console} & Reference to the \doxylink{class_command_console}{Command\+Console} for input handling. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_renderer_a3991290a8ec9aa0af4b6c63bdab5fa06}\index{Renderer@{Renderer}!render@{render}}
+\index{render@{render}!Renderer@{Renderer}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily \label{class_renderer_a3991290a8ec9aa0af4b6c63bdab5fa06} 
+void Renderer\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window}{, }\item[{\mbox{\hyperlink{class_command_console}{Command\+Console}} \&}]{console}{}\end{DoxyParamCaption})}
+
+
+
+Draws all visible elements, including the board and console. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The render window where graphics are drawn. \\
+\hline
+{\em console} & Reference to the console for on-\/screen text rendering. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_renderer_8hpp}{Renderer.\+hpp}}\item 
+src/\mbox{\hyperlink{_renderer_8cpp}{Renderer.\+cpp}}\end{DoxyCompactItemize}

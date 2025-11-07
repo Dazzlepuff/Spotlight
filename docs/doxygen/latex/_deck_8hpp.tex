@@ -1,0 +1,37 @@
+\doxysection{include/\+Deck.hpp File Reference}
+\hypertarget{_deck_8hpp}{}\label{_deck_8hpp}\index{include/Deck.hpp@{include/Deck.hpp}}
+
+
+Declares the \doxylink{class_deck}{Deck} class used for managing collections of \doxylink{class_card}{Card} objects.  
+
+
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include "{}Card.\+hpp"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_deck}{Deck}}
+\begin{DoxyCompactList}\small\item\em Represents a collection of cards and provides utility operations for card management. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Declares the \doxylink{class_deck}{Deck} class used for managing collections of \doxylink{class_card}{Card} objects. 
+
+The \doxylink{class_deck}{Deck} class represents a container of \doxylink{class_card}{Card} instances. It provides functionality for loading cards from JSON files, shuffling, drawing, transferring cards between decks, and querying deck state.
+
+\begin{DoxyNote}{Note}
+This class assumes that the \doxylink{class_card}{Card} type supports construction from JSON objects. 
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_card}{Card}, \doxylink{namespace_path_utils}{Path\+Utils}
+\end{DoxySeeAlso}
+\begin{DoxyDate}{Date}
+2025-\/11-\/06 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{Author}
+Owen Chilson 
+\end{DoxyAuthor}

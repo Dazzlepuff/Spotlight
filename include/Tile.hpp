@@ -1,3 +1,17 @@
+/**
+ * @file Tile.hpp
+ * @brief Declares the Tile class, representing a single board tile that can be owned and colored.
+ *
+ * @details
+ * Each Tile tracks its ownership by a Company and a color state, providing methods
+ * for setting and retrieving this information. Tiles default to being unowned and "neutral" in color.
+ * 
+ * @date 2025-11-06
+ * @version 1.0
+ * @author
+ * Owen Chilson
+ */
+
 #pragma once
 #include <string>
 #include "Company.hpp"

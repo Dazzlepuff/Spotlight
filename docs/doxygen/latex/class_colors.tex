@@ -1,0 +1,145 @@
+\doxysection{Colors Class Reference}
+\hypertarget{class_colors}{}\label{class_colors}\index{Colors@{Colors}}
+
+
+Centralized static utility for color name validation and mapping.  
+
+
+
+
+{\ttfamily \#include $<$Colors.\+hpp$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_colors_abd7dcd987ab14613a74a3de594878635}{is\+Valid}} (const std\+::string \&color)
+\begin{DoxyCompactList}\small\item\em Checks whether a color name is valid. \end{DoxyCompactList}\item 
+static const sf\+::\+Color \& \mbox{\hyperlink{class_colors_ac618d5e23d100828bc70155ff85cf03d}{get\+Sfml\+Color}} (const std\+::string \&color)
+\begin{DoxyCompactList}\small\item\em Retrieves the SFML color object associated with a color name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const std\+::map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{class_colors_a91b38df6321f259d01eb6a47cd3972ba}{color\+Codes}}
+\begin{DoxyCompactList}\small\item\em Maps color names to their ANSI terminal escape codes. \end{DoxyCompactList}\item 
+static const std\+::map$<$ std\+::string, sf\+::\+Color $>$ \mbox{\hyperlink{class_colors_a3a541339f8a4e69cdf69e15fd7b8e541}{sfml\+Colors}}
+\begin{DoxyCompactList}\small\item\em Maps color names to their SFML color equivalents. \end{DoxyCompactList}\item 
+static const std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_colors_ae4bfc6e129eb8f20ea8197c5088f1d5b}{all}}
+\begin{DoxyCompactList}\small\item\em List of all valid color names. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Centralized static utility for color name validation and mapping. 
+
+Provides a list of all valid color names, their ANSI escape codes for console output, and their corresponding SFML color values for rendering. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_colors_ac618d5e23d100828bc70155ff85cf03d}\index{Colors@{Colors}!getSfmlColor@{getSfmlColor}}
+\index{getSfmlColor@{getSfmlColor}!Colors@{Colors}}
+\doxysubsubsection{\texorpdfstring{getSfmlColor()}{getSfmlColor()}}
+{\footnotesize\ttfamily \label{class_colors_ac618d5e23d100828bc70155ff85cf03d} 
+const sf\+::\+Color \& Colors\+::get\+Sfml\+Color (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Retrieves the SFML color object associated with a color name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & The color name to retrieve. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the matching sf\+::\+Color, or the "{}\+Neutral"{} color if not found. 
+\end{DoxyReturn}
+\Hypertarget{class_colors_abd7dcd987ab14613a74a3de594878635}\index{Colors@{Colors}!isValid@{isValid}}
+\index{isValid@{isValid}!Colors@{Colors}}
+\doxysubsubsection{\texorpdfstring{isValid()}{isValid()}}
+{\footnotesize\ttfamily \label{class_colors_abd7dcd987ab14613a74a3de594878635} 
+bool Colors\+::is\+Valid (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Checks whether a color name is valid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & The color name to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the color exists in \doxylink{class_colors_ae4bfc6e129eb8f20ea8197c5088f1d5b}{all}, false otherwise. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_colors_ae4bfc6e129eb8f20ea8197c5088f1d5b}\index{Colors@{Colors}!all@{all}}
+\index{all@{all}!Colors@{Colors}}
+\doxysubsubsection{\texorpdfstring{all}{all}}
+{\footnotesize\ttfamily \label{class_colors_ae4bfc6e129eb8f20ea8197c5088f1d5b} 
+const std\+::vector$<$ std\+::string $>$ Colors\+::all\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}Red"{}},\ \textcolor{stringliteral}{"{}Yellow"{}},\ \textcolor{stringliteral}{"{}Blue"{}},\ \textcolor{stringliteral}{"{}Green"{}},\ \textcolor{stringliteral}{"{}Purple"{}},\ \textcolor{stringliteral}{"{}White"{}},\ \textcolor{stringliteral}{"{}Gray"{}},\ \textcolor{stringliteral}{"{}Neutral"{}}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+List of all valid color names. 
+
+\Hypertarget{class_colors_a91b38df6321f259d01eb6a47cd3972ba}\index{Colors@{Colors}!colorCodes@{colorCodes}}
+\index{colorCodes@{colorCodes}!Colors@{Colors}}
+\doxysubsubsection{\texorpdfstring{colorCodes}{colorCodes}}
+{\footnotesize\ttfamily \label{class_colors_a91b38df6321f259d01eb6a47cd3972ba} 
+const std\+::map$<$ std\+::string, std\+::string $>$ Colors\+::color\+Codes\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}Red"{}},\ \ \ \ \ \textcolor{stringliteral}{"{}\(\backslash\)033[41m\ \ \(\backslash\)033[0m"{}}\},}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}Yellow"{}},\ \ \textcolor{stringliteral}{"{}\(\backslash\)033[43m\ \ \(\backslash\)033[0m"{}}\},}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}Blue"{}},\ \ \ \ \textcolor{stringliteral}{"{}\(\backslash\)033[44m\ \ \(\backslash\)033[0m"{}}\},}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}Green"{}},\ \ \ \textcolor{stringliteral}{"{}\(\backslash\)033[42m\ \ \(\backslash\)033[0m"{}}\},}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}Purple"{}},\ \ \textcolor{stringliteral}{"{}\(\backslash\)033[45m\ \ \(\backslash\)033[0m"{}}\},}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}White"{}},\ \ \ \textcolor{stringliteral}{"{}\(\backslash\)033[47m\ \ \(\backslash\)033[0m"{}}\},}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}Gray"{}},\ \ \ \ \textcolor{stringliteral}{"{}\(\backslash\)033[100m\ \ \(\backslash\)033[0m"{}}\},}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}Neutral"{}},\ \textcolor{stringliteral}{"{}\(\backslash\)033[0m..."{}}\}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Maps color names to their ANSI terminal escape codes. 
+
+Example\+: "{}\+Red"{} → "{}\textbackslash{}033\mbox{[}41m  \textbackslash{}033\mbox{[}0m"{} \Hypertarget{class_colors_a3a541339f8a4e69cdf69e15fd7b8e541}\index{Colors@{Colors}!sfmlColors@{sfmlColors}}
+\index{sfmlColors@{sfmlColors}!Colors@{Colors}}
+\doxysubsubsection{\texorpdfstring{sfmlColors}{sfmlColors}}
+{\footnotesize\ttfamily \label{class_colors_a3a541339f8a4e69cdf69e15fd7b8e541} 
+const std\+::map$<$ std\+::string, sf\+::\+Color $>$ Colors\+::sfml\+Colors\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}Red"{}},\ \ \ \ \ sf::Color(0xD9,\ 0x7B,\ 0x66)\},}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}Yellow"{}},\ \ sf::Color(0xE3,\ 0xC5,\ 0x67)\},}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}Blue"{}},\ \ \ \ sf::Color(0x6C,\ 0x8E,\ 0xBF)\},}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}Green"{}},\ \ \ sf::Color(0x7C,\ 0xA9,\ 0x82)\},}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}Purple"{}},\ \ sf::Color(0xA8,\ 0x8E,\ 0xC6)\},}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}White"{}},\ \ \ sf::Color(0xF2,\ 0xE9,\ 0xE4)\},}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}Gray"{}},\ \ \ \ sf::Color(0xB0,\ 0xA8,\ 0xB9)\},}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}Neutral"{}},\ sf::Color(0x4B,\ 0x4A,\ 0x54)\}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Maps color names to their SFML color equivalents. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_colors_8hpp}{Colors.\+hpp}}\item 
+src/\mbox{\hyperlink{_colors_8cpp}{Colors.\+cpp}}\end{DoxyCompactItemize}

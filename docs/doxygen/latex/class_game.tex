@@ -1,0 +1,603 @@
+\doxysection{Game Class Reference}
+\hypertarget{class_game}{}\label{class_game}\index{Game@{Game}}
+
+
+Central game controller managing all gameplay mechanics and state.  
+
+
+
+
+{\ttfamily \#include $<$Game.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_a27378bcfa405db9ad108f3a65e4f8e14}{Game}} (int board\+Size, std\+::vector$<$ \mbox{\hyperlink{class_company}{Company}} $>$ company\+List)
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{class_game}{Game} instance with specified board and company configuration. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_game_ae3d112ca6e0e55150d2fdbc704474530}{\texorpdfstring{$\sim$}{\string~}\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Destructs the \doxylink{class_game}{Game} instance, releasing dynamically allocated resources. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_ae856b48c83f3a610ada1d5ca814a96c8}{add\+Player}} (const std\+::string \&name, \mbox{\hyperlink{class_company}{Company}} \texorpdfstring{$\ast$}{*}company)
+\begin{DoxyCompactList}\small\item\em Registers a new player with their associated company. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_ae4618ba40eabbbe65e35f1bb239aa29b}{setup}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the game board and deals starting cards. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_ae89e277761b7dc5bc7a23fd1b4c6f17d}{main\+Loop}} ()
+\begin{DoxyCompactList}\small\item\em Enters the main game loop, processing events and rendering until window closes. \end{DoxyCompactList}\item 
+const std\+::vector$<$ \mbox{\hyperlink{class_player}{Player}} $>$ \& \mbox{\hyperlink{class_game_a77f92a75210b020bcab767ad348db480}{get\+Players}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the immutable list of all registered players. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a30df4d75d9021636f589d3a9e4e10445}{start\+New\+Day}} ()
+\begin{DoxyCompactList}\small\item\em Executes start-\/of-\/day triggers for all played cards across all players. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a4b5f6df217318555fd2031cd9feb5379}{draw\+Card\+For\+Player}} (\mbox{\hyperlink{class_deck}{Deck}} \&deck, \mbox{\hyperlink{class_player}{Player}} \&player, int amount)
+\begin{DoxyCompactList}\small\item\em Draws specified number of cards from a deck into a player\textquotesingle{}s hand. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_aa2d651424d33f292bbe056c57018a988}{give\+Resource\+To\+Player}} (int player\+Index, const std\+::string \&resource, int amount, bool log\+To\+Console=true)
+\begin{DoxyCompactList}\small\item\em Grants a specified resource quantity to a player. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_a3ce4bc3f82be28226d71dc38393b343e}{spend\+Resource\+From\+Player}} (int player\+Index, const std\+::string \&resource, int amount, bool log\+To\+Console=true)
+\begin{DoxyCompactList}\small\item\em Attempts to deduct a resource quantity from a player\textquotesingle{}s inventory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_af7b8e98af7f4dcc0d6cee4cb099b9732}{build\+Stage}} (int player\+Index, int x, int y, int z, const std\+::string \&color)
+\begin{DoxyCompactList}\small\item\em Constructs a stage (building) on a hex tile with specified color and ownership. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a1fe7922da710d9c72331c9dad3686cb3}{end\+Turn}} (bool log\+To\+Console=true)
+\begin{DoxyCompactList}\small\item\em Advances to the next player\textquotesingle{}s turn, or starts a new day if all players finished. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_a7b945172aa366aa4e037b922e0761a5f}{play\+Card\+For\+Player}} (int player\+Index, const std\+::string \&card\+Name, bool log\+To\+Console=true)
+\begin{DoxyCompactList}\small\item\em Plays a card from a player\textquotesingle{}s hand into their active play area. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_a1f86867011cd502ab9539a9a585ea922}{remove\+Played\+Card\+For\+Player}} (int player\+Index, const std\+::string \&card\+Name, bool log\+To\+Console=true)
+\begin{DoxyCompactList}\small\item\em Removes a card from a player\textquotesingle{}s active play area (discards it). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_a6bbf91c3dd5d56b692a3a212e4296871}{remove\+Held\+Card\+For\+Player}} (int player\+Index, const std\+::string \&card\+Name, bool log\+To\+Console=true)
+\begin{DoxyCompactList}\small\item\em Removes a card directly from a player\textquotesingle{}s hand (discards without playing). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_game_a77ec772ed3642bdcb8ec6f4ce8e23ff3}{get\+Current\+Day}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the current game day (round number). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_game_a6bd3d524eed5c48f666cbddb0a3d06f2}{get\+Current\+Active\+Player\+Index}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the index of the player whose turn is currently active. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Central game controller managing all gameplay mechanics and state. 
+
+\doxylink{class_game}{Game} acts as the orchestrator for a turn-\/based hex board strategy game. It maintains\+:
+\begin{DoxyItemize}
+\item \doxylink{class_game}{Game} state (current day, active player)
+\item \doxylink{class_player}{Player} roster and their associated companies
+\item Hex board and tile ownership
+\item \doxylink{class_card}{Card} decks (draw and discard)
+\item Resource economy and transactions
+\item Command-\/based interface for game actions
+\item Rendering and event handling via SFML
+\end{DoxyItemize}
+
+The class follows a command pattern for user interactions, mapping string commands to handler functions that manipulate game state. This design allows for scripting, replay systems, and network play extensions.
+
+\begin{DoxyNote}{Note}
+The game uses a -\/1 convention for player\+Index to indicate "{}current active player"{} 
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_player}{Player}, \doxylink{class_board}{Board}, \doxylink{class_company}{Company}, \doxylink{class_deck}{Deck} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_game_a27378bcfa405db9ad108f3a65e4f8e14}\index{Game@{Game}!Game@{Game}}
+\index{Game@{Game}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{Game()}{Game()}}
+{\footnotesize\ttfamily \label{class_game_a27378bcfa405db9ad108f3a65e4f8e14} 
+Game\+::\+Game (\begin{DoxyParamCaption}\item[{int}]{board\+Size}{, }\item[{std\+::vector$<$ \mbox{\hyperlink{class_company}{Company}} $>$}]{company\+List}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a new \doxylink{class_game}{Game} instance with specified board and company configuration. 
+
+Initializes the game environment including\+:
+\begin{DoxyItemize}
+\item Hexagonal board of given size
+\item SFML rendering window (1600x1200)
+\item Font loading from assets
+\item \doxylink{class_renderer}{Renderer} and command console subsystems
+\item \doxylink{class_company}{Company} roster for player assignment
+\item Command handler registration
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em board\+Size} & Radius of the hexagonal board (number of rings from center) \\
+\hline
+\mbox{\texttt{ in}}  & {\em company\+List} & Vector of available companies for player assignment\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+board\+Size must be positive 
+
+company\+List should not be empty for meaningful gameplay 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\doxylink{class_game}{Game} object ready for player addition via \doxylink{class_game_ae856b48c83f3a610ada1d5ca814a96c8}{add\+Player()} 
+
+Window created but not yet displayed
+\end{DoxyPostcond}
+\begin{DoxyWarning}{Warning}
+Exits with error message if font file "{}consolas.\+ttf"{} cannot be loaded 
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_game_ae856b48c83f3a610ada1d5ca814a96c8}{add\+Player()}, \doxylink{class_game_ae4618ba40eabbbe65e35f1bb239aa29b}{setup()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_game_ae3d112ca6e0e55150d2fdbc704474530}\index{Game@{Game}!````~Game@{\texorpdfstring{$\sim$}{\string~}Game}}
+\index{````~Game@{\texorpdfstring{$\sim$}{\string~}Game}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Game()}{\string~Game()}}
+{\footnotesize\ttfamily \label{class_game_ae3d112ca6e0e55150d2fdbc704474530} 
+Game\+::\texorpdfstring{$\sim$}{\string~}\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destructs the \doxylink{class_game}{Game} instance, releasing dynamically allocated resources. 
+
+Ensures proper cleanup of renderer and console subsystems to prevent memory leaks. \begin{DoxyPostcond}{Postcondition}
+All heap-\/allocated members freed 
+\end{DoxyPostcond}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_game_ae856b48c83f3a610ada1d5ca814a96c8}\index{Game@{Game}!addPlayer@{addPlayer}}
+\index{addPlayer@{addPlayer}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{addPlayer()}{addPlayer()}}
+{\footnotesize\ttfamily \label{class_game_ae856b48c83f3a610ada1d5ca814a96c8} 
+void Game\+::add\+Player (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{, }\item[{\mbox{\hyperlink{class_company}{Company}} \texorpdfstring{$\ast$}{*}}]{company}{}\end{DoxyParamCaption})}
+
+
+
+Registers a new player with their associated company. 
+
+Adds a player to the game roster. Players are assigned turn order based on registration sequence. The company pointer establishes ownership relationships for tiles built by this player.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em name} & Display name for the player \\
+\hline
+\mbox{\texttt{ in}}  & {\em company} & Pointer to the company this player represents (must outlive \doxylink{class_game}{Game})\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+company pointer must be valid and point to an existing \doxylink{class_company}{Company} object 
+
+Must be called before \doxylink{class_game_ae4618ba40eabbbe65e35f1bb239aa29b}{setup()} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\doxylink{class_player}{Player} added to internal roster with zero-\/initialized resources
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+\doxylink{class_player}{Player} index is implicitly assigned based on insertion order 
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_game_ae4618ba40eabbbe65e35f1bb239aa29b}{setup()}, \doxylink{class_game_a6bd3d524eed5c48f666cbddb0a3d06f2}{get\+Current\+Active\+Player\+Index()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_game_af7b8e98af7f4dcc0d6cee4cb099b9732}\index{Game@{Game}!buildStage@{buildStage}}
+\index{buildStage@{buildStage}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{buildStage()}{buildStage()}}
+{\footnotesize\ttfamily \label{class_game_af7b8e98af7f4dcc0d6cee4cb099b9732} 
+void Game\+::build\+Stage (\begin{DoxyParamCaption}\item[{int}]{player\+Index}{, }\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{int}]{z}{, }\item[{const std\+::string \&}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a stage (building) on a hex tile with specified color and ownership. 
+
+Changes tile ownership to the player\textquotesingle{}s company and sets the tile\textquotesingle{}s color. This is the primary mechanism for claiming territory and scoring points in the game.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em player\+Index} & Index of the player performing the build action \\
+\hline
+\mbox{\texttt{ in}}  & {\em x} & X-\/coordinate of the target hex tile (cube coordinates) \\
+\hline
+\mbox{\texttt{ in}}  & {\em y} & Y-\/coordinate of the target hex tile (cube coordinates) \\
+\hline
+\mbox{\texttt{ in}}  & {\em z} & Z-\/coordinate of the target hex tile (cube coordinates) \\
+\hline
+\mbox{\texttt{ in}}  & {\em color} & Color name for the stage (must be valid per \doxylink{class_colors_ae4bfc6e129eb8f20ea8197c5088f1d5b}{Colors\+::all})\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+player\+Index must be valid (not -\/1) 
+
+Coordinates must reference an existing tile on the board 
+
+color must be a recognized color string 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\doxylink{class_tile}{Tile} ownership transferred to player\textquotesingle{}s company 
+
+\doxylink{class_tile}{Tile} color updated
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Does not validate color or coordinates; caller must ensure validity 
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_board_a025b63c63ceeb4e632e428667922f2a4}{Board\+::set\+Tile\+Owner()}, \doxylink{class_board_af4cd342cc5bb89f35a33049830910ff7}{Board\+::set\+Tile\+Color()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_game_a4b5f6df217318555fd2031cd9feb5379}\index{Game@{Game}!drawCardForPlayer@{drawCardForPlayer}}
+\index{drawCardForPlayer@{drawCardForPlayer}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{drawCardForPlayer()}{drawCardForPlayer()}}
+{\footnotesize\ttfamily \label{class_game_a4b5f6df217318555fd2031cd9feb5379} 
+void Game\+::draw\+Card\+For\+Player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_deck}{Deck}} \&}]{deck}{, }\item[{\mbox{\hyperlink{class_player}{Player}} \&}]{player}{, }\item[{int}]{amount}{}\end{DoxyParamCaption})}
+
+
+
+Draws specified number of cards from a deck into a player\textquotesingle{}s hand. 
+
+Transfers cards from the given deck to the player\textquotesingle{}s held cards. Logs each draw to the console. Stops early if deck is exhausted.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em deck} & \doxylink{class_deck}{Deck} to draw from (modified by removing cards) \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em player} & \doxylink{class_player}{Player} receiving the cards (hand is expanded) \\
+\hline
+\mbox{\texttt{ in}}  & {\em amount} & Number of cards to attempt drawing\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+deck must be a valid \doxylink{class_deck}{Deck} reference 
+
+player must be a valid \doxylink{class_player}{Player} reference 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Up to \textquotesingle{}amount\textquotesingle{} cards transferred from deck to player hand 
+
+Console messages logged for each drawn card
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+If deck empties mid-\/draw, stops and logs a message 
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_deck_a7e3cb5a726dec9953c564ab7d780563d}{Deck\+::draw\+Card()}, \doxylink{class_player_a12998901cf0e52df97ac1cce5316535f}{Player\+::add\+Held\+Card()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_game_a1fe7922da710d9c72331c9dad3686cb3}\index{Game@{Game}!endTurn@{endTurn}}
+\index{endTurn@{endTurn}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{endTurn()}{endTurn()}}
+{\footnotesize\ttfamily \label{class_game_a1fe7922da710d9c72331c9dad3686cb3} 
+void Game\+::end\+Turn (\begin{DoxyParamCaption}\item[{bool}]{log\+To\+Console}{ = {\ttfamily true}}\end{DoxyParamCaption})}
+
+
+
+Advances to the next player\textquotesingle{}s turn, or starts a new day if all players finished. 
+
+Increments the active player index. If the last player in turn order finishes, wraps to player 0 and increments the current day counter, triggering start-\/of-\/day effects.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em log\+To\+Console} & Whether to log turn transitions to console (default\+: true)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+current\+Active\+Player\+Index advanced (or wrapped to 0) 
+
+If day boundary crossed, current\+Day incremented and \doxylink{class_game_a30df4d75d9021636f589d3a9e4e10445}{start\+New\+Day()} called 
+
+Console messages logged if log\+To\+Console is true
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_game_a30df4d75d9021636f589d3a9e4e10445}{start\+New\+Day()}, \doxylink{class_game_a6bd3d524eed5c48f666cbddb0a3d06f2}{get\+Current\+Active\+Player\+Index()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_game_a6bd3d524eed5c48f666cbddb0a3d06f2}\index{Game@{Game}!getCurrentActivePlayerIndex@{getCurrentActivePlayerIndex}}
+\index{getCurrentActivePlayerIndex@{getCurrentActivePlayerIndex}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{getCurrentActivePlayerIndex()}{getCurrentActivePlayerIndex()}}
+{\footnotesize\ttfamily \label{class_game_a6bd3d524eed5c48f666cbddb0a3d06f2} 
+int Game\+::get\+Current\+Active\+Player\+Index (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves the index of the player whose turn is currently active. 
+
+\begin{DoxyReturn}{Returns}
+Integer index into the players vector (0-\/based) 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_game_a1fe7922da710d9c72331c9dad3686cb3}{end\+Turn()}, validate\+And\+Set\+Player\+Index() 
+\end{DoxySeeAlso}
+\Hypertarget{class_game_a77ec772ed3642bdcb8ec6f4ce8e23ff3}\index{Game@{Game}!getCurrentDay@{getCurrentDay}}
+\index{getCurrentDay@{getCurrentDay}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{getCurrentDay()}{getCurrentDay()}}
+{\footnotesize\ttfamily \label{class_game_a77ec772ed3642bdcb8ec6f4ce8e23ff3} 
+int Game\+::get\+Current\+Day (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves the current game day (round number). 
+
+\begin{DoxyReturn}{Returns}
+Integer representing the current day, starting from 0 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_game_a30df4d75d9021636f589d3a9e4e10445}{start\+New\+Day()}, \doxylink{class_game_a1fe7922da710d9c72331c9dad3686cb3}{end\+Turn()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_game_a77f92a75210b020bcab767ad348db480}\index{Game@{Game}!getPlayers@{getPlayers}}
+\index{getPlayers@{getPlayers}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{getPlayers()}{getPlayers()}}
+{\footnotesize\ttfamily \label{class_game_a77f92a75210b020bcab767ad348db480} 
+const std\+::vector$<$ \mbox{\hyperlink{class_player}{Player}} $>$ \& Game\+::get\+Players (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the immutable list of all registered players. 
+
+Provides read-\/only access to the player roster for querying game state. \begin{DoxyReturn}{Returns}
+Const reference to the internal player vector 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_player}{Player} 
+\end{DoxySeeAlso}
+\Hypertarget{class_game_aa2d651424d33f292bbe056c57018a988}\index{Game@{Game}!giveResourceToPlayer@{giveResourceToPlayer}}
+\index{giveResourceToPlayer@{giveResourceToPlayer}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{giveResourceToPlayer()}{giveResourceToPlayer()}}
+{\footnotesize\ttfamily \label{class_game_aa2d651424d33f292bbe056c57018a988} 
+void Game\+::give\+Resource\+To\+Player (\begin{DoxyParamCaption}\item[{int}]{player\+Index}{, }\item[{const std\+::string \&}]{resource}{, }\item[{int}]{amount}{, }\item[{bool}]{log\+To\+Console}{ = {\ttfamily true}}\end{DoxyParamCaption})}
+
+
+
+Grants a specified resource quantity to a player. 
+
+Increases the player\textquotesingle{}s resource pool for the given resource type. If the resource doesn\textquotesingle{}t exist in the player\textquotesingle{}s inventory, initializes it to the given amount.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em player\+Index} & Index of target player (-\/1 for current active player) \\
+\hline
+\mbox{\texttt{ in}}  & {\em resource} & Name of the resource (e.\+g., "{}gold"{}, "{}wood"{}, "{}influence"{}) \\
+\hline
+\mbox{\texttt{ in}}  & {\em amount} & Quantity to add (can be negative to subtract) \\
+\hline
+\mbox{\texttt{ in}}  & {\em log\+To\+Console} & Whether to print transaction to console (default\+: true)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+player\+Index must be valid or -\/1 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\doxylink{class_player}{Player}\textquotesingle{}s resource pool increased by amount 
+
+Console message logged if log\+To\+Console is true
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Resources are string-\/keyed and dynamically created on first use 
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_game_a3ce4bc3f82be28226d71dc38393b343e}{spend\+Resource\+From\+Player()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_game_ae89e277761b7dc5bc7a23fd1b4c6f17d}\index{Game@{Game}!mainLoop@{mainLoop}}
+\index{mainLoop@{mainLoop}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{mainLoop()}{mainLoop()}}
+{\footnotesize\ttfamily \label{class_game_ae89e277761b7dc5bc7a23fd1b4c6f17d} 
+void Game\+::main\+Loop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Enters the main game loop, processing events and rendering until window closes. 
+
+Core game loop that\+:
+\begin{DoxyEnumerate}
+\item Handles window events (close, input) via renderer
+\item Processes queued console commands via execute\+Command()
+\item Renders the current game state (board, console output)
+\end{DoxyEnumerate}
+
+This loop runs indefinitely until the SFML window is closed by the user.
+
+\begin{DoxyPrecond}{Precondition}
+\doxylink{class_game_ae4618ba40eabbbe65e35f1bb239aa29b}{setup()} must have been called to initialize game state 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Window closed and game terminated
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Blocks execution until game exit 
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+execute\+Command(), \doxylink{class_renderer_a00bd1dc3164bdeb3b9f642b796d5a286}{Renderer\+::handle\+Events()}, \doxylink{class_renderer_a3991290a8ec9aa0af4b6c63bdab5fa06}{Renderer\+::render()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_game_a7b945172aa366aa4e037b922e0761a5f}\index{Game@{Game}!playCardForPlayer@{playCardForPlayer}}
+\index{playCardForPlayer@{playCardForPlayer}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{playCardForPlayer()}{playCardForPlayer()}}
+{\footnotesize\ttfamily \label{class_game_a7b945172aa366aa4e037b922e0761a5f} 
+bool Game\+::play\+Card\+For\+Player (\begin{DoxyParamCaption}\item[{int}]{player\+Index}{, }\item[{const std\+::string \&}]{card\+Name}{, }\item[{bool}]{log\+To\+Console}{ = {\ttfamily true}}\end{DoxyParamCaption})}
+
+
+
+Plays a card from a player\textquotesingle{}s hand into their active play area. 
+
+Validates the player has the card in hand, transfers it to played cards, and executes the card\textquotesingle{}s "{}on\+Play"{} trigger immediately.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em player\+Index} & Index of the player (-\/1 for current active player) \\
+\hline
+\mbox{\texttt{ in}}  & {\em card\+Name} & Exact name of the card to play \\
+\hline
+\mbox{\texttt{ in}}  & {\em log\+To\+Console} & Whether to log action/errors to console (default\+: true)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if card successfully played, false if not found in hand
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+player\+Index must be valid or -\/1 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+If successful, card moved from hand to played\+Cards 
+
+\doxylink{class_card}{Card}\textquotesingle{}s on\+Play trigger executed 
+
+Console message logged if log\+To\+Console is true
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_game_a1f86867011cd502ab9539a9a585ea922}{remove\+Played\+Card\+For\+Player()}, \doxylink{class_player_a6b12e76f1ea60db5396f80e545bd417c}{Player\+::play\+Card()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_game_a6bbf91c3dd5d56b692a3a212e4296871}\index{Game@{Game}!removeHeldCardForPlayer@{removeHeldCardForPlayer}}
+\index{removeHeldCardForPlayer@{removeHeldCardForPlayer}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{removeHeldCardForPlayer()}{removeHeldCardForPlayer()}}
+{\footnotesize\ttfamily \label{class_game_a6bbf91c3dd5d56b692a3a212e4296871} 
+bool Game\+::remove\+Held\+Card\+For\+Player (\begin{DoxyParamCaption}\item[{int}]{player\+Index}{, }\item[{const std\+::string \&}]{card\+Name}{, }\item[{bool}]{log\+To\+Console}{ = {\ttfamily true}}\end{DoxyParamCaption})}
+
+
+
+Removes a card directly from a player\textquotesingle{}s hand (discards without playing). 
+
+Used for discard mechanics, hand management, or card destruction effects.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em player\+Index} & Index of the player (-\/1 for current active player) \\
+\hline
+\mbox{\texttt{ in}}  & {\em card\+Name} & Exact name of the card to remove \\
+\hline
+\mbox{\texttt{ in}}  & {\em log\+To\+Console} & Whether to log action/errors to console (default\+: true)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if card found and removed, false if not in hand
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+player\+Index must be valid or -\/1 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+If successful, card removed from held\+Cards 
+
+Console message logged if log\+To\+Console is true
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_game_a7b945172aa366aa4e037b922e0761a5f}{play\+Card\+For\+Player()}, \doxylink{class_player_a8d7d0abc148ef80459ce1980880a25fb}{Player\+::remove\+Held\+Card()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_game_a1f86867011cd502ab9539a9a585ea922}\index{Game@{Game}!removePlayedCardForPlayer@{removePlayedCardForPlayer}}
+\index{removePlayedCardForPlayer@{removePlayedCardForPlayer}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{removePlayedCardForPlayer()}{removePlayedCardForPlayer()}}
+{\footnotesize\ttfamily \label{class_game_a1f86867011cd502ab9539a9a585ea922} 
+bool Game\+::remove\+Played\+Card\+For\+Player (\begin{DoxyParamCaption}\item[{int}]{player\+Index}{, }\item[{const std\+::string \&}]{card\+Name}{, }\item[{bool}]{log\+To\+Console}{ = {\ttfamily true}}\end{DoxyParamCaption})}
+
+
+
+Removes a card from a player\textquotesingle{}s active play area (discards it). 
+
+Used for card destruction, end-\/of-\/turn cleanup, or card replacement mechanics.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em player\+Index} & Index of the player (-\/1 for current active player) \\
+\hline
+\mbox{\texttt{ in}}  & {\em card\+Name} & Exact name of the card to remove \\
+\hline
+\mbox{\texttt{ in}}  & {\em log\+To\+Console} & Whether to log action/errors to console (default\+: true)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if card found and removed, false if not in play
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+player\+Index must be valid or -\/1 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+If successful, card removed from played\+Cards 
+
+Console message logged if log\+To\+Console is true
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_game_a7b945172aa366aa4e037b922e0761a5f}{play\+Card\+For\+Player()}, \doxylink{class_player_aafc9632b2e1097a09a6f5a5074323340}{Player\+::remove\+Played\+Card()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_game_ae4618ba40eabbbe65e35f1bb239aa29b}\index{Game@{Game}!setup@{setup}}
+\index{setup@{setup}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily \label{class_game_ae4618ba40eabbbe65e35f1bb239aa29b} 
+void Game\+::setup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the game board and deals starting cards. 
+
+Performs initial game setup\+:
+\begin{DoxyItemize}
+\item Randomly assigns colors and owners to half the board tiles
+\item Sets remaining tiles to neutral (unowned)
+\item Loads card deck from "{}cards.\+json"{}
+\item Shuffles the draw deck
+\item Deals one card to the first player
+\end{DoxyItemize}
+
+This method implements the game\textquotesingle{}s starting conditions as per design rules.
+
+\begin{DoxyPrecond}{Precondition}
+At least one player must be added via \doxylink{class_game_ae856b48c83f3a610ada1d5ca814a96c8}{add\+Player()} 
+
+"{}cards.\+json"{} must exist and contain valid card definitions 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\doxylink{class_board}{Board} tiles initialized with random colors and owners 
+
+Draw and discard decks created 
+
+First player has one card in hand
+\end{DoxyPostcond}
+\begin{DoxyWarning}{Warning}
+Neutral color (index 0 in \doxylink{class_colors_ae4bfc6e129eb8f20ea8197c5088f1d5b}{Colors\+::all}) is excluded from random selection 
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_game_ae856b48c83f3a610ada1d5ca814a96c8}{add\+Player()}, \doxylink{class_game_ae89e277761b7dc5bc7a23fd1b4c6f17d}{main\+Loop()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_game_a3ce4bc3f82be28226d71dc38393b343e}\index{Game@{Game}!spendResourceFromPlayer@{spendResourceFromPlayer}}
+\index{spendResourceFromPlayer@{spendResourceFromPlayer}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{spendResourceFromPlayer()}{spendResourceFromPlayer()}}
+{\footnotesize\ttfamily \label{class_game_a3ce4bc3f82be28226d71dc38393b343e} 
+bool Game\+::spend\+Resource\+From\+Player (\begin{DoxyParamCaption}\item[{int}]{player\+Index}{, }\item[{const std\+::string \&}]{resource}{, }\item[{int}]{amount}{, }\item[{bool}]{log\+To\+Console}{ = {\ttfamily true}}\end{DoxyParamCaption})}
+
+
+
+Attempts to deduct a resource quantity from a player\textquotesingle{}s inventory. 
+
+Validates that the player has sufficient resources before deducting. If insufficient, logs an error and returns false without modifying the player\textquotesingle{}s inventory.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em player\+Index} & Index of target player (-\/1 for current active player) \\
+\hline
+\mbox{\texttt{ in}}  & {\em resource} & Name of the resource to spend \\
+\hline
+\mbox{\texttt{ in}}  & {\em amount} & Quantity to deduct \\
+\hline
+\mbox{\texttt{ in}}  & {\em log\+To\+Console} & Whether to print transaction/errors to console (default\+: true)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if transaction succeeded, false if insufficient resources
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+player\+Index must be valid or -\/1 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+If successful, player\textquotesingle{}s resource reduced by amount 
+
+Console message logged if log\+To\+Console is true
+\end{DoxyPostcond}
+\begin{DoxyWarning}{Warning}
+Returns false if resource doesn\textquotesingle{}t exist in player\textquotesingle{}s inventory 
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_game_aa2d651424d33f292bbe056c57018a988}{give\+Resource\+To\+Player()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_game_a30df4d75d9021636f589d3a9e4e10445}\index{Game@{Game}!startNewDay@{startNewDay}}
+\index{startNewDay@{startNewDay}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{startNewDay()}{startNewDay()}}
+{\footnotesize\ttfamily \label{class_game_a30df4d75d9021636f589d3a9e4e10445} 
+void Game\+::start\+New\+Day (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Executes start-\/of-\/day triggers for all played cards across all players. 
+
+Iterates through each player\textquotesingle{}s active (played) cards and invokes their "{}on\+Start\+Of\+Day"{} trigger. This implements card effects that activate at the beginning of each game day (round).
+
+\begin{DoxyPostcond}{Postcondition}
+All cards\textquotesingle{} on\+Start\+Of\+Day effects executed 
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Called automatically when all players end their turn (day transition) 
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_game_a1fe7922da710d9c72331c9dad3686cb3}{end\+Turn()}, \doxylink{class_card_a14b29d41ea079de4fd5f79f76417e235}{Card\+::execute\+Trigger()} 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_game_8hpp}{Game.\+hpp}}\item 
+src/\mbox{\hyperlink{_game_8cpp}{Game.\+cpp}}\end{DoxyCompactItemize}

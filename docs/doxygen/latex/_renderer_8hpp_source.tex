@@ -1,0 +1,30 @@
+\doxysection{Renderer.\+hpp}
+\hypertarget{_renderer_8hpp_source}{}\label{_renderer_8hpp_source}\index{include/Renderer.hpp@{include/Renderer.hpp}}
+\mbox{\hyperlink{_renderer_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_board_8hpp}{Board.hpp}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_tile_8hpp}{Tile.hpp}}"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_command_console}{CommandConsole}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_renderer_a452008d6eea596b2de9b1821ece56b68}{Renderer}}\ \{}
+\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{class_renderer_a452008d6eea596b2de9b1821ece56b68}{Renderer}}(\mbox{\hyperlink{class_board}{Board}}\&\ board,\ sf::Font\&\ font);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_renderer_a00bd1dc3164bdeb3b9f642b796d5a286}{handleEvents}}(sf::RenderWindow\&\ window,\ \mbox{\hyperlink{class_command_console}{CommandConsole}}\&\ console);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_renderer_a3991290a8ec9aa0af4b6c63bdab5fa06}{render}}(sf::RenderWindow\&\ window,\ \mbox{\hyperlink{class_command_console}{CommandConsole}}\&\ console);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ drawBoard(sf::RenderWindow\&\ window);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{class_board}{Board}}\&\ board;}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00061\ \ \ \ \ sf::Font\&\ font;}
+\DoxyCodeLine{00062\ \};}
+
+\end{DoxyCode}

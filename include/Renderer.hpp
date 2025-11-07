@@ -2,7 +2,13 @@
  * @file Renderer.hpp
  * @brief Declares the Renderer class responsible for drawing the game board and handling SFML rendering.
  *
+ * @details
  * Handles visual updates of the board, tiles, and console interface within the main SFML window.
+ * 
+ * @date 2025-11-06
+ * @version 1.0
+ * @author
+ * Owen Chilson
  */
 
 #pragma once

@@ -1,0 +1,29 @@
+\doxysection{include/\+Path\+Utils.hpp File Reference}
+\hypertarget{_path_utils_8hpp}{}\label{_path_utils_8hpp}\index{include/PathUtils.hpp@{include/PathUtils.hpp}}
+
+
+Utility functions for locating executable, configuration, and asset directories.  
+
+
+{\ttfamily \#include $<$filesystem$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_path_utils}{Path\+Utils}}
+\begin{DoxyCompactList}\small\item\em Contains helper functions for resolving application file paths. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::filesystem\+::path \mbox{\hyperlink{namespace_path_utils_a14803ab217e43566fe90f79e0b0403c2}{Path\+Utils\+::get\+Executable\+Dir}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the directory where the executable is located. \end{DoxyCompactList}\item 
+std\+::filesystem\+::path \mbox{\hyperlink{namespace_path_utils_a638543f5e98db566159fcda3bcae31d4}{Path\+Utils\+::get\+Config\+Path}} (const std\+::string \&relative\+File="{}"{})
+\begin{DoxyCompactList}\small\item\em Constructs a path within the "{}config"{} directory. \end{DoxyCompactList}\item 
+std\+::filesystem\+::path \mbox{\hyperlink{namespace_path_utils_a92ce6938ce41b16444134a2083549c16}{Path\+Utils\+::get\+Asset\+Path}} (const std\+::string \&relative\+File="{}"{})
+\begin{DoxyCompactList}\small\item\em Constructs a path within the "{}assets"{} directory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Utility functions for locating executable, configuration, and asset directories. 
+
+Provides cross-\/platform path resolution for accessing the executable directory and related resource folders such as "{}config"{} and "{}assets"{}. 

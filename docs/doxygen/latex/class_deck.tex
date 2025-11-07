@@ -1,0 +1,250 @@
+\doxysection{Deck Class Reference}
+\hypertarget{class_deck}{}\label{class_deck}\index{Deck@{Deck}}
+
+
+Represents a collection of cards and provides utility operations for card management.  
+
+
+
+
+{\ttfamily \#include $<$Deck.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_deck_a599c3fa11cd0eb062411a1360f5afc67}{Deck}} (const std\+::string \&deck\+Name="{}"{})
+\begin{DoxyCompactList}\small\item\em Constructs a deck with an optional name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_deck_a1b55c37de9323e26d5acac3ccc42c896}{load\+From\+Json\+File}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Loads cards into the deck from a JSON file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_deck_a46dad8725d8cb8d8af70864ff4549676}{add\+Card}} (const \mbox{\hyperlink{class_card}{Card}} \&card)
+\begin{DoxyCompactList}\small\item\em Adds a card to the deck. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_card}{Card}} \mbox{\hyperlink{class_deck_a7e3cb5a726dec9953c564ab7d780563d}{draw\+Card}} ()
+\begin{DoxyCompactList}\small\item\em Draws the topmost card from the deck. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_deck_a70756b735a28aa8cf6e8c73ec1f2264d}{move\+Card\+To}} (const \mbox{\hyperlink{class_card}{Card}} \&card, \mbox{\hyperlink{class_deck}{Deck}} \&deck)
+\begin{DoxyCompactList}\small\item\em Transfers a card to another deck. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_deck_ae5a1e52ab00ae5924f2bc6b730dba3eb}{shuffle}} ()
+\begin{DoxyCompactList}\small\item\em Randomly shuffles the order of cards in the deck. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_deck_a67089846dfe439fa2807e6f3ac93061c}{size}} () const
+\begin{DoxyCompactList}\small\item\em Gets the number of cards currently in the deck. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_deck_a2cdc7f30f31f041ae5f29b18858bf1c1}{empty}} () const
+\begin{DoxyCompactList}\small\item\em Checks whether the deck is empty. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_deck_adcbbf95d2798585fe37f6f0ccfe78820}{name}}
+\begin{DoxyCompactList}\small\item\em The deck’s name, used for identification or debugging. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_card}{Card}} $>$ \mbox{\hyperlink{class_deck_af88eab927c6559098be0a0effa5dab11}{cards}}
+\begin{DoxyCompactList}\small\item\em The internal storage of cards contained within the deck. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a collection of cards and provides utility operations for card management. 
+
+The \doxylink{class_deck}{Deck} class encapsulates a vector of \doxylink{class_card}{Card} objects along with a name identifier. It supports loading cards from external JSON data, shuffling the deck, drawing cards, and transferring them to other decks. The design is extensible for various game contexts that require deck-\/based operations. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_deck_a599c3fa11cd0eb062411a1360f5afc67}\index{Deck@{Deck}!Deck@{Deck}}
+\index{Deck@{Deck}!Deck@{Deck}}
+\doxysubsubsection{\texorpdfstring{Deck()}{Deck()}}
+{\footnotesize\ttfamily \label{class_deck_a599c3fa11cd0eb062411a1360f5afc67} 
+Deck\+::\+Deck (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{deck\+Name}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a deck with an optional name. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em deck\+Name} & Optional name identifier for the deck. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+\doxylink{class_deck}{Deck} is initialized with an empty card list. 
+\end{DoxyPostcond}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_deck_a46dad8725d8cb8d8af70864ff4549676}\index{Deck@{Deck}!addCard@{addCard}}
+\index{addCard@{addCard}!Deck@{Deck}}
+\doxysubsubsection{\texorpdfstring{addCard()}{addCard()}}
+{\footnotesize\ttfamily \label{class_deck_a46dad8725d8cb8d8af70864ff4549676} 
+void Deck\+::add\+Card (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_card}{Card}} \&}]{card}{}\end{DoxyParamCaption})}
+
+
+
+Adds a card to the deck. 
+
+Adds a card directly to the deck vector.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em card} & The card to be added. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The card is appended to the end of the internal vector. 
+\end{DoxyPostcond}
+\Hypertarget{class_deck_a7e3cb5a726dec9953c564ab7d780563d}\index{Deck@{Deck}!drawCard@{drawCard}}
+\index{drawCard@{drawCard}!Deck@{Deck}}
+\doxysubsubsection{\texorpdfstring{drawCard()}{drawCard()}}
+{\footnotesize\ttfamily \label{class_deck_a7e3cb5a726dec9953c564ab7d780563d} 
+\mbox{\hyperlink{class_card}{Card}} Deck\+::draw\+Card (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Draws the topmost card from the deck. 
+
+Removes the last card from the internal vector (LIFO order) and returns it. If the deck is empty, an empty \doxylink{class_card}{Card} is returned instead.
+
+\begin{DoxyPrecond}{Precondition}
+The deck should contain at least one card. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+The deck’s size decreases by one, unless empty. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+The drawn \doxylink{class_card}{Card} object. 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+Returns a default-\/constructed \doxylink{class_card}{Card} if the deck is empty.
+\end{DoxyWarning}
+Returns the last element of the vector to simulate drawing from the top. Logs an error if called on an empty deck and returns a default card. \Hypertarget{class_deck_a2cdc7f30f31f041ae5f29b18858bf1c1}\index{Deck@{Deck}!empty@{empty}}
+\index{empty@{empty}!Deck@{Deck}}
+\doxysubsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily \label{class_deck_a2cdc7f30f31f041ae5f29b18858bf1c1} 
+bool Deck\+::empty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Checks whether the deck is empty. 
+
+Returns true if there are no cards remaining in the deck.
+
+\begin{DoxyReturn}{Returns}
+True if the deck has no cards, false otherwise. 
+\end{DoxyReturn}
+\begin{DoxyPostcond}{Postcondition}
+Does not modify the deck. 
+\end{DoxyPostcond}
+\Hypertarget{class_deck_a1b55c37de9323e26d5acac3ccc42c896}\index{Deck@{Deck}!loadFromJsonFile@{loadFromJsonFile}}
+\index{loadFromJsonFile@{loadFromJsonFile}!Deck@{Deck}}
+\doxysubsubsection{\texorpdfstring{loadFromJsonFile()}{loadFromJsonFile()}}
+{\footnotesize\ttfamily \label{class_deck_a1b55c37de9323e26d5acac3ccc42c896} 
+void Deck\+::load\+From\+Json\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Loads cards into the deck from a JSON file. 
+
+The JSON file must contain an array of card definitions compatible with the \doxylink{class_card}{Card} class constructor. Each card may optionally define a {\ttfamily "{}copies"{}} field indicating how many duplicates to create.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em filename} & The name or relative path of the JSON file to load. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+The file must exist and contain valid JSON. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+The deck’s card list is cleared and replaced with the loaded cards. 
+\end{DoxyPostcond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::exception} & If JSON parsing fails (caught internally and logged). \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyWarning}{Warning}
+Logs errors to stderr if the file cannot be found or opened. 
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_card_a5b4d30be8322facc6f0567ba00c2e1bf}{Card\+::\+Card(const nlohmann\+::json\&)}
+\end{DoxySeeAlso}
+Uses \doxylink{namespace_path_utils_a92ce6938ce41b16444134a2083549c16}{Path\+Utils\+::get\+Asset\+Path()} to resolve the full path of the file. Cards are loaded from JSON, supporting an optional "{}copies"{} field for duplication. Any parsing or I/O errors are printed to stderr. \begin{DoxyNote}{Note}
+Default copies = 1 unless explicitly defined in JSON.
+\end{DoxyNote}
+\Hypertarget{class_deck_a70756b735a28aa8cf6e8c73ec1f2264d}\index{Deck@{Deck}!moveCardTo@{moveCardTo}}
+\index{moveCardTo@{moveCardTo}!Deck@{Deck}}
+\doxysubsubsection{\texorpdfstring{moveCardTo()}{moveCardTo()}}
+{\footnotesize\ttfamily \label{class_deck_a70756b735a28aa8cf6e8c73ec1f2264d} 
+void Deck\+::move\+Card\+To (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_card}{Card}} \&}]{card}{, }\item[{\mbox{\hyperlink{class_deck}{Deck}} \&}]{deck}{}\end{DoxyParamCaption})}
+
+
+
+Transfers a card to another deck. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em card} & The card to move. \\
+\hline
+\mbox{\texttt{ out}}  & {\em deck} & The destination deck that receives the card. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The specified card is added to the destination deck. 
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+This operation does not remove the card from the source deck.
+\end{DoxyNote}
+Only appends the card to the destination deck — it does not remove it locally. This enables flexible gameplay behavior (e.\+g., cloning, discarding). \Hypertarget{class_deck_ae5a1e52ab00ae5924f2bc6b730dba3eb}\index{Deck@{Deck}!shuffle@{shuffle}}
+\index{shuffle@{shuffle}!Deck@{Deck}}
+\doxysubsubsection{\texorpdfstring{shuffle()}{shuffle()}}
+{\footnotesize\ttfamily \label{class_deck_ae5a1e52ab00ae5924f2bc6b730dba3eb} 
+void Deck\+::shuffle (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Randomly shuffles the order of cards in the deck. 
+
+Uses a Mersenne Twister pseudo-\/random generator seeded from std\+::random\+\_\+device. Suitable for gameplay randomness but not cryptographically secure.
+
+\begin{DoxyPostcond}{Postcondition}
+All cards remain present, but in randomized order.
+\end{DoxyPostcond}
+Uses std\+::shuffle with Mersenne Twister (mt19937) seeded from random\+\_\+device. Ensures fair shuffling each time it’s called. \Hypertarget{class_deck_a67089846dfe439fa2807e6f3ac93061c}\index{Deck@{Deck}!size@{size}}
+\index{size@{size}!Deck@{Deck}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily \label{class_deck_a67089846dfe439fa2807e6f3ac93061c} 
+size\+\_\+t Deck\+::size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Gets the number of cards currently in the deck. 
+
+Returns the current card count in the deck.
+
+\begin{DoxyReturn}{Returns}
+The count of cards. 
+\end{DoxyReturn}
+\begin{DoxyPostcond}{Postcondition}
+Does not modify the deck. 
+\end{DoxyPostcond}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_deck_af88eab927c6559098be0a0effa5dab11}\index{Deck@{Deck}!cards@{cards}}
+\index{cards@{cards}!Deck@{Deck}}
+\doxysubsubsection{\texorpdfstring{cards}{cards}}
+{\footnotesize\ttfamily \label{class_deck_af88eab927c6559098be0a0effa5dab11} 
+std\+::vector$<$\mbox{\hyperlink{class_card}{Card}}$>$ Deck\+::cards}
+
+
+
+The internal storage of cards contained within the deck. 
+
+\Hypertarget{class_deck_adcbbf95d2798585fe37f6f0ccfe78820}\index{Deck@{Deck}!name@{name}}
+\index{name@{name}!Deck@{Deck}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily \label{class_deck_adcbbf95d2798585fe37f6f0ccfe78820} 
+std\+::string Deck\+::name}
+
+
+
+The deck’s name, used for identification or debugging. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_deck_8hpp}{Deck.\+hpp}}\item 
+src/\mbox{\hyperlink{_deck_8cpp}{Deck.\+cpp}}\end{DoxyCompactItemize}

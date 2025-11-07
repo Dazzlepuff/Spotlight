@@ -1,0 +1,122 @@
+\doxysection{Card Class Reference}
+\hypertarget{class_card}{}\label{class_card}\index{Card@{Card}}
+
+
+Represents a playable card with triggers and associated actions.  
+
+
+
+
+{\ttfamily \#include $<$Card.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_card_ad3e990e28a4961b998eb5995f1191881}{Card}} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor. Initializes an empty card. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_card_a5b4d30be8322facc6f0567ba00c2e1bf}{Card}} (const nlohmann\+::json \&data)
+\begin{DoxyCompactList}\small\item\em Constructs a card from parsed JSON data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_card_a14b29d41ea079de4fd5f79f76417e235}{execute\+Trigger}} (const std\+::string \&trigger, class \mbox{\hyperlink{class_player}{Player}} \&player) const
+\begin{DoxyCompactList}\small\item\em Executes all actions tied to a given trigger. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_card_a1f5013054990456125c82d805744062f}{name}}
+\item 
+std\+::string \mbox{\hyperlink{class_card_aa1c11255159b8ac2243398487a2ac00a}{description}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::vector$<$ nlohmann\+::json $>$ $>$ \mbox{\hyperlink{class_card_aeb788e9ef9aa313fef01604109a528d7}{triggers}}
+\begin{DoxyCompactList}\small\item\em Maps trigger event names to a list of action definitions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a playable card with triggers and associated actions. 
+
+Each card contains a name, description, and a set of triggers that define when certain actions occur (e.\+g., "{}on\+Play"{}, "{}on\+Start\+Of\+Day"{}). Actions are stored as JSON objects that can be executed dynamically. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_card_ad3e990e28a4961b998eb5995f1191881}\index{Card@{Card}!Card@{Card}}
+\index{Card@{Card}!Card@{Card}}
+\doxysubsubsection{\texorpdfstring{Card()}{Card()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_card_ad3e990e28a4961b998eb5995f1191881} 
+Card\+::\+Card (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default constructor. Initializes an empty card. 
+
+\Hypertarget{class_card_a5b4d30be8322facc6f0567ba00c2e1bf}\index{Card@{Card}!Card@{Card}}
+\index{Card@{Card}!Card@{Card}}
+\doxysubsubsection{\texorpdfstring{Card()}{Card()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_card_a5b4d30be8322facc6f0567ba00c2e1bf} 
+Card\+::\+Card (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{data}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a card from parsed JSON data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & JSON object containing card properties and triggers. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_card_a14b29d41ea079de4fd5f79f76417e235}\index{Card@{Card}!executeTrigger@{executeTrigger}}
+\index{executeTrigger@{executeTrigger}!Card@{Card}}
+\doxysubsubsection{\texorpdfstring{executeTrigger()}{executeTrigger()}}
+{\footnotesize\ttfamily \label{class_card_a14b29d41ea079de4fd5f79f76417e235} 
+void Card\+::execute\+Trigger (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{trigger}{, }\item[{class \mbox{\hyperlink{class_player}{Player}} \&}]{player}{}\end{DoxyParamCaption}) const}
+
+
+
+Executes all actions tied to a given trigger. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em trigger} & The trigger event name (e.\+g. "{}on\+Play"{}). \\
+\hline
+{\em player} & The player affected by this card’s actions. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_card_aa1c11255159b8ac2243398487a2ac00a}\index{Card@{Card}!description@{description}}
+\index{description@{description}!Card@{Card}}
+\doxysubsubsection{\texorpdfstring{description}{description}}
+{\footnotesize\ttfamily \label{class_card_aa1c11255159b8ac2243398487a2ac00a} 
+std\+::string Card\+::description}
+
+Text description or effect summary. \Hypertarget{class_card_a1f5013054990456125c82d805744062f}\index{Card@{Card}!name@{name}}
+\index{name@{name}!Card@{Card}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily \label{class_card_a1f5013054990456125c82d805744062f} 
+std\+::string Card\+::name}
+
+The display name of the card. \Hypertarget{class_card_aeb788e9ef9aa313fef01604109a528d7}\index{Card@{Card}!triggers@{triggers}}
+\index{triggers@{triggers}!Card@{Card}}
+\doxysubsubsection{\texorpdfstring{triggers}{triggers}}
+{\footnotesize\ttfamily \label{class_card_aeb788e9ef9aa313fef01604109a528d7} 
+std\+::unordered\+\_\+map$<$std\+::string, std\+::vector$<$nlohmann\+::json$>$ $>$ Card\+::triggers}
+
+
+
+Maps trigger event names to a list of action definitions. 
+
+Example format\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \textcolor{stringliteral}{"{}onPlay"{}}:\ [}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}action"{}}:\ \textcolor{stringliteral}{"{}addResource"{}},\ \textcolor{stringliteral}{"{}type"{}}:\ \textcolor{stringliteral}{"{}funds"{}},\ \textcolor{stringliteral}{"{}amount"{}}:\ 2\ \}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_card_8hpp}{Card.\+hpp}}\item 
+src/\mbox{\hyperlink{_card_8cpp}{Card.\+cpp}}\end{DoxyCompactItemize}

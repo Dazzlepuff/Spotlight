@@ -1,0 +1,150 @@
+\doxysection{Cube\+Coord Struct Reference}
+\hypertarget{struct_cube_coord}{}\label{struct_cube_coord}\index{CubeCoord@{CubeCoord}}
+
+
+Represents a position in a cube coordinate system.  
+
+
+
+
+{\ttfamily \#include $<$Cube\+Coord.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_cube_coord_a8e23e47ee9b66b7e4fde75b0b4e0e222}{Cube\+Coord}} (int x\+\_\+, int y\+\_\+, int z\+\_\+)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{struct_cube_coord}{Cube\+Coord} with the specified coordinates. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_cube_coord_ae182599e0615a25d14533972503a48f9}{operator==}} (const \mbox{\hyperlink{struct_cube_coord}{Cube\+Coord}} \&other) const
+\begin{DoxyCompactList}\small\item\em Compares two Cube\+Coords for equality. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_cube_coord}{Cube\+Coord}} \mbox{\hyperlink{struct_cube_coord_a834bade71287f8ed981e120dff5025db}{operator+}} (const \mbox{\hyperlink{struct_cube_coord}{Cube\+Coord}} \&other) const
+\begin{DoxyCompactList}\small\item\em Adds two Cube\+Coords component-\/wise. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{struct_cube_coord_a633f43e0d2ca1e23608a1e89e1be468f}{x}}
+\begin{DoxyCompactList}\small\item\em X-\/axis coordinate. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_cube_coord_ad6ed8056cf1ff8adfb1a2733b1da9e69}{y}}
+\begin{DoxyCompactList}\small\item\em Y-\/axis coordinate. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_cube_coord_a07f5bc92ce087d177371723246ad746d}{z}}
+\begin{DoxyCompactList}\small\item\em Z-\/axis coordinate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a position in a cube coordinate system. 
+
+Each cube coordinate satisfies x + y + z = 0 in a hex grid context. Provides equality and addition operators for coordinate manipulation. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_cube_coord_a8e23e47ee9b66b7e4fde75b0b4e0e222}\index{CubeCoord@{CubeCoord}!CubeCoord@{CubeCoord}}
+\index{CubeCoord@{CubeCoord}!CubeCoord@{CubeCoord}}
+\doxysubsubsection{\texorpdfstring{CubeCoord()}{CubeCoord()}}
+{\footnotesize\ttfamily \label{struct_cube_coord_a8e23e47ee9b66b7e4fde75b0b4e0e222} 
+Cube\+Coord\+::\+Cube\+Coord (\begin{DoxyParamCaption}\item[{int}]{x\+\_\+}{, }\item[{int}]{y\+\_\+}{, }\item[{int}]{z\+\_\+}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{struct_cube_coord}{Cube\+Coord} with the specified coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x\+\_\+} & The x coordinate. \\
+\hline
+{\em y\+\_\+} & The y coordinate. \\
+\hline
+{\em z\+\_\+} & The z coordinate. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_cube_coord_a834bade71287f8ed981e120dff5025db}\index{CubeCoord@{CubeCoord}!operator+@{operator+}}
+\index{operator+@{operator+}!CubeCoord@{CubeCoord}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily \label{struct_cube_coord_a834bade71287f8ed981e120dff5025db} 
+\mbox{\hyperlink{struct_cube_coord}{Cube\+Coord}} Cube\+Coord\+::operator+ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_cube_coord}{Cube\+Coord}} \&}]{other}{}\end{DoxyParamCaption}) const}
+
+
+
+Adds two Cube\+Coords component-\/wise. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The coordinate to add. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The resulting \doxylink{struct_cube_coord}{Cube\+Coord}.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The coordinate to add. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New \doxylink{struct_cube_coord}{Cube\+Coord} representing the sum of the two coordinates. 
+\end{DoxyReturn}
+\texorpdfstring{$<$}{<} Component-\/wise addition.\Hypertarget{struct_cube_coord_ae182599e0615a25d14533972503a48f9}\index{CubeCoord@{CubeCoord}!operator==@{operator==}}
+\index{operator==@{operator==}!CubeCoord@{CubeCoord}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily \label{struct_cube_coord_ae182599e0615a25d14533972503a48f9} 
+bool Cube\+Coord\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_cube_coord}{Cube\+Coord}} \&}]{other}{}\end{DoxyParamCaption}) const}
+
+
+
+Compares two Cube\+Coords for equality. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The coordinate to compare against. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if both coordinates are equal.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The coordinate to compare against. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if all components (x, y, z) are equal. 
+\end{DoxyReturn}
+\texorpdfstring{$<$}{<} Return true only if all coordinates match.
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_cube_coord_a633f43e0d2ca1e23608a1e89e1be468f}\index{CubeCoord@{CubeCoord}!x@{x}}
+\index{x@{x}!CubeCoord@{CubeCoord}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily \label{struct_cube_coord_a633f43e0d2ca1e23608a1e89e1be468f} 
+int Cube\+Coord\+::x}
+
+
+
+X-\/axis coordinate. 
+
+\Hypertarget{struct_cube_coord_ad6ed8056cf1ff8adfb1a2733b1da9e69}\index{CubeCoord@{CubeCoord}!y@{y}}
+\index{y@{y}!CubeCoord@{CubeCoord}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily \label{struct_cube_coord_ad6ed8056cf1ff8adfb1a2733b1da9e69} 
+int Cube\+Coord\+::y}
+
+
+
+Y-\/axis coordinate. 
+
+\Hypertarget{struct_cube_coord_a07f5bc92ce087d177371723246ad746d}\index{CubeCoord@{CubeCoord}!z@{z}}
+\index{z@{z}!CubeCoord@{CubeCoord}}
+\doxysubsubsection{\texorpdfstring{z}{z}}
+{\footnotesize\ttfamily \label{struct_cube_coord_a07f5bc92ce087d177371723246ad746d} 
+int Cube\+Coord\+::z}
+
+
+
+Z-\/axis coordinate. 
+
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_cube_coord_8hpp}{Cube\+Coord.\+hpp}}\item 
+src/\mbox{\hyperlink{_cube_coord_8cpp}{Cube\+Coord.\+cpp}}\end{DoxyCompactItemize}

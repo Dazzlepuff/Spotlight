@@ -1,0 +1,25 @@
+\doxysection{Colors.\+hpp}
+\hypertarget{_colors_8hpp_source}{}\label{_colors_8hpp_source}\index{include/Colors.hpp@{include/Colors.hpp}}
+\mbox{\hyperlink{_colors_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <SFML/Graphics/Color.hpp>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_colors}{Colors}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::map<std::string,\ std::string>\ \mbox{\hyperlink{class_colors_a91b38df6321f259d01eb6a47cd3972ba}{colorCodes}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::map<std::string,\ sf::Color>\ \mbox{\hyperlink{class_colors_a3a541339f8a4e69cdf69e15fd7b8e541}{sfmlColors}};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::vector<std::string>\ \mbox{\hyperlink{class_colors_ae4bfc6e129eb8f20ea8197c5088f1d5b}{all}};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_colors_abd7dcd987ab14613a74a3de594878635}{isValid}}(\textcolor{keyword}{const}\ std::string\&\ color);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ sf::Color\&\ \mbox{\hyperlink{class_colors_ac618d5e23d100828bc70155ff85cf03d}{getSfmlColor}}(\textcolor{keyword}{const}\ std::string\&\ color);}
+\DoxyCodeLine{00047\ \};}
+
+\end{DoxyCode}
