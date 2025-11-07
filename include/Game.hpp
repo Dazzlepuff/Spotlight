@@ -1,14 +1,16 @@
 /**
  * @file Game.hpp
  * @brief Core game engine managing turn-based hex board gameplay with card and resource mechanics.
+ * 
  * @details
  * The Game class orchestrates all gameplay systems including player management, turn sequencing,
  * resource economy, card interactions, and command-driven game state manipulation. It integrates
  * rendering, user input via console commands, and maintains the game loop.
  * 
- * @author [Your Name/Team]
- * @date [Current Date]
+ * @date 2025-11-06
  * @version 1.0
+ * @author
+ * Owen Chilson
  */
 
 #pragma once
@@ -52,7 +54,7 @@ public:
      * @details
      * Initializes the game environment including:
      * - Hexagonal board of given size
-     * - SFML rendering window (1600x1200)
+     * - SFML rendering window (800*600)
      * - Font loading from assets
      * - Renderer and command console subsystems
      * - Company roster for player assignment
@@ -101,7 +103,7 @@ public:
      * @brief Initializes the game board and deals starting cards.
      * @details
      * Performs initial game setup:
-     * - Randomly assigns colors and owners to half the board tiles
+     * - Randomly assigns colors and owners to half the board tiles (temporary)
      * - Sets remaining tiles to neutral (unowned)
      * - Loads card deck from "cards.json"
      * - Shuffles the draw deck
@@ -523,7 +525,7 @@ private:
     int currentActivePlayerIndex = 0; ///< Index of player whose turn is active
     
     sf::Font font;                    ///< SFML font resource for text rendering
-    sf::RenderWindow window;          ///< SFML window for graphical output (1600x1200)
+    sf::RenderWindow window;          ///< SFML window for graphical output (800*600)
     Renderer* renderer;               ///< Subsystem for rendering game visuals
     CommandConsole* console;          ///< Subsystem for command input/output UI
     

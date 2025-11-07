@@ -5,8 +5,7 @@
  * @details
  * The Company class encapsulates the identifying information of a corporate or
  * player-controlled entity within the game. Each company is characterized by a
- * unique name and symbol, which may be used for display, ownership marking,
- * or data serialization.
+ * unique name and symbol which is currently just used for display.
  *
  * @see Tile, Board
  *
@@ -74,6 +73,6 @@ private:
     /** @brief The company’s full display name. */
     std::string name;
 
-    /** @brief The company’s identifying abbreviation or logo symbol. */
+    /** @brief The company’s identifying symbol. */
     std::string symbol;
 };

@@ -106,32 +106,34 @@ $(function(){initNavTree('_card_8hpp_source.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">Card.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="_card_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;nlohmann/json.hpp&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span></div>
-<div class="foldopen" id="foldopen00015" data-start="{" data-end="};">
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="class_card.html">   15</a></span><span class="keyword">class </span><a class="code hl_function" href="class_card.html#ad3e990e28a4961b998eb5995f1191881">Card</a> {</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="class_card.html#a1f5013054990456125c82d805744062f">   17</a></span>    std::string <a class="code hl_variable" href="class_card.html#a1f5013054990456125c82d805744062f">name</a>;   </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="class_card.html#aa1c11255159b8ac2243398487a2ac00a">   18</a></span>    std::string <a class="code hl_variable" href="class_card.html#aa1c11255159b8ac2243398487a2ac00a">description</a>;  </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="class_card.html#aeb788e9ef9aa313fef01604109a528d7">   32</a></span>    std::unordered_map&lt;std::string, std::vector&lt;nlohmann::json&gt;&gt; <a class="code hl_variable" href="class_card.html#aeb788e9ef9aa313fef01604109a528d7">triggers</a>;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="class_card.html#ad3e990e28a4961b998eb5995f1191881">   37</a></span>    <a class="code hl_function" href="class_card.html#ad3e990e28a4961b998eb5995f1191881">Card</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_function" href="class_card.html#ad3e990e28a4961b998eb5995f1191881">Card</a>(<span class="keyword">const</span> nlohmann::json&amp; data);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_card.html#a14b29d41ea079de4fd5f79f76417e235">executeTrigger</a>(<span class="keyword">const</span> std::string&amp; trigger, <span class="keyword">class</span> <a class="code hl_class" href="class_player.html">Player</a>&amp; player) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>};</div>
+<a href="_card_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;nlohmann/json.hpp&gt;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span></div>
+<div class="foldopen" id="foldopen00030" data-start="{" data-end="};">
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="class_card.html">   30</a></span><span class="keyword">class </span><a class="code hl_function" href="class_card.html#ad3e990e28a4961b998eb5995f1191881">Card</a> {</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="class_card.html#a1f5013054990456125c82d805744062f">   32</a></span>    std::string <a class="code hl_variable" href="class_card.html#a1f5013054990456125c82d805744062f">name</a>;   </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="class_card.html#aa1c11255159b8ac2243398487a2ac00a">   33</a></span>    std::string <a class="code hl_variable" href="class_card.html#aa1c11255159b8ac2243398487a2ac00a">description</a>;  </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="class_card.html#aeb788e9ef9aa313fef01604109a528d7">   47</a></span>    std::unordered_map&lt;std::string, std::vector&lt;nlohmann::json&gt;&gt; <a class="code hl_variable" href="class_card.html#aeb788e9ef9aa313fef01604109a528d7">triggers</a>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="class_card.html#ad3e990e28a4961b998eb5995f1191881">   52</a></span>    <a class="code hl_function" href="class_card.html#ad3e990e28a4961b998eb5995f1191881">Card</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <a class="code hl_function" href="class_card.html#ad3e990e28a4961b998eb5995f1191881">Card</a>(<span class="keyword">const</span> nlohmann::json&amp; data);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_card.html#a14b29d41ea079de4fd5f79f76417e235">executeTrigger</a>(<span class="keyword">const</span> std::string&amp; trigger, <span class="keyword">class</span> <a class="code hl_class" href="class_player.html">Player</a>&amp; player) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>};</div>
 </div>
 <div class="ttc" id="aclass_card_html_a14b29d41ea079de4fd5f79f76417e235"><div class="ttname"><a href="class_card.html#a14b29d41ea079de4fd5f79f76417e235">Card::executeTrigger</a></div><div class="ttdeci">void executeTrigger(const std::string &amp;trigger, class Player &amp;player) const</div><div class="ttdoc">Executes all actions tied to a given trigger.</div><div class="ttdef"><b>Definition</b> Card.cpp:21</div></div>
-<div class="ttc" id="aclass_card_html_a1f5013054990456125c82d805744062f"><div class="ttname"><a href="class_card.html#a1f5013054990456125c82d805744062f">Card::name</a></div><div class="ttdeci">std::string name</div><div class="ttdef"><b>Definition</b> Card.hpp:17</div></div>
-<div class="ttc" id="aclass_card_html_aa1c11255159b8ac2243398487a2ac00a"><div class="ttname"><a href="class_card.html#aa1c11255159b8ac2243398487a2ac00a">Card::description</a></div><div class="ttdeci">std::string description</div><div class="ttdef"><b>Definition</b> Card.hpp:18</div></div>
+<div class="ttc" id="aclass_card_html_a1f5013054990456125c82d805744062f"><div class="ttname"><a href="class_card.html#a1f5013054990456125c82d805744062f">Card::name</a></div><div class="ttdeci">std::string name</div><div class="ttdef"><b>Definition</b> Card.hpp:32</div></div>
+<div class="ttc" id="aclass_card_html_aa1c11255159b8ac2243398487a2ac00a"><div class="ttname"><a href="class_card.html#aa1c11255159b8ac2243398487a2ac00a">Card::description</a></div><div class="ttdeci">std::string description</div><div class="ttdef"><b>Definition</b> Card.hpp:33</div></div>
 <div class="ttc" id="aclass_card_html_ad3e990e28a4961b998eb5995f1191881"><div class="ttname"><a href="class_card.html#ad3e990e28a4961b998eb5995f1191881">Card::Card</a></div><div class="ttdeci">Card()=default</div><div class="ttdoc">Default constructor. Initializes an empty card.</div></div>
-<div class="ttc" id="aclass_card_html_aeb788e9ef9aa313fef01604109a528d7"><div class="ttname"><a href="class_card.html#aeb788e9ef9aa313fef01604109a528d7">Card::triggers</a></div><div class="ttdeci">std::unordered_map&lt; std::string, std::vector&lt; nlohmann::json &gt; &gt; triggers</div><div class="ttdoc">Maps trigger event names to a list of action definitions.</div><div class="ttdef"><b>Definition</b> Card.hpp:32</div></div>
+<div class="ttc" id="aclass_card_html_aeb788e9ef9aa313fef01604109a528d7"><div class="ttname"><a href="class_card.html#aeb788e9ef9aa313fef01604109a528d7">Card::triggers</a></div><div class="ttdeci">std::unordered_map&lt; std::string, std::vector&lt; nlohmann::json &gt; &gt; triggers</div><div class="ttdoc">Maps trigger event names to a list of action definitions.</div><div class="ttdef"><b>Definition</b> Card.hpp:47</div></div>
 <div class="ttc" id="aclass_player_html"><div class="ttname"><a href="class_player.html">Player</a></div><div class="ttdoc">Represents a player, managing their resources, cards, score, and associated company.</div><div class="ttdef"><b>Definition</b> Player.hpp:19</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

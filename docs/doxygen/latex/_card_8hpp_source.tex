@@ -2,24 +2,26 @@
 \hypertarget{_card_8hpp_source}{}\label{_card_8hpp_source}\index{include/Card.hpp@{include/Card.hpp}}
 \mbox{\hyperlink{_card_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <string>}}
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <nlohmann/json.hpp>}}
-\DoxyCodeLine{00006\ }
-\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_card_ad3e990e28a4961b998eb5995f1191881}{Card}}\ \{}
-\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00017\ \ \ \ \ std::string\ \mbox{\hyperlink{class_card_a1f5013054990456125c82d805744062f}{name}};\ \ \ }
-\DoxyCodeLine{00018\ \ \ \ \ std::string\ \mbox{\hyperlink{class_card_aa1c11255159b8ac2243398487a2ac00a}{description}};\ \ }
-\DoxyCodeLine{00019\ }
-\DoxyCodeLine{00032\ \ \ \ \ std::unordered\_map<std::string,\ std::vector<nlohmann::json>>\ \mbox{\hyperlink{class_card_aeb788e9ef9aa313fef01604109a528d7}{triggers}};}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_card_ad3e990e28a4961b998eb5995f1191881}{Card}}()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{class_card_ad3e990e28a4961b998eb5995f1191881}{Card}}(\textcolor{keyword}{const}\ nlohmann::json\&\ data);}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_card_a14b29d41ea079de4fd5f79f76417e235}{executeTrigger}}(\textcolor{keyword}{const}\ std::string\&\ trigger,\ \textcolor{keyword}{class}\ \mbox{\hyperlink{class_player}{Player}}\&\ player)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00051\ \};}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <nlohmann/json.hpp>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_card_ad3e990e28a4961b998eb5995f1191881}{Card}}\ \{}
+\DoxyCodeLine{00031\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \ \ std::string\ \mbox{\hyperlink{class_card_a1f5013054990456125c82d805744062f}{name}};\ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ std::string\ \mbox{\hyperlink{class_card_aa1c11255159b8ac2243398487a2ac00a}{description}};\ \ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00047\ \ \ \ \ std::unordered\_map<std::string,\ std::vector<nlohmann::json>>\ \mbox{\hyperlink{class_card_aeb788e9ef9aa313fef01604109a528d7}{triggers}};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{class_card_ad3e990e28a4961b998eb5995f1191881}{Card}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{class_card_ad3e990e28a4961b998eb5995f1191881}{Card}}(\textcolor{keyword}{const}\ nlohmann::json\&\ data);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_card_a14b29d41ea079de4fd5f79f76417e235}{executeTrigger}}(\textcolor{keyword}{const}\ std::string\&\ trigger,\ \textcolor{keyword}{class}\ \mbox{\hyperlink{class_player}{Player}}\&\ player)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00066\ \};}
 
 \end{DoxyCode}

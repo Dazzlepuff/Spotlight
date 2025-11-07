@@ -106,42 +106,45 @@ $(function(){initNavTree('_colors_8hpp_source.html',''); initResizable(true); })
   <div class="headertitle"><div class="title">Colors.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="_colors_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<a href="_colors_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
 <div class="foldopen" id="foldopen00004" data-start="{" data-end="};">
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="class_colors.html#ae4bfc6e129eb8f20ea8197c5088f1d5b">    4</a></span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;SFML/Graphics/Color.hpp&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="class_colors.html#ae4bfc6e129eb8f20ea8197c5088f1d5b">    4</a></span><span class="comment"> *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @details</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * Throughout the project seven standard colors and an additional eighth neutral color</span></div>
 </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * are commonly referencedand this class standarizes the use of the colors to allow</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * for flexibilty if additional colors are added or removed later.</span></div>
 <div class="foldopen" id="foldopen00009" data-start="{" data-end="};">
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="class_colors.html#a91b38df6321f259d01eb6a47cd3972ba">    9</a></span><span class="comment"> * @class Colors</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> * @brief Centralized static utility for color name validation and mapping.</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * Provides a list of all valid color names, their ANSI escape codes for</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> * console output, and their corresponding SFML color values for rendering.</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="class_colors.html#a91b38df6321f259d01eb6a47cd3972ba">    9</a></span><span class="comment"> * </span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> * @date 2025-11-06</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> * @version 1.0</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * @author</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> * Owen Chilson</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> */</span></div>
-<div class="foldopen" id="foldopen00015" data-start="{" data-end="};">
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="class_colors.html">   15</a></span><span class="keyword">class </span><a class="code hl_class" href="class_colors.html">Colors</a> {</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;map&gt;</span></div>
 <div class="foldopen" id="foldopen00021" data-start="{" data-end="};">
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="class_colors.html#a3a541339f8a4e69cdf69e15fd7b8e541">   21</a></span><span class="comment">     */</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::map&lt;std::string, std::string&gt; <a class="code hl_variable" href="class_colors.html#a91b38df6321f259d01eb6a47cd3972ba">colorCodes</a>;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::map&lt;std::string, sf::Color&gt; <a class="code hl_variable" href="class_colors.html#a3a541339f8a4e69cdf69e15fd7b8e541">sfmlColors</a>;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="class_colors.html#a3a541339f8a4e69cdf69e15fd7b8e541">   21</a></span><span class="preprocessor">#include &lt;SFML/Graphics/Color.hpp&gt;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="class_colors.html">   30</a></span><span class="keyword">class </span><a class="code hl_class" href="class_colors.html">Colors</a> {</div>
 </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::vector&lt;std::string&gt; <a class="code hl_variable" href="class_colors.html#ae4bfc6e129eb8f20ea8197c5088f1d5b">all</a>;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="class_colors.html#abd7dcd987ab14613a74a3de594878635">isValid</a>(<span class="keyword">const</span> std::string&amp; color);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keyword">static</span> <span class="keyword">const</span> sf::Color&amp; <a class="code hl_function" href="class_colors.html#ac618d5e23d100828bc70155ff85cf03d">getSfmlColor</a>(<span class="keyword">const</span> std::string&amp; color);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>};</div>
-</div>
-</div>
-<div class="ttc" id="aclass_colors_html"><div class="ttname"><a href="class_colors.html">Colors</a></div><div class="ttdoc">Centralized static utility for color name validation and mapping.</div><div class="ttdef"><b>Definition</b> Colors.hpp:15</div></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::map&lt;std::string, std::string&gt; <a class="code hl_variable" href="class_colors.html#a91b38df6321f259d01eb6a47cd3972ba">colorCodes</a>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::map&lt;std::string, sf::Color&gt; <a class="code hl_variable" href="class_colors.html#a3a541339f8a4e69cdf69e15fd7b8e541">sfmlColors</a>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::vector&lt;std::string&gt; <a class="code hl_variable" href="class_colors.html#ae4bfc6e129eb8f20ea8197c5088f1d5b">all</a>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="class_colors.html#abd7dcd987ab14613a74a3de594878635">isValid</a>(<span class="keyword">const</span> std::string&amp; color);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keyword">static</span> <span class="keyword">const</span> sf::Color&amp; <a class="code hl_function" href="class_colors.html#ac618d5e23d100828bc70155ff85cf03d">getSfmlColor</a>(<span class="keyword">const</span> std::string&amp; color);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>};</div>
+<div class="ttc" id="aclass_colors_html"><div class="ttname"><a href="class_colors.html">Colors</a></div><div class="ttdoc">Centralized static utility for color name validation and mapping.</div><div class="ttdef"><b>Definition</b> Colors.hpp:30</div></div>
 <div class="ttc" id="aclass_colors_html_a3a541339f8a4e69cdf69e15fd7b8e541"><div class="ttname"><a href="class_colors.html#a3a541339f8a4e69cdf69e15fd7b8e541">Colors::sfmlColors</a></div><div class="ttdeci">static const std::map&lt; std::string, sf::Color &gt; sfmlColors</div><div class="ttdoc">Maps color names to their SFML color equivalents.</div><div class="ttdef"><b>Definition</b> Colors.hpp:21</div></div>
 <div class="ttc" id="aclass_colors_html_a91b38df6321f259d01eb6a47cd3972ba"><div class="ttname"><a href="class_colors.html#a91b38df6321f259d01eb6a47cd3972ba">Colors::colorCodes</a></div><div class="ttdeci">static const std::map&lt; std::string, std::string &gt; colorCodes</div><div class="ttdoc">Maps color names to their ANSI terminal escape codes.</div><div class="ttdef"><b>Definition</b> Colors.hpp:9</div></div>
 <div class="ttc" id="aclass_colors_html_abd7dcd987ab14613a74a3de594878635"><div class="ttname"><a href="class_colors.html#abd7dcd987ab14613a74a3de594878635">Colors::isValid</a></div><div class="ttdeci">static bool isValid(const std::string &amp;color)</div><div class="ttdoc">Checks whether a color name is valid.</div><div class="ttdef"><b>Definition</b> Colors.cpp:33</div></div>

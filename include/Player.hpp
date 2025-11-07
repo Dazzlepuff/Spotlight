@@ -2,7 +2,13 @@
  * @file Player.hpp
  * @brief Defines the Player class, representing a participant with resources, cards, and a company affiliation.
  *
+ * @details
  * Handles resource management, card play/removal, and scoring for an individual player in the game.
+ * 
+ * @date 2025-11-06
+ * @version 1.0
+ * @author
+ * Owen Chilson
  */
 
 #pragma once

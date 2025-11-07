@@ -2,8 +2,14 @@
  * @file PathUtils.hpp
  * @brief Utility functions for locating executable, configuration, and asset directories.
  *
+ * @details
  * Provides cross-platform path resolution for accessing the executable directory
  * and related resource folders such as "config" and "assets".
+ * 
+ * @date 2025-11-06
+ * @version 1.0
+ * @author
+ * Owen Chilson
  */
 
 #pragma once

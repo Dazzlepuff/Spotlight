@@ -1,3 +1,21 @@
+/**
+ * @file CommandConsole.hpp
+ * @brief Declares the CommandConsole class which allows for user IO.
+ *
+ * @details
+ * A key factor in the functionality of the program at whole is allowing
+ * the user to interact and receive output. This is done through the command
+ * console which only handles IO and passes all commands to the Game class to
+ * process.
+ *
+ * @see Board, Renderer, Game
+ *
+ * @date 2025-11-06
+ * @version 1.0
+ * @author
+ * Owen Chilson
+ */
+
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <queue>

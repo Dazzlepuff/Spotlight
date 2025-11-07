@@ -2,9 +2,15 @@
  * @file CubeCoord.hpp
  * @brief Defines cube coordinates and hashing utilities for hex-grid operations.
  *
+ * @details
  * This file provides the CubeCoord structure used to represent positions in a
  * 3D cube coordinate system (commonly used for hexagonal grids) and a custom hash
  * functor to enable their use as keys in unordered containers.
+ * 
+ * @date 2025-11-06
+ * @version 1.0
+ * @author
+ * Owen Chilson
  */
 
 #pragma once
