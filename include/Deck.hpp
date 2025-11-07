@@ -80,7 +80,7 @@ public:
      * @pre The deck should contain at least one card.
      * @post The deck’s size decreases by one, unless empty.
      * @return The drawn Card object.
-     * @warning Returns a default-constructed Card if the deck is empty.
+     * @warning Returns a default-constructed Card if the deck is empty. Reshuffling functionality not implemented.
      */
     Card drawCard();
 

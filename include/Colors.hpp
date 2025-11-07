@@ -1,3 +1,18 @@
+/**
+ * @file Colors.hpp
+ * @brief Declares the Colors class which stores the color standards.
+ *
+ * @details
+ * Throughout the project seven standard colors and an additional eighth neutral color
+ * are commonly referencedand this class standarizes the use of the colors to allow
+ * for flexibilty if additional colors are added or removed later.
+ * 
+ * @date 2025-11-06
+ * @version 1.0
+ * @author
+ * Owen Chilson
+ */
+
 #pragma once
 #include <vector>
 #include <string>

@@ -1,3 +1,18 @@
+/**
+ * @file Card.hpp
+ * @brief Declares the Card class which represents a singular card and its properties like name and description.
+ *
+ * @details
+ * This class manages the individual cards that are loaded in a data driven manner from the cards.json asset. It stores
+ * information such as the cards name and description but additionally and more importantly it handles card trigger events
+ * that tie gameplay events to specific actions outlined on the card.
+ *
+ * @date 2025-11-06
+ * @version 1.0
+ * @author
+ * Owen Chilson
+ */
+
 #pragma once
 #include <string>
 #include <vector>
