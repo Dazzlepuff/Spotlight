@@ -1,0 +1,262 @@
+.TH "Player" 3 "Version 1.0" "Spotlight" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Player \- Represents a player, managing their resources, cards, score, and associated company\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Player\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPlayer\fP (const std::string &n, \fBCompany\fP *c)"
+.br
+.RI "Constructs a new \fBPlayer\fP\&. "
+.ti -1c
+.RI "void \fBaddResource\fP (const std::string &type, int amount)"
+.br
+.RI "Adds a specified amount of a resource type\&. "
+.ti -1c
+.RI "bool \fBspendResource\fP (const std::string &type, int amount)"
+.br
+.RI "Attempts to spend a specified amount of a resource\&. "
+.ti -1c
+.RI "int \fBgetResource\fP (const std::string &type) const"
+.br
+.RI "Retrieves the current amount of a resource\&. "
+.ti -1c
+.RI "void \fBaddHeldCard\fP (const \fBCard\fP &card)"
+.br
+.RI "Adds a card to the player’s hand\&. "
+.ti -1c
+.RI "bool \fBplayCard\fP (const std::string &cardName)"
+.br
+.RI "Moves a card from hand to played cards\&. "
+.ti -1c
+.RI "bool \fBremovePlayedCard\fP (const std::string &cardName)"
+.br
+.RI "Removes a played card by name\&. "
+.ti -1c
+.RI "bool \fBremoveHeldCard\fP (const std::string &cardName)"
+.br
+.RI "Removes a held card by name\&. "
+.ti -1c
+.RI "void \fBaddScore\fP (int amount)"
+.br
+.RI "Increases the player’s score by a specified amount\&. "
+.ti -1c
+.RI "void \fBresetScore\fP ()"
+.br
+.RI "Resets the player’s score to zero\&. "
+.ti -1c
+.RI "void \fBprintStatus\fP () const"
+.br
+.RI "Prints a formatted summary of the player’s current status to the console\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBname\fP"
+.br
+.RI "The player’s display name\&. "
+.ti -1c
+.RI "\fBCompany\fP * \fBcompany\fP"
+.br
+.RI "Pointer to the company this player is associated with\&. "
+.ti -1c
+.RI "int \fBscore\fP = 0"
+.br
+.RI "Current score value\&. "
+.ti -1c
+.RI "std::unordered_map< std::string, int > \fBresources\fP"
+.br
+.RI "Map of resource type to quantity (e\&.g\&., "funds", "gear")\&. "
+.ti -1c
+.RI "std::vector< \fBCard\fP > \fBheldCards\fP"
+.br
+.RI "Cards currently held in hand\&. "
+.ti -1c
+.RI "std::vector< \fBCard\fP > \fBplayedCards\fP"
+.br
+.RI "Cards that have been played\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a player, managing their resources, cards, score, and associated company\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Player::Player (const std::string & n, \fBCompany\fP * c)"
+
+.PP
+Constructs a new \fBPlayer\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIn\fP The player’s name\&. 
+.br
+\fIc\fP Pointer to the company associated with the player\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Player::addHeldCard (const \fBCard\fP & card)"
+
+.PP
+Adds a card to the player’s hand\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcard\fP The card to add\&. 
+.RE
+.PP
+
+.SS "void Player::addResource (const std::string & type, int amount)"
+
+.PP
+Adds a specified amount of a resource type\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fItype\fP The resource key\&. 
+.br
+\fIamount\fP The quantity to add\&. 
+.RE
+.PP
+
+.SS "void Player::addScore (int amount)"
+
+.PP
+Increases the player’s score by a specified amount\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIamount\fP The number of points to add\&. 
+.RE
+.PP
+
+.SS "int Player::getResource (const std::string & type) const"
+
+.PP
+Retrieves the current amount of a resource\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fItype\fP The resource key\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The quantity of the specified resource\&. 
+.RE
+.PP
+
+.SS "bool Player::playCard (const std::string & cardName)"
+
+.PP
+Moves a card from hand to played cards\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcardName\fP The name of the card to play\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+True if the card was found and played; false otherwise\&. 
+.RE
+.PP
+
+.SS "void Player::printStatus () const"
+
+.PP
+Prints a formatted summary of the player’s current status to the console\&. 
+.SS "bool Player::removeHeldCard (const std::string & cardName)"
+
+.PP
+Removes a held card by name\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcardName\fP The name of the card to remove\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+True if a card was removed; false otherwise\&. 
+.RE
+.PP
+
+.SS "bool Player::removePlayedCard (const std::string & cardName)"
+
+.PP
+Removes a played card by name\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcardName\fP The name of the card to remove\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+True if a card was removed; false otherwise\&. 
+.RE
+.PP
+
+.SS "void Player::resetScore ()"
+
+.PP
+Resets the player’s score to zero\&. 
+.SS "bool Player::spendResource (const std::string & type, int amount)"
+
+.PP
+Attempts to spend a specified amount of a resource\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fItype\fP The resource key\&. 
+.br
+\fIamount\fP The quantity to spend\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+True if the player had enough resources; false otherwise\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBCompany\fP* Player::company"
+
+.PP
+Pointer to the company this player is associated with\&. 
+.SS "std::vector<\fBCard\fP> Player::heldCards"
+
+.PP
+Cards currently held in hand\&. 
+.SS "std::string Player::name"
+
+.PP
+The player’s display name\&. 
+.SS "std::vector<\fBCard\fP> Player::playedCards"
+
+.PP
+Cards that have been played\&. 
+.SS "std::unordered_map<std::string, int> Player::resources"
+
+.PP
+Map of resource type to quantity (e\&.g\&., "funds", "gear")\&. 
+.SS "int Player::score = 0"
+
+.PP
+Current score value\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Spotlight from the source code\&.

@@ -1,0 +1,103 @@
+.TH "Card" 3 "Version 1.0" "Spotlight" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Card \- Represents a playable card with triggers and associated actions\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Card\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCard\fP ()=default"
+.br
+.RI "Default constructor\&. Initializes an empty card\&. "
+.ti -1c
+.RI "\fBCard\fP (const nlohmann::json &data)"
+.br
+.RI "Constructs a card from parsed JSON data\&. "
+.ti -1c
+.RI "void \fBexecuteTrigger\fP (const std::string &trigger, class \fBPlayer\fP &player) const"
+.br
+.RI "Executes all actions tied to a given trigger\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBname\fP"
+.br
+.ti -1c
+.RI "std::string \fBdescription\fP"
+.br
+.ti -1c
+.RI "std::unordered_map< std::string, std::vector< nlohmann::json > > \fBtriggers\fP"
+.br
+.RI "Maps trigger event names to a list of action definitions\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a playable card with triggers and associated actions\&. 
+
+Each card contains a name, description, and a set of triggers that define when certain actions occur (e\&.g\&., "onPlay", "onStartOfDay")\&. Actions are stored as JSON objects that can be executed dynamically\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Card::Card ()\fR [default]\fP"
+
+.PP
+Default constructor\&. Initializes an empty card\&. 
+.SS "Card::Card (const nlohmann::json & data)"
+
+.PP
+Constructs a card from parsed JSON data\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIdata\fP JSON object containing card properties and triggers\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Card::executeTrigger (const std::string & trigger, class \fBPlayer\fP & player) const"
+
+.PP
+Executes all actions tied to a given trigger\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fItrigger\fP The trigger event name (e\&.g\&. "onPlay")\&. 
+.br
+\fIplayer\fP The player affected by this card’s actions\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "std::string Card::description"
+Text description or effect summary\&. 
+.SS "std::string Card::name"
+The display name of the card\&. 
+.SS "std::unordered_map<std::string, std::vector<nlohmann::json> > Card::triggers"
+
+.PP
+Maps trigger event names to a list of action definitions\&. Example format: 
+.PP
+.nf
+{
+  "onPlay": [
+    { "action": "addResource", "type": "funds", "amount": 2 }
+  ]
+}
+
+.fi
+.PP
+ 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Spotlight from the source code\&.

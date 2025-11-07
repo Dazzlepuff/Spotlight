@@ -1,0 +1,147 @@
+.TH "Company" 3 "Version 1.0" "Spotlight" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Company \- Represents a company, corporation, or in-game faction\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Company\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCompany\fP (const std::string &name, const std::string &symbol)"
+.br
+.RI "Constructs a new \fBCompany\fP with the specified name and symbol\&. "
+.ti -1c
+.RI "const std::string & \fBgetName\fP () const"
+.br
+.RI "Retrieves the company’s full name\&. "
+.ti -1c
+.RI "const std::string & \fBgetSymbol\fP () const"
+.br
+.RI "Retrieves the company’s identifying symbol\&. "
+.ti -1c
+.RI "void \fBsetName\fP (const std::string &newName)"
+.br
+.RI "Updates the company’s name\&. "
+.ti -1c
+.RI "void \fBsetSymbol\fP (const std::string &newSymbol)"
+.br
+.RI "Updates the company’s identifying symbol\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a company, corporation, or in-game faction\&. 
+
+The \fBCompany\fP class stores immutable identifiers that describe an entity’s identity and branding in the simulation or game world\&. Its instances can be linked to tiles, assets, or scores via references or pointers\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Company::Company (const std::string & name, const std::string & symbol)"
+
+.PP
+Constructs a new \fBCompany\fP with the specified name and symbol\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIname\fP The full display name of the company\&. 
+.br
+\fIsymbol\fP A short identifying symbol or abbreviation\&. 
+.RE
+.PP
+\fBPrecondition\fP
+.RS 4
+Both name and symbol should be non-empty strings\&. 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+Initializes the company with the provided identifiers\&.
+.RE
+.PP
+Constructs the \fBCompany\fP with a designated name and symbol\&. Typically called during setup or game initialization\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "const std::string & Company::getName () const"
+
+.PP
+Retrieves the company’s full name\&. Returns a constant reference to the company’s name\&.
+
+.PP
+\fBReturns\fP
+.RS 4
+A constant reference to the company’s name\&. 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+Does not modify the object\&. 
+.RE
+.PP
+
+.SS "const std::string & Company::getSymbol () const"
+
+.PP
+Retrieves the company’s identifying symbol\&. Returns a constant reference to the company’s identifying symbol\&.
+
+.PP
+\fBReturns\fP
+.RS 4
+A constant reference to the company’s symbol string\&. 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+Does not modify the object\&. 
+.RE
+.PP
+
+.SS "void Company::setName (const std::string & newName)"
+
+.PP
+Updates the company’s name\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInewName\fP The new name to assign\&. 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+The internal name string is replaced with newName\&. 
+.RE
+.PP
+\fBWarning\fP
+.RS 4
+Should be used cautiously if company instances are referenced elsewhere\&.
+.RE
+.PP
+Allows dynamic renaming of a company, useful in sandbox or modifiable environments\&. 
+.SS "void Company::setSymbol (const std::string & newSymbol)"
+
+.PP
+Updates the company’s identifying symbol\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInewSymbol\fP The new symbol to assign\&. 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+The internal symbol string is replaced with newSymbol\&. 
+.RE
+.PP
+\fBWarning\fP
+.RS 4
+Use carefully if the symbol is used as a unique key elsewhere\&.
+.RE
+.PP
+Updates the company symbol\&. Intended for cosmetic or branding adjustments\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Spotlight from the source code\&.

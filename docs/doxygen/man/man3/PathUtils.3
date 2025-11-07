@@ -1,0 +1,76 @@
+.TH "PathUtils" 3 "Version 1.0" "Spotlight" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PathUtils \- Contains helper functions for resolving application file paths\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "std::filesystem::path \fBgetExecutableDir\fP ()"
+.br
+.RI "Retrieves the directory where the executable is located\&. "
+.ti -1c
+.RI "std::filesystem::path \fBgetConfigPath\fP (const std::string &relativeFile='')"
+.br
+.RI "Constructs a path within the "config" directory\&. "
+.ti -1c
+.RI "std::filesystem::path \fBgetAssetPath\fP (const std::string &relativeFile='')"
+.br
+.RI "Constructs a path within the "assets" directory\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Contains helper functions for resolving application file paths\&. 
+.SH "Function Documentation"
+.PP 
+.SS "std::filesystem::path PathUtils::getAssetPath (const std::string & relativeFile = \fR''\fP)"
+
+.PP
+Constructs a path within the "assets" directory\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIrelativeFile\fP Optional relative file or subpath within "assets"\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The full asset path\&. 
+.RE
+.PP
+
+.SS "std::filesystem::path PathUtils::getConfigPath (const std::string & relativeFile = \fR''\fP)"
+
+.PP
+Constructs a path within the "config" directory\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIrelativeFile\fP Optional relative file or subpath within "config"\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The full configuration path\&. 
+.RE
+.PP
+
+.SS "std::filesystem::path PathUtils::getExecutableDir ()"
+
+.PP
+Retrieves the directory where the executable is located\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The path to the executable's directory\&. 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Spotlight from the source code\&.

@@ -1,0 +1,46 @@
+.TH "include/PathUtils.hpp" 3 "Version 1.0" "Spotlight" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+include/PathUtils.hpp \- Utility functions for locating executable, configuration, and asset directories\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fR#include <filesystem>\fP
+.br
+\fR#include <string>\fP
+.br
+
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBPathUtils\fP"
+.br
+.RI "Contains helper functions for resolving application file paths\&. "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "std::filesystem::path \fBPathUtils::getExecutableDir\fP ()"
+.br
+.RI "Retrieves the directory where the executable is located\&. "
+.ti -1c
+.RI "std::filesystem::path \fBPathUtils::getConfigPath\fP (const std::string &relativeFile='')"
+.br
+.RI "Constructs a path within the "config" directory\&. "
+.ti -1c
+.RI "std::filesystem::path \fBPathUtils::getAssetPath\fP (const std::string &relativeFile='')"
+.br
+.RI "Constructs a path within the "assets" directory\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Utility functions for locating executable, configuration, and asset directories\&. 
+
+Provides cross-platform path resolution for accessing the executable directory and related resource folders such as "config" and "assets"\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Spotlight from the source code\&.

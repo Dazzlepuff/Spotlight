@@ -1,0 +1,131 @@
+.TH "Colors" 3 "Version 1.0" "Spotlight" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Colors \- Centralized static utility for color name validation and mapping\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Colors\&.hpp>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBisValid\fP (const std::string &color)"
+.br
+.RI "Checks whether a color name is valid\&. "
+.ti -1c
+.RI "static const sf::Color & \fBgetSfmlColor\fP (const std::string &color)"
+.br
+.RI "Retrieves the SFML color object associated with a color name\&. "
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static const std::map< std::string, std::string > \fBcolorCodes\fP"
+.br
+.RI "Maps color names to their ANSI terminal escape codes\&. "
+.ti -1c
+.RI "static const std::map< std::string, sf::Color > \fBsfmlColors\fP"
+.br
+.RI "Maps color names to their SFML color equivalents\&. "
+.ti -1c
+.RI "static const std::vector< std::string > \fBall\fP"
+.br
+.RI "List of all valid color names\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Centralized static utility for color name validation and mapping\&. 
+
+Provides a list of all valid color names, their ANSI escape codes for console output, and their corresponding SFML color values for rendering\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "const sf::Color & Colors::getSfmlColor (const std::string & color)\fR [static]\fP"
+
+.PP
+Retrieves the SFML color object associated with a color name\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcolor\fP The color name to retrieve\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+A reference to the matching sf::Color, or the "Neutral" color if not found\&. 
+.RE
+.PP
+
+.SS "bool Colors::isValid (const std::string & color)\fR [static]\fP"
+
+.PP
+Checks whether a color name is valid\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcolor\fP The color name to check\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+True if the color exists in \fBall\fP, false otherwise\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "const std::vector< std::string > Colors::all\fR [static]\fP"
+\fBInitial value:\fP
+.nf
+= {
+    "Red", "Yellow", "Blue", "Green", "Purple", "White", "Gray", "Neutral"
+}
+.PP
+.fi
+
+.PP
+List of all valid color names\&. 
+.SS "const std::map< std::string, std::string > Colors::colorCodes\fR [static]\fP"
+\fBInitial value:\fP
+.nf
+= {
+    {"Red",     "\\033[41m  \\033[0m"},
+    {"Yellow",  "\\033[43m  \\033[0m"},
+    {"Blue",    "\\033[44m  \\033[0m"},
+    {"Green",   "\\033[42m  \\033[0m"},
+    {"Purple",  "\\033[45m  \\033[0m"},
+    {"White",   "\\033[47m  \\033[0m"},
+    {"Gray",    "\\033[100m  \\033[0m"},
+    {"Neutral", "\\033[0m\&.\&.\&."}
+}
+.PP
+.fi
+
+.PP
+Maps color names to their ANSI terminal escape codes\&. Example: "Red" → "\\033[41m  \\033[0m" 
+.SS "const std::map< std::string, sf::Color > Colors::sfmlColors\fR [static]\fP"
+\fBInitial value:\fP
+.nf
+= {
+    {"Red",     sf::Color(0xD9, 0x7B, 0x66)},
+    {"Yellow",  sf::Color(0xE3, 0xC5, 0x67)},
+    {"Blue",    sf::Color(0x6C, 0x8E, 0xBF)},
+    {"Green",   sf::Color(0x7C, 0xA9, 0x82)},
+    {"Purple",  sf::Color(0xA8, 0x8E, 0xC6)},
+    {"White",   sf::Color(0xF2, 0xE9, 0xE4)},
+    {"Gray",    sf::Color(0xB0, 0xA8, 0xB9)},
+    {"Neutral", sf::Color(0x4B, 0x4A, 0x54)}
+}
+.PP
+.fi
+
+.PP
+Maps color names to their SFML color equivalents\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Spotlight from the source code\&.

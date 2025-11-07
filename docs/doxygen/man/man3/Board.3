@@ -1,0 +1,231 @@
+.TH "Board" 3 "Version 1.0" "Spotlight" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Board \- Represents a hexagonal game board composed of cube-coordinate tiles\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Board\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBoard\fP (int radius)"
+.br
+.RI "Constructs a new hexagonal board with the given radius\&. "
+.ti -1c
+.RI "\fBTile\fP * \fBgetTile\fP (const \fBCubeCoord\fP &coord)"
+.br
+.RI "Retrieves a pointer to the tile at the specified cube coordinate\&. "
+.ti -1c
+.RI "std::vector< \fBCubeCoord\fP > \fBgetNeighbors\fP (const \fBCubeCoord\fP &coord) const"
+.br
+.RI "Returns all valid neighboring coordinates of the specified tile\&. "
+.ti -1c
+.RI "void \fBsetTileOwner\fP (int x, int y, int z, \fBCompany\fP *company)"
+.br
+.RI "Assigns a company as the owner of a tile at the given coordinates\&. "
+.ti -1c
+.RI "void \fBsetTileColor\fP (int x, int y, int z, const std::string &color)"
+.br
+.RI "Assigns a color to the tile at the specified coordinates\&. "
+.ti -1c
+.RI "void \fBprintBoard\fP () const"
+.br
+.RI "Prints a visual or textual representation of the board\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::unordered_map< \fBCubeCoord\fP, \fBTile\fP, \fBCubeCoordHash\fP > \fBtiles\fP"
+.br
+.RI "Map of cube coordinates to their corresponding \fBTile\fP instances\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a hexagonal game board composed of cube-coordinate tiles\&. 
+
+The \fBBoard\fP is implemented as an unordered map keyed by \fBCubeCoord\fP, enabling constant-time lookup of tiles\&. Each tile may store its owner (\fBCompany\fP) and visual color data\&. The board supports neighbor detection and manipulation of tile attributes\&.
+
+.PP
+The design is suitable for strategy or simulation games utilizing hex grids\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Board::Board (int radius)"
+
+.PP
+Constructs a new hexagonal board with the given radius\&. Initializes a new \fBBoard\fP and immediately generates its tiles\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIradius\fP The radius of the hex grid (number of tiles from center to edge)\&. 
+.RE
+.PP
+\fBPrecondition\fP
+.RS 4
+radius > 0 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+Initializes a complete set of valid cube coordinates within the given radius\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "std::vector< \fBCubeCoord\fP > Board::getNeighbors (const \fBCubeCoord\fP & coord) const"
+
+.PP
+Returns all valid neighboring coordinates of the specified tile\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcoord\fP The cube coordinate for which to find adjacent tiles\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Vector of \fBCubeCoord\fP objects representing neighboring tiles\&. 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+The returned vector contains only coordinates that exist within the board radius\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBCubeCoord\fP
+.RE
+.PP
+Iterates through the six cube-coordinate directions to find all existing adjacent tiles\&. Excludes invalid or out-of-bounds tiles\&. 
+.SS "\fBTile\fP * Board::getTile (const \fBCubeCoord\fP & coord)"
+
+.PP
+Retrieves a pointer to the tile at the specified cube coordinate\&. Returns a pointer to the \fBTile\fP at the given cube coordinate, or nullptr if missing\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIcoord\fP The cube coordinate to locate\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Pointer to the \fBTile\fP if it exists, or nullptr if out of bounds\&. 
+.RE
+.PP
+\fBPrecondition\fP
+.RS 4
+The coordinate must satisfy $x + y + z = 0$ for valid hex geometry\&. 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+Does not modify board state\&. 
+.RE
+.PP
+
+.SS "void Board::printBoard () const"
+
+.PP
+Prints a visual or textual representation of the board\&. Implementation-defined visualization; typically for debugging or display\&. May include coordinates, colors, or ownership data\&. 
+.PP
+\fBPostcondition\fP
+.RS 4
+Does not modify the board state\&. 
+.RE
+.PP
+
+.SS "void Board::setTileColor (int x, int y, int z, const std::string & color)"
+
+.PP
+Assigns a color to the tile at the specified coordinates\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP Cube X-coordinate\&. 
+.br
+\fIy\fP Cube Y-coordinate\&. 
+.br
+\fIz\fP Cube Z-coordinate\&. 
+.br
+\fIcolor\fP String representation of the desired color\&. 
+.RE
+.PP
+\fBPrecondition\fP
+.RS 4
+The tile at (x, y, z) must exist and the color string must be valid\&. 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+The tile’s color is updated\&. 
+.RE
+.PP
+\fBWarning\fP
+.RS 4
+Prints an error if the tile does not exist or color is invalid\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBColors::isValid()\fP
+.RE
+.PP
+Validates the target coordinate and color before assignment\&. Logs errors if either is invalid but continues execution safely\&. 
+.SS "void Board::setTileOwner (int x, int y, int z, \fBCompany\fP * company)"
+
+.PP
+Assigns a company as the owner of a tile at the given coordinates\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP Cube X-coordinate\&. 
+.br
+\fIy\fP Cube Y-coordinate\&. 
+.br
+\fIz\fP Cube Z-coordinate\&. 
+.br
+\fIcompany\fP Pointer to the \fBCompany\fP to assign as owner\&. 
+.RE
+.PP
+\fBPrecondition\fP
+.RS 4
+The specified coordinate must exist on the board\&. 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+The tile’s ownership is updated\&. 
+.RE
+.PP
+\fBWarning\fP
+.RS 4
+Does nothing if the coordinate is invalid\&.
+.RE
+.PP
+Updates the ownership of a specific tile if it exists\&. Useful for territory claiming or resource control systems\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "std::unordered_map<\fBCubeCoord\fP, \fBTile\fP, \fBCubeCoordHash\fP> Board::tiles"
+
+.PP
+Map of cube coordinates to their corresponding \fBTile\fP instances\&. The unordered_map allows efficient random access and modification of tiles\&. 
+.PP
+\fBSee also\fP
+.RS 4
+\fBCubeCoord\fP, \fBTile\fP 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Spotlight from the source code\&.

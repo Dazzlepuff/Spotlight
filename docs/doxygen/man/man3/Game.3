@@ -1,0 +1,711 @@
+.TH "Game" 3 "Version 1.0" "Spotlight" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Game \- Central game controller managing all gameplay mechanics and state\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Game\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGame\fP (int boardSize, std::vector< \fBCompany\fP > companyList)"
+.br
+.RI "Constructs a new \fBGame\fP instance with specified board and company configuration\&. "
+.ti -1c
+.RI "\fB~Game\fP ()"
+.br
+.RI "Destructs the \fBGame\fP instance, releasing dynamically allocated resources\&. "
+.ti -1c
+.RI "void \fBaddPlayer\fP (const std::string &name, \fBCompany\fP *company)"
+.br
+.RI "Registers a new player with their associated company\&. "
+.ti -1c
+.RI "void \fBsetup\fP ()"
+.br
+.RI "Initializes the game board and deals starting cards\&. "
+.ti -1c
+.RI "void \fBmainLoop\fP ()"
+.br
+.RI "Enters the main game loop, processing events and rendering until window closes\&. "
+.ti -1c
+.RI "const std::vector< \fBPlayer\fP > & \fBgetPlayers\fP () const"
+.br
+.RI "Retrieves the immutable list of all registered players\&. "
+.ti -1c
+.RI "void \fBstartNewDay\fP ()"
+.br
+.RI "Executes start-of-day triggers for all played cards across all players\&. "
+.ti -1c
+.RI "void \fBdrawCardForPlayer\fP (\fBDeck\fP &deck, \fBPlayer\fP &player, int amount)"
+.br
+.RI "Draws specified number of cards from a deck into a player's hand\&. "
+.ti -1c
+.RI "void \fBgiveResourceToPlayer\fP (int playerIndex, const std::string &resource, int amount, bool logToConsole=true)"
+.br
+.RI "Grants a specified resource quantity to a player\&. "
+.ti -1c
+.RI "bool \fBspendResourceFromPlayer\fP (int playerIndex, const std::string &resource, int amount, bool logToConsole=true)"
+.br
+.RI "Attempts to deduct a resource quantity from a player's inventory\&. "
+.ti -1c
+.RI "void \fBbuildStage\fP (int playerIndex, int x, int y, int z, const std::string &color)"
+.br
+.RI "Constructs a stage (building) on a hex tile with specified color and ownership\&. "
+.ti -1c
+.RI "void \fBendTurn\fP (bool logToConsole=true)"
+.br
+.RI "Advances to the next player's turn, or starts a new day if all players finished\&. "
+.ti -1c
+.RI "bool \fBplayCardForPlayer\fP (int playerIndex, const std::string &cardName, bool logToConsole=true)"
+.br
+.RI "Plays a card from a player's hand into their active play area\&. "
+.ti -1c
+.RI "bool \fBremovePlayedCardForPlayer\fP (int playerIndex, const std::string &cardName, bool logToConsole=true)"
+.br
+.RI "Removes a card from a player's active play area (discards it)\&. "
+.ti -1c
+.RI "bool \fBremoveHeldCardForPlayer\fP (int playerIndex, const std::string &cardName, bool logToConsole=true)"
+.br
+.RI "Removes a card directly from a player's hand (discards without playing)\&. "
+.ti -1c
+.RI "int \fBgetCurrentDay\fP ()"
+.br
+.RI "Retrieves the current game day (round number)\&. "
+.ti -1c
+.RI "int \fBgetCurrentActivePlayerIndex\fP ()"
+.br
+.RI "Retrieves the index of the player whose turn is currently active\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Central game controller managing all gameplay mechanics and state\&. 
+
+\fBGame\fP acts as the orchestrator for a turn-based hex board strategy game\&. It maintains:
+.IP "\(bu" 2
+\fBGame\fP state (current day, active player)
+.IP "\(bu" 2
+\fBPlayer\fP roster and their associated companies
+.IP "\(bu" 2
+Hex board and tile ownership
+.IP "\(bu" 2
+\fBCard\fP decks (draw and discard)
+.IP "\(bu" 2
+Resource economy and transactions
+.IP "\(bu" 2
+Command-based interface for game actions
+.IP "\(bu" 2
+Rendering and event handling via SFML
+.PP
+
+.PP
+The class follows a command pattern for user interactions, mapping string commands to handler functions that manipulate game state\&. This design allows for scripting, replay systems, and network play extensions\&.
+
+.PP
+\fBNote\fP
+.RS 4
+The game uses a -1 convention for playerIndex to indicate "current active player" 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBPlayer\fP, \fBBoard\fP, \fBCompany\fP, \fBDeck\fP 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Game::Game (int boardSize, std::vector< \fBCompany\fP > companyList)"
+
+.PP
+Constructs a new \fBGame\fP instance with specified board and company configuration\&. Initializes the game environment including:
+.IP "\(bu" 2
+Hexagonal board of given size
+.IP "\(bu" 2
+SFML rendering window (1600x1200)
+.IP "\(bu" 2
+Font loading from assets
+.IP "\(bu" 2
+\fBRenderer\fP and command console subsystems
+.IP "\(bu" 2
+\fBCompany\fP roster for player assignment
+.IP "\(bu" 2
+Command handler registration
+.PP
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIboardSize\fP Radius of the hexagonal board (number of rings from center) 
+.br
+\fIcompanyList\fP Vector of available companies for player assignment
+.RE
+.PP
+\fBPrecondition\fP
+.RS 4
+boardSize must be positive 
+
+.PP
+companyList should not be empty for meaningful gameplay 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+\fBGame\fP object ready for player addition via \fBaddPlayer()\fP 
+
+.PP
+Window created but not yet displayed
+.RE
+.PP
+\fBWarning\fP
+.RS 4
+Exits with error message if font file "consolas\&.ttf" cannot be loaded 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBaddPlayer()\fP, \fBsetup()\fP 
+.RE
+.PP
+
+.SS "Game::~Game ()"
+
+.PP
+Destructs the \fBGame\fP instance, releasing dynamically allocated resources\&. Ensures proper cleanup of renderer and console subsystems to prevent memory leaks\&. 
+.PP
+\fBPostcondition\fP
+.RS 4
+All heap-allocated members freed 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Game::addPlayer (const std::string & name, \fBCompany\fP * company)"
+
+.PP
+Registers a new player with their associated company\&. Adds a player to the game roster\&. Players are assigned turn order based on registration sequence\&. The company pointer establishes ownership relationships for tiles built by this player\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIname\fP Display name for the player 
+.br
+\fIcompany\fP Pointer to the company this player represents (must outlive \fBGame\fP)
+.RE
+.PP
+\fBPrecondition\fP
+.RS 4
+company pointer must be valid and point to an existing \fBCompany\fP object 
+
+.PP
+Must be called before \fBsetup()\fP 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+\fBPlayer\fP added to internal roster with zero-initialized resources
+.RE
+.PP
+\fBNote\fP
+.RS 4
+\fBPlayer\fP index is implicitly assigned based on insertion order 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetup()\fP, \fBgetCurrentActivePlayerIndex()\fP 
+.RE
+.PP
+
+.SS "void Game::buildStage (int playerIndex, int x, int y, int z, const std::string & color)"
+
+.PP
+Constructs a stage (building) on a hex tile with specified color and ownership\&. Changes tile ownership to the player's company and sets the tile's color\&. This is the primary mechanism for claiming territory and scoring points in the game\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIplayerIndex\fP Index of the player performing the build action 
+.br
+\fIx\fP X-coordinate of the target hex tile (cube coordinates) 
+.br
+\fIy\fP Y-coordinate of the target hex tile (cube coordinates) 
+.br
+\fIz\fP Z-coordinate of the target hex tile (cube coordinates) 
+.br
+\fIcolor\fP Color name for the stage (must be valid per \fBColors::all\fP)
+.RE
+.PP
+\fBPrecondition\fP
+.RS 4
+playerIndex must be valid (not -1) 
+
+.PP
+Coordinates must reference an existing tile on the board 
+
+.PP
+color must be a recognized color string 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+\fBTile\fP ownership transferred to player's company 
+
+.PP
+\fBTile\fP color updated
+.RE
+.PP
+\fBNote\fP
+.RS 4
+Does not validate color or coordinates; caller must ensure validity 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBBoard::setTileOwner()\fP, \fBBoard::setTileColor()\fP 
+.RE
+.PP
+
+.SS "void Game::drawCardForPlayer (\fBDeck\fP & deck, \fBPlayer\fP & player, int amount)"
+
+.PP
+Draws specified number of cards from a deck into a player's hand\&. Transfers cards from the given deck to the player's held cards\&. Logs each draw to the console\&. Stops early if deck is exhausted\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIdeck\fP \fBDeck\fP to draw from (modified by removing cards) 
+.br
+\fIplayer\fP \fBPlayer\fP receiving the cards (hand is expanded) 
+.br
+\fIamount\fP Number of cards to attempt drawing
+.RE
+.PP
+\fBPrecondition\fP
+.RS 4
+deck must be a valid \fBDeck\fP reference 
+
+.PP
+player must be a valid \fBPlayer\fP reference 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+Up to 'amount' cards transferred from deck to player hand 
+
+.PP
+Console messages logged for each drawn card
+.RE
+.PP
+\fBNote\fP
+.RS 4
+If deck empties mid-draw, stops and logs a message 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBDeck::drawCard()\fP, \fBPlayer::addHeldCard()\fP 
+.RE
+.PP
+
+.SS "void Game::endTurn (bool logToConsole = \fRtrue\fP)"
+
+.PP
+Advances to the next player's turn, or starts a new day if all players finished\&. Increments the active player index\&. If the last player in turn order finishes, wraps to player 0 and increments the current day counter, triggering start-of-day effects\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIlogToConsole\fP Whether to log turn transitions to console (default: true)
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+currentActivePlayerIndex advanced (or wrapped to 0) 
+
+.PP
+If day boundary crossed, currentDay incremented and \fBstartNewDay()\fP called 
+
+.PP
+Console messages logged if logToConsole is true
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBstartNewDay()\fP, \fBgetCurrentActivePlayerIndex()\fP 
+.RE
+.PP
+
+.SS "int Game::getCurrentActivePlayerIndex ()"
+
+.PP
+Retrieves the index of the player whose turn is currently active\&. 
+.PP
+\fBReturns\fP
+.RS 4
+Integer index into the players vector (0-based) 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBendTurn()\fP, validateAndSetPlayerIndex() 
+.RE
+.PP
+
+.SS "int Game::getCurrentDay ()"
+
+.PP
+Retrieves the current game day (round number)\&. 
+.PP
+\fBReturns\fP
+.RS 4
+Integer representing the current day, starting from 0 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBstartNewDay()\fP, \fBendTurn()\fP 
+.RE
+.PP
+
+.SS "const std::vector< \fBPlayer\fP > & Game::getPlayers () const"
+
+.PP
+Retrieves the immutable list of all registered players\&. Provides read-only access to the player roster for querying game state\&. 
+.PP
+\fBReturns\fP
+.RS 4
+Const reference to the internal player vector 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBPlayer\fP 
+.RE
+.PP
+
+.SS "void Game::giveResourceToPlayer (int playerIndex, const std::string & resource, int amount, bool logToConsole = \fRtrue\fP)"
+
+.PP
+Grants a specified resource quantity to a player\&. Increases the player's resource pool for the given resource type\&. If the resource doesn't exist in the player's inventory, initializes it to the given amount\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIplayerIndex\fP Index of target player (-1 for current active player) 
+.br
+\fIresource\fP Name of the resource (e\&.g\&., "gold", "wood", "influence") 
+.br
+\fIamount\fP Quantity to add (can be negative to subtract) 
+.br
+\fIlogToConsole\fP Whether to print transaction to console (default: true)
+.RE
+.PP
+\fBPrecondition\fP
+.RS 4
+playerIndex must be valid or -1 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+\fBPlayer\fP's resource pool increased by amount 
+
+.PP
+Console message logged if logToConsole is true
+.RE
+.PP
+\fBNote\fP
+.RS 4
+Resources are string-keyed and dynamically created on first use 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBspendResourceFromPlayer()\fP 
+.RE
+.PP
+
+.SS "void Game::mainLoop ()"
+
+.PP
+Enters the main game loop, processing events and rendering until window closes\&. Core game loop that:
+.IP "1." 4
+Handles window events (close, input) via renderer
+.IP "2." 4
+Processes queued console commands via executeCommand()
+.IP "3." 4
+Renders the current game state (board, console output)
+.PP
+
+.PP
+This loop runs indefinitely until the SFML window is closed by the user\&.
+
+.PP
+\fBPrecondition\fP
+.RS 4
+\fBsetup()\fP must have been called to initialize game state 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+Window closed and game terminated
+.RE
+.PP
+\fBNote\fP
+.RS 4
+Blocks execution until game exit 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+executeCommand(), \fBRenderer::handleEvents()\fP, \fBRenderer::render()\fP 
+.RE
+.PP
+
+.SS "bool Game::playCardForPlayer (int playerIndex, const std::string & cardName, bool logToConsole = \fRtrue\fP)"
+
+.PP
+Plays a card from a player's hand into their active play area\&. Validates the player has the card in hand, transfers it to played cards, and executes the card's "onPlay" trigger immediately\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIplayerIndex\fP Index of the player (-1 for current active player) 
+.br
+\fIcardName\fP Exact name of the card to play 
+.br
+\fIlogToConsole\fP Whether to log action/errors to console (default: true)
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+true if card successfully played, false if not found in hand
+.RE
+.PP
+\fBPrecondition\fP
+.RS 4
+playerIndex must be valid or -1 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+If successful, card moved from hand to playedCards 
+
+.PP
+\fBCard\fP's onPlay trigger executed 
+
+.PP
+Console message logged if logToConsole is true
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBremovePlayedCardForPlayer()\fP, \fBPlayer::playCard()\fP 
+.RE
+.PP
+
+.SS "bool Game::removeHeldCardForPlayer (int playerIndex, const std::string & cardName, bool logToConsole = \fRtrue\fP)"
+
+.PP
+Removes a card directly from a player's hand (discards without playing)\&. Used for discard mechanics, hand management, or card destruction effects\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIplayerIndex\fP Index of the player (-1 for current active player) 
+.br
+\fIcardName\fP Exact name of the card to remove 
+.br
+\fIlogToConsole\fP Whether to log action/errors to console (default: true)
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+true if card found and removed, false if not in hand
+.RE
+.PP
+\fBPrecondition\fP
+.RS 4
+playerIndex must be valid or -1 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+If successful, card removed from heldCards 
+
+.PP
+Console message logged if logToConsole is true
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBplayCardForPlayer()\fP, \fBPlayer::removeHeldCard()\fP 
+.RE
+.PP
+
+.SS "bool Game::removePlayedCardForPlayer (int playerIndex, const std::string & cardName, bool logToConsole = \fRtrue\fP)"
+
+.PP
+Removes a card from a player's active play area (discards it)\&. Used for card destruction, end-of-turn cleanup, or card replacement mechanics\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIplayerIndex\fP Index of the player (-1 for current active player) 
+.br
+\fIcardName\fP Exact name of the card to remove 
+.br
+\fIlogToConsole\fP Whether to log action/errors to console (default: true)
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+true if card found and removed, false if not in play
+.RE
+.PP
+\fBPrecondition\fP
+.RS 4
+playerIndex must be valid or -1 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+If successful, card removed from playedCards 
+
+.PP
+Console message logged if logToConsole is true
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBplayCardForPlayer()\fP, \fBPlayer::removePlayedCard()\fP 
+.RE
+.PP
+
+.SS "void Game::setup ()"
+
+.PP
+Initializes the game board and deals starting cards\&. Performs initial game setup:
+.IP "\(bu" 2
+Randomly assigns colors and owners to half the board tiles
+.IP "\(bu" 2
+Sets remaining tiles to neutral (unowned)
+.IP "\(bu" 2
+Loads card deck from "cards\&.json"
+.IP "\(bu" 2
+Shuffles the draw deck
+.IP "\(bu" 2
+Deals one card to the first player
+.PP
+
+.PP
+This method implements the game's starting conditions as per design rules\&.
+
+.PP
+\fBPrecondition\fP
+.RS 4
+At least one player must be added via \fBaddPlayer()\fP 
+
+.PP
+"cards\&.json" must exist and contain valid card definitions 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+\fBBoard\fP tiles initialized with random colors and owners 
+
+.PP
+Draw and discard decks created 
+
+.PP
+First player has one card in hand
+.RE
+.PP
+\fBWarning\fP
+.RS 4
+Neutral color (index 0 in \fBColors::all\fP) is excluded from random selection 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBaddPlayer()\fP, \fBmainLoop()\fP 
+.RE
+.PP
+
+.SS "bool Game::spendResourceFromPlayer (int playerIndex, const std::string & resource, int amount, bool logToConsole = \fRtrue\fP)"
+
+.PP
+Attempts to deduct a resource quantity from a player's inventory\&. Validates that the player has sufficient resources before deducting\&. If insufficient, logs an error and returns false without modifying the player's inventory\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIplayerIndex\fP Index of target player (-1 for current active player) 
+.br
+\fIresource\fP Name of the resource to spend 
+.br
+\fIamount\fP Quantity to deduct 
+.br
+\fIlogToConsole\fP Whether to print transaction/errors to console (default: true)
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+true if transaction succeeded, false if insufficient resources
+.RE
+.PP
+\fBPrecondition\fP
+.RS 4
+playerIndex must be valid or -1 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+If successful, player's resource reduced by amount 
+
+.PP
+Console message logged if logToConsole is true
+.RE
+.PP
+\fBWarning\fP
+.RS 4
+Returns false if resource doesn't exist in player's inventory 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBgiveResourceToPlayer()\fP 
+.RE
+.PP
+
+.SS "void Game::startNewDay ()"
+
+.PP
+Executes start-of-day triggers for all played cards across all players\&. Iterates through each player's active (played) cards and invokes their "onStartOfDay" trigger\&. This implements card effects that activate at the beginning of each game day (round)\&.
+
+.PP
+\fBPostcondition\fP
+.RS 4
+All cards' onStartOfDay effects executed 
+.RE
+.PP
+\fBNote\fP
+.RS 4
+Called automatically when all players end their turn (day transition) 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBendTurn()\fP, \fBCard::executeTrigger()\fP 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Spotlight from the source code\&.

@@ -1,0 +1,63 @@
+.TH "StartupMenu" 3 "Version 1.0" "Spotlight" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+StartupMenu \- Manages the initial menu and configuration phase before the main game starts\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <StartupMenu\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBStartupMenu\fP ()=default"
+.br
+.RI "Default constructor\&. "
+.ti -1c
+.RI "int \fBStartMenuLoop\fP ()"
+.br
+.RI "Starts the main menu loop\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Manages the initial menu and configuration phase before the main game starts\&. 
+
+Provides user interaction for choosing game settings, loading or saving configuration, and starting the gameplay session\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "StartupMenu::StartupMenu ()\fR [default]\fP"
+
+.PP
+Default constructor\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "int StartupMenu::StartMenuLoop ()"
+
+.PP
+Starts the main menu loop\&. Runs the startup menu loop for the game\&.
+
+.PP
+Displays menu options for starting the game, changing settings, or exiting the application\&. Handles configuration loading/saving and launches the game once setup is complete\&.
+
+.PP
+\fBReturns\fP
+.RS 4
+0 on successful completion or user exit\&.
+.RE
+.PP
+Displays options to start the game, open settings, or exit\&. Loads saved configuration, sets up game data, and starts the main game loop\&.
+
+.PP
+\fBReturns\fP
+.RS 4
+0 when exiting the program\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Spotlight from the source code\&.

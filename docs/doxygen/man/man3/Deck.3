@@ -1,0 +1,255 @@
+.TH "Deck" 3 "Version 1.0" "Spotlight" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Deck \- Represents a collection of cards and provides utility operations for card management\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Deck\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDeck\fP (const std::string &deckName='')"
+.br
+.RI "Constructs a deck with an optional name\&. "
+.ti -1c
+.RI "void \fBloadFromJsonFile\fP (const std::string &filename)"
+.br
+.RI "Loads cards into the deck from a JSON file\&. "
+.ti -1c
+.RI "void \fBaddCard\fP (const \fBCard\fP &card)"
+.br
+.RI "Adds a card to the deck\&. "
+.ti -1c
+.RI "\fBCard\fP \fBdrawCard\fP ()"
+.br
+.RI "Draws the topmost card from the deck\&. "
+.ti -1c
+.RI "void \fBmoveCardTo\fP (const \fBCard\fP &card, \fBDeck\fP &deck)"
+.br
+.RI "Transfers a card to another deck\&. "
+.ti -1c
+.RI "void \fBshuffle\fP ()"
+.br
+.RI "Randomly shuffles the order of cards in the deck\&. "
+.ti -1c
+.RI "size_t \fBsize\fP () const"
+.br
+.RI "Gets the number of cards currently in the deck\&. "
+.ti -1c
+.RI "bool \fBempty\fP () const"
+.br
+.RI "Checks whether the deck is empty\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBname\fP"
+.br
+.RI "The deck’s name, used for identification or debugging\&. "
+.ti -1c
+.RI "std::vector< \fBCard\fP > \fBcards\fP"
+.br
+.RI "The internal storage of cards contained within the deck\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a collection of cards and provides utility operations for card management\&. 
+
+The \fBDeck\fP class encapsulates a vector of \fBCard\fP objects along with a name identifier\&. It supports loading cards from external JSON data, shuffling the deck, drawing cards, and transferring them to other decks\&. The design is extensible for various game contexts that require deck-based operations\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Deck::Deck (const std::string & deckName = \fR''\fP)\fR [inline]\fP"
+
+.PP
+Constructs a deck with an optional name\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIdeckName\fP Optional name identifier for the deck\&. 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+\fBDeck\fP is initialized with an empty card list\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Deck::addCard (const \fBCard\fP & card)"
+
+.PP
+Adds a card to the deck\&. Adds a card directly to the deck vector\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIcard\fP The card to be added\&. 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+The card is appended to the end of the internal vector\&. 
+.RE
+.PP
+
+.SS "\fBCard\fP Deck::drawCard ()"
+
+.PP
+Draws the topmost card from the deck\&. Removes the last card from the internal vector (LIFO order) and returns it\&. If the deck is empty, an empty \fBCard\fP is returned instead\&.
+
+.PP
+\fBPrecondition\fP
+.RS 4
+The deck should contain at least one card\&. 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+The deck’s size decreases by one, unless empty\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The drawn \fBCard\fP object\&. 
+.RE
+.PP
+\fBWarning\fP
+.RS 4
+Returns a default-constructed \fBCard\fP if the deck is empty\&.
+.RE
+.PP
+Returns the last element of the vector to simulate drawing from the top\&. Logs an error if called on an empty deck and returns a default card\&. 
+.SS "bool Deck::empty () const"
+
+.PP
+Checks whether the deck is empty\&. Returns true if there are no cards remaining in the deck\&.
+
+.PP
+\fBReturns\fP
+.RS 4
+True if the deck has no cards, false otherwise\&. 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+Does not modify the deck\&. 
+.RE
+.PP
+
+.SS "void Deck::loadFromJsonFile (const std::string & filename)"
+
+.PP
+Loads cards into the deck from a JSON file\&. The JSON file must contain an array of card definitions compatible with the \fBCard\fP class constructor\&. Each card may optionally define a \fR"copies"\fP field indicating how many duplicates to create\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIfilename\fP The name or relative path of the JSON file to load\&. 
+.RE
+.PP
+\fBPrecondition\fP
+.RS 4
+The file must exist and contain valid JSON\&. 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+The deck’s card list is cleared and replaced with the loaded cards\&. 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIstd::exception\fP If JSON parsing fails (caught internally and logged)\&. 
+.RE
+.PP
+\fBWarning\fP
+.RS 4
+Logs errors to stderr if the file cannot be found or opened\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBCard::Card(const nlohmann::json&)\fP
+.RE
+.PP
+Uses \fBPathUtils::getAssetPath()\fP to resolve the full path of the file\&. Cards are loaded from JSON, supporting an optional "copies" field for duplication\&. Any parsing or I/O errors are printed to stderr\&. 
+.PP
+\fBNote\fP
+.RS 4
+Default copies = 1 unless explicitly defined in JSON\&.
+.RE
+.PP
+
+.SS "void Deck::moveCardTo (const \fBCard\fP & card, \fBDeck\fP & deck)"
+
+.PP
+Transfers a card to another deck\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcard\fP The card to move\&. 
+.br
+\fIdeck\fP The destination deck that receives the card\&. 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+The specified card is added to the destination deck\&. 
+.RE
+.PP
+\fBNote\fP
+.RS 4
+This operation does not remove the card from the source deck\&.
+.RE
+.PP
+Only appends the card to the destination deck — it does not remove it locally\&. This enables flexible gameplay behavior (e\&.g\&., cloning, discarding)\&. 
+.SS "void Deck::shuffle ()"
+
+.PP
+Randomly shuffles the order of cards in the deck\&. Uses a Mersenne Twister pseudo-random generator seeded from std::random_device\&. Suitable for gameplay randomness but not cryptographically secure\&.
+
+.PP
+\fBPostcondition\fP
+.RS 4
+All cards remain present, but in randomized order\&.
+.RE
+.PP
+Uses std::shuffle with Mersenne Twister (mt19937) seeded from random_device\&. Ensures fair shuffling each time it’s called\&. 
+.SS "size_t Deck::size () const"
+
+.PP
+Gets the number of cards currently in the deck\&. Returns the current card count in the deck\&.
+
+.PP
+\fBReturns\fP
+.RS 4
+The count of cards\&. 
+.RE
+.PP
+\fBPostcondition\fP
+.RS 4
+Does not modify the deck\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "std::vector<\fBCard\fP> Deck::cards"
+
+.PP
+The internal storage of cards contained within the deck\&. 
+.SS "std::string Deck::name"
+
+.PP
+The deck’s name, used for identification or debugging\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Spotlight from the source code\&.

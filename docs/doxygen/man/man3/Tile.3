@@ -1,0 +1,104 @@
+.TH "Tile" 3 "Version 1.0" "Spotlight" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Tile \- Represents a single board tile that can be owned by a company and display a color\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Tile\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTile\fP ()"
+.br
+.RI "Constructs a neutral, unowned tile\&. "
+.ti -1c
+.RI "void \fBsetOwner\fP (\fBCompany\fP *newOwner)"
+.br
+.RI "Sets the owner of this tile\&. "
+.ti -1c
+.RI "\fBCompany\fP * \fBgetOwner\fP () const"
+.br
+.RI "Retrieves the company that owns this tile\&. "
+.ti -1c
+.RI "const std::string & \fBgetColor\fP () const"
+.br
+.RI "Gets the tile's current color\&. "
+.ti -1c
+.RI "void \fBsetColor\fP (const std::string &newColor)"
+.br
+.RI "Sets the tile's color\&. "
+.ti -1c
+.RI "void \fBprintInfo\fP () const"
+.br
+.RI "Prints a formatted line describing ownership and color to the console\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a single board tile that can be owned by a company and display a color\&. 
+
+Each tile may have an owner (a pointer to a \fBCompany\fP) and an associated color\&. Tiles start unowned and "neutral" in color by default\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Tile::Tile ()"
+
+.PP
+Constructs a neutral, unowned tile\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "const std::string & Tile::getColor () const"
+
+.PP
+Gets the tile's current color\&. 
+.PP
+\fBReturns\fP
+.RS 4
+Reference to the color string\&. 
+.RE
+.PP
+
+.SS "\fBCompany\fP * Tile::getOwner () const"
+
+.PP
+Retrieves the company that owns this tile\&. 
+.PP
+\fBReturns\fP
+.RS 4
+Pointer to the owning company, or nullptr if unowned\&. 
+.RE
+.PP
+
+.SS "void Tile::printInfo () const"
+
+.PP
+Prints a formatted line describing ownership and color to the console\&. 
+.SS "void Tile::setColor (const std::string & newColor)"
+
+.PP
+Sets the tile's color\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInewColor\fP New color name (string identifier)\&. 
+.RE
+.PP
+
+.SS "void Tile::setOwner (\fBCompany\fP * newOwner)"
+
+.PP
+Sets the owner of this tile\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInewOwner\fP Pointer to the company that now owns the tile\&. Can be nullptr for unowned\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Spotlight from the source code\&.

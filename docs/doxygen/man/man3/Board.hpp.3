@@ -1,0 +1,62 @@
+.TH "include/Board.hpp" 3 "Version 1.0" "Spotlight" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+include/Board.hpp \- Declares the \fBBoard\fP class which represents a hexagonal grid of tiles\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fR#include 'CubeCoord\&.hpp'\fP
+.br
+\fR#include 'Tile\&.hpp'\fP
+.br
+\fR#include 'Company\&.hpp'\fP
+.br
+\fR#include <unordered_map>\fP
+.br
+\fR#include <vector>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBBoard\fP"
+.br
+.RI "Represents a hexagonal game board composed of cube-coordinate tiles\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Declares the \fBBoard\fP class which represents a hexagonal grid of tiles\&. 
+
+The \fBBoard\fP class manages a collection of \fBTile\fP objects arranged using cube coordinates\&. It provides functions for tile retrieval, neighbor lookup, ownership and color assignment, and overall grid initialization\&.
+
+.PP
+The cube coordinate system ensures consistent hex-grid relationships via the constraint: $x + y + z = 0$\&.
+
+.PP
+\fBSee also\fP
+.RS 4
+\fBCubeCoord\fP, \fBTile\fP, \fBCompany\fP
+.RE
+.PP
+\fBDate\fP
+.RS 4
+2025-11-06 
+.RE
+.PP
+\fBVersion\fP
+.RS 4
+1\&.0 
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Owen Chilson 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Spotlight from the source code\&.

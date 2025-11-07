@@ -1,0 +1,79 @@
+.TH "Renderer" 3 "Version 1.0" "Spotlight" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renderer \- Handles all visual rendering and window event management for the game\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Renderer\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRenderer\fP (\fBBoard\fP &board, sf::Font &font)"
+.br
+.RI "Constructs a \fBRenderer\fP object\&. "
+.ti -1c
+.RI "void \fBhandleEvents\fP (sf::RenderWindow &window, \fBCommandConsole\fP &console)"
+.br
+.RI "Processes SFML window events and forwards input to the console\&. "
+.ti -1c
+.RI "void \fBrender\fP (sf::RenderWindow &window, \fBCommandConsole\fP &console)"
+.br
+.RI "Draws all visible elements, including the board and console\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Handles all visual rendering and window event management for the game\&. 
+
+The \fBRenderer\fP is responsible for drawing tiles, board layout, and console output to the SFML window\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renderer::Renderer (\fBBoard\fP & board, sf::Font & font)"
+
+.PP
+Constructs a \fBRenderer\fP object\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIboard\fP Reference to the \fBBoard\fP instance to render\&. 
+.br
+\fIfont\fP Reference to the font used for tile text and console output\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Renderer::handleEvents (sf::RenderWindow & window, \fBCommandConsole\fP & console)"
+
+.PP
+Processes SFML window events and forwards input to the console\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIwindow\fP The render window to poll for events\&. 
+.br
+\fIconsole\fP Reference to the \fBCommandConsole\fP for input handling\&. 
+.RE
+.PP
+
+.SS "void Renderer::render (sf::RenderWindow & window, \fBCommandConsole\fP & console)"
+
+.PP
+Draws all visible elements, including the board and console\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIwindow\fP The render window where graphics are drawn\&. 
+.br
+\fIconsole\fP Reference to the console for on-screen text rendering\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Spotlight from the source code\&.

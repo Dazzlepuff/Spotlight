@@ -1,0 +1,64 @@
+.TH "CubeCoordHash" 3 "Version 1.0" "Spotlight" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CubeCoordHash \- Hash functor for \fBCubeCoord\fP, allowing use in unordered containers\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <CubeCoord\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "std::size_t \fBoperator()\fP (const \fBCubeCoord\fP &c) const noexcept"
+.br
+.RI "Generates a hash for a \fBCubeCoord\fP\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Hash functor for \fBCubeCoord\fP, allowing use in unordered containers\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "std::size_t CubeCoordHash::operator() (const \fBCubeCoord\fP & c) const\fR [noexcept]\fP"
+
+.PP
+Generates a hash for a \fBCubeCoord\fP\&. Generates a hash for a \fBCubeCoord\fP to be used in unordered containers\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIc\fP The coordinate to hash\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The hash value\&.
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIc\fP The coordinate to hash\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Combined hash value for x, y, z\&.
+.RE
+.PP
+Combines individual hashes using bit shifting to reduce collisions\&. < Hash x component\&.
+
+.PP
+< Hash y component\&.
+
+.PP
+< Hash z component\&.
+
+.PP
+< Combine hashes with bit shifts\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Spotlight from the source code\&.

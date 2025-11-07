@@ -1,0 +1,42 @@
+.TH "GameConfig" 3 "Version 1.0" "Spotlight" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+GameConfig \- Holds persistent player and company setup information\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBplayerCount\fP = 2"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBplayerNames\fP"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBcompanyNames\fP"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBcompanySymbols\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Holds persistent player and company setup information\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "std::vector<std::string> GameConfig::companyNames"
+Names of companies linked to players\&. 
+.SS "std::vector<std::string> GameConfig::companySymbols"
+\fBCompany\fP symbols or abbreviations\&. 
+.SS "int GameConfig::playerCount = 2"
+Number of players in the game (2–6)\&. 
+.SS "std::vector<std::string> GameConfig::playerNames"
+Names of all players\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Spotlight from the source code\&.
