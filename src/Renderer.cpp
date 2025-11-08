@@ -28,9 +28,9 @@ void Renderer::render(sf::RenderWindow& window, CommandConsole& console) {
 
 
 void Renderer::drawBoard(sf::RenderWindow& window) {
-    const float hexRadius = 50.f;
+    const float hexRadius = 25.f;
     const float hexHeight = std::sqrt(3.f) * hexRadius;
-    const sf::Vector2f center(800, 600);
+    const sf::Vector2f center(400, 300);
 
     for (const auto& [coord, tile] : board.tiles) {
         float q = static_cast<float>(coord.x);
