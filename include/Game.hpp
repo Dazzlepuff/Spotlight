@@ -28,21 +28,34 @@ class Renderer;
 class CommandConsole;
 
 /**
+ * @enum TimeOfDay
+ * @brief Enumeration of the five distinct time periods in a game day.
+ * @details Each day progresses through these five phases in order.
+ */
+enum class TimeOfDay {
+    Daybreak = 0,
+    Morning = 1,
+    Afternoon = 2,
+    Evening = 3,
+    Nightfall = 4
+};
+
+/**
  * @class Game
  * @brief Central game controller managing all gameplay mechanics and state.
  * @details
  * Game acts as the orchestrator for a turn-based hex board strategy game. It maintains:
- * - Game state (current day, active player)
+ * - Game state (current day, active player, time of day)
  * - Player roster and their associated companies
  * - Hex board and tile ownership
  * - Card decks (draw and discard)
  * - Resource economy and transactions
- * - Command-based interface for game actions
+ * - Command-based interface for game actions with time restrictions
  * - Rendering and event handling via SFML
  * 
  * The class follows a command pattern for user interactions, mapping string commands
- * to handler functions that manipulate game state. This design allows for scripting,
- * replay systems, and network play extensions.
+ * to handler functions that manipulate game state. Commands can be restricted to specific
+ * times of day, with a cheat override using "!" prefix.
  * 
  * @note The game uses a -1 convention for playerIndex to indicate "current active player"
  * @see Player, Board, Company, Deck
@@ -59,6 +72,7 @@ public:
      * - Renderer and command console subsystems
      * - Company roster for player assignment
      * - Command handler registration
+     * - Time of day system initialization
      * 
      * @param[in] boardSize Radius of the hexagonal board (number of rings from center)
      * @param[in] companyList Vector of available companies for player assignment
@@ -334,19 +348,72 @@ public:
      * @see endTurn(), validateAndSetPlayerIndex()
      */
     int getCurrentActivePlayerIndex();
+    
+    /**
+     * @brief Retrieves the current time of day.
+     * @return Current TimeOfDay enum value
+     * @see advanceTimeOfDay(), getTimeOfDayString()
+     */
+    TimeOfDay getCurrentTimeOfDay() const;
+    
+    /**
+     * @brief Advances the time of day to the next period.
+     * @details Cycles through Daybreak -> Morning -> Afternoon -> Evening -> Nightfall,
+     * then wraps back to Daybreak (does not advance day counter).
+     * @param[in] logToConsole Whether to log the time change to console (default: true)
+     * @post currentTimeOfDay advanced to next period (or wrapped to Daybreak)
+     * @see getCurrentTimeOfDay()
+     */
+    void advanceTimeOfDay(bool logToConsole = true);
+    
+    /**
+     * @brief Converts a TimeOfDay enum value to its string representation.
+     * @param[in] time TimeOfDay value to convert
+     * @return String name of the time period
+     */
+    static std::string getTimeOfDayString(TimeOfDay time);
+    
+    /**
+     * @brief Registers a command to be restricted to specific times of day.
+     * @details Commands not registered have no time restrictions. Use this to enforce
+     * gameplay rules about when certain actions can be taken.
+     * 
+     * @param[in] commandName Name of the command to restrict
+     * @param[in] allowedTimes Vector of TimeOfDay values when command is permitted
+     * 
+     * @post Command added to restriction map
+     * 
+     * @example
+     * // Allow building only during Morning and Afternoon
+     * restrictCommandToTimes("build", {TimeOfDay::Morning, TimeOfDay::Afternoon});
+     */
+    void restrictCommandToTimes(const std::string& commandName, const std::vector<TimeOfDay>& allowedTimes);
+    
+    /**
+     * @brief Checks if a command can be executed at the current time of day.
+     * @details Returns true if command is unrestricted or current time is in allowed list.
+     * 
+     * @param[in] commandName Name of command to check
+     * @return true if command can be executed now, false otherwise
+     * 
+     * @see restrictCommandToTimes()
+     */
+    bool isCommandAllowedAtCurrentTime(const std::string& commandName) const;
 
 private:
     /**
      * @brief Parses and dispatches a command string to the appropriate handler function.
      * @details
      * Splits the command into an action keyword and arguments, then invokes the
-     * corresponding lambda from commandHandlers map. Logs error for unknown commands.
+     * corresponding lambda from commandHandlers map. Supports cheat override using "!" prefix.
+     * Logs error for unknown commands or time-restricted commands.
      * 
-     * @param[in] cmd Complete command string (e.g., "draw_card drawDeck 3")
+     * @param[in] cmd Complete command string (e.g., "draw_card drawDeck 3" or "!build 0 0 0 Red")
      * 
-     * @post Corresponding handler executed if command recognized
-     * @post Error logged to console if command unknown
+     * @post Corresponding handler executed if command recognized and allowed
+     * @post Error logged to console if command unknown or time-restricted
      * 
+     * @note Commands prefixed with "!" bypass time restrictions
      * @see initializeCommandHandlers()
      */
     void executeCommand(const std::string& cmd);
@@ -507,6 +574,18 @@ private:
     void handleRemoveHeldCard(std::istringstream& ss);
     
     /**
+     * @brief Handles "advance_time" command to move to the next time of day.
+     * @details Calls advanceTimeOfDay() to progress the time period.
+     */
+    void handleAdvanceTime();
+    
+    /**
+     * @brief Handles "show_time" command to display the current time of day.
+     * @details Outputs the current time period to console.
+     */
+    void handleShowTime();
+    
+    /**
      * @brief Handles "help" command to display all available commands and their syntax.
      * @details Outputs paginated list of commands with usage examples via console.
      */
@@ -522,7 +601,7 @@ private:
     std::vector<Deck> decks;          ///< Collection of card decks (draw, discard, etc.)
     
     int currentDay = 0;               ///< Current game day (round number), starts at 0
-    int timeOfDay = 0;                ///< Time of day such as daybreak or evening. 5 total.
+    TimeOfDay currentTimeOfDay = TimeOfDay::Daybreak; ///< Current time of day period
     int currentActivePlayerIndex = 0; ///< Index of player whose turn is active
     
     sf::Font font;                    ///< SFML font resource for text rendering
@@ -536,6 +615,13 @@ private:
      * and simplifies command addition/removal.
      */
     std::unordered_map<std::string, std::function<void(std::istringstream&)>> commandHandlers;
+    
+    /**
+     * @brief Map of command names to their allowed times of day.
+     * @details Commands not in this map have no time restrictions. Empty vector means
+     * command is never allowed (effectively disabled).
+     */
+    std::unordered_map<std::string, std::vector<TimeOfDay>> commandTimeRestrictions;
     
     /**
      * @brief Locates a deck by name within the decks vector.

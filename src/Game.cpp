@@ -18,6 +18,7 @@ Game::Game(int boardSize, std::vector<Company> companyList)
     : board(boardSize),
       window(sf::VideoMode(800, 600), "Hex Board"),
       currentDay(0),
+      currentTimeOfDay(TimeOfDay::Daybreak),
       currentActivePlayerIndex(0)
 {
     auto fontPath = PathUtils::getAssetPath("consolas.ttf");
@@ -124,6 +125,54 @@ int Game::getCurrentActivePlayerIndex() {
 
 int Game::getCurrentDay() {
     return currentDay;
+}
+
+TimeOfDay Game::getCurrentTimeOfDay() const {
+    return currentTimeOfDay;
+}
+
+void Game::advanceTimeOfDay(bool logToConsole) {
+    // Advance to next time period
+    int nextTime = static_cast<int>(currentTimeOfDay) + 1;
+    
+    // Wrap back to Daybreak if past Nightfall
+    if (nextTime > static_cast<int>(TimeOfDay::Nightfall)) {
+        currentTimeOfDay = TimeOfDay::Daybreak;
+    } else {
+        currentTimeOfDay = static_cast<TimeOfDay>(nextTime);
+    }
+    
+    if (logToConsole) {
+        console->print("Time advanced to " + getTimeOfDayString(currentTimeOfDay));
+    }
+}
+
+std::string Game::getTimeOfDayString(TimeOfDay time) {
+    switch (time) {
+        case TimeOfDay::Daybreak:   return "Daybreak";
+        case TimeOfDay::Morning:    return "Morning";
+        case TimeOfDay::Afternoon:  return "Afternoon";
+        case TimeOfDay::Evening:    return "Evening";
+        case TimeOfDay::Nightfall:  return "Nightfall";
+        default:                    return "Unknown";
+    }
+}
+
+void Game::restrictCommandToTimes(const std::string& commandName, const std::vector<TimeOfDay>& allowedTimes) {
+    commandTimeRestrictions[commandName] = allowedTimes;
+}
+
+bool Game::isCommandAllowedAtCurrentTime(const std::string& commandName) const {
+    auto it = commandTimeRestrictions.find(commandName);
+    
+    // If command not in restriction map, it's always allowed
+    if (it == commandTimeRestrictions.end()) {
+        return true;
+    }
+    
+    // Check if current time is in the allowed list
+    const auto& allowedTimes = it->second;
+    return std::find(allowedTimes.begin(), allowedTimes.end(), currentTimeOfDay) != allowedTimes.end();
 }
 
 void Game::startNewDay() {
@@ -403,6 +452,16 @@ void Game::initializeCommandHandlers() {
         handleRemoveHeldCard(ss);
     };
 
+    // Register command: "advance_time" - Progress to next time of day
+    commandHandlers["advance_time"] = [this](std::istringstream&) {
+        handleAdvanceTime();
+    };
+
+    // Register command: "show_time" - Display current time of day
+    commandHandlers["show_time"] = [this](std::istringstream&) {
+        handleShowTime();
+    };
+
     // Register command: "help" - Display command reference
     commandHandlers["help"] = [this](std::istringstream&) {
         handleHelp();
@@ -655,6 +714,14 @@ void Game::handleRemoveHeldCard(std::istringstream& ss) {
     removeHeldCardForPlayer(playerIndex, cardName);
 }
 
+void Game::handleAdvanceTime() {
+    advanceTimeOfDay(true);
+}
+
+void Game::handleShowTime() {
+    console->print("Current time: " + getTimeOfDayString(currentTimeOfDay));
+}
+
 void Game::handleHelp() {
     std::vector<std::string> lines = {
         "Available commands:",
@@ -672,22 +739,46 @@ void Game::handleHelp() {
         "  remove_played_card <card_name> [player_index]  - Removes a card from play.",
         "  remove_held_card <card_name> [player_index]  - Removes a card from hand.",
         "  end_turn  - Ends the current player's turn.",
+        "  advance_time  - Advances to the next time of day.",
+        "  show_time  - Displays the current time of day.",
         "  next  - Shows the next page of text (for long outputs).",
         "  clear  - Clears the currently displayed output lines.",
-        "  help  - Displays this help message."
+        "  help  - Displays this help message.",
+        "",
+        "Command Restrictions:",
+        "  Commands may be restricted to certain times of day.",
+        "  Prefix any command with ! to bypass time restrictions (cheat mode).",
+        "  Example: !build 0 0 0 Red"
     };
 
     console->printPaged(lines); // Use pagination for help text
 }
 
 void Game::executeCommand(const std::string& cmd) {
-    std::istringstream ss(cmd);
+    if (cmd.empty()) return;
+    
+    // Check for cheat prefix (!)
+    bool isCheatCommand = (cmd[0] == '!');
+    std::string actualCmd = isCheatCommand ? cmd.substr(1) : cmd;
+    
+    std::istringstream ss(actualCmd);
     std::string action;
     ss >> action;
+
+    // Check time restrictions (unless cheat mode)
+    if (!isCheatCommand && !isCommandAllowedAtCurrentTime(action)) {
+        console->print("Command '" + action + "' cannot be used during " + 
+                      getTimeOfDayString(currentTimeOfDay) + ".");
+        console->print("Use !" + cmd + " to force execution (cheat mode).");
+        return;
+    }
 
     // Lookup and execute command handler via function map
     auto it = commandHandlers.find(action);
     if (it != commandHandlers.end()) {
+        if (isCheatCommand) {
+            console->print("[CHEAT MODE] Executing: " + actualCmd);
+        }
         it->second(ss); // Invoke lambda with remaining arguments
     } else {
         console->print("Unknown command: " + action);
