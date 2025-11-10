@@ -522,6 +522,7 @@ private:
     std::vector<Deck> decks;          ///< Collection of card decks (draw, discard, etc.)
     
     int currentDay = 0;               ///< Current game day (round number), starts at 0
+    int timeOfDay = 0;                ///< Time of day such as daybreak or evening. 5 total.
     int currentActivePlayerIndex = 0; ///< Index of player whose turn is active
     
     sf::Font font;                    ///< SFML font resource for text rendering
